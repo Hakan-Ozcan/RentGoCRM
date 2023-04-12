@@ -1,0 +1,1550 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.microsoft.com/ws/06/2004/policy/http" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" name="IPaymentWebService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.datacontract.org/2004/07/NetahsilatGold.PaymentWebService.Models" />
+      <xs:import namespace="http://schemas.datacontract.org/2004/07/NetahsilatGold.Domain.Model.IntegrationModels" />
+      <xs:import namespace="http://schemas.datacontract.org/2004/07/PGWService.Models.WCF" />
+      <xs:import namespace="http://schemas.datacontract.org/2004/07/eCozum.Practices.VPos.Entity.Infrastructure" />
+      <xs:import namespace="http://schemas.datacontract.org/2004/07/System.Collections.Generic" />
+      <xs:import namespace="http://schemas.datacontract.org/2004/07/NetahsilatGold.Domain.Model.VendorPaymentService" />
+      <xs:import namespace="http://schemas.datacontract.org/2004/07/PGWService.Models.WCF.Integration" />
+      <xs:import namespace="http://schemas.datacontract.org/2004/07/System" />
+      <xs:element name="GetPaymentSetList">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/NetahsilatGold.PaymentWebService.Models" minOccurs="1" name="authInfo" nillable="true" type="q1:AuthenticationInfo" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetPaymentSetListResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/NetahsilatGold.PaymentWebService.Models" minOccurs="1" name="GetPaymentSetListResult" nillable="true" type="q2:PaymentSetResult" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetPaymentSetListBinNumber">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/NetahsilatGold.PaymentWebService.Models" minOccurs="1" name="authInfo" nillable="true" type="q3:AuthenticationInfo" />
+            <xs:element minOccurs="1" name="binNumber" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetPaymentSetListBinNumberResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/NetahsilatGold.PaymentWebService.Models" minOccurs="1" name="GetPaymentSetListBinNumberResult" nillable="true" type="q4:PaymentSetResult" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SaleWithVendorErpCode">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/NetahsilatGold.PaymentWebService.Models" minOccurs="1" name="authInfo" nillable="true" type="q5:AuthenticationInfo" />
+            <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/NetahsilatGold.PaymentWebService.Models" minOccurs="1" name="parameters" nillable="true" type="q6:PaymentParameters" />
+            <xs:element minOccurs="0" name="autoGenerateReferenceCode" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SaleWithVendorErpCodeResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/NetahsilatGold.PaymentWebService.Models" minOccurs="1" name="SaleWithVendorErpCodeResult" nillable="true" type="q7:PaymentProccessResult" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetCampaignList">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/NetahsilatGold.PaymentWebService.Models" minOccurs="1" name="authInfo" nillable="true" type="q8:AuthenticationInfo" />
+            <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/NetahsilatGold.PaymentWebService.Models" minOccurs="1" name="parameters" nillable="true" type="q9:CampaignProcessParameters" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetCampaignListResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/NetahsilatGold.PaymentWebService.Models" minOccurs="1" name="GetCampaignListResult" nillable="true" type="q10:CampaignProccessResult" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetTransaction">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/NetahsilatGold.PaymentWebService.Models" minOccurs="1" name="authInfo" nillable="true" type="q11:AuthenticationInfo" />
+            <xs:element minOccurs="1" name="clientReferenceCode" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetTransactionResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/NetahsilatGold.PaymentWebService.Models" minOccurs="1" name="GetTransactionResult" nillable="true" type="q12:PaymentProccessResult" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Sale">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/NetahsilatGold.PaymentWebService.Models" minOccurs="1" name="authInfo" nillable="true" type="q13:AuthenticationInfo" />
+            <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/NetahsilatGold.PaymentWebService.Models" minOccurs="1" name="parameters" nillable="true" type="q14:PaymentProccessParameters" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SaleResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/NetahsilatGold.PaymentWebService.Models" minOccurs="1" name="SaleResult" nillable="true" type="q15:PaymentProccessResult" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ProvisionCommit">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/NetahsilatGold.PaymentWebService.Models" minOccurs="1" name="authInfo" nillable="true" type="q16:AuthenticationInfo" />
+            <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/NetahsilatGold.PaymentWebService.Models" minOccurs="1" name="parameters" nillable="true" type="q17:ProvisionCommitParameters" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ProvisionCommitResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/NetahsilatGold.PaymentWebService.Models" minOccurs="1" name="ProvisionCommitResult" nillable="true" type="q18:PaymentProccessResult" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Get3DContent">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/NetahsilatGold.PaymentWebService.Models" minOccurs="1" name="authInfo" nillable="true" type="q19:AuthenticationInfo" />
+            <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/NetahsilatGold.PaymentWebService.Models" minOccurs="1" name="paymentParameters" nillable="true" type="q20:PaymentProccessParameters" />
+            <xs:element minOccurs="1" name="successUrl" nillable="true" type="xs:string" />
+            <xs:element minOccurs="1" name="failUrl" nillable="true" type="xs:string" />
+            <xs:element minOccurs="1" name="formAutoPost" type="xs:boolean" />
+            <xs:element minOccurs="0" name="autoGenerateReferenceCode" type="xs:boolean" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Get3DContentResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/NetahsilatGold.PaymentWebService.Models" minOccurs="1" name="Get3DContentResult" nillable="true" type="q21:Payment3DContent" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SendApproved3DResult">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/NetahsilatGold.PaymentWebService.Models" minOccurs="1" name="authInfo" nillable="true" type="q22:AuthenticationInfo" />
+            <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="1" name="requestForm" nillable="true" type="q23:ArrayOfKeyValuePairOfStringString" />
+            <xs:element minOccurs="1" name="orderReference" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SendApproved3DResultResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/NetahsilatGold.PaymentWebService.Models" minOccurs="1" name="SendApproved3DResultResult" nillable="true" type="q24:PaymentProccessResult" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SendFailed3DResult">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/NetahsilatGold.PaymentWebService.Models" minOccurs="1" name="authInfo" nillable="true" type="q25:AuthenticationInfo" />
+            <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/System.Collections.Generic" minOccurs="1" name="requestForm" nillable="true" type="q26:ArrayOfKeyValuePairOfStringString" />
+            <xs:element minOccurs="1" name="orderReference" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SendFailed3DResultResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/NetahsilatGold.PaymentWebService.Models" minOccurs="1" name="SendFailed3DResultResult" nillable="true" type="q27:PaymentProccessResult" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CancelByReferenceCode">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/NetahsilatGold.PaymentWebService.Models" minOccurs="1" name="authInfo" nillable="true" type="q28:AuthenticationInfo" />
+            <xs:element minOccurs="1" name="referenceCode" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CancelByReferenceCodeResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/NetahsilatGold.PaymentWebService.Models" minOccurs="1" name="CancelByReferenceCodeResult" nillable="true" type="q29:PaymentProccessResult" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CancelByClientReferenceCode">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/NetahsilatGold.PaymentWebService.Models" minOccurs="1" name="authInfo" nillable="true" type="q30:AuthenticationInfo" />
+            <xs:element minOccurs="1" name="clientReferenceCode" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CancelByClientReferenceCodeResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/NetahsilatGold.PaymentWebService.Models" minOccurs="1" name="CancelByClientReferenceCodeResult" nillable="true" type="q31:PaymentProccessResult" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RefundByReferenceCode">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/NetahsilatGold.PaymentWebService.Models" minOccurs="1" name="authInfo" nillable="true" type="q32:AuthenticationInfo" />
+            <xs:element minOccurs="1" name="referenceCode" nillable="true" type="xs:string" />
+            <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/NetahsilatGold.PaymentWebService.Models" name="ratePolicy" type="q33:RatePolicy" />
+            <xs:element minOccurs="1" name="amount" type="xs:decimal" />
+            <xs:element minOccurs="1" name="isInvoiceRefund" type="xs:boolean" />
+            <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/NetahsilatGold.PaymentWebService.Models" minOccurs="1" name="invoiceData" nillable="true" type="q34:ArrayOfInvoicDynamiceData" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RefundByReferenceCodeResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/NetahsilatGold.PaymentWebService.Models" minOccurs="1" name="RefundByReferenceCodeResult" nillable="true" type="q35:PaymentProccessResult" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RefundByClientReferenceCode">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/NetahsilatGold.PaymentWebService.Models" minOccurs="1" name="authInfo" nillable="true" type="q36:AuthenticationInfo" />
+            <xs:element minOccurs="1" name="clientReferenceCode" nillable="true" type="xs:string" />
+            <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/NetahsilatGold.PaymentWebService.Models" name="ratePolicy" type="q37:RatePolicy" />
+            <xs:element minOccurs="1" name="amount" type="xs:decimal" />
+            <xs:element minOccurs="1" name="isInvoiceRefund" type="xs:boolean" />
+            <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/NetahsilatGold.PaymentWebService.Models" minOccurs="1" name="invoiceData" nillable="true" type="q38:ArrayOfInvoicDynamiceData" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="RefundByClientReferenceCodeResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/NetahsilatGold.PaymentWebService.Models" minOccurs="1" name="RefundByClientReferenceCodeResult" nillable="true" type="q39:PaymentProccessResult" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CreateTransaction">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/NetahsilatGold.PaymentWebService.Models" minOccurs="1" name="authInfo" nillable="true" type="q40:AuthenticationInfo" />
+            <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/NetahsilatGold.PaymentWebService.Models" minOccurs="1" name="transaction" nillable="true" type="q41:TransactionParameters" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CreateTransactionResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q42="http://schemas.datacontract.org/2004/07/NetahsilatGold.PaymentWebService.Models" minOccurs="1" name="CreateTransactionResult" nillable="true" type="q42:CreateTransactionResult" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CommitPayment">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q43="http://schemas.datacontract.org/2004/07/NetahsilatGold.PaymentWebService.Models" minOccurs="1" name="authInfo" nillable="true" type="q43:AuthenticationInfo" />
+            <xs:element xmlns:q44="http://schemas.datacontract.org/2004/07/NetahsilatGold.Domain.Model.VendorPaymentService" minOccurs="1" name="parameters" nillable="true" type="q44:CommitParameters" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="CommitPaymentResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q45="http://schemas.datacontract.org/2004/07/NetahsilatGold.Domain.Model.VendorPaymentService" minOccurs="1" name="CommitPaymentResult" nillable="true" type="q45:SaleResult" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ProcessPayment">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q46="http://schemas.datacontract.org/2004/07/NetahsilatGold.PaymentWebService.Models" minOccurs="1" name="authInfo" nillable="true" type="q46:AuthenticationInfo" />
+            <xs:element xmlns:q47="http://schemas.datacontract.org/2004/07/NetahsilatGold.Domain.Model.VendorPaymentService" minOccurs="1" name="parameters" nillable="true" type="q47:ProcessSaleParameters" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ProcessPaymentResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q48="http://schemas.datacontract.org/2004/07/NetahsilatGold.Domain.Model.VendorPaymentService" minOccurs="1" name="ProcessPaymentResult" nillable="true" type="q48:SaleResult" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ProcessPaymentWithCode">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q49="http://schemas.datacontract.org/2004/07/NetahsilatGold.PaymentWebService.Models" minOccurs="1" name="authInfo" nillable="true" type="q49:AuthenticationInfo" />
+            <xs:element xmlns:q50="http://schemas.datacontract.org/2004/07/NetahsilatGold.Domain.Model.VendorPaymentService" minOccurs="1" name="parameters" nillable="true" type="q50:ProcessSaleWithCodeParameters" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ProcessPaymentWithCodeResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q51="http://schemas.datacontract.org/2004/07/NetahsilatGold.Domain.Model.VendorPaymentService" minOccurs="1" name="ProcessPaymentWithCodeResult" nillable="true" type="q51:SaleResult" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="AutoPasswordChange">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q52="http://schemas.datacontract.org/2004/07/NetahsilatGold.PaymentWebService.Models" minOccurs="1" name="authInfo" nillable="true" type="q52:AuthenticationInfo" />
+            <xs:element minOccurs="1" name="email" nillable="true" type="xs:string" />
+            <xs:element minOccurs="1" name="newPassword" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="AutoPasswordChangeResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q53="http://schemas.datacontract.org/2004/07/PGWService.Models.WCF.Integration" minOccurs="1" name="AutoPasswordChangeResult" nillable="true" type="q53:PasswordChangeResult" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SaveCreditCard">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q54="http://schemas.datacontract.org/2004/07/NetahsilatGold.PaymentWebService.Models" minOccurs="1" name="authInfo" nillable="true" type="q54:AuthenticationInfo" />
+            <xs:element xmlns:q55="http://schemas.datacontract.org/2004/07/NetahsilatGold.PaymentWebService.Models" minOccurs="1" name="request" nillable="true" type="q55:SaveCreditCardRequest" />
+            <xs:element minOccurs="1" name="vendorCode" nillable="true" type="xs:string" />
+            <xs:element minOccurs="1" name="useForAutomaticPayments" type="xs:boolean" />
+            <xs:element minOccurs="1" name="CardCurrentAccount" type="xs:boolean" />
+            <xs:element minOccurs="1" name="CurrentAccountId" nillable="true" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SaveCreditCardResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q56="http://schemas.datacontract.org/2004/07/NetahsilatGold.PaymentWebService.Models" minOccurs="1" name="SaveCreditCardResult" nillable="true" type="q56:TokenProcessResult" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DeleteCreditCard">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q57="http://schemas.datacontract.org/2004/07/NetahsilatGold.PaymentWebService.Models" minOccurs="1" name="authInfo" nillable="true" type="q57:AuthenticationInfo" />
+            <xs:element minOccurs="1" name="merchantSafeKey" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DeleteCreditCardResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q58="http://schemas.datacontract.org/2004/07/NetahsilatGold.PaymentWebService.Models" minOccurs="1" name="DeleteCreditCardResult" nillable="true" type="q58:DeleteCreditCardResult" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SaleDefaultPos">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q59="http://schemas.datacontract.org/2004/07/NetahsilatGold.PaymentWebService.Models" minOccurs="1" name="authInfo" nillable="true" type="q59:AuthenticationInfo" />
+            <xs:element xmlns:q60="http://schemas.datacontract.org/2004/07/NetahsilatGold.PaymentWebService.Models" minOccurs="1" name="parameters" nillable="true" type="q60:PaymentProccessParameters" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SaleDefaultPosResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q61="http://schemas.datacontract.org/2004/07/NetahsilatGold.PaymentWebService.Models" minOccurs="1" name="SaleDefaultPosResult" nillable="true" type="q61:PaymentProccessResult" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetCurrentAccounts">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q62="http://schemas.datacontract.org/2004/07/NetahsilatGold.PaymentWebService.Models" minOccurs="1" name="authInfo" nillable="true" type="q62:AuthenticationInfo" />
+            <xs:element xmlns:q63="http://schemas.datacontract.org/2004/07/NetahsilatGold.PaymentWebService.Models" minOccurs="1" name="pageSizeFilter" nillable="true" type="q63:PageSizeFilter" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetCurrentAccountsResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q64="http://schemas.datacontract.org/2004/07/PGWService.Models.WCF.Integration" minOccurs="1" name="GetCurrentAccountsResult" nillable="true" type="q64:GetCurrentAccountsResult" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="anyType" nillable="true" type="xs:anyType" />
+      <xs:element name="anyURI" nillable="true" type="xs:anyURI" />
+      <xs:element name="base64Binary" nillable="true" type="xs:base64Binary" />
+      <xs:element name="boolean" nillable="true" type="xs:boolean" />
+      <xs:element name="byte" nillable="true" type="xs:byte" />
+      <xs:element name="dateTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="decimal" nillable="true" type="xs:decimal" />
+      <xs:element name="double" nillable="true" type="xs:double" />
+      <xs:element name="float" nillable="true" type="xs:float" />
+      <xs:element name="int" nillable="true" type="xs:int" />
+      <xs:element name="long" nillable="true" type="xs:long" />
+      <xs:element name="QName" nillable="true" type="xs:QName" />
+      <xs:element name="short" nillable="true" type="xs:short" />
+      <xs:element name="string" nillable="true" type="xs:string" />
+      <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte" />
+      <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt" />
+      <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong" />
+      <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort" />
+      <xs:element name="char" nillable="true" type="tns:char" />
+      <xs:simpleType name="char">
+        <xs:restriction base="xs:int" />
+      </xs:simpleType>
+      <xs:element name="duration" nillable="true" type="tns:duration" />
+      <xs:simpleType name="duration">
+        <xs:restriction base="xs:duration">
+          <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?" />
+          <xs:minInclusive value="-P10675199DT2H48M5.4775808S" />
+          <xs:maxInclusive value="P10675199DT2H48M5.4775807S" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="guid" nillable="true" type="tns:guid" />
+      <xs:simpleType name="guid">
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:attribute name="FactoryType" type="xs:QName" />
+      <xs:attribute name="Id" type="xs:ID" />
+      <xs:attribute name="Ref" type="xs:IDREF" />
+    </xs:schema>
+    <xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/NetahsilatGold.PaymentWebService.Models" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/NetahsilatGold.PaymentWebService.Models" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.datacontract.org/2004/07/System" />
+      <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xs:complexType name="AuthenticationInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="AuthenticationInfo" nillable="true" type="tns:AuthenticationInfo" />
+      <xs:complexType name="PaymentSetResult">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:ResultBase">
+            <xs:sequence>
+              <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/PGWService.Models.WCF" minOccurs="0" name="CardBin" nillable="true" type="q1:CardBinInfo" />
+              <xs:element minOccurs="0" name="PaymentSets" nillable="true" type="tns:ArrayOfPaymentSet" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="PaymentSetResult" nillable="true" type="tns:PaymentSetResult" />
+      <xs:complexType name="ResultBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ErrorCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IsSuccess" type="xs:boolean" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ResultBase" nillable="true" type="tns:ResultBase" />
+      <xs:complexType name="ArrayOfPaymentSet">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="PaymentSet" nillable="true" type="tns:PaymentSet" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfPaymentSet" nillable="true" type="tns:ArrayOfPaymentSet" />
+      <xs:complexType name="PaymentSet">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:ResultBase">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="PaymentSetComApplyTypeId" type="xs:int" />
+              <xs:element minOccurs="0" name="PaymentSetId" type="xs:int" />
+              <xs:element minOccurs="0" name="PaymentSetIsActive" type="xs:boolean" />
+              <xs:element minOccurs="0" name="PaymentSetIsDefault" type="xs:boolean" />
+              <xs:element minOccurs="0" name="PaymentSetName" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="VirtualPosList" nillable="true" type="tns:ArrayOfVirtualPos" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="PaymentSet" nillable="true" type="tns:PaymentSet" />
+      <xs:complexType name="ArrayOfVirtualPos">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="VirtualPos" nillable="true" type="tns:VirtualPos" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfVirtualPos" nillable="true" type="tns:ArrayOfVirtualPos" />
+      <xs:complexType name="VirtualPos">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CommRates" nillable="true" type="tns:ArrayOfCommRate" />
+          <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+          <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/NetahsilatGold.Domain.Model.IntegrationModels" minOccurs="0" name="DynamicFields" nillable="true" type="q2:ArrayOfDynamicField" />
+          <xs:element minOccurs="0" name="IsPaymentSetsDeafultPos" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsSubVendorPosType" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ThreeDState" type="xs:int" />
+          <xs:element minOccurs="0" name="VPosApiId" type="xs:int" />
+          <xs:element minOccurs="0" name="VPosApiName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="VPosId" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="VirtualPos" nillable="true" type="tns:VirtualPos" />
+      <xs:complexType name="ArrayOfCommRate">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="CommRate" nillable="true" type="tns:CommRate" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfCommRate" nillable="true" type="tns:ArrayOfCommRate" />
+      <xs:complexType name="CommRate">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="BankPaymentOn" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CommRateIn" type="xs:decimal" />
+          <xs:element minOccurs="0" name="CommRateOut" type="xs:decimal" />
+          <xs:element minOccurs="0" name="InstallmentDefferralEndDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="InstallmentDefferralStartDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="Instalment" type="xs:int" />
+          <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsActivePlusInstallmentDateRule" type="xs:boolean" />
+          <xs:element minOccurs="0" name="MaxInstallmentLimit" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="MinInstallmentLimit" nillable="true" type="xs:decimal" />
+          <xs:element minOccurs="0" name="Note" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PaymentDeferral" type="xs:int" />
+          <xs:element minOccurs="0" name="PaymentDeferralLowerLimit" type="xs:decimal" />
+          <xs:element minOccurs="0" name="PlusInstallmentEndDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="PlusInstallmentStartDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="PlusInstalment" type="xs:int" />
+          <xs:element minOccurs="0" name="PlusInstalmentLowerLimit" type="xs:decimal" />
+          <xs:element minOccurs="0" name="ServiceCommRate" type="xs:decimal" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="CommRate" nillable="true" type="tns:CommRate" />
+      <xs:complexType name="PaymentParameters">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Amount" type="xs:decimal" />
+          <xs:element minOccurs="0" name="CampaignId" type="xs:int" />
+          <xs:element minOccurs="0" name="ClientReferenceCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CommRateApplyTypeId" type="xs:int" />
+          <xs:element minOccurs="0" name="CreditCard" nillable="true" type="tns:CreditCard" />
+          <xs:element minOccurs="0" name="Installment" type="xs:int" />
+          <xs:element minOccurs="0" name="IsTestSale" type="xs:boolean" />
+          <xs:element minOccurs="0" name="PaymentSetId" type="xs:int" />
+          <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/eCozum.Practices.VPos.Entity.Infrastructure" name="TransactionType" type="q3:TransactionType" />
+          <xs:element minOccurs="0" name="VendorERPCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="VendorVPosId" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="PaymentParameters" nillable="true" type="tns:PaymentParameters" />
+      <xs:complexType name="CreditCard">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CardHolderName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CardNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CvcNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ExpMonth" type="xs:int" />
+          <xs:element minOccurs="0" name="ExpYear" type="xs:int" />
+          <xs:element minOccurs="0" name="SaveCreditCard" type="xs:boolean" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="CreditCard" nillable="true" type="tns:CreditCard" />
+      <xs:complexType name="PaymentProccessResult">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:ResultBase">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="AuthCode" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="BankCommAmount" type="xs:decimal" />
+              <xs:element minOccurs="0" name="BankCommRate" type="xs:decimal" />
+              <xs:element minOccurs="0" name="BankErrorCode" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="BankMessage" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="BankResults" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="BankServiceCommAmount" type="xs:decimal" />
+              <xs:element minOccurs="0" name="BankServiceCommRate" type="xs:decimal" />
+              <xs:element minOccurs="0" name="BonusProgram" nillable="true" type="xs:string" />
+              <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/PGWService.Models.WCF" minOccurs="0" name="CardBin" nillable="true" type="q4:CardBinInfo" />
+              <xs:element minOccurs="0" name="ClientReferenceCode" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="CommitDate" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="CustomerCommAmount" type="xs:decimal" />
+              <xs:element minOccurs="0" name="CustomerCommApplyType" type="xs:int" />
+              <xs:element minOccurs="0" name="CustomerCommRate" type="xs:decimal" />
+              <xs:element minOccurs="0" name="HostKey" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="InternalErrorCode" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="InternalMessage" nillable="true" type="xs:string" />
+              <xs:element minOccurs="0" name="InvoiceData" nillable="true" type="tns:ArrayOfInvoicDynamiceData" />
+              <xs:element minOccurs="0" name="LastAmount" type="xs:decimal" />
+              <xs:element minOccurs="0" name="ProcessAmount" type="xs:decimal" />
+              <xs:element minOccurs="0" name="ReferenceCode" nillable="true" type="xs:string" />
+              <xs:element name="Status" type="tns:TransactionStatusType" />
+              <xs:element minOccurs="0" name="TokenResult" nillable="true" type="tns:TokenProcessResult" />
+              <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/PGWService.Models.WCF" minOccurs="0" name="TransactionInfo" nillable="true" type="q5:TransactionModelInfo" />
+              <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/eCozum.Practices.VPos.Entity.Infrastructure" name="TransactionType" type="q6:TransactionType" />
+              <xs:element minOccurs="0" name="TrxDate" nillable="true" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="PaymentProccessResult" nillable="true" type="tns:PaymentProccessResult" />
+      <xs:simpleType name="TransactionStatusType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="None" />
+          <xs:enumeration value="Success" />
+          <xs:enumeration value="Fail" />
+          <xs:enumeration value="Error" />
+          <xs:enumeration value="Pending" />
+          <xs:enumeration value="Unknown" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="TransactionStatusType" type="tns:TransactionStatusType" />
+      <xs:complexType name="TokenProcessResult">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:ResultBase">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="SaveCreditCardDetail" nillable="true" type="tns:ArrayOfSaveCreditCardDetail" />
+              <xs:element minOccurs="0" name="TokenString" nillable="true" type="xs:string" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="TokenProcessResult" nillable="true" type="tns:TokenProcessResult" />
+      <xs:complexType name="ArrayOfSaveCreditCardDetail">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="SaveCreditCardDetail" nillable="true" type="tns:SaveCreditCardDetail" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfSaveCreditCardDetail" nillable="true" type="tns:ArrayOfSaveCreditCardDetail" />
+      <xs:complexType name="SaveCreditCardDetail">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ErrorCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IsSuccess" type="xs:boolean" />
+          <xs:element minOccurs="0" name="MerchantSafeKey" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="VendorVPosId" nillable="true" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="SaveCreditCardDetail" nillable="true" type="tns:SaveCreditCardDetail" />
+      <xs:complexType name="ArrayOfInvoicDynamiceData">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="InvoicDynamiceData" nillable="true" type="tns:InvoicDynamiceData" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfInvoicDynamiceData" nillable="true" type="tns:ArrayOfInvoicDynamiceData" />
+      <xs:complexType name="InvoicDynamiceData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ErpCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="RefundAmount" type="xs:decimal" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="InvoicDynamiceData" nillable="true" type="tns:InvoicDynamiceData" />
+      <xs:complexType name="CampaignProcessParameters">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CreditCardNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="VPosId" type="xs:int" />
+          <xs:element minOccurs="0" name="VendorId" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="CampaignProcessParameters" nillable="true" type="tns:CampaignProcessParameters" />
+      <xs:complexType name="CampaignProccessResult">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:ResultBase">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="BonusItems" nillable="true" type="tns:ArrayOfBonusItem" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="CampaignProccessResult" nillable="true" type="tns:CampaignProccessResult" />
+      <xs:complexType name="ArrayOfBonusItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="BonusItem" nillable="true" type="tns:BonusItem" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfBonusItem" nillable="true" type="tns:ArrayOfBonusItem" />
+      <xs:complexType name="BonusItem">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Bonus" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="BonusItem" nillable="true" type="tns:BonusItem" />
+      <xs:complexType name="PaymentProccessParameters">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Amount" type="xs:decimal" />
+          <xs:element minOccurs="0" name="ClientReferenceCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CommRateApplyTypeId" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="CreditCard" nillable="true" type="tns:CreditCard" />
+          <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/NetahsilatGold.Domain.Model.IntegrationModels" minOccurs="0" name="CustomData" nillable="true" type="q7:ArrayOfCustomDynamicData" />
+          <xs:element minOccurs="0" name="Installment" type="xs:int" />
+          <xs:element minOccurs="0" name="IsTestSale" type="xs:boolean" />
+          <xs:element minOccurs="0" name="PaymentSetId" type="xs:int" />
+          <xs:element minOccurs="0" name="Token" nillable="true" type="tns:Token" />
+          <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/eCozum.Practices.VPos.Entity.Infrastructure" name="TransactionType" type="q8:TransactionType" />
+          <xs:element minOccurs="0" name="VendorId" type="xs:int" />
+          <xs:element minOccurs="0" name="VendorVPosId" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="PaymentProccessParameters" nillable="true" type="tns:PaymentProccessParameters" />
+      <xs:complexType name="Token">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="TokenString" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Token" nillable="true" type="tns:Token" />
+      <xs:complexType name="ProvisionCommitParameters">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Amount" type="xs:decimal" />
+          <xs:element minOccurs="0" name="OrderReference" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ProvisionCommitParameters" nillable="true" type="tns:ProvisionCommitParameters" />
+      <xs:complexType name="Payment3DContent">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="FormPostContent" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="InternalErrorCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="InternalMessage" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IsSuccess" type="xs:boolean" />
+          <xs:element minOccurs="0" name="ReferenceCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TokenResult" nillable="true" type="tns:TokenProcessResult" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Payment3DContent" nillable="true" type="tns:Payment3DContent" />
+      <xs:simpleType name="RatePolicy">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="InstantRate" />
+          <xs:enumeration value="TransactionRate" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="RatePolicy" type="tns:RatePolicy" />
+      <xs:complexType name="TransactionParameters">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AuthCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CardNumberFirst6" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CardNumberLast4" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ClientOrderReference" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CommApplyType" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="CommRate" type="xs:decimal" />
+          <xs:element minOccurs="0" name="CreditCardType" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="Currency" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="CurrentAccountCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ExchangeRate" type="xs:decimal" />
+          <xs:element minOccurs="0" name="HostKey" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Instalment" type="xs:int" />
+          <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OrderReference" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PaidVendorCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PaymentDeferral" type="xs:int" />
+          <xs:element minOccurs="0" name="PaymentSetVPosCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PlusInstalment" type="xs:int" />
+          <xs:element minOccurs="0" name="PosCurrency" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="ProcessAmount" type="xs:decimal" />
+          <xs:element minOccurs="0" name="ProcessNetAmount" type="xs:decimal" />
+          <xs:element minOccurs="0" name="ProvisionNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PureAmount" type="xs:decimal" />
+          <xs:element minOccurs="0" name="TCK" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TransactionDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="UserCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="VendorCode" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="TransactionParameters" nillable="true" type="tns:TransactionParameters" />
+      <xs:complexType name="CreateTransactionResult">
+        <xs:complexContent mixed="false">
+          <xs:extension base="tns:ResultBase">
+            <xs:sequence />
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="CreateTransactionResult" nillable="true" type="tns:CreateTransactionResult" />
+      <xs:complexType name="SaveCreditCardRequest">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CardHolderName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CardNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Cvv" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ExpMonth" type="xs:int" />
+          <xs:element minOccurs="0" name="ExpYear" type="xs:int" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="SaveCreditCardRequest" nillable="true" type="tns:SaveCreditCardRequest" />
+      <xs:complexType name="DeleteCreditCardResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="IsSuccess" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="DeleteCreditCardResult" nillable="true" type="tns:DeleteCreditCardResult" />
+      <xs:complexType name="PageSizeFilter">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Page" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="PageSize" nillable="true" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="PageSizeFilter" nillable="true" type="tns:PageSizeFilter" />
+    </xs:schema>
+    <xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/NetahsilatGold.Domain.Model.IntegrationModels" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/NetahsilatGold.Domain.Model.IntegrationModels" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.datacontract.org/2004/07/System" />
+      <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xs:complexType name="ArrayOfDynamicField">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="DynamicField" nillable="true" type="tns:DynamicField" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfDynamicField" nillable="true" type="tns:ArrayOfDynamicField" />
+      <xs:complexType name="DynamicField">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="FormCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IntegrationId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IntegrationValues" nillable="true" type="tns:ArrayOfIntegrationValue" />
+          <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="DynamicField" nillable="true" type="tns:DynamicField" />
+      <xs:complexType name="ArrayOfIntegrationValue">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="IntegrationValue" nillable="true" type="tns:IntegrationValue" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfIntegrationValue" nillable="true" type="tns:ArrayOfIntegrationValue" />
+      <xs:complexType name="IntegrationValue">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Caption" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FieldId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Key" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="IntegrationValue" nillable="true" type="tns:IntegrationValue" />
+      <xs:complexType name="ArrayOfCustomDynamicData">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="CustomDynamicData" nillable="true" type="tns:CustomDynamicData" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfCustomDynamicData" nillable="true" type="tns:ArrayOfCustomDynamicData" />
+      <xs:complexType name="CustomDynamicData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="FormCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IntegrationId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="CustomDynamicData" nillable="true" type="tns:CustomDynamicData" />
+    </xs:schema>
+    <xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/PGWService.Models.WCF" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PGWService.Models.WCF" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.datacontract.org/2004/07/System" />
+      <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xs:complexType name="CardBinInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Bin" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CardOrgranizationType" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CardProgram" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CardType" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CreditCardBrand" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CreditCardName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CreditCardOrganizationTypeId" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="Group" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IsBusinessCard" type="xs:boolean" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="CardBinInfo" nillable="true" type="tns:CardBinInfo" />
+      <xs:complexType name="TransactionModelInfo">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ClientReferenceCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PaymentSetId" type="xs:int" />
+          <xs:element minOccurs="0" name="PaymentSetName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PaymentType" type="xs:int" />
+          <xs:element minOccurs="0" name="ReferenceCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ReferenceNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TransactionStatusId" type="xs:int" />
+          <xs:element minOccurs="0" name="VPosApiName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="VPosERPCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="VPosId" type="xs:int" />
+          <xs:element minOccurs="0" name="VendorVPosName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="VposCommRate" type="xs:decimal" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="TransactionModelInfo" nillable="true" type="tns:TransactionModelInfo" />
+      <xs:complexType name="ResultBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ErrorCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IsSuccess" type="xs:boolean" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ResultBase" nillable="true" type="tns:ResultBase" />
+    </xs:schema>
+    <xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/eCozum.Practices.VPos.Entity.Infrastructure" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/eCozum.Practices.VPos.Entity.Infrastructure" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.datacontract.org/2004/07/System" />
+      <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xs:simpleType name="TransactionType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="None" />
+          <xs:enumeration value="Provision" />
+          <xs:enumeration value="ProvisionCommit" />
+          <xs:enumeration value="Sale" />
+          <xs:enumeration value="SaleCancel" />
+          <xs:enumeration value="Refund" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="TransactionType" type="tns:TransactionType" />
+      <xs:simpleType name="OrderReferenceType">
+        <xs:restriction base="xs:string">
+          <xs:enumeration value="Auto" />
+          <xs:enumeration value="ClientCode" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="OrderReferenceType" type="tns:OrderReferenceType" />
+    </xs:schema>
+    <xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/System.Collections.Generic" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/System.Collections.Generic" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.datacontract.org/2004/07/System" />
+      <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xs:complexType name="KeyValuePairOfStringString">
+        <xs:annotation>
+          <xs:appinfo>
+            <ser:IsValueType>true</ser:IsValueType>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Key" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="KeyValuePairOfStringString" nillable="true" type="tns:KeyValuePairOfStringString" />
+      <xs:complexType name="ArrayOfKeyValuePairOfStringString">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="KeyValuePairOfStringString" type="tns:KeyValuePairOfStringString" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfKeyValuePairOfStringString" nillable="true" type="tns:ArrayOfKeyValuePairOfStringString" />
+      <xs:complexType name="IEqualityComparerOfString">
+        <xs:sequence />
+      </xs:complexType>
+      <xs:element name="IEqualityComparerOfString" nillable="true" type="tns:IEqualityComparerOfString" />
+    </xs:schema>
+    <xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/NetahsilatGold.Domain.Model.VendorPaymentService" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/NetahsilatGold.Domain.Model.VendorPaymentService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.datacontract.org/2004/07/System" />
+      <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xs:complexType name="CommitParameters">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="PaymentGuid" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="CommitParameters" nillable="true" type="tns:CommitParameters" />
+      <xs:complexType name="SaleResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AuthCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="BankErrorCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="BankMessage" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="BankResult" nillable="true" type="xs:string" />
+          <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/PGWService.Models.WCF" minOccurs="0" name="CardBin" nillable="true" type="q1:CardBinInfo" />
+          <xs:element minOccurs="0" name="ClientReferenceCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="HostKey" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="InternalMessage" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IsSuccess" type="xs:boolean" />
+          <xs:element minOccurs="0" name="MaturityDate" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ProvisionNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ReferenceCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ThreeDUrl" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TokenResult" nillable="true" type="tns:CreditCardSaveResult" />
+          <xs:element minOccurs="0" name="TransactionId" type="xs:int" />
+          <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/PGWService.Models.WCF" minOccurs="0" name="TransactionInfo" nillable="true" type="q2:TransactionModelInfo" />
+          <xs:element minOccurs="0" name="TransactionStatusId" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="SaleResult" nillable="true" type="tns:SaleResult" />
+      <xs:complexType name="CreditCardSaveResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ExceptionCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ExceptionMessage" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IsSuccess" type="xs:boolean" />
+          <xs:element minOccurs="0" name="SaveCreditCardDetail" nillable="true" type="tns:ArrayOfCreditCardTokenDetail" />
+          <xs:element minOccurs="0" name="TokenString" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="CreditCardSaveResult" nillable="true" type="tns:CreditCardSaveResult" />
+      <xs:complexType name="ArrayOfCreditCardTokenDetail">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="CreditCardTokenDetail" nillable="true" type="tns:CreditCardTokenDetail" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfCreditCardTokenDetail" nillable="true" type="tns:ArrayOfCreditCardTokenDetail" />
+      <xs:complexType name="CreditCardTokenDetail">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ErrorCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IsSuccess" type="xs:boolean" />
+          <xs:element minOccurs="0" name="MerchantSafeKey" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="VendorVPosId" nillable="true" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="CreditCardTokenDetail" nillable="true" type="tns:CreditCardTokenDetail" />
+      <xs:complexType name="ProcessSaleParameters">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="Amount" type="xs:decimal" />
+          <xs:element minOccurs="0" name="BonusId" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="ClientReferenceCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CreditCard" nillable="true" type="tns:CreditCard" />
+          <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/NetahsilatGold.Domain.Model.IntegrationModels" minOccurs="0" name="CustomData" nillable="true" type="q3:ArrayOfCustomDynamicData" />
+          <xs:element minOccurs="1" name="Installment" type="xs:int" />
+          <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/eCozum.Practices.VPos.Entity.Infrastructure" name="OrderReferenceType" type="q4:OrderReferenceType" />
+          <xs:element minOccurs="0" name="ReturnUrl" nillable="true" type="xs:string" />
+          <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/eCozum.Practices.VPos.Entity.Infrastructure" name="TransactionType" type="q5:TransactionType" />
+          <xs:element minOccurs="0" name="Use3d" type="xs:boolean" />
+          <xs:element minOccurs="0" name="UseSafeKey" type="xs:boolean" />
+          <xs:element minOccurs="0" name="VendorId" type="xs:int" />
+          <xs:element minOccurs="1" name="VirtualPosId" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ProcessSaleParameters" nillable="true" type="tns:ProcessSaleParameters" />
+      <xs:complexType name="CreditCard">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CardHolderName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CardNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CvcNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ExpMonth" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="ExpYear" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="MerchantSafeKey" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SaveCreditCard" type="xs:boolean" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="CreditCard" nillable="true" type="tns:CreditCard" />
+      <xs:complexType name="ProcessSaleWithCodeParameters">
+        <xs:sequence>
+          <xs:element minOccurs="1" name="Amount" type="xs:decimal" />
+          <xs:element minOccurs="0" name="BonusId" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="ClientReferenceCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CreditCard" nillable="true" type="tns:CreditCard" />
+          <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/NetahsilatGold.Domain.Model.IntegrationModels" minOccurs="0" name="CustomData" nillable="true" type="q6:ArrayOfCustomDynamicData" />
+          <xs:element minOccurs="1" name="Installment" type="xs:int" />
+          <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/eCozum.Practices.VPos.Entity.Infrastructure" name="OrderReferenceType" type="q7:OrderReferenceType" />
+          <xs:element minOccurs="0" name="ReturnUrl" nillable="true" type="xs:string" />
+          <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/eCozum.Practices.VPos.Entity.Infrastructure" name="TransactionType" type="q8:TransactionType" />
+          <xs:element minOccurs="0" name="Use3d" type="xs:boolean" />
+          <xs:element minOccurs="0" name="UseSafeKey" type="xs:boolean" />
+          <xs:element minOccurs="0" name="VendorCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="1" name="VirtualPosId" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ProcessSaleWithCodeParameters" nillable="true" type="tns:ProcessSaleWithCodeParameters" />
+    </xs:schema>
+    <xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/PGWService.Models.WCF.Integration" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PGWService.Models.WCF.Integration" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.datacontract.org/2004/07/System" />
+      <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xs:complexType name="PasswordChangeResult">
+        <xs:complexContent mixed="false">
+          <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/PGWService.Models.WCF" base="q1:ResultBase">
+            <xs:sequence />
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="PasswordChangeResult" nillable="true" type="tns:PasswordChangeResult" />
+      <xs:complexType name="GetCurrentAccountsResult">
+        <xs:complexContent mixed="false">
+          <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/PGWService.Models.WCF" base="q2:ResultBase">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="GetCurrentAccountsModels" nillable="true" type="tns:ArrayOfGetCurrentAccountModel" />
+              <xs:element minOccurs="0" name="TotalCurrentAccountCount" type="xs:int" />
+              <xs:element minOccurs="0" name="TotalPage" type="xs:int" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+      <xs:element name="GetCurrentAccountsResult" nillable="true" type="tns:GetCurrentAccountsResult" />
+      <xs:complexType name="ArrayOfGetCurrentAccountModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="GetCurrentAccountModel" nillable="true" type="tns:GetCurrentAccountModel" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfGetCurrentAccountModel" nillable="true" type="tns:ArrayOfGetCurrentAccountModel" />
+      <xs:complexType name="GetCurrentAccountModel">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CurrencyDisplayType" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CurrentAccountTypeId" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ErpCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ErpFirmCode" nillable="true" type="xs:int" />
+          <xs:element minOccurs="0" name="GroupCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Id" type="xs:int" />
+          <xs:element minOccurs="0" name="IntegrationCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IntegrationDate" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="IsUsableBySubVendor" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsVisibleOnPaymentWithPaymentItemSection" type="xs:boolean" />
+          <xs:element minOccurs="0" name="IsVisibleOnSimplePaymentSection" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PaymentSetDefinitionId" nillable="true" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="GetCurrentAccountModel" nillable="true" type="tns:GetCurrentAccountModel" />
+    </xs:schema>
+    <xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/System" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/System" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xs:complexType name="NullableOfInt32">
+        <xs:annotation>
+          <xs:appinfo>
+            <ser:IsValueType>true</ser:IsValueType>
+          </xs:appinfo>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element minOccurs="0" name="HasValue" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Value" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="NullableOfInt32" nillable="true" type="tns:NullableOfInt32" />
+      <xs:complexType name="ArrayOfString">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfString" nillable="true" type="tns:ArrayOfString" />
+    </xs:schema>
+    <xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/Arrays" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="IPaymentWebService_GetPaymentSetList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPaymentSetList" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_GetPaymentSetList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPaymentSetListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_GetPaymentSetListBinNumber_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPaymentSetListBinNumber" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_GetPaymentSetListBinNumber_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPaymentSetListBinNumberResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_SaleWithVendorErpCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaleWithVendorErpCode" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_SaleWithVendorErpCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaleWithVendorErpCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_GetCampaignList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCampaignList" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_GetCampaignList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCampaignListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_GetTransaction_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTransaction" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_GetTransaction_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTransactionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_Sale_InputMessage">
+    <wsdl:part name="parameters" element="tns:Sale" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_Sale_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_ProvisionCommit_InputMessage">
+    <wsdl:part name="parameters" element="tns:ProvisionCommit" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_ProvisionCommit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ProvisionCommitResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_Get3DContent_InputMessage">
+    <wsdl:part name="parameters" element="tns:Get3DContent" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_Get3DContent_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Get3DContentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_SendApproved3DResult_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendApproved3DResult" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_SendApproved3DResult_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendApproved3DResultResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_SendFailed3DResult_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendFailed3DResult" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_SendFailed3DResult_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendFailed3DResultResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_CancelByReferenceCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:CancelByReferenceCode" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_CancelByReferenceCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CancelByReferenceCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_CancelByClientReferenceCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:CancelByClientReferenceCode" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_CancelByClientReferenceCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CancelByClientReferenceCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_RefundByReferenceCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:RefundByReferenceCode" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_RefundByReferenceCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RefundByReferenceCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_RefundByClientReferenceCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:RefundByClientReferenceCode" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_RefundByClientReferenceCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RefundByClientReferenceCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_CreateTransaction_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateTransaction" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_CreateTransaction_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateTransactionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_CommitPayment_InputMessage">
+    <wsdl:part name="parameters" element="tns:CommitPayment" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_CommitPayment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CommitPaymentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_ProcessPayment_InputMessage">
+    <wsdl:part name="parameters" element="tns:ProcessPayment" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_ProcessPayment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ProcessPaymentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_ProcessPaymentWithCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:ProcessPaymentWithCode" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_ProcessPaymentWithCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ProcessPaymentWithCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_AutoPasswordChange_InputMessage">
+    <wsdl:part name="parameters" element="tns:AutoPasswordChange" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_AutoPasswordChange_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AutoPasswordChangeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_SaveCreditCard_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveCreditCard" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_SaveCreditCard_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveCreditCardResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_DeleteCreditCard_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCreditCard" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_DeleteCreditCard_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCreditCardResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_SaleDefaultPos_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaleDefaultPos" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_SaleDefaultPos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaleDefaultPosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_GetCurrentAccounts_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCurrentAccounts" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_GetCurrentAccounts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCurrentAccountsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IPaymentWebService">
+    <wsdl:operation name="GetPaymentSetList">
+      <wsdl:input wsam:Action="http://tempuri.org/IPaymentWebService/GetPaymentSetList" message="tns:IPaymentWebService_GetPaymentSetList_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IPaymentWebService/GetPaymentSetListResponse" message="tns:IPaymentWebService_GetPaymentSetList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPaymentSetListBinNumber">
+      <wsdl:input wsam:Action="http://tempuri.org/IPaymentWebService/GetPaymentSetListBinNumber" message="tns:IPaymentWebService_GetPaymentSetListBinNumber_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IPaymentWebService/GetPaymentSetListBinNumberResponse" message="tns:IPaymentWebService_GetPaymentSetListBinNumber_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaleWithVendorErpCode">
+      <wsdl:input wsam:Action="http://tempuri.org/IPaymentWebService/SaleWithVendorErpCode" message="tns:IPaymentWebService_SaleWithVendorErpCode_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IPaymentWebService/SaleWithVendorErpCodeResponse" message="tns:IPaymentWebService_SaleWithVendorErpCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCampaignList">
+      <wsdl:input wsam:Action="http://tempuri.org/IPaymentWebService/GetCampaignList" message="tns:IPaymentWebService_GetCampaignList_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IPaymentWebService/GetCampaignListResponse" message="tns:IPaymentWebService_GetCampaignList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTransaction">
+      <wsdl:input wsam:Action="http://tempuri.org/IPaymentWebService/GetTransaction" message="tns:IPaymentWebService_GetTransaction_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IPaymentWebService/GetTransactionResponse" message="tns:IPaymentWebService_GetTransaction_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Sale">
+      <wsdl:input wsam:Action="http://tempuri.org/IPaymentWebService/Sale" message="tns:IPaymentWebService_Sale_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IPaymentWebService/SaleResponse" message="tns:IPaymentWebService_Sale_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ProvisionCommit">
+      <wsdl:input wsam:Action="http://tempuri.org/IPaymentWebService/ProvisionCommit" message="tns:IPaymentWebService_ProvisionCommit_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IPaymentWebService/ProvisionCommitResponse" message="tns:IPaymentWebService_ProvisionCommit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Get3DContent">
+      <wsdl:input wsam:Action="http://tempuri.org/IPaymentWebService/Get3DContent" message="tns:IPaymentWebService_Get3DContent_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IPaymentWebService/Get3DContentResponse" message="tns:IPaymentWebService_Get3DContent_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendApproved3DResult">
+      <wsdl:input wsam:Action="http://tempuri.org/IPaymentWebService/SendApproved3DResult" message="tns:IPaymentWebService_SendApproved3DResult_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IPaymentWebService/SendApproved3DResultResponse" message="tns:IPaymentWebService_SendApproved3DResult_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendFailed3DResult">
+      <wsdl:input wsam:Action="http://tempuri.org/IPaymentWebService/SendFailed3DResult" message="tns:IPaymentWebService_SendFailed3DResult_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IPaymentWebService/SendFailed3DResultResponse" message="tns:IPaymentWebService_SendFailed3DResult_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelByReferenceCode">
+      <wsdl:input wsam:Action="http://tempuri.org/IPaymentWebService/CancelByReferenceCode" message="tns:IPaymentWebService_CancelByReferenceCode_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IPaymentWebService/CancelByReferenceCodeResponse" message="tns:IPaymentWebService_CancelByReferenceCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelByClientReferenceCode">
+      <wsdl:input wsam:Action="http://tempuri.org/IPaymentWebService/CancelByClientReferenceCode" message="tns:IPaymentWebService_CancelByClientReferenceCode_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IPaymentWebService/CancelByClientReferenceCodeResponse" message="tns:IPaymentWebService_CancelByClientReferenceCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RefundByReferenceCode">
+      <wsdl:input wsam:Action="http://tempuri.org/IPaymentWebService/RefundByReferenceCode" message="tns:IPaymentWebService_RefundByReferenceCode_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IPaymentWebService/RefundByReferenceCodeResponse" message="tns:IPaymentWebService_RefundByReferenceCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RefundByClientReferenceCode">
+      <wsdl:input wsam:Action="http://tempuri.org/IPaymentWebService/RefundByClientReferenceCode" message="tns:IPaymentWebService_RefundByClientReferenceCode_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IPaymentWebService/RefundByClientReferenceCodeResponse" message="tns:IPaymentWebService_RefundByClientReferenceCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateTransaction">
+      <wsdl:input wsam:Action="http://tempuri.org/IPaymentWebService/CreateTransaction" message="tns:IPaymentWebService_CreateTransaction_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IPaymentWebService/CreateTransactionResponse" message="tns:IPaymentWebService_CreateTransaction_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CommitPayment">
+      <wsdl:input wsam:Action="http://tempuri.org/IPaymentWebService/CommitPayment" message="tns:IPaymentWebService_CommitPayment_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IPaymentWebService/CommitPaymentResponse" message="tns:IPaymentWebService_CommitPayment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ProcessPayment">
+      <wsdl:input wsam:Action="http://tempuri.org/IPaymentWebService/ProcessPayment" message="tns:IPaymentWebService_ProcessPayment_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IPaymentWebService/ProcessPaymentResponse" message="tns:IPaymentWebService_ProcessPayment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ProcessPaymentWithCode">
+      <wsdl:input wsam:Action="http://tempuri.org/IPaymentWebService/ProcessPaymentWithCode" message="tns:IPaymentWebService_ProcessPaymentWithCode_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IPaymentWebService/ProcessPaymentWithCodeResponse" message="tns:IPaymentWebService_ProcessPaymentWithCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AutoPasswordChange">
+      <wsdl:input wsam:Action="http://tempuri.org/IPaymentWebService/AutoPasswordChange" message="tns:IPaymentWebService_AutoPasswordChange_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IPaymentWebService/AutoPasswordChangeResponse" message="tns:IPaymentWebService_AutoPasswordChange_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveCreditCard">
+      <wsdl:input wsam:Action="http://tempuri.org/IPaymentWebService/SaveCreditCard" message="tns:IPaymentWebService_SaveCreditCard_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IPaymentWebService/SaveCreditCardResponse" message="tns:IPaymentWebService_SaveCreditCard_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCreditCard">
+      <wsdl:input wsam:Action="http://tempuri.org/IPaymentWebService/DeleteCreditCard" message="tns:IPaymentWebService_DeleteCreditCard_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IPaymentWebService/DeleteCreditCardResponse" message="tns:IPaymentWebService_DeleteCreditCard_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaleDefaultPos">
+      <wsdl:input wsam:Action="http://tempuri.org/IPaymentWebService/SaleDefaultPos" message="tns:IPaymentWebService_SaleDefaultPos_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IPaymentWebService/SaleDefaultPosResponse" message="tns:IPaymentWebService_SaleDefaultPos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentAccounts">
+      <wsdl:input wsam:Action="http://tempuri.org/IPaymentWebService/GetCurrentAccounts" message="tns:IPaymentWebService_GetCurrentAccounts_InputMessage" />
+      <wsdl:output wsam:Action="http://tempuri.org/IPaymentWebService/GetCurrentAccountsResponse" message="tns:IPaymentWebService_GetCurrentAccounts_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IPaymentWebService" type="tns:IPaymentWebService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetPaymentSetList">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/GetPaymentSetList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPaymentSetListBinNumber">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/GetPaymentSetListBinNumber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaleWithVendorErpCode">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/SaleWithVendorErpCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCampaignList">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/GetCampaignList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTransaction">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/GetTransaction" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sale">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/Sale" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProvisionCommit">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/ProvisionCommit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get3DContent">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/Get3DContent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendApproved3DResult">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/SendApproved3DResult" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendFailed3DResult">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/SendFailed3DResult" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelByReferenceCode">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/CancelByReferenceCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelByClientReferenceCode">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/CancelByClientReferenceCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RefundByReferenceCode">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/RefundByReferenceCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RefundByClientReferenceCode">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/RefundByClientReferenceCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateTransaction">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/CreateTransaction" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CommitPayment">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/CommitPayment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessPayment">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/ProcessPayment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessPaymentWithCode">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/ProcessPaymentWithCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AutoPasswordChange">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/AutoPasswordChange" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveCreditCard">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/SaveCreditCard" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCreditCard">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/DeleteCreditCard" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaleDefaultPos">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/SaleDefaultPos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentAccounts">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/GetCurrentAccounts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="IPaymentWebService">
+    <wsdl:port name="BasicHttpBinding_IPaymentWebService" binding="tns:BasicHttpBinding_IPaymentWebService">
+      <soap:address location="https://rentgodemo.netahsilatservice.com/PWS/PaymentWebService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

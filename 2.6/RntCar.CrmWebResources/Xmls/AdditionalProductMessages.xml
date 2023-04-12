@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Error>
+  <LangId id="1055">
+    <FindeksValidation>Findeks puanınız bu aracı almak için yeterli değildir. Findeks Puanınız : {0} , Gereken findeks puanı : {1}</FindeksValidation>
+    <AgeControl>Yaşınız bu aracı kiralamak için uygun değildir.</AgeControl>
+    <DrivingLicenceYearControl>Ehliyet yılınız bu aracı kiralamak için uygun değildir.</DrivingLicenceYearControl>
+  </LangId>
+  <LangId id="1033">
+    <FindeksValidation>Your findeks point is not enough to get this car. Your findeks point : {0} , Required findeks point : {1}</FindeksValidation>
+    <AgeControl>Your age is not suitable for renting this vehicle.</AgeControl>
+    <DrivingLicenceYearControl>Your driving licence year is not suitable for renting this vehicle.</DrivingLicenceYearControl>
+  </LangId>
+</Error>

@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F683728F-8C77-40E2-BE8F-4DC112DB8B54}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RntCar.CrmWebResources</RootNamespace>
+    <AssemblyName>RntCar.CrmWebResources</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\DigitalSignature.html" />
+    <Content Include="Pages\ImageGenerator.html" />
+    <Content Include="Pages\ImagePreview.html" />
+    <Content Include="Pages\ImageSlider.html" />
+    <Content Include="Pages\InvoicePreview.html" />
+    <Content Include="Pages\ManualPayment.html" />
+    <Content Include="Pages\MongodbSync.html" />
+    <Content Include="Pages\MultiSelection.html" />
+    <Content Include="Pages\ReactApp\Index.html" />
+    <Content Include="Pages\ReactCarousel\Index.html" />
+    <Content Include="Pages\Reports\Index.html" />
+    <Content Include="Pages\Reports\Test.html" />
+    <Content Include="Pages\SmartWizard.html" />
+    <Content Include="Scripts\Common\alert.js" />
+    <Content Include="Scripts\Common\Process.js" />
+    <Content Include="Scripts\Common\XrmHelper.js" />
+    <Content Include="Scripts\Entity\account.js" />
+    <Content Include="Scripts\Entity\additionalproducts.js" />
+    <Content Include="Scripts\Entity\availabilityfactors.js" />
+    <Content Include="Scripts\Entity\availabilitypricelist.js" />
+    <Content Include="Scripts\Entity\blacklist.js" />
+    <Content Include="Scripts\Entity\Campaign.js" />
+    <Content Include="Scripts\Entity\cmsCampaign.js" />
+    <Content Include="Scripts\Entity\Contact.js" />
+    <Content Include="Scripts\Entity\contract.js" />
+    <Content Include="Scripts\Entity\contractitem.js" />
+    <Content Include="Scripts\Entity\couponcodedefinition.js" />
+    <Content Include="Scripts\Entity\customerCreditCard.js" />
+    <Content Include="Scripts\Common\entityExecutionHelper.js" />
+    <Content Include="Scripts\Entity\DigitalSignature.js" />
+    <Content Include="Scripts\Entity\Equipment.js" />
+    <Content Include="Scripts\Entity\GroupCodeListPrice.js" />
+    <Content Include="Scripts\Entity\hgslabel.js" />
+    <Content Include="Scripts\Entity\ImageGenerator.js" />
+    <Content Include="Scripts\Entity\Invoice.js" />
+    <Content Include="Scripts\Entity\invoiceAddress.js" />
+    <Content Include="Scripts\Entity\invoiceitem.js" />
+    <Content Include="Scripts\Entity\manualPayment.js" />
+    <Content Include="Scripts\Entity\onewayfee.js" />
+    <Content Include="Scripts\Entity\payment.js" />
+    <Content Include="Scripts\Entity\pricecalculation.js" />
+    <Content Include="Scripts\Entity\pricefactors.js" />
+    <Content Include="Scripts\Entity\pricehoureffect.js" />
+    <Content Include="Scripts\Entity\PriceList.js" />
+    <Content Include="Scripts\Entity\reservation.js" />
+    <Content Include="Scripts\Entity\ReservationItem.js" />
+    <Content Include="Scripts\SmartWizard\availabilityPriceListTableFunctions.js" />
+    <Content Include="Scripts\SmartWizard\dateFunctions.js" />
+    <Content Include="Scripts\SmartWizard\groupCodeListPriceTableFunctions.js" />
+    <Content Include="Scripts\SmartWizard\groupCodeTableFunctions.js" />
+    <Content Include="Scripts\SmartWizard\smartWizardFunctions.js" />
+    <Content Include="Xmls\AdditionalProductMessages.xml" />
+    <Content Include="Xmls\AvailabilityErrorMessages.xml" />
+    <Content Include="Xmls\BranchErrorMessages.xml" />
+    <Content Include="Xmls\ContractErrorMessages.xml" />
+    <Content Include="Xmls\CouponCodeErrorMessages.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Xmls\InvoiceErrorMessage.xml" />
+    <Content Include="Xmls\MobileErrorMessages.xml" />
+    <Content Include="Xmls\MongoDbErrorMessages.xml" />
+    <Content Include="Xmls\ReservationMessages.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Xmls\ErrorMessages.xml" />
+    <Content Include="Xmls\PaymentErrorMessages.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Xmls\TabletErrorMessages.xml" />
+    <Content Include="Xmls\WebErrorMessages.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

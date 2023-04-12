@@ -1,0 +1,1573 @@
+﻿<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style type="text/css">
+        @page {
+            margin-left: 0.98in;
+            margin-right: 0.98in;
+            margin-top: 0.49in;
+            margin-bottom: 0.49in
+        }
+
+        p {
+            margin-bottom: 0.1in;
+            direction: ltr;
+            line-height: 120%;
+            text-align: left;
+            orphans: 2;
+            widows: 2
+        }
+
+        #sig-canvas {
+            border: 2px dotted #CCCCCC;
+            border-radius: 15px;
+            cursor: crosshair;
+        }
+    </style>
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function (event) {
+            (function () {
+                window.requestAnimFrame = (function (callback) {
+                    return window.requestAnimationFrame ||
+                        window.webkitRequestAnimationFrame ||
+                        window.mozRequestAnimationFrame ||
+                        window.oRequestAnimationFrame ||
+                        window.msRequestAnimaitonFrame ||
+                        function (callback) {
+                            window.setTimeout(callback, 1000 / 60);
+                        };
+                })();
+
+                var canvas = document.getElementById("sig-canvas");
+                var ctx = canvas.getContext("2d");
+                ctx.strokeStyle = "#222222";
+                ctx.lineWidth = 4;
+
+                var drawing = false;
+                var mousePos = {
+                    x: 0,
+                    y: 0
+                };
+                var lastPos = mousePos;
+
+                canvas.addEventListener("mousedown", function (e) {
+                    drawing = true;
+                    lastPos = getMousePos(canvas, e);
+                }, false);
+
+                canvas.addEventListener("mouseup", function (e) {
+                    drawing = false;
+                }, false);
+
+                canvas.addEventListener("mousemove", function (e) {
+                    mousePos = getMousePos(canvas, e);
+                }, false);
+
+                // Add touch event support for mobile
+                canvas.addEventListener("touchstart", function (e) {
+
+                }, false);
+
+                canvas.addEventListener("touchmove", function (e) {
+                    var touch = e.touches[0];
+                    var me = new MouseEvent("mousemove", {
+                        clientX: touch.clientX,
+                        clientY: touch.clientY
+                    });
+                    canvas.dispatchEvent(me);
+                }, false);
+
+                canvas.addEventListener("touchstart", function (e) {
+                    mousePos = getTouchPos(canvas, e);
+                    var touch = e.touches[0];
+                    var me = new MouseEvent("mousedown", {
+                        clientX: touch.clientX,
+                        clientY: touch.clientY
+                    });
+                    canvas.dispatchEvent(me);
+                }, false);
+
+                canvas.addEventListener("touchend", function (e) {
+                    var me = new MouseEvent("mouseup", {});
+                    canvas.dispatchEvent(me);
+                }, false);
+
+                function getMousePos(canvasDom, mouseEvent) {
+                    var rect = canvasDom.getBoundingClientRect();
+                    return {
+                        x: mouseEvent.clientX - rect.left,
+                        y: mouseEvent.clientY - rect.top
+                    }
+                }
+
+                function getTouchPos(canvasDom, touchEvent) {
+                    var rect = canvasDom.getBoundingClientRect();
+                    return {
+                        x: touchEvent.touches[0].clientX - rect.left,
+                        y: touchEvent.touches[0].clientY - rect.top
+                    }
+                }
+
+                function renderCanvas() {
+                    if (drawing) {
+                        ctx.moveTo(lastPos.x, lastPos.y);
+                        ctx.lineTo(mousePos.x, mousePos.y);
+                        ctx.stroke();
+                        lastPos = mousePos;
+                    }
+                }
+
+                // Prevent scrolling when touching the canvas
+                document.body.addEventListener("touchstart", function (e) {
+                    if (e.target == canvas) {
+                        e.preventDefault();
+                    }
+                }, false);
+                document.body.addEventListener("touchend", function (e) {
+                    if (e.target == canvas) {
+                        e.preventDefault();
+                    }
+                }, false);
+                document.body.addEventListener("touchmove", function (e) {
+                    if (e.target == canvas) {
+                        e.preventDefault();
+                    }
+                }, false);
+
+                (function drawLoop() {
+                    requestAnimFrame(drawLoop);
+                    renderCanvas();
+                })();
+
+                function clearCanvas() {
+                    canvas.width = canvas.width;
+                }
+
+                // Set up the UI
+                var sigText = document.getElementById("sig-dataUrl");
+                var sigImage = document.getElementById("sig-image");
+                var clearBtn = document.getElementById("sig-clearBtn");
+                var submitBtn = document.getElementById("sig-submitBtn");
+                clearBtn.addEventListener("click", function (e) {
+                    clearCanvas();
+                    sigText.innerHTML = "Data URL for your signature will go here!";
+                    sigImage.setAttribute("src", "");
+                }, false);
+                submitBtn.addEventListener("click", function (e) {
+                    var dataUrl = canvas.toDataURL();
+                    sigText.innerHTML = dataUrl;
+                    sigImage.setAttribute("src", dataUrl);
+                }, false);
+
+            })();
+        });
+
+    </script>
+</head>
+<body  dir="ltr">
+    <div style="max-width: 800px;
+        margin: auto;">
+        <div title="header">
+            <p style="margin-bottom: 0in; line-height: 100%">
+                <img src="https://testfilonova.blob.core.windows.net/cmsimages/100000000/51d43834-f685-445b-b593-5c067db5ea2a" align="left" hspace="12" vspace="1">
+
+                <font face="Times New Roman, serif">
+                    <font size="1" style="font-size: 8pt">
+                        <b>
+                            ARAÇ
+                            KİRALAMA SÖZLEŞMESİ KOŞULLARI
+                        </b>
+                    </font>
+                </font>
+            </p>
+            <p style="margin-bottom: 0in; line-height: 100%">
+                <br>
+
+            </p>
+           
+        </div>
+        <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+            <font face="Arial Narrow, serif">
+                <font size="4" style="font-size: 14pt">
+                    <b>
+                        GENEL
+                        SATIŞ KOŞULLARI
+                    </b>
+                </font>
+            </font>
+        </p>
+        <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+            <font face="Arial Narrow, serif">
+                İşbu
+                sözleşme ile kiralayan EŞMEN OTO KİRALAMA A.Ş.
+                bu kira sözleşmesinde tanımlanan vasıtayı
+                (bu sözleşmede ‘’vasıta’’
+                olarak belirtilecektir) sözleşmede adı ve adresi geçen
+                KİRACI’ya kiralamıştır. EŞMEN OTO
+                KİRALAMA A.Ş. işbu sözleşmede bundan sonra
+                FİLONOVA olarak anılacaktır.
+            </font>
+        </p>
+        <ol>
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        KİRACI, vasıtayı bu
+                        sözleşmede belirtilen koşullara uygun olarak
+                        kullanmayı (kiralama süresi, dönüş yeri
+                        vs.) kira ücretini ödemeyi ve genel satış
+                        koşullarını kabul ettiğini beyan ve taahhüt
+                        eder. Sözleşmeyi imzalamakla KİRACI şahsına
+                        ait ve şahsından kaynaklanan tüm yükümlülükleri
+                        kabul etmiş olur. KİRACI’nın sözleşme
+                        üzerinde beyan ettiği adrese yapılan tüm
+                        bildirimler geçerli sayılacaktır.
+                    </font>
+                </p>
+            </li>
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        Yazılı olmadığı
+                        takdirde sözleşme şart ve koşullarındaki
+                        herhangi bir değişiklik ya da ek geçersizdir.
+                    </font>
+                </p>
+            </li>
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        KİRACI, kiralamadan
+                        kaynaklanan sözleşmesel ve yasal ödemelerin kiralama
+                        başında ibraz etmiş olduğu kredi kartından
+                        çekilmesine şimdiden muvafakat ettiğini kabul ve
+                        taahhüt eder
+                    </font>
+                </p>
+            </li>
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        İşbu kiralama sözleşmesi
+                        nedeni ile düzenlenecek faturalar Vergi Usul Kanunu uyarınca
+                        elektronik ortamda düzenlenecek olup KİRACI’nın
+                        bildirmiş olduğu elektronik posta adresine
+                        gönderilecektir. KİRACI bu durumu bildiğini ve onay
+                        verdiğini peşinen kabul ve taahhüt eder. Yazılı
+                        olarak aksi kararlaştırılmadıkça
+                        KİRACI’ya haricen bir kağıt fatura tebliğ
+                        edilmeyecektir. KİRACI’nın bildirmiş olduğu
+                        elektronik posta adresinin doğruluğuna ilişkin tüm
+                        sorumluluk KİRACI’ya aittir. Elektronik posta adresinin
+                        hatalı bildirilmesi, kullanım dışı olması
+                        vs. durumlarında faturanın iletilememesi halinde KİRACI,
+                        FİLONOVA’dan her ne nam altında olursa olsun bir
+                        talepte bulunamayacağını kabul ve taahhüt eder.
+                        Bu durumda da FİLONOVA’nın herhangi bir sorumluluğu
+                        bulunmayacaktır.
+                    </font>
+                </p>
+            </li>
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        KİRACI vasıtayı,
+                        stepnesini, tüm lastikleri, vasıtaya ait belgeleri,
+                        aksesuar ve teçhizatı ile birlikte teslim aldığı
+                        vasıtanın kiralandığı şehirde veya
+                        sözleşmede belirtilen başka bir yerdeki FİLONOVA
+                        ofisine, belirtilen günde iade ve teslim edilecektir.
+                    </font>
+                </p>
+            </li>
+        </ol>
+        <p align="justify" style="margin-left: 0.5in; margin-bottom: 0.11in; line-height: 108%">
+            <font face="Arial Narrow, serif">
+                KİRACI bütün
+                uzatmalar için FİLONOVA’	ya başvuracak ve
+                FİLONOVA’nın onayını alacaktır. Onay
+                alınmaksızın yapılan uzatmalarda, KİRACI’nın
+                aracı hukuka aykırı olarak yeddinde bulundurduğu
+                taraflarca kabul edilmiştir. Kiracının talebi ile
+                yapılacak gün uzamalarında Filo Nova Sisteminde fiyat
+                yeniden hesaplanabilir ve ilk kira/Gün tutarından yüksek
+                bir fiyat ile uzatma yapılabilir. Bu durum o anki doluluk ile
+                ilgilidir.
+            </font>
+        </p>
+        <p align="justify" style="margin-left: 0.5in; margin-bottom: 0.11in; line-height: 108%">
+            <font face="Arial Narrow, serif">
+                KİRACI, kiralanan araç
+                için navigasyon cihazı, bebek koltuğu, kar lastiği
+                vb. ilave hizmetler talep ettiği takdirde ilave ücretini
+                ödemekle yükümlüdür.
+            </font>
+        </p>
+        <ol start="6">
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        Vasıta aşağıdaki
+                        açıklanan şekillerde kullanılmayacaktır:
+                    </font>
+                </p>
+            </li>
+        </ol>
+        <ol type="a">
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        Açık veya gizli bir
+                        gelir karşılığında yolcu veya mal
+                        taşınmasında,
+                    </font>
+                </p>
+            </li>
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        Herhangi bir vasıta ya da
+                        treyleri itmekte veya çekmekte,
+                    </font>
+                </p>
+            </li>
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        Gümrük mevzuatına ve
+                        diğer kanunlara aykırı maddelerin taşınmasında
+                        veya diğer gayri kanuni işlerde,
+                    </font>
+                </p>
+            </li>
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        Alkol veya uyuşturucu madde
+                        almış bir kişi veya ek sürücü olarak
+                        belirtilmeyen bir sürücü tarafından,
+                    </font>
+                </p>
+            </li>
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        Motorlu sporlarda (yarış,
+                        sürat tayini, ralli, sağlamlık ve hız denemeleri
+                        dahil),
+                    </font>
+                </p>
+            </li>
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        Vasıtaya zarar verecek ve
+                        yükleme haddini aşacak yük/eşya taşınmasında,
+                    </font>
+                </p>
+            </li>
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        Vasıtaların marka ve
+                        modelini dikkate alarak kiralama amacına uygun olmayan şekilde
+                        yer ve şartlarda (arazi, dağlık arazi, kum, bataklık,
+                        dere yatağı vs. gibi) ve amaçları dışında
+                        teknik yapılarına ve tahammül güçlerine
+                        uygun olmayan yer ve yollarda, kısaca olağan dışı
+                        ve trafik koşulların uygun olmayan yol şartlarında,
+                    </font>
+                </p>
+            </li>
+        </ol>
+        <ol start="7">
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">Vasıtanın kullanımı:</font>
+                </p>
+            </li>
+        </ol>
+        <ol type="a">
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        Vasıtanın durumuna göre
+                        en az 1, 2 ve 3 yıllık geçerli sürücü
+                        belgesine sahip KİRACI ve/veya sözleşmede belirtilen
+                        ek sürücü tarafından kullanılacaktır.
+                        Sürücünün ehliyet durumuna göre (aday
+                        sürücü vs. olması durumunda) FİLONOVA,
+                        KİRACI’dan ek sigorta bedelleri ve/veya kiralama bedeline
+                        ek teminat bedelleri tahsil edebilecektir. KİRACI, bu durumu
+                        bildiğini ve onay verdiğini kabul ve taahhüt eder.
+                        KİRACI’nın ve/veya ek sürücünün
+                        aday sürücülüğünün iptal olması
+                        durumunda da sürücü derhal aracı iade ile
+                        yükümlüdür. Aksi halde doğacak tüm
+                        adli ve idari yaptırımlardan vs. tüm zararlardan
+                        sorumlu olacaktır.
+                    </font>
+                </p>
+            </li>
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        Sürücü, Genel
+                        Kiralama Bilgileri ve Koşulları broşüründe
+                        belirtilen yaş sınırını geçmiş
+                        olmalıdır.
+                    </font>
+                </p>
+            </li>
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        Vasıta, KİRACI tarafından
+                        kira başlangıcında sözleşme üzerine
+                        isim/isimleri kaydettirilen, (a) ve (b) maddelerinde tanımlanan
+                        sürücü ile ilgili koşullara uyan şahıslar
+                        (ek sürücü / sürücüler) tarafından
+                        da kullanılabilir.
+                    </font>
+                </p>
+            </li>
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        KİRACI, kiralanan vasıtayı
+                        kullanma yetkisi tanıdığı kişinin bu
+                        kontratın tüm koşullarına uymasını
+                        tamamen sağlamakla yükümlüdür. Aksi halde
+                        doğabilecek tüm sonuçlardan tamamen KİRACI
+                        sorumludur.
+                    </font>
+                </p>
+            </li>
+        </ol>
+        <ol start="8">
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        KİRACI, FİLONOVA’nın
+                        isteği üzerine aşağıdaki belirtilenleri,
+                        FİLONOVA’nın belirlediği şartlarda
+                        ödemekle yükümlüdür.
+                    </font>
+                </p>
+            </li>
+        </ol>
+        <ol type="a">
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        Yürürlükte olan
+                        fiyat listesine göre kiralanan gün sayısı
+                        üzerinden hesaplanan kiralama bedelini,
+                    </font>
+                </p>
+            </li>
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        KİRACI, imzasını
+                        atarak kabul ettiği seçenekli maddelerin Hasar
+                        Sorumluluk Güvencesi, Araç Süper Sorumluluk
+                        Güvencesi, İhtiyari Mali Mesuliyet, Ferdi Kaza Sigortası
+                        bedellerini, Mini Hasar sigortasını, Zorunlu mali
+                        mesuliyet sigortası, FİLONOVA tarafından KİRACI’ya
+                        bedelini ödemek koşulu ile sunulacak poliçe
+                        paketlerini, kiralama sonunda ortaya çıkabilecek tek yön
+                        ücretini ve kanunen uygulanan vergileri, vasıtayı
+                        teslim aldığı yakıt seviyesinden daha düşük
+                        seviyede teslim etmesi durumunda eksik kalan akaryakıt
+                        bedelinin en az %30’u oranında hizmet bedeli ile birlikte
+                        akaryakıt tutarlarını,
+                    </font>
+                </p>
+            </li>
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        KİRACI’nın araç
+                        kiralaması esnasında muafiyetli sorumluluk güvence
+                        paketini, bedelini ödeyip tercih ettiği durumda; Kiracı,
+                        FİLONOVA’ya kira sözleşmesi boyunca meydana
+                        gelen kazaya ilişkin olarak sözleşmede ve yasal
+                        mevzuatta temin etmesi gereken evrakı (kaza tutanacağı,
+                        alkol raporu vs.) eksiksiz temin ederek FİLONOVA’ya
+                        iletmesi durumunda, söz konusu kazadaki hasar ve zarar
+                        bedelinin FİLONOVA’nın belirleyeceği muafiyet
+                        tutarı kapsamındaki tutarını ödemekle
+                        yükümlü olacaktır. Bu bedelin üstünde
+                        kalan tutarlar ise FİLONOVA tarafından FİLONOVA’nın
+                        poliçesinin içeriği ve limitleri dahilinde olmak
+                        üzere genel kasko koşulları çerçevesinde
+                        değerlendirmeye alınacaktır.
+                    </font>
+                </p>
+            </li>
+        </ol>
+        <p align="justify" style="margin-left: 1in; margin-bottom: 0.11in; line-height: 108%">
+            <font face="Arial Narrow, serif">
+                KİRACI’nın Mini
+                Kasko Paketi bedelini ödeyip tercih ettiği durumda;
+            </font>
+        </p>
+        <p align="justify" style="margin-left: 1in; margin-bottom: 0.11in; line-height: 108%">
+            <font face="Arial Narrow, serif">
+                KİRACI Mini Kasko Paketi
+                çerçevesinde FİLONOVA’ya söz konusu
+                kazaya ilişkin olarak sözleşmede ve yasal mevzuatta
+                temin etmesi gereken evrakı (kaza tutanağı, alkol
+                raporu vs.) eksiksiz temin ederek FİLONOVA’ya iletmesi
+                durumunda, FİLONOVA poliçesinin içeriği ve
+                limitleri dahilinde olmak üzere genel kasko koşulları
+                çerçevesinde değerlendirilmeye alınacaktır.
+            </font>
+        </p>
+        <p align="justify" style="margin-left: 1in; margin-bottom: 0.11in; line-height: 108%">
+            <font face="Arial Narrow, serif">
+                KİRACI’nın Mini
+                Kasko Paketi bedelini ödeyip tercih ettiği durumda;
+                FİLONOVA tarafından belirlenmen belli miktarın altında
+                kalan hasar tutarlarını KİRACI, tutanağa gerek
+                olmaksızın FİLONOVA’ya doğru ve eksiksiz
+                şekilde yazılı bir beyan oluşturması sonucu
+                FİLONOVA tarafından belirlenen tutarın altında
+                kalan tutarlara ilişkin ödeme yapmayacaktır. Şayet
+                poliçelerin kapsamına girmeyen ve/veya genel kasko
+                koşulları uyarınca kabul edilmeyen hususların
+                mevcudiyetinde (örneğin; KİRACI’nın alkol
+                veya uyuşturucu etkisi altındayken araç kullanması,
+                kaza rapor ve tutanaklarını, alkol raporunu temin etmemesi
+                vb. ise söz konusu hasar bedelinin tamamı KİRACI
+                tarafından ödenecektir.
+            </font>
+        </p>
+        <ol type="a" start="4">
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        KİRACI, kaza yaparsa Mini
+                        Kasko paketini kabul etmediği takdirde, sorumlu olduğu
+                        miktarı, ancak kaza durumunda, KİRACI’ya alkol,
+                        uyuşturucu ya da başka bir nedenden dolayı (genel
+                        trafik kaidelerine uyulmaması) ceza verilmişse, FİLONOVA,
+                        KİRACI’dan kazadan dolayı oluşan hasarların
+                        tamir bedellerini, kazadan dolayı meydana gelen tüm
+                        masrafları tazminatıyla birlikte isteme hakkını
+                        kazanır. Kiralama başlangıcında kiralamanın
+                        yaklaşık tutarına karşılık bir ön
+                        provizyon, KİRACI’nın kredi kartından bloke
+                        edilir. KİRACI ön provizyon ile yapılan kira bedeli,
+                        hasar, zarar bedeli tahsilatlarına itiraz etmeyeceğini
+                        peşinen kabul eder.
+                    </font>
+                </p>
+            </li>
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        KİRACI’nın kirası
+                        altındaki araç çalınırsa, aracın
+                        ya da donanımın bedelini güncel satın alma
+                        maliyetlerine göre ödemekle yükümlüdür.
+                    </font>
+                </p>
+            </li>
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        Aşağıdaki hususlar
+                        sigorta kapsamına girmemektedir ve sigorta tarafından
+                        karşılanmamaktadır. İş bu sebepten bu
+                        hususlar KİRACI tarafından karşılanmalıdır.
+                    </font>
+                </p>
+            </li>
+        </ol>
+        <ul>
+            <ul>
+                <ul>
+                    <ul>
+                        <ul>
+                            <ul>
+                                <ul>
+                                    <li>
+                                        <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                                            <font face="Arial Narrow, serif">
+                                                Kazaya bağlı
+                                                olmaksızın lastik yarılması,
+                                            </font>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                                            <font face="Arial Narrow, serif">
+                                                Jantla oluşan hasarlar
+                                                Jant kapağı ve stepne çalınması
+                                            </font>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                                            <font face="Arial Narrow, serif">
+                                                Ruhsat, plaka, yangın
+                                                söndürücü ve ekipmanlarının
+                                                zarar görmesi
+                                            </font>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                                            <font face="Arial Narrow, serif">
+                                                Aracın anahtarının
+                                                kaybı ve/veya kullanım kaynaklı olarak araç
+                                                anahtarının zarar görmesi
+                                            </font>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                                            <font face="Arial Narrow, serif">
+                                                Güvence kapsamına
+                                                girmeyen araca verilen her türlü zarar
+                                            </font>
+                                        </p>
+                                    </li>
+                                </ul>
+                            </ul>
+                        </ul>
+                    </ul>
+                </ul>
+            </ul>
+        </ul>
+        <ol type="a" start="7">
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        Araç çalınmalarında
+                        genel kasko kurallar geçerli olup, aşırma benzeri
+                        sigorta firmalarının hırsızlık olarak
+                        nitelendirmediği, kasko kapsamına dahil edilemeyen ve
+                        sigorta şirketlerinin ödeme yapmadığı
+                        durumlarda, KİRACI araç bedelini ve diğer zararları
+                        ödemeyi peşinen kabul eder.
+                    </font>
+                </p>
+            </li>
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        FİLONOA, araç içinden
+                        çalınan veya aşırılan eşyaların
+                        tazmininden sorumlu tutulamaz
+                    </font>
+                </p>
+            </li>
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        KİRACI, 3. Şahıslara
+                        verilen Zorunlu Trafik Sigortası kapsamı dışında
+                        kalan hasar bedellerini ödemekle yükümlüdür.
+                        Ancak KİRACI, işbu kira sözleşmesinde belirtilen
+                        İhtiyarı Mali Mesuliyet güvence bedeli primini
+                        ödemesi halinde söz konusu hasar bedelinden (Türkiye
+                        Sigorta ve Reasürans Şirketleri Birliği Sigorta Genel
+                        Şartları dahilinde) İMM poliçesinde kiralanan
+                        araç için belirtilen bedel tutarınca muaftır.
+                        Bu miktarı aşan kısımlardan KİRACI
+                        münhasıran sorumludur.
+                    </font>
+                </p>
+            </li>
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        KİRACI, kira sözleşmesi
+                        anında prim tutarını ödediği Ferdi Kaza
+                        Sigortası kapsamındaki bedel tutarınca muaftır.
+                        Bu miktarı aşan kısımlardan KİRACI
+                        münhasıran sorumludur.
+                    </font>
+                </p>
+            </li>
+        </ol>
+        <ol start="9">
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        KİRACI, söz konusu
+                        vasıtayı hem mekanik hem de kaporta açısından
+                        sağlam ve iyi durumda teslim aldığını,
+                        vasıtada hiçbir hasar ya da kaza izi bulunmadığını
+                        kabul eder. (kira sözleşmesi ve araç teslim
+                        formunda belirtilenler dışında) KİRACI sağlam
+                        ve iyi durumda teslim aldığı araçta, kullanım
+                        hatası nedeni ile ve/veya dikkatsizlik, tedbirsizlik nedeni ile
+                        oluşan ve trafik sigortası kuralları kapsamında,
+                        sigorta firmalarından talep ve tahsil edilemeyen her türlü
+                        mekanik, elektrik ve sair 3. Kişilerin talepleri de dahil olmak
+                        üzere tüm zarar ve ziyanları, cezaları ilk
+                        talepte ödemeyi kabul ve taahhüt eder. (örneğin,
+                        hatalı vites değiştirilmesi nedeni ile şanzıman
+                        dağılması, uyarı ışığı
+                        yandığı halde aracın kullanılmaya devam
+                        edilmesi, aracın altının vurulması suretiyle
+                        ortaya çıkan hasarlar, lastik ve jant gibi akşamlara
+                        zarar verilmesi, alkollü araç kullanma, sigara yanığı,
+                        döşeme yırtılması vb.) KİRACI’ya
+                        verilen araçta herhangi bir surette hasar meydana gelmesi
+                        halinde sürücüden 300 TL + KDV  (üçyüz
+                        TL + KDV) karşılığı hasar takip bedeli
+                        alınacaktır. Hasar Takip Hizmet Güvencesi haricinde
+                        kalan ek güvence paketlerinin satın alınmış
+                        olması, hasar takip bedelinin tahsis edilmesine engel değildir.
+                    </font>
+                </p>
+            </li>
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        KİRACI, teslim aldığı
+                        aracın bakımlarının düzenli yapılması
+                        amacı ile aracı teslim aldığı tarihten
+                        teslim etme tarihine kadar düzenli olarak kontrollerini yapacak
+                        ve gerektiğinde bakım için teslim aldığı
+                        ofise aracı teslim edecektir. Aksi halde doğacak
+                        zararlardan KİRACI sorumlu olacaktır.
+                    </font>
+                </p>
+            </li>
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        KİRACI tarafından
+                        kullanılan ve yukarıda belirtilen vasıta, trafik
+                        sigorta şartları ile korunmuştur. KİRACI,
+                        kendisi ve 3. Şahıslar ve kiralanan araç için,
+                        hasar, İhtiyari Mali mesuliyet ve ferdi kaza güvenceleri
+                        ile koruma sağlamak istediği takdirde, bunlara ait teminat
+                        prim bedellerini ayrıca ve ek olarak peşin ödemek
+                        suretiyle istifade etmek hakkına haizdir. Aksi takdirde her
+                        türlü idari, cezai ve hukuki (tazminatlar, cezalar vs.)
+                        sorumluluk münhasıran KİRACI’ya ait olacaktır.
+                        Ancak KİRACI vasıtanın ya da karoserinin üst
+                        kısımlarından olan darbeler sonucu (köprü,
+                        balkon, dal ya da her nesne tarafından oluşan) meydana
+                        gelen hasar bedellerini, trafik sigortası ve hasar
+                        güvencelerini kabul etmiş olsa dahi, ödemekle
+                        yükümlüdür. KİRACI, hasar muafiyet
+                        güvencesi (Hasar, İhtiyarı Mali Mesuliyet Güvenceleri
+                        ve Ferdi Kaza Sigortası) kabul etmiş olmasına rağmen
+                        aşağıda belirtilen koşullarda vasıtanın
+                        zarar görmesi durumunda hasar sorumluluğunu ve buna
+                        ilişkin giderleri itiraz etmeksizin karşılamayı
+                        kabul eder:
+                    </font>
+                </p>
+            </li>
+        </ol>
+        <ol type="a">
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        Kaza anında alkollü
+                        ve/veya uyuşturucu madde etkisi altında ise,
+                    </font>
+                </p>
+            </li>
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        Yasal hız sınırının
+                        aşıldığı durumlarda (kaza tespit raporunda
+                        kazanın hız nedeniyle meydana geldiğinin
+                        belirtilmesi),
+                    </font>
+                </p>
+            </li>
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        Trafik kaza zaptının
+                        düzenlenmediği ve alkol raporunun alınmadığı
+                        durumlarda ve/veya kasıtlı kazalarda,
+                    </font>
+                </p>
+            </li>
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        Trafik yasalarına aykırı
+                        vasıta kullanılması halinde,
+                    </font>
+                </p>
+            </li>
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        KİRACI ve kira sözleşmesinde
+                        ek sürücü olarak belirlenen sürücü/sürücüler
+                        dışındakilerin aracı kullanması neticesinde
+                        meydana gelen kaza ve/veya hasarlarda,
+                    </font>
+                </p>
+            </li>
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        Türkiye Sigorta ve Reasürans
+                        Şirketleri Birliği kasko poliçeleri genel şartları
+                        gereğinde bedelinin ödenmediği hallerde ve/veya
+                        sigorta şirketlerinin herhangi bir nedenle ödeme yapmadığı
+                        hallerde.
+                    </font>
+                </p>
+            </li>
+        </ol>
+        <ol start="12">
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        KİRACI ve diğer yetkili
+                        sürücüler (ek sürücü) kira süresi
+                        içerisinde kaza olması durumunda FİLONOVA’nın
+                        sigorta şirketinin çıkarlarını korumak
+                        için aşağıdaki önlemleri yerine getirmek
+                        zorundadır:
+                    </font>
+                </p>
+            </li>
+        </ol>
+        <ol type="a">
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        İlgili kişilerin ve
+                        tanıkların isim ve adreslerini almak,
+                    </font>
+                </p>
+            </li>
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        Çift taraflı kazalarda
+                        tarafın/tarafların ehliyet, ruhsat ve trafik sigorta
+                        poliçelerinin fotokopisini, fotokopinin mümkün
+                        olmadığı durumlarda bilgilerini (sürücü
+                        belgesi no, verildiği il, trafik sigorta poliçe
+                        numaralarını ve sigorta şirketinin ismi vs) almak,
+                    </font>
+                </p>
+            </li>
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        Sorumluluğu ve suçu
+                        kabullenmemek,
+                    </font>
+                </p>
+            </li>
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        Yeterli güvenlik önlemlerini
+                        almadan vasıtayı terk etmemek,
+                    </font>
+                </p>
+            </li>
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        Maddi, ölümlü ve
+                        cismani zararla sonuçlanan bir kaza vukuunda durumu derhal en
+                        yakın polis görevlilerine veya ilgili mercilere bildirmek,
+                    </font>
+                </p>
+            </li>
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        Kaza bildirimini ve ilgili tutanak
+                        ve raporları en geç 6 saat içerisinde FİLONOVA’ya
+                        ulaştırmak,
+                    </font>
+                </p>
+            </li>
+        </ol>
+        <ol start="13">
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        FİLONOVA hiçbir şekilde
+                        KİRACI tarafından vasıtada taşınan ya da
+                        bırakılan herhangi bir malın kaybından sorumlu
+                        tutulamaz. KİRACI, kiraya vereni bahsedilen türde bir
+                        kayıp ya da hasar sonucu meydana gelebilecek dava, suçlama,
+                        şikayet ve zarardan ibra eder.
+                    </font>
+                </p>
+            </li>
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        Vasıtanın KİRACI
+                        tarafından kullanılmadığı zamanlarda KİRACI
+                        olası kaza ya da hırsızlıkları önlemek
+                        için gerekli tedbirleri almak ve vasıtanın
+                        kapılarını kilitlemekle yükümlüdür.
+                        Vasıtanın çalınması halinde KİRACI,
+                        vasıtanın ruhsatını ve anahtarlarını
+                        iade ederek gerekli önlemleri aldığını ve
+                        ilgili emniyet makamlarına haber verdiğini kanıtladığı
+                        takdirde sorumluluktan kurtulacaktır.
+                    </font>
+                </p>
+            </li>
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        3. Şahıslara ve araç
+                        içindeki yolculara verilen maddi zararlar, tedavi giderleri
+                        aracın zorunlu trafik sigortası limitleriyle sınırlı
+                        olup, poliçe limitlerini aşan ve/veya maddi, manevi
+                        zararlar dahil meydana gelecek tüm sorumluluk ve yükümlülükler
+                        KİRACI’ya aittir.
+                    </font>
+                </p>
+            </li>
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        FİLONOVA vasıtanın
+                        üretimini yapmadığından vasıtanın ya
+                        da yedek parçalarının mekanik ya  da imalat hatası
+                        sonucunda meydana gelebilecek kayıplarda hiçbir şekilde
+                        sorumlu tutulamaz.
+                    </font>
+                </p>
+            </li>
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        KİRACI, kendisine teslim
+                        olunan aracı/araçları, ticari kazanç
+                        maksatlı olarak yorumlanabilecek bir şekilde yük veya
+                        yolcu taşıma amacı başta olmak üzere tescil
+                        ve trafik belgelerinde yazılı maksadın ve/veya bu
+                        sözleşmeyle belirlenen kullanım amacının
+                        haricinde hiçbir maksatla kullanmayacak, işbu sözleşme
+                        kapsamında kullanımı için verildiğini,
+                        ayrıca burada yazılı kullanım amacının
+                        dışına çıkarsa bunun Karayolları
+                        Trafik Kanunu ve Karayolu Taşıma Kanunu dahil ilgili tüm
+                        yürürlükteki yasal mevzuat çerçevesinde
+                        doğuracağı her türlü sorumluluk ve riskin
+                        münhasıran kendisine ait olacağının,
+                        FİLONOVA’ya herhangi bir sebep ve surette gelebilecek tüm
+                        idari, adli, cezai yaptırım ve sorumlulukların ve
+                        uğranılan zararların fer’ileriyle birlikte
+                        kendisine derhal rücu edebileceğini bilmekte ve tüm
+                        hususları aynen kabul etmektedir.
+                    </font>
+                </p>
+            </li>
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        KİRACI, kiralanan araçların
+                        hiçbir şekilde başka bir şahıs veya
+                        kuruluşa kiraya verilmeyeceğini, hangi neden ve koşul
+                        altında olursa olsun Kira anlaşma ve genel kiralama
+                        koşulları üzerinde ismi yazılı olmayan bir
+                        kişiye kullandırılmayacağını veya
+                        satılmayacağı hususlarını kabul ve taahhüt
+                        eder. Aksi durumun tespiti halinde, FİLONOVA’nın
+                        hasar güvenceleri geçerli olmayacak, tüm zarar ve
+                        ziyanlar KİRACI tarafından karşılanacaktır.
+                        Ayrıca, aracın başka bir şahsa kiraya
+                        verildiğinin veya kullandırıldığının
+                        tespiti halinde, FİLONOVA’nın, ilgili araç
+                        için fatura ettiği araç kira ücretinin 5
+                        katına kadar cezai ücret talep etme hakkı saklıdır.
+                        Söz konusu aracın başka bir kişiye satılması
+                        veya satılmaya teşebbüsü halinde FİLONOVA’nın
+                        en az araç değeri kadar bir ücreti, cezai şart
+                        talebi olarak talep ve tahsil etme hakkı saklı olacaktır.
+                        KİRACI, FİLONOVA’nın bu tür taleplerini
+                        nakden ve defaten, ilk talepte karşılamayı kabul ve
+                        taahhüt eder.
+                    </font>
+                </p>
+            </li>
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        KİRACI’dan kaynaklı
+                        olarak aracın trafikten men edildiği ve/veya aracın
+                        trafiğe çıkışına engel olduğu,
+                        kullanımına imkan verilmeyen durumlarda, kullanılmayan
+                        günlerin kazanç kaybı, aracın otoparka
+                        çekilmesi durumunda tüm otopark masrafları, adli ve
+                        idari cezalar düzenlendiği durumlarda bu cezalar,
+                        trafikten men edilmesi sebebi ile doğmuş ve doğacak
+                        tüm zararlar vs. her türlü masraf KİRACI
+                        tarafından karşılanacaktır. Aracın
+                        otoparktan alımına ve sürecinin takibine ilişkin
+                        olarak da gerekli işlemleri FİLONOVA gerçekleştirecek
+                        olup, bu işlemlere ilişkin doğacak masraflar KİRACI
+                        tarafından karşılanacaktır. FİLONOVA, bu
+                        bedelleri KİRACI’ya kiralama bedeli ile birlikte hizmet
+                        bedeli olarak fatura edecek olup, KİRACI, FİLONOVA’nın
+                        kiralama dönemine ilişkin olarak doğmuş ve
+                        doğacak tüm zararlarını karşılayacağını
+                        kabul ve taahhüt eder.
+                    </font>
+                </p>
+            </li>
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        KİRACI, araçları
+                        Türkiye sınırları dışına
+                        çıkaramaz. Aksi halde doğmuş ve doğacak
+                        tüm zararlar KİRACI tarafından karşılanacaktır.
+                        FİLONOVA’nın onayı olmaksızın yurt
+                        dışına çıkarılan aracın talep
+                        edildiği halde iade edilmemesi durumunda araç bedeli
+                        KİRACI tarafından karşılanacaktır.
+                    </font>
+                </p>
+            </li>
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        KİRACI mal ve yolcu taşıdığı
+                        takdirde, taşınan mala veya yolcuya gelebilecek
+                        hasarlardan FİLONOVA sorumlu tutulamaz, sorumluluk münhasıran
+                        KİRACI’ya ve/veya sürücüsüne aittir.
+                        KİRACI’nın bu taşımayı usulsüz
+                        olarak yerine getirmesi durumunda FİLONOVA’ya
+                        yöneltilecek her türlü idari ve adli cezalar
+                        KİRACI’ya fatura edilecektir. Buna ek olarak sözleşme
+                        konusu aracın trafikten men edildiği gün süresince
+                        kiralama bedeli işletilecek olup, hususa ilişkin olarak da
+                        doğacak ek masraflar, doğmuş ve doğacak tüm
+                        zararlar KİRACI tarafından karşılanacaktır.
+                    </font>
+                </p>
+            </li>
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        KİRACI’ya köprü,
+                        otoyol vb. geçişler için OGS, HGS vb. geçiş
+                        sistemleri tedarik edilir. Söz konusu geçişler
+                        KİRACI’ya geçiş bedeli +KDV olarak fatura
+                        edilecektir. Filo Nova geçiş sistemleri ile ilgili
+                        hizmet bedeli talep etme hakkını saklı tutar.
+                    </font>
+                </p>
+            </li>
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        <u>
+                            KİRACI, köprü,
+                            otoyol vb. geçişlerinde Özel işletmeleri
+                            kullanması durumunda geçiş ücretlerini nakit
+                            olarak ödemelidir.  Nakit ödeme fişlerini Filonova
+                            kiralama ofislerine teslim etmeleri durumunda fişlerini teslim
+                            etmiş olduğu geçişlere ilişkin
+                            sorumlulukları ortadan kalkmış olacaktır.
+                            KİRACI, nakit ödeme yapmadan geçiş yaptığı
+                            durumlarda da kullanıma ilişkin geçiş
+                            fişlerini FİLONOVA kiralama ofislerine teslim etmelidir.
+                            KİRACI, Geçiş fişi teslim edilmeyen HGS, OGS
+                            vb. kullanımlarına ilişkin doğabilecek her türlü
+                            cezai işlemi ödemekle yükümlü olduğunu
+                            kabul ve taahhüt eder.
+                        </u>
+                    </font>
+                </p>
+            </li>
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        Filo Nova tüm araçlarını
+                        yıkanmış ve temiz bir şekilde teslim etmektedir.
+                        KİRACI araç tesliminde aracın teslim alındığı
+                        şekilde yıkanmış ve temiz olarak teslim edilmiş
+                        olması gerektiğini kabul ve taahhüt eder. Filo Nova
+                        yıkanmış ve temiz olarak teslim edilmeyen araçlar
+                        için KİRACI’dan araç temizlik bedeli tahsil
+                        etme hakkını saklı tutar.
+                    </font>
+                </p>
+            </li>
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        Filo Nova, İlgili araca
+                        kesilen trafik ceza tutanakları üzerinde yazan bedelleri
+                        ilgili kurumlara ödemeyi kabul ve taahhüt eder. Bu
+                        bedeller kiracıya rücu edilecektir. KİRACI 2918
+                        sayılı Trafik Kanunu’nun 67/1 -d (drift atmak/ani el
+                        freni çekmek vb.), 23/4 (tescilli aracı plakasız
+                        kullanmak), 36/3-a – 36/3 -c (sürücü belgesiz
+                        araç kullanmak sürücü belgesi iptal edildiği
+                        halde araç kullanmak), 48/5 (alkollü araç
+                        kullanımı), 48/8 (uyuşturucu veya uyarıcı
+                        madde alarak araç kullanmak), 48/9 (alkol ve uyarıcı
+                        madde tespiti için, teknik cihaz kullanımını
+                        engellemek) maddelerine istinaden düzenlenen trafik cezaları
+                        için erken ödeme indirimi vs. herhangi bir bedel indirim
+                        hakkını Filo Nova’dan talep etmeyeceğini kabul
+                        eder. Filo Nova ilgili maddelerden kaynaklanan cezalar için
+                        müşteriden ceza tutarını indirimsiz olarak
+                        tahsil edecektir. Filo Nova araca zarar veren ve belirtilen maddeler
+                        haricinde düzenlenen trafik cezalarına ilişkin erken
+                        ödeme indirimi vs. herhangi bir bedel indirimi hakkını
+                        KİRACI’ya sunacaktır. Filo Nova her bir trafik
+                        cezası ile ilgili hizmet bedeli talep etme hakkını
+                        saklı tutar.
+                    </font>
+                </p>
+            </li>
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        Araçlarda kullanılan
+                        yakıt markası KİRACI’nın tercihinde olup
+                        yakıt hatalarından kaynaklanan arızaların
+                        masrafları KİRACI tarafından karşılanacaktır.
+                        Yakıt kaynaklı oluşan zararların karşılanmasıyla
+                        ilgili, petrol şirketleri ile KİRACI muhatap ve sorumlu
+                        olacaktır. KİRACI, sözleşme konusu araçlarda
+                        kullanılan yakıt markası konusunda seçim
+                        hakkına sahipse de araçların kullanım
+                        kılavuzlarında belirtilen kalitede yakıt
+                        kullanılmaması sebebi ile doğacak hasarın
+                        giderilmesine ilişkin bedeller KİRACI’ya ayrıca
+                        fatura edilir.
+                    </font>
+                </p>
+            </li>
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        KİRACI’nın bu
+                        sözleşmenin herhangi bir maddesine uymaması,
+                        özellikle vasıtayı kararlaştırılan
+                        tarihte teslim etmemesi halinde, bahsedilen vasıta nerede
+                        olursa olsun, FİLONOVA’nın ön uyarıya ve
+                        kiracının iznine gerek kalmadan, aracı derhal geri
+                        alma yetkisi vardır. KİRACI vasıtanın FİLONOVA
+                        tarafından geri alınması sırasında vasıtada
+                        bulunan nesne veya maddelerin kaybından ya da hasarından
+                        sorumlu değildir.
+                    </font>
+                </p>
+            </li>
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        FİLONOVA, herhangi bir sebep
+                        göstermeksizin kira anlaşmasını ve bu sözleşmeyi
+                        fesih edebilecektir. Bu fesih sebebi ile KİRACI her ne nam
+                        altında olursa olsun FİLONOVA’dan herhangi bir
+                        talepte bulunamayacağını kabul ve taahhüt eder.
+                        Aksi halde teslim edilmeyen her gün için güncel
+                        fiyat listesi üzerinden kiralama bedeli işletilmeye devam
+                        edecektir.
+                    </font>
+                </p>
+            </li>
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        Rezervasyon süresinin
+                        uzatılması durumunda alınan ek hizmetlerde (sigorta,
+                        ek sürücü gibi) uzatılan gün sayısı
+                        kadar günlük olarak toplam tutara eklenecektir.
+                    </font>
+                </p>
+            </li>
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        KİRACI ödemeleri kredi
+                        kartı, mail order veya banka havalesi ile yapacaktır.
+                        Ayrıca, cari hesapla çalışılan KİRACI’lar
+                        ödemelerini fatura düzenlendikten sonra 7 gün
+                        içerisinde yapacaktır. KİRACI, kira bedelinin ve
+                        sözleşme kapsamındaki diğer bedellerin ve yasal
+                        ödemelerin ödenmemesi durumunda hiçbir ihtar ve
+                        ihbara gerek kalmaksızın fatura tarihinden itibaren
+                        Türkiye Cumhuriyeti Merkez Bankası (TCMB) avans faizi
+                        oranının iki katı tutarınca temerrüt faizi
+                        ödemeyi kabul, beyan ve taahhüt eder.
+                    </font>
+                </p>
+            </li>
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        KİRACI kiralama yaptığı
+                        süre boyunca FİLONOVA’nın kiralama yapan
+                        müşterilerine uyguladığı Sadakat
+                        Programından faydalanacaktır. KİRACI’nın
+                        programda oluşan kazanımları kiralama yaptığı
+                        günden itibaren 1. Yılın sonunda sıfırlanacaktır.
+                        KİRACI, süresinde kullanmadığı silinen
+                        puanları için FİLONOVA’dan her ne nam altında
+                        olursa olsun herhangi bir talepte bulunmayacağını
+                        kabul ve taahhüt eder.
+                    </font>
+                </p>
+            </li>
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        KİRACI, sözleşme
+                        süresi sona erdiği takdirde hiçbir ihtara gerek
+                        kalmaksızın sözleşmenin sona ermiş olduğunu
+                        ve sözleşmesinin herhangi bir nedenle sona ermesine rağmen
+                        aracı teslim etmemesinin suç teşkil ettiğini,
+                        aracı kira süresi dışında KİRACI’SI
+                        ve/veya sözleşmede belirtilen yedek kullanıcı
+                        dışında kullanması ve/veya yasalara aykırı
+                        şekilde araç kullanması halinde, hasar ve
+                        sorumluluğu anlamında hiçbir sigorta ve teminattan,
+                        yasal haktan istifade edemeyeceğini ve bu hususlar için
+                        haricen başka bir bildirimde bulunmayacağını
+                        bildiğini beyan etmektedir.
+                    </font>
+                </p>
+            </li>
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        KİRACI, kira bedelinin
+                        ödenmemesi durumunda hakkında ihtiyati haciz veya ihtiyati
+                        tedbir talebinde bulunulması halinde EŞMEN OTO KİRALAMA
+                        A.Ş.’nin teminat göstermeksizin ihtiyati haciz veya
+                        ihtiyati tedbir kararı almaya yetkili olduğunu kabul,
+                        beyan ve taahhüt eder.
+                    </font>
+                </p>
+            </li>
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        KİRACI, FİLONOVA’nın
+                        defter kayıtlarının ve belgelerinin HMK madde 193
+                        uyarınca geçerli ve yeterli kanuni delil olduğunu
+                        peşinen kabul eder.
+                    </font>
+                </p>
+            </li>
+            <li>
+                <p align="justify" style="margin-bottom: 0.11in; line-height: 108%">
+                    <font face="Arial Narrow, serif">
+                        Bu sözleşmeden doğan
+                        ihtilafların çözümünde MERSİN
+                        Mahkemeleri ve İcra Daireleri yetkilidir.
+                    </font>
+                </p>
+            </li>
+        </ol>
+        <p align="justify" style="margin-left: 1.98in; margin-bottom: 0.11in; line-height: 108%">
+            <br>
+            <br>
+
+        </p>
+        <p style="margin-bottom: 0in; line-height: 200%; orphans: 0; widows: 0; background: #ffffff">
+            <font face="Arial Narrow, serif"><b>Sözleşme PNR:</b></font>
+        </p>
+        <p style="margin-bottom: 0in; line-height: 200%; orphans: 0; widows: 0; background: #ffffff">
+            <font face="Arial Narrow, serif">
+                <b>
+                    Sözleşme
+                    Numarası:
+                </b>
+            </font>
+        </p>
+        <p style="margin-bottom: 0in; line-height: 200%; orphans: 0; widows: 0; background: #ffffff">
+            <font face="Arial Narrow, serif"><b>Tarih: </b></font>
+        </p>
+        <p style="margin-bottom: 0in; line-height: 200%; orphans: 0; widows: 0; background: #ffffff">
+            <font face="Arial Narrow, serif"><b>Ad Soyad: </b></font>
+        </p>
+        <p style="margin-bottom: 0in; line-height: 200%; orphans: 0; widows: 0; background: #ffffff">
+            <font face="Arial Narrow, serif"><b>İmza:</b></font>
+        </p>
+        <p style="margin-bottom: 0in; line-height: 0.39in; orphans: 0; widows: 0; background: #ffffff">
+            <br>
+
+        </p>
+        <p style="margin-bottom: 0in; line-height: 0.19in; orphans: 0; widows: 0; background: #ffffff">
+            <font face="Arial Narrow, serif">
+                <font size="4" style="font-size: 14pt">
+                    <b>
+                        KİŞİSEL
+                        VERİLERİN KORUNMASI HAKKINDA
+                    </b>
+                </font>
+            </font>
+        </p>
+        <p style="margin-bottom: 0in; line-height: 0.19in; orphans: 0; widows: 0; background: #ffffff">
+            <font face="Arial Narrow, serif">
+                FİLONOVA  olarak, Kişisel
+                Verilerin Korunması mevzuatına uygun hareket edebilmemizi
+                teminen, size hizmet sağlayabilme ve hizmetlerimizi
+                geliştirebilme doğrultusunda yürüttüğümüz
+                operasyonlarımız kapsamında mevzuatın istisna
+                kıldığı haller haricinde kişisel
+                verilerinizin işlenmesi ve aktarılması hususunda açık
+                rızanızı almamız gerekmektedir. Kişisel
+                verileriniz, otomatik veya otomatik olmayan yollarla aramızdaki
+                sözleşmesel ilişkinin ifası gereğince veya
+                kanunlarda öngörülen sair sebeplerle hizmetlerimizin
+                işleyişi ve geliştirilmesi çerçevesinde
+                toplanmaktadır. RENT GO tarafından söz konusu kişisel
+                verileriniz araç satışı ve kiralanması ile
+                servis&amp;bakım gibi hizmetlerin sağlanması,
+                rezervasyon işlemleri, kiralamaların yerine
+                getirilebilmesi, duyuru/kutlama ve sair içeriklerle
+                gönderilecek hediye ve iletilerle şirket tanınırlığını
+                arttırmak ve hizmetlerimizin tanıtımına,
+                pazarlanmasına yönelik genel veya kişiye özel
+                reklam, duyuru, kampanya bilgilerinin sağlanması, daha iyi
+                hizmet sağlamak amacıyla müşteri memnuniyet veya
+                şikâyetlerinin yönetilebilmesi suretiyle müşterilere
+                daha iyi hizmet verebilmek ve sadakat programımız
+                çerçevesinde müşteri anketleri yapılabilmesi
+                ve sizlere geri bildirim yapılabilmesi gibi sair amaçlarla
+                işlenmektedir. Sözleşmenin ifası, veri güvenliği,
+                şirketimizin bağlı olduğu politikalara uyum ve
+                yukarıda belirtilen diğer amaçlarla bulunan
+                FİLONOVA’nın kullandığı sistemlere,
+                şirketimizin bağlı bulunduğu şirketler
+                topluluğu bünyesindeki şirketlere ve onlarla ortak
+                kullandığımız veri tabanlarına,
+                başvurularının onayının alınacağı
+                kurum ve kuruluşlara, resmi kurumlara, yetkili temsilcilere,
+                güvence şirketlerine, bilgi teknolojileri hizmet
+                sağlayıcılarına, çağrı merkezi
+                hizmeti veren şirketlere, nakliye ve kargo gönderimi için
+                aracı olarak kullandığımız şirketlere,
+                bilcümle hizmetlerinden faydalandığımız veya
+                işbirliği içerisinde olduğumuz üçüncü
+                kişilere aynı şekilde sözleşmenin ifası
+                ve hizmetlerin görülmesi maksadıyla aktarılmaktadır.
+                Daha detaylı bilgi talep ettiğiniz takdirde şirketimize
+                yazılı olarak ya da bizzat başvuruda bulunabilirsiniz.
+                Kişisel Verilerin Korunması mevzuatı çerçevesinde
+                kişisel verilerinizin; işlenip işlenmediğini
+                öğrenme, işlenmişse buna ilişkin bilgi talep
+                etme; işlenme amacını ve tarafımızca bu
+                amaçlara uygun olarak kullanıp kullanılmadığını
+                öğrenme, yurt içinde veya yurt dışında
+                aktarıldığı üçüncü kişileri
+                öğrenme; eksik veya yanlış işlenmesi halinde
+                düzeltilmesi talep etme; işlenmesini gerektiren sebeplerin
+                ortadan kalkması halinde silinmesi veya yok edilmesini ya da
+                anonim haline getirilmesini talep etme; bu hallerde ya da düzeltme
+                halinde bunların veri aktarılan üçüncü
+                kişilere bildirilmesini isteme; işlenen verilerin
+                münhasıran otomatik sistemler vasıtasıyla analiz
+                edilmesi suretiyle aleyhinize bir sonucun ortaya çıktığını
+                düşünüyorsanız bu duruma itiraz etme; kanuna
+                aykırı olarak işlenmesi sebebiyle bir zarara uğramanız
+                halinde bu zararın giderilmesini talep etme; haklarınızın
+                olduğunu da hatırlatmak isteriz. Kişisel
+                verilerinizin, yasa gereği sözleşmenin ifası için
+                gerektiği ölçüde işlenmesi ve aktarılması
+                halleri haricinde, işbu onayınız ile Şirketimize
+                vereceğiniz kişisel verilerinizin yukarıda belirtilen
+                bilgiler kapsamında işleneceğine, yurtiçi veya
+                yurtdışındaki üçüncü kişilere
+                aktarılacağına rıza göstermektesiniz.
+            </font>
+        </p>
+        <p style="margin-bottom: 0in; line-height: 0.19in; orphans: 0; widows: 0; background: #ffffff">
+            <br>
+
+        </p>
+        <p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0; background: #ffffff">
+            <font face="Arial Narrow, serif"><b>Tarih : </b></font>
+        </p>
+        <p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0; background: #ffffff">
+            <br>
+
+        </p>
+        <p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0; background: #ffffff">
+            <font face="Arial Narrow, serif"><b>Ad Soyad : </b></font>
+        </p>
+        <p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0; background: #ffffff">
+            <br>
+
+        </p>
+        <p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0; background: #ffffff">
+            <font face="Arial Narrow, serif"><b>İmza  : </b></font>
+        </p>
+        <p style="margin-bottom: 0in; line-height: 0.19in; orphans: 0; widows: 0; background: #ffffff">
+            <br>
+
+        </p>
+        <p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0; background: #ffffff">
+            <font face="Arial Narrow, serif">
+                <font size="4" style="font-size: 14pt">
+                    <b>
+                        ELEKTRONİK
+                        VERİ İLETİŞİM İZNİ
+                    </b>
+                </font>
+            </font>
+        </p>
+        <p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0; background: #ffffff">
+            <font face="Arial Narrow, serif">
+                Tunalar Şirketler Grubu
+                bünyesinde yer alan mevcut markalara ve ileride bünyesine
+                katılacak markalara ilişkin, iletişim bilgilerimin, iş
+                birliği yapmakta olduğunuz ve ileride iş birliği
+                yapacağınız firmalar ile paylaşılmasına
+                onay vermek üzere fırsatlardan, promosyonlardan ve
+                bilgilendirmelerden haberdar olmak; SMS, e-posta, telefon ve mektup
+                çeşitli kanallardan bilgilendirme ve kampanya mesajlarını
+                almak istediğimi kabul ve beyan ederim.
+            </font>
+        </p>
+        <p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0; background: #ffffff">
+            <br>
+
+        </p>
+        <p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0; background: #ffffff">
+            <font face="Arial Narrow, serif"><b>Tarih : </b></font>
+        </p>
+        <p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0; background: #ffffff">
+            <br>
+
+        </p>
+        <p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0; background: #ffffff">
+            <font face="Arial Narrow, serif"><b>Ad Soyad : </b></font>
+        </p>
+        <p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0; background: #ffffff">
+            <br>
+
+        </p>
+        <p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0; background: #ffffff">
+            <font face="Arial Narrow, serif"><b>İmza  : </b></font>
+        </p>
+        <p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0; background: #ffffff">
+            <br>
+
+        </p>
+        <p style="margin-bottom: 0in; line-height: 0.19in; orphans: 0; widows: 0; background: #ffffff">
+            <br>
+
+        </p>
+        <p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0; background: #ffffff">
+            <font face="Arial Narrow, serif">
+                <font size="4" style="font-size: 14pt">
+                    <b>
+                        KİRALAMA
+                        BİLGİLERİ
+                    </b>
+                </font>
+            </font>
+        </p>
+        <p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0; background: #ffffff">
+            <font face="Arial Narrow, serif">
+                *Araçlarımızda
+                günlük km limiti vardır. Detaylar için kiralama
+                satış danışmanınız ile irtibata
+                geçiniz.
+            </font>
+        </p>
+        <p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0; background: #ffffff">
+            <font face="Arial Narrow, serif">
+                *Araçlar temiz teslim edilip
+                temiz iade alınır. Kirli iade durumunda araç
+                temizlik bedeli tahsil edilir.
+            </font>
+        </p>
+        <p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0; background: #ffffff">
+            <font face="Arial Narrow, serif">
+                *HESAPLAMA HATALARI SON KONTROLDE
+                DEĞİŞEBİLİR
+            </font>
+        </p>
+        <p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0; background: #ffffff">
+            <font face="Arial Narrow, serif">
+                *Kiralama süresi içerisinde
+                oluşabilecek trafik cezalarınıza yasal indirim
+                hesaplandıktan sonra hizmet bedeli eklenecektir.
+            </font>
+        </p>
+        <p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0; background: #ffffff">
+            <font face="Arial Narrow, serif">
+                <b>
+                    Bu evrak ön ve arka
+                    sayfaları ile ekinde bulunan hüküm ve şartları
+                    okuyup kabul ettim. Teslim aldığım aracı
+                    yukarıdaki yer ve zamanda iade etmeyi taahhüt ederim. Kredi
+                    kartı ile ödemem halinde imzam ve kredi kartı hesap
+                    pusulasının üzerini imzalamış gibi kabul
+                    ettiğimi beyan ederim. Bütün park ücretlerini ve
+                    trafik cezalarını ödemeyi kabul ederim.
+                </b>
+            </font>
+        </p>
+        <p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0; background: #ffffff">
+            <br>
+
+        </p>
+        <p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0; background: #ffffff">
+            <font face="Arial Narrow, serif"><b>Tarih: </b></font>
+        </p>
+        <p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0; background: #ffffff">
+            <br>
+
+        </p>
+        <p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0; background: #ffffff">
+            <font face="Arial Narrow, serif"><b>Müşteri: </b></font>
+        </p>
+        <p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0; background: #ffffff">
+            <br>
+
+        </p>
+        <p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0; background: #ffffff">
+            <font face="Arial Narrow, serif">
+                <b>İmza: </b>
+                <canvas id="sig-canvas" width="620" height="160">
+                </canvas>
+            </font>
+        </p>
+        <p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0; background: #ffffff">
+            <br>
+
+        </p>
+        <p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0; background: #ffffff">
+            <br>
+
+        </p>
+        <p style="margin-bottom: 0in; line-height: 100%; orphans: 0; widows: 0; background: #ffffff">
+            <font face="Arial Narrow, serif"><b>Ek Sürücüler :</b></font>
+        </p>
+        <p style="margin-bottom: 0.11in; line-height: 100%">	</p>
+        <div title="footer">
+            <p align="center" style="margin-top: 0.45in; margin-bottom: 0in; line-height: 100%">
+                <sdfield type="PAGE" subtype="RANDOM" format="PAGE">6</sdfield>
+            </p>
+            <p style="margin-bottom: 0in; line-height: 100%">
+                <br>
+
+            </p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,2551 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:sch1="http://bird.kartaca.com/xmlschema/pos" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:sch0="http://bird.kartaca.com/xmlschema/common" xmlns:tns="http://bird.kartaca.com/xmlschema/pos" targetNamespace="http://bird.kartaca.com/xmlschema/pos" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <schema xmlns:com="http://bird.kartaca.com/xmlschema/common" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://bird.kartaca.com/xmlschema/common" xmlns="http://www.w3.org/2001/XMLSchema">
+      <simpleType name="ErrorCode">
+        <restriction base="string">
+          <whiteSpace value="collapse" />
+          <enumeration value="UNEXPECTED_ERROR" />
+          <enumeration value="MDM_ERROR" />
+          <enumeration value="INVALID_REQUEST" />
+          <enumeration value="EXPIRED_TOKEN" />
+          <enumeration value="INVALID_TOKEN" />
+          <enumeration value="MERCHANT_NOT_FOUND" />
+          <enumeration value="STORE_NOT_FOUND" />
+          <enumeration value="LICENCE_NOT_FOUND" />
+          <enumeration value="INVALID_BIRD_ID" />
+          <enumeration value="INVALID_PROVISION_ID" />
+          <enumeration value="CANCELED_PROVISION" />
+          <enumeration value="EXPIRED_PROVISION" />
+          <enumeration value="COMPLETED_PROVISION" />
+          <enumeration value="INVALID_RETURN_ID" />
+          <enumeration value="CANCELED_RETURN" />
+          <enumeration value="EXPIRED_RETURN" />
+          <enumeration value="COMPLETED_RETURN" />
+          <enumeration value="INVALID_TRANSACTION_ID" />
+          <enumeration value="DUPLICATE_TRANSACTION_ID" />
+          <enumeration value="UNAVAILABLE_AMOUNT" />
+          <enumeration value="INSUFFICIENT_BALANCE" />
+          <enumeration value="INSUFFICIENT_GIFTCOIN_BALANCE" />
+          <enumeration value="INVALID_RETURN_AMOUNT" />
+          <enumeration value="INVALID_CAMPAIGN_RETURN_AMOUNT" />
+          <enumeration value="INVALID_CAMPAIGN_TYPE" />
+          <enumeration value="INVALID_MERCHANT_ID" />
+          <enumeration value="INVALID_OTP" />
+          <enumeration value="INVALID_AMOUNT" />
+          <enumeration value="REOCCURING_CAMPAIGN_USAGE" />
+          <enumeration value="INVALID_LICENCE_KEY" />
+          <enumeration value="INVALID_CAMPAIGN_CODE" />
+          <enumeration value="AUTHENTICATION_FAILED" />
+          <enumeration value="MISSING_CREDENTIALS" />
+          <enumeration value="LOCKED_FOR_RETURN" />
+          <enumeration value="STORE_PERMISSION_DENIED" />
+          <enumeration value="MULTIPLE_PURCHASE_WITH_TRANSACTION_ID" />
+          <enumeration value="MAILING_ERROR" />
+          <enumeration value="INVALID_CASH_DESK_TAG" />
+          <enumeration value="UNAUTHORIZED_OPERATION" />
+          <enumeration value="INVALID_LOYALTY_CARD_NO" />
+          <enumeration value="DUPLICATE_LOYALTY_CARD_NO" />
+          <enumeration value="LOYALTY_CARD_QUERY_NOT_PERMITTED" />
+          <enumeration value="INVALID_PROVISION_TOKEN" />
+          <enumeration value="EXPIRED_PROVISION_TOKEN" />
+          <enumeration value="MISSING_PROVISION_TOKEN" />
+          <enumeration value="PROVISION_TOKEN_USAGE_NOT_PERMITTED" />
+          <enumeration value="INVALID_REPORT_DATE" />
+          <enumeration value="DAILY_REPORT_LIMIT_REACHED" />
+          <enumeration value="PARTNER_NOT_FOUND" />
+          <enumeration value="MSISDN_QUERY_NOT_PERMITTED" />
+          <enumeration value="INVALID_MSISDN" />
+          <enumeration value="USER_AGREEMENT_INFO_QUERY_NOT_PERMITTED" />
+          <enumeration value="CUSTOM_COIN_RETURN_NOT_PERMITTED" />
+          <enumeration value="INVALID_REQUESTED_COIN_RETURN_AMOUNT" />
+          <enumeration value="PAYMENT_NOT_FOUND" />
+          <enumeration value="PAYMENT_DEFINITION_GROUP_NOT_FOUND" />
+          <enumeration value="ILLEGAL_PAYMENT_STATUS" />
+          <enumeration value="ILLEGAL_USER_STATUS" />
+          <enumeration value="INVALID_PAYMENT_AMOUNT" />
+          <enumeration value="INACTIVE_PAYMENT_ACCOUNT" />
+          <enumeration value="UNAVAILABLE_PAYMENT_SESSION" />
+          <enumeration value="PAYMENT_ALREADY_PROCESSED" />
+          <enumeration value="PAYMENT_SYSTEM_NOT_ACTIVE" />
+          <enumeration value="PAYMENT_NOT_SUCCESSFUL" />
+          <enumeration value="RETURN_TRANSACTION_NOT_PERMITTED" />
+          <enumeration value="COIN_TRANSFER_COIN_CANNOT_SEND_TO_SELF" />
+          <enumeration value="COIN_TRANSFER_OVER_MONTHLY_COUNT" />
+          <enumeration value="COIN_TRANSFER_RECEIVER_DAILY_MAX_AMOUNT_REACHED" />
+          <enumeration value="COIN_TRANSFER_RECIPIENT_COIN_GIFT_BLOCKED" />
+          <enumeration value="COIN_TRANSFER_SENDER_DAILY_MAX_AMOUNT_REACHED" />
+          <enumeration value="COIN_TRANSFER_UNDER_MINIMUM_AMOUNT" />
+          <enumeration value="COIN_TRANSFER_NOT_ENABLED" />
+          <enumeration value="COIN_TRANSFER_OVER_MAXIMUM_AMOUNT" />
+          <enumeration value="COIN_TRANSFER_OVER_USER_BALANCE" />
+          <enumeration value="COIN_TRANSFER_SENDER_COIN_GIFT_BLOCKED" />
+          <enumeration value="DAILY_MERCHANT_COIN_USAGE_EXCEEDED" />
+          <enumeration value="FUEL_PURCHASE_HAS_NO_SPECIAL_COIN_CAMPAIGN" />
+          <enumeration value="FUEL_MERCHANT_DOES_NOT_HAVE_SPECIAL_COIN" />
+          <enumeration value="SPECIAL_COIN_CAMPAIGN_CANNOT_BE_USED_WITH_ANY_ANOTHER_CAMPAIGN" />
+          <enumeration value="SPECIAL_COIN_TYPE_NOT_FOUND" />
+          <enumeration value="UNDER_SME_MINIMUM_PURCHASE_AMOUNT" />
+          <enumeration value="OVER_SME_MAXIMUM_PURCHASE_AMOUNT" />
+          <enumeration value="UNDER_SME_MINIMUM_COIN_USE_AMOUNT" />
+          <enumeration value="OVER_SME_MAXIMUM_COIN_USE_AMOUNT" />
+          <enumeration value="SME_UNSUPPORTED_BENEFIT_TYPE" />
+          <enumeration value="CAMPAIGN_NOT_SME" />
+          <enumeration value="CAMPAIGN_NOT_FOUND" />
+          <enumeration value="PROVISION_NOT_BELONG_TO_USER" />
+          <enumeration value="PURCHASE_ALREADY_REFUNDED" />
+          <enumeration value="USED_COIN_AMOUNT_OVER_PURCHASE_TOTAL" />
+          <enumeration value="PROVISION_NOT_FOUND" />
+          <enumeration value="USER_HAS_NO_PROVISION" />
+          <enumeration value="USER_STATUS_BLOCKED" />
+          <enumeration value="COIN_VALIDITY_DELETE_NOT_ALLOWED" />
+          <enumeration value="DUPLICATE_COIN_VALIDITY" />
+          <enumeration value="INVALID_PROVISION_AMOUNT" />
+          <enumeration value="BILL_AMOUNT_MISSING" />
+          <enumeration value="SME_WORKING_RESTRICTED" />
+          <enumeration value="COIN_EXPIRE_REPORTING_JOB_IS_STILL_RUNNING" />
+          <enumeration value="STORE_CLOSED" />
+          <enumeration value="DUPLICATE_BEACON_NODE_ID" />
+          <enumeration value="STORE_NOT_PERMITTED" />
+          <enumeration value="COIN_VALIDITY_STORE_DELETE_NOT_ALLOWED" />
+          <enumeration value="COIN_VALIDITY_UNDEFINED_SPECIFIC_STORE" />
+          <enumeration value="INVALID_CORPORATE_COIN_GAIN_VALIDITY" />
+          <enumeration value="COIN_VALIDITY_INVALID_SPECIFIC_STORE" />
+          <enumeration value="COIN_VALIDITY_STORE_TYPE_CHANGE_NOT_ALLOWED" />
+          <enumeration value="PAYMENT_NOT_REQUIRED_MERCHANT_COMMIT" />
+          <enumeration value="TRANSACTION_ID_REQUIRED" />
+          <enumeration value="SKIP_NOTIFY_TO_MASTERPASS_NOT_ALLOWED" />
+          <enumeration value="INVALID_ACCOUNT_TYPE" />
+          <enumeration value="INVALID_ACCOUNT_ID" />
+          <enumeration value="COIN_GAIN_NOT_ALLOWED_FOR_TRAVELLERS" />
+          <enumeration value="CAMPAIGN_NOT_TRAVELLER" />
+          <enumeration value="MISSING_CAMPAIGN_AND_CAMPAIGN_FREE_DETAILS" />
+          <enumeration value="USER_HAS_ANOTHER_ACTIVE_CORPORATE_ACCOUNT" />
+          <enumeration value="INVALID_CORPORATE_COIN_GAIN" />
+          <enumeration value="PURCHASE_NOT_FOUND" />
+          <enumeration value="FRAUD_DETECTED" />
+          <enumeration value="INVALID_IP_ADDRESS" />
+          <enumeration value="INVALID_WALLET_USAGE_TYPE" />
+          <enumeration value="INSUFFICIENT_WALLET_BALANCE" />
+          <enumeration value="WALLET_SYSTEM_NOT_ACTIVE" />
+          <enumeration value="WALLET_AGREEMENT_DOCUMENT_APPROVAL_REQUIRED" />
+          <enumeration value="WALLET_CHARGE_LINKED_ANOTHER_PURCHASE_EXCEPTION" />
+          <enumeration value="INVALID_WALLET_CHARGE_ID" />
+          <enumeration value="COIN_TRANSFER_RECEIVER_MONTHLY_COUNT_LIMIT_REACHED" />
+          <enumeration value="BNPL_NOT_ACTIVE" />
+          <enumeration value="STORE_BNPL_NOT_ACTIVE" />
+          <enumeration value="BNPL_USAGE_NOT_FOUND" />
+          <enumeration value="BNPL_USAGE_LINKED_ANOTHER_PURCHASE" />
+          <enumeration value="USER_ALREADY_HAS_AN_ACTIVE_BNPL_USAGE" />
+        </restriction>
+      </simpleType>
+      <simpleType name="NotEmptyEmail255">
+        <restriction base="string">
+          <whiteSpace value="collapse" />
+          <pattern value="([a-zA-Z0-9_\-])([a-zA-Z0-9_\-\.]*)@(\[((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\.){3}|((([a-zA-Z0-9\-]+)\.)+))([a-zA-Z]{2,}|(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9][0-9]|[0-9])\])" />
+          <minLength value="5" />
+          <maxLength value="255" />
+        </restriction>
+      </simpleType>
+      <simpleType name="NonNegativeLong">
+        <restriction base="long">
+          <minInclusive value="0" />
+        </restriction>
+      </simpleType>
+      <simpleType name="ErrorDetailKey">
+        <restriction base="string">
+          <enumeration value="LIMIT" />
+        </restriction>
+      </simpleType>
+      <simpleType name="NotEmptyText32">
+        <restriction base="string">
+          <whiteSpace value="collapse" />
+          <minLength value="1" />
+          <maxLength value="32" />
+        </restriction>
+      </simpleType>
+      <simpleType name="NotEmptyText64">
+        <restriction base="string">
+          <whiteSpace value="collapse" />
+          <minLength value="1" />
+          <maxLength value="64" />
+        </restriction>
+      </simpleType>
+      <simpleType name="NotEmptyText256">
+        <restriction base="string">
+          <whiteSpace value="collapse" />
+          <minLength value="1" />
+          <maxLength value="256" />
+        </restriction>
+      </simpleType>
+      <simpleType name="NotEmptyText512">
+        <restriction base="string">
+          <whiteSpace value="collapse" />
+          <minLength value="1" />
+          <maxLength value="512" />
+        </restriction>
+      </simpleType>
+      <simpleType name="NotEmptyDurationText">
+        <restriction base="duration">
+          <whiteSpace value="collapse" />
+        </restriction>
+      </simpleType>
+      <simpleType name="NotEmptyPeriodText">
+        <restriction base="duration">
+          <whiteSpace value="collapse" />
+        </restriction>
+      </simpleType>
+      <simpleType name="BigDecimal">
+        <restriction base="decimal">
+          <fractionDigits value="30" />
+          <minInclusive value="0.000000000000000000000000000000" />
+        </restriction>
+      </simpleType>
+      <simpleType name="NotEmptyUrl2048">
+        <restriction base="anyURI">
+          <whiteSpace value="collapse" />
+          <minLength value="0" />
+          <maxLength value="2048" />
+        </restriction>
+      </simpleType>
+      <complexType name="EmptyContent">
+        <complexContent mixed="false">
+          <restriction base="anyType" />
+        </complexContent>
+      </complexType>
+      <element name="ServiceError">
+        <complexType>
+          <annotation>
+            <documentation xml:lang="en">The document of description
+                    for client or server error.
+                </documentation>
+          </annotation>
+          <sequence>
+            <element name="code" type="com:ErrorCode">
+              <annotation>
+                <documentation xml:lang="en">Error code.</documentation>
+              </annotation>
+            </element>
+            <element minOccurs="0" name="description" type="string">
+              <annotation>
+                <documentation xml:lang="en">Error description.
+                        </documentation>
+              </annotation>
+            </element>
+            <element minOccurs="0" maxOccurs="unbounded" name="parameters">
+              <annotation>
+                <documentation xml:lang="en">Error description.
+                        </documentation>
+              </annotation>
+              <complexType>
+                <attribute name="key" type="string" />
+                <attribute name="value" type="string" />
+              </complexType>
+            </element>
+            <element minOccurs="0" maxOccurs="unbounded" name="details" type="string">
+              <annotation>
+                <documentation xml:lang="en">Error details.
+                        </documentation>
+              </annotation>
+            </element>
+          </sequence>
+        </complexType>
+      </element>
+      <simpleType name="CoinVariant">
+        <restriction base="string">
+          <whiteSpace value="collapse" />
+          <enumeration value="DEFAULT" />
+          <enumeration value="FUEL" />
+          <enumeration value="GIFT" />
+          <enumeration value="CORPORATE" />
+          <enumeration value="WALLET" />
+        </restriction>
+      </simpleType>
+      <complexType name="CoinInfo">
+        <sequence>
+          <element name="amount" type="com:BigDecimal" />
+          <element name="coinVariant" type="com:CoinVariant" />
+          <element minOccurs="0" name="campaignId" type="long" />
+        </sequence>
+      </complexType>
+    </schema>
+    <schema xmlns:com="http://bird.kartaca.com/xmlschema/common" xmlns:pos="http://bird.kartaca.com/xmlschema/pos" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://bird.kartaca.com/xmlschema/pos" xmlns="http://www.w3.org/2001/XMLSchema">
+      <import namespace="http://bird.kartaca.com/xmlschema/common" />
+      <simpleType name="Otp">
+        <restriction base="string">
+          <whiteSpace value="collapse" />
+          <minLength value="1" />
+          <maxLength value="10" />
+          <pattern value="[a-zA-Z0-9]+" />
+        </restriction>
+      </simpleType>
+      <simpleType name="Percentage">
+        <restriction base="int">
+          <minInclusive value="0" />
+          <maxInclusive value="99" />
+        </restriction>
+      </simpleType>
+      <simpleType name="CoinUseMultiplier">
+        <restriction base="decimal">
+          <minInclusive value="1" />
+          <maxInclusive value="10" />
+        </restriction>
+      </simpleType>
+      <simpleType name="PaymentType">
+        <restriction base="string">
+          <whiteSpace value="collapse" />
+          <enumeration value="CASH" />
+          <enumeration value="CREDIT_CARD" />
+          <enumeration value="CHECK" />
+        </restriction>
+      </simpleType>
+      <simpleType name="CampaignType">
+        <restriction base="string">
+          <whiteSpace value="collapse" />
+          <enumeration value="OTHER" />
+          <enumeration value="MULTIPLE_COIN_USE" />
+        </restriction>
+      </simpleType>
+      <simpleType name="NonNegativeDecimal">
+        <restriction base="decimal">
+          <fractionDigits value="30" />
+          <minInclusive value="0.00" />
+        </restriction>
+      </simpleType>
+      <simpleType name="NonNegativeLong">
+        <restriction base="long">
+          <minInclusive value="0" />
+        </restriction>
+      </simpleType>
+      <simpleType name="MoneyDecimal">
+        <restriction base="decimal">
+          <fractionDigits value="2" />
+          <minInclusive value="0.00" />
+        </restriction>
+      </simpleType>
+      <simpleType name="CoinTransactionStatus">
+        <restriction base="string">
+          <whiteSpace value="collapse" />
+          <enumeration value="STARTED" />
+          <enumeration value="COMPLETED" />
+          <enumeration value="CANCELED" />
+          <enumeration value="EXPIRED" />
+        </restriction>
+      </simpleType>
+      <simpleType name="CoinUsageInfoReportItemType">
+        <restriction base="string">
+          <whiteSpace value="collapse" />
+          <enumeration value="COIN_USE" />
+          <enumeration value="REFUND" />
+        </restriction>
+      </simpleType>
+      <complexType name="DynamicVideoDescription">
+        <sequence>
+          <element name="action" type="string" />
+          <element name="cause" type="string" />
+        </sequence>
+      </complexType>
+      <complexType name="AmountDetail">
+        <sequence>
+          <choice>
+            <element name="taxAmount" type="pos:MoneyDecimal">
+              <annotation>
+                <documentation xml:lang="en">Tax amount.
+                        </documentation>
+              </annotation>
+            </element>
+            <element name="percent" type="pos:Percentage">
+              <annotation>
+                <documentation xml:lang="en">Tax percentage of related amount.
+                        </documentation>
+              </annotation>
+            </element>
+          </choice>
+          <element name="amount" type="pos:MoneyDecimal">
+            <annotation>
+              <documentation xml:lang="en">Tax included amount.
+                    </documentation>
+            </annotation>
+          </element>
+        </sequence>
+      </complexType>
+      <complexType name="TransactionInfo">
+        <sequence>
+          <element name="barcode" type="com:NotEmptyText64">
+            <annotation>
+              <documentation xml:lang="en">Barcode of item.
+                    </documentation>
+            </annotation>
+          </element>
+          <element name="quantity" type="pos:NonNegativeDecimal">
+            <annotation>
+              <documentation xml:lang="en">Quantity of item.
+                    </documentation>
+            </annotation>
+          </element>
+          <element name="amount" type="pos:MoneyDecimal">
+            <annotation>
+              <documentation xml:lang="en">Amount of item.
+                    </documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" maxOccurs="unbounded" name="campaign" type="com:NotEmptyText256">
+            <annotation>
+              <documentation xml:lang="en">Campaigns of item.
+                    </documentation>
+            </annotation>
+          </element>
+        </sequence>
+      </complexType>
+      <complexType name="PaymentInfo">
+        <sequence>
+          <element minOccurs="0" name="paymentType" type="pos:PaymentType">
+            <annotation>
+              <documentation xml:lang="en">Payment type of the item.</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="paymentAmount" type="pos:MoneyDecimal">
+            <annotation>
+              <documentation xml:lang="en">Amount of the payment.</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="installmentAmount" type="pos:MoneyDecimal">
+            <annotation>
+              <documentation xml:lang="en">Installed amount.</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="posBankCode" type="com:NotEmptyText256">
+            <annotation>
+              <documentation xml:lang="en">Bank code of payment.</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="posBankName" type="com:NotEmptyText512">
+            <annotation>
+              <documentation xml:lang="en">Bank name of payment.</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="cardBankCode" type="com:NotEmptyText256">
+            <annotation>
+              <documentation xml:lang="en">Card bank code of payment.</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="cardBankName" type="com:NotEmptyText512">
+            <annotation>
+              <documentation xml:lang="en">Card bank name of payment.</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="bin" type="com:NotEmptyText512">
+            <annotation>
+              <documentation xml:lang="en">Card bank name of payment.</documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="cardName" type="com:NotEmptyText512">
+            <annotation>
+              <documentation xml:lang="en">Card bank name of payment.</documentation>
+            </annotation>
+          </element>
+        </sequence>
+      </complexType>
+      <complexType name="UsedCoinDetail">
+        <sequence>
+          <element name="provisionId" type="unsignedLong">
+            <annotation>
+              <documentation xml:lang="en">Provision id, returned by
+                        coin payment system.
+                    </documentation>
+            </annotation>
+          </element>
+          <element name="amount" type="pos:MoneyDecimal">
+            <annotation>
+              <documentation xml:lang="en">Amount of coins.
+                    </documentation>
+            </annotation>
+          </element>
+        </sequence>
+      </complexType>
+      <complexType name="UsedCoinDetailWithTime">
+        <complexContent mixed="false">
+          <extension base="pos:UsedCoinDetail">
+            <sequence>
+              <element name="dateTime" type="dateTime">
+                <annotation>
+                  <documentation xml:lang="en">Time of the provision.</documentation>
+                </annotation>
+              </element>
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+      <complexType name="WalletChargeDetailWithTime">
+        <sequence>
+          <element name="walletChargeId" type="unsignedLong">
+            <annotation>
+              <documentation xml:lang="en">Wallet charge id.
+                    </documentation>
+            </annotation>
+          </element>
+          <element name="amount" type="pos:MoneyDecimal">
+            <annotation>
+              <documentation xml:lang="en">Amount of wallet usage.
+                    </documentation>
+            </annotation>
+          </element>
+          <element name="dateTime" type="dateTime">
+            <annotation>
+              <documentation xml:lang="en">Time of the wallet charge.</documentation>
+            </annotation>
+          </element>
+        </sequence>
+      </complexType>
+      <complexType name="UsedPaymentDetail">
+        <choice>
+          <element name="hopiPayId" type="long">
+            <annotation>
+              <documentation xml:lang="en">Hopi pay id.
+                    </documentation>
+            </annotation>
+          </element>
+          <element name="walletChargeId" type="unsignedLong">
+            <annotation>
+              <documentation xml:lang="en">Wallet charge id.
+                    </documentation>
+            </annotation>
+          </element>
+          <element name="bnplUsageId" type="unsignedLong">
+            <annotation>
+              <documentation xml:lang="en">BNPL usage id.
+                    </documentation>
+            </annotation>
+          </element>
+        </choice>
+      </complexType>
+      <complexType name="BenefitDetail">
+        <choice>
+          <element maxOccurs="unbounded" name="discounts" type="pos:AmountDetail">
+            <annotation>
+              <documentation xml:lang="en">Amount of discount. Tax
+                        included. Calculated by merchant sale system.
+                    </documentation>
+            </annotation>
+          </element>
+          <element name="coins" type="pos:MoneyDecimal">
+            <annotation>
+              <documentation xml:lang="en">Amount of coins for give to
+                        user. Calculated by merchant sale system.
+                    </documentation>
+            </annotation>
+          </element>
+        </choice>
+      </complexType>
+      <complexType name="CampaignSummary">
+        <sequence>
+          <element name="code" type="com:NotEmptyText32">
+            <annotation>
+              <documentation xml:lang="en">Campaign code, defined by
+                        merchant.
+                    </documentation>
+            </annotation>
+          </element>
+          <element name="type" type="pos:CampaignType">
+            <annotation>
+              <documentation xml:lang="en">Type of campaign.
+                    </documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="multiplier" type="pos:CoinUseMultiplier">
+            <annotation>
+              <documentation xml:lang="en">The multiplier of coins valid
+                        of while using coins, returns only for MULTIPLE_COIN_USE
+                        campaigns.
+                    </documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="limit" type="pos:MoneyDecimal">
+            <annotation>
+              <documentation xml:lang="en">Max coin amount allowed to be
+                        multiplied while using coins, returns only for MULTIPLE_COIN_USE
+                        campaigns.
+                    </documentation>
+            </annotation>
+          </element>
+        </sequence>
+      </complexType>
+      <complexType name="UsedCampaignDetail">
+        <sequence>
+          <element name="campaignCode" type="com:NotEmptyText32">
+            <annotation>
+              <documentation xml:lang="en">Used campaign code.
+                    </documentation>
+            </annotation>
+          </element>
+          <element maxOccurs="unbounded" name="amountDetails" type="pos:AmountDetail">
+            <annotation>
+              <documentation xml:lang="en">The sale amount of correlated
+                        campaign.
+                    </documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="benefit" type="pos:BenefitDetail">
+            <annotation>
+              <documentation xml:lang="en">Discount or coin information.
+                    </documentation>
+            </annotation>
+          </element>
+        </sequence>
+      </complexType>
+      <complexType name="ReturnCampaignDetail">
+        <sequence>
+          <element name="campaignCode" type="com:NotEmptyText32">
+            <annotation>
+              <documentation xml:lang="en">The campaign code for part of
+                        the returned payment.
+                    </documentation>
+            </annotation>
+          </element>
+          <element name="returnPayment" type="pos:MoneyDecimal">
+            <annotation>
+              <documentation xml:lang="en">The amount of return payment
+                        of belongs to campaign.
+                    </documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="requestedCoinReturnAmount" type="pos:MoneyDecimal">
+            <annotation>
+              <documentation xml:lang="en">The amount of return payment
+                        of belongs to campaign.
+                    </documentation>
+            </annotation>
+          </element>
+        </sequence>
+      </complexType>
+      <complexType name="PosServiceParent" abstract="true">
+        <sequence>
+          <element minOccurs="0" name="licenceKey" type="com:NotEmptyText32">
+            <annotation>
+              <documentation xml:lang="en">Assigned partner licence key
+                        for pos
+                    </documentation>
+            </annotation>
+          </element>
+        </sequence>
+      </complexType>
+      <complexType name="CheckoutFailure">
+        <sequence>
+          <element name="transactionId" type="com:NotEmptyText64">
+            <annotation>
+              <documentation xml:lang="en">Identification of transaction
+                        defined in the system
+                    </documentation>
+            </annotation>
+          </element>
+          <element name="errorCode" type="com:ErrorCode">
+            <annotation>
+              <documentation xml:lang="en">Definition of the resulting
+                        error from the request.
+                    </documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" name="description" type="string">
+            <annotation>
+              <documentation xml:lang="en">Description field of the
+                        error.
+                    </documentation>
+            </annotation>
+          </element>
+          <element minOccurs="0" maxOccurs="unbounded" name="details" type="string">
+            <annotation>
+              <documentation xml:lang="en">Details of the error.
+                    </documentation>
+            </annotation>
+          </element>
+        </sequence>
+      </complexType>
+      <complexType name="Checkout">
+        <complexContent mixed="false">
+          <extension base="pos:PosServiceParent">
+            <sequence>
+              <element minOccurs="0" name="merchantCode" type="com:NotEmptyText64">
+                <annotation>
+                  <documentation xml:lang="en">The merchant code.
+                            </documentation>
+                </annotation>
+              </element>
+              <element name="storeCode" type="com:NotEmptyText64">
+                <annotation>
+                  <documentation xml:lang="en">The store code.
+                            </documentation>
+                </annotation>
+              </element>
+              <element name="birdId" type="long">
+                <annotation>
+                  <documentation xml:lang="en">The user ID. Defined by
+                                BIRD platform.
+                            </documentation>
+                </annotation>
+              </element>
+              <element minOccurs="0" name="cashDeskTag" type="com:NotEmptyText64">
+                <annotation>
+                  <documentation xml:lang="en">The tag of cash desk for
+                                this transaction.
+                            </documentation>
+                </annotation>
+              </element>
+              <element name="dateTime" type="dateTime">
+                <annotation>
+                  <documentation xml:lang="en">Time of the transaction.
+                                May be concatenated with timezone information.
+                            </documentation>
+                </annotation>
+              </element>
+              <element name="transactionId" type="com:NotEmptyText64">
+                <annotation>
+                  <documentation xml:lang="en">The identifier in merchant
+                                sale systems for this transaction.
+                            </documentation>
+                </annotation>
+              </element>
+              <element maxOccurs="unbounded" name="paymentDetails" type="pos:AmountDetail">
+                <annotation>
+                  <documentation xml:lang="en">The payment sum of this
+                                list must be equal to amount of purchases.
+                            </documentation>
+                </annotation>
+              </element>
+              <element minOccurs="0" maxOccurs="unbounded" name="subtotalDetails" type="pos:AmountDetail">
+                <annotation>
+                  <documentation xml:lang="en">The payment sum of this
+                                list must be equal to sub total of the purchase
+                            </documentation>
+                </annotation>
+              </element>
+              <element minOccurs="0" maxOccurs="unbounded" name="usedCoinDetails" type="pos:UsedCoinDetail">
+                <annotation>
+                  <documentation xml:lang="en">The list of used coins for
+                                this transaction.
+                            </documentation>
+                </annotation>
+              </element>
+              <element minOccurs="0" maxOccurs="unbounded" name="usedPaymentDetails" type="pos:UsedPaymentDetail">
+                <annotation>
+                  <documentation xml:lang="en">The list of hopi pay ids.
+                            </documentation>
+                </annotation>
+              </element>
+              <element minOccurs="0" maxOccurs="unbounded" name="usedCampaignDetails" type="pos:UsedCampaignDetail">
+                <annotation>
+                  <documentation xml:lang="en">The list of used campaigns
+                                for this transaction.
+                            </documentation>
+                </annotation>
+              </element>
+              <element minOccurs="0" maxOccurs="unbounded" name="campaignFreePaymentDetails" type="pos:AmountDetail">
+                <annotation>
+                  <documentation xml:lang="en">Details of payment amounts
+                                that are not part of any campaign.
+                            </documentation>
+                </annotation>
+              </element>
+              <element minOccurs="0" maxOccurs="unbounded" name="transactionInfos" type="pos:TransactionInfo">
+                <annotation>
+                  <documentation xml:lang="en">The list of transaction information for this transaction.
+                            </documentation>
+                </annotation>
+              </element>
+              <element minOccurs="0" maxOccurs="unbounded" name="paymentInfos" type="pos:PaymentInfo">
+                <annotation>
+                  <documentation xml:lang="en">The list of payment information for this transaction.
+                            </documentation>
+                </annotation>
+              </element>
+              <element minOccurs="0" name="dynamicVideoDescription" type="pos:DynamicVideoDescription">
+                <annotation>
+                  <documentation xml:lang="en">Descriptions to be
+                                shown in coin gain video.
+                            </documentation>
+                </annotation>
+              </element>
+              <element minOccurs="0" default="true" name="pushNotificationEnabled" type="boolean">
+                <annotation>
+                  <documentation xml:lang="en">If true send push notification else do not send push notification
+                            </documentation>
+                </annotation>
+              </element>
+              <element minOccurs="0" default="true" name="notificationEnabled" type="boolean">
+                <annotation>
+                  <documentation xml:lang="en">If true send notification else do not send notification
+                            </documentation>
+                </annotation>
+              </element>
+            </sequence>
+          </extension>
+        </complexContent>
+      </complexType>
+      <complexType name="BatchInfo">
+        <sequence>
+          <element name="transactionCount" type="pos:NonNegativeLong">
+            <annotation>
+              <documentation xml:lang="en">Number of transactions in the
+                        batch.
+                    </documentation>
+            </annotation>
+          </element>
+          <element name="amount" type="pos:MoneyDecimal">
+            <annotation>
+              <documentation xml:lang="en">Total amount of transactions
+                        in the batch.
+                    </documentation>
+            </annotation>
+          </element>
+        </sequence>
+      </complexType>
+      <complexType name="CoinTransactionInfo">
+        <sequence>
+          <element name="birdId" type="long">
+            <annotation>
+              <documentation xml:lang="en">The user ID associated with
+                        this transaction.
+                    </documentation>
+            </annotation>
+          </element>
+          <element name="amount" type="pos:MoneyDecimal">
+            <annotation>
+              <documentation xml:lang="en">Amount of coins used in
+                        transaction.
+                    </documentation>
+            </annotation>
+          </element>
+          <element name="traceNo" type="com:NotEmptyText64">
+            <annotation>
+              <documentation xml:lang="en">Trace number for this
+                        transaction.
+                    </documentation>
+            </annotation>
+          </element>
+        </sequence>
+      </complexType>
+      <element name="GetBirdUserAgreementInfoRequest">
+        <complexType>
+          <complexContent mixed="false">
+            <extension base="pos:PosServiceParent">
+              <sequence>
+                <element minOccurs="0" name="merchantCode" type="com:NotEmptyText64">
+                  <annotation>
+                    <documentation xml:lang="en">The merchant code.
+                                </documentation>
+                  </annotation>
+                </element>
+                <element name="storeCode" type="com:NotEmptyText64">
+                  <annotation>
+                    <documentation xml:lang="en">The store code.
+                                </documentation>
+                  </annotation>
+                </element>
+                <choice>
+                  <element name="token" type="com:NotEmptyText256">
+                    <annotation>
+                      <documentation xml:lang="en">The token data provided by QR Code or other sources.
+                                    </documentation>
+                    </annotation>
+                  </element>
+                  <element name="msisdn" type="com:NotEmptyText32">
+                    <annotation>
+                      <documentation xml:lang="en">The msisdn of the user
+                                    </documentation>
+                    </annotation>
+                  </element>
+                </choice>
+              </sequence>
+            </extension>
+          </complexContent>
+        </complexType>
+      </element>
+      <element name="GetBirdUserAgreementInfoResponse">
+        <complexType>
+          <sequence>
+            <element name="birdId" type="long">
+              <annotation>
+                <documentation xml:lang="en">User identifier, defined by
+                            BIRD platform.
+                        </documentation>
+              </annotation>
+            </element>
+            <element minOccurs="0" name="registerDate" type="dateTime">
+              <annotation>
+                <documentation xml:lang="en">The date of the user register
+                        </documentation>
+              </annotation>
+            </element>
+            <element minOccurs="0" name="userAgreementVersion" type="int">
+              <annotation>
+                <documentation xml:lang="en">User Agreement Version of the user
+                        </documentation>
+              </annotation>
+            </element>
+            <element minOccurs="0" name="privacyPolicyVersion" type="int">
+              <annotation>
+                <documentation xml:lang="en"> Privacy Policy Version of the user
+                        </documentation>
+              </annotation>
+            </element>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetBirdUserInfoRequest">
+        <complexType>
+          <complexContent mixed="false">
+            <extension base="pos:PosServiceParent">
+              <sequence>
+                <element minOccurs="0" name="merchantCode" type="com:NotEmptyText64">
+                  <annotation>
+                    <documentation xml:lang="en">The merchant code.
+                                </documentation>
+                  </annotation>
+                </element>
+                <element name="storeCode" type="com:NotEmptyText64">
+                  <annotation>
+                    <documentation xml:lang="en">The store code.
+                                </documentation>
+                  </annotation>
+                </element>
+                <choice>
+                  <element name="token" type="com:NotEmptyText256">
+                    <annotation>
+                      <documentation xml:lang="en">The token data provided
+                                        by
+                                        QR Code or other sources.
+                                    </documentation>
+                    </annotation>
+                  </element>
+                  <element name="loyaltyCardNo" type="com:NotEmptyText64">
+                    <annotation>
+                      <documentation xml:lang="en">Loyalty card no that
+                                        belongs to the user.
+                                    </documentation>
+                    </annotation>
+                  </element>
+                </choice>
+              </sequence>
+            </extension>
+          </complexContent>
+        </complexType>
+      </element>
+      <element name="GetBirdUserInfoResponse">
+        <complexType>
+          <sequence>
+            <element name="birdId" type="long">
+              <annotation>
+                <documentation xml:lang="en">User identifier, defined by
+                            BIRD platform.
+                        </documentation>
+              </annotation>
+            </element>
+            <element minOccurs="0" maxOccurs="unbounded" name="customerId" type="com:NotEmptyText256">
+              <annotation>
+                <documentation xml:lang="en">The list of customer
+                            identifiers, defined by merchant platform. If not paired loyality
+                            programs by user then returns empty list.
+                        </documentation>
+              </annotation>
+            </element>
+            <element name="coinBalance" type="pos:MoneyDecimal">
+              <annotation>
+                <documentation xml:lang="en">Usable total balance of user coins.
+                        </documentation>
+              </annotation>
+            </element>
+            <element minOccurs="0" name="availableCoinBalance" type="pos:MoneyDecimal">
+              <annotation>
+                <documentation xml:lang="en">Available balance in request date for user coins.
+                        </documentation>
+              </annotation>
+            </element>
+            <element minOccurs="0" maxOccurs="unbounded" name="joinedCampaigns" type="pos:CampaignSummary">
+              <annotation>
+                <documentation xml:lang="en">List of campaigns, defined
+                            by merchant. If only returns that user attended to any campaign
+                            of merchant. May be empty or more than
+                            one.
+                        </documentation>
+              </annotation>
+            </element>
+            <element minOccurs="0" maxOccurs="unbounded" name="provisionTokens" type="com:NotEmptyText256">
+              <annotation>
+                <documentation xml:lang="en">List of tokens to be used in
+                            StartCoinTransactionRequests.
+                        </documentation>
+              </annotation>
+            </element>
+            <element minOccurs="0" name="usableCoinInfo">
+              <annotation>
+                <documentation xml:lang="en">Coin balance information of bird member.</documentation>
+              </annotation>
+              <complexType>
+                <sequence>
+                  <element maxOccurs="unbounded" name="balanceInfo" type="com:CoinInfo" />
+                </sequence>
+              </complexType>
+            </element>
+            <element minOccurs="0" name="minBillAmount" type="pos:MoneyDecimal">
+              <annotation>
+                <documentation xml:lang="en">Minimum bill amount information defined by merchant.
+                        </documentation>
+              </annotation>
+            </element>
+            <element minOccurs="0" name="walletBalance" type="pos:MoneyDecimal">
+              <annotation>
+                <documentation xml:lang="en">Wallet balance in request date for user wallet.
+                        </documentation>
+              </annotation>
+            </element>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetBirdUserMsisdnRequest">
+        <complexType>
+          <complexContent mixed="false">
+            <extension base="pos:PosServiceParent">
+              <sequence>
+                <element name="storeCode" type="com:NotEmptyText64">
+                  <annotation>
+                    <documentation xml:lang="en">The store code.
+                                </documentation>
+                  </annotation>
+                </element>
+                <element name="birdId" type="long">
+                  <annotation>
+                    <documentation xml:lang="en">User identifier, defined by BIRD platform.
+                                </documentation>
+                  </annotation>
+                </element>
+              </sequence>
+            </extension>
+          </complexContent>
+        </complexType>
+      </element>
+      <element name="GetBirdUserMsisdnResponse">
+        <complexType>
+          <sequence>
+            <element minOccurs="0" name="msisdn" type="com:NotEmptyText32">
+              <annotation>
+                <documentation xml:lang="en">The msisdn of the user with the birdId provided in the request. Empty if none.
+                        </documentation>
+              </annotation>
+            </element>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="NotifyCheckoutRequest" type="pos:Checkout" />
+      <element name="BulkNotifyCheckoutRequest" type="pos:Checkout" />
+      <element name="BatchNotifyCheckout">
+        <complexType>
+          <sequence>
+            <element maxOccurs="unbounded" name="checkouts" type="pos:Checkout">
+              <annotation>
+                <documentation xml:lang="en">List of of checkouts.
+                        </documentation>
+              </annotation>
+            </element>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="BatchNotifyCheckoutRequest">
+        <complexType>
+          <complexContent mixed="false">
+            <extension base="pos:PosServiceParent">
+              <sequence>
+                <element maxOccurs="unbounded" name="checkouts" type="pos:Checkout">
+                  <annotation>
+                    <documentation xml:lang="en">List of of checkouts.
+                                </documentation>
+                  </annotation>
+                </element>
+              </sequence>
+            </extension>
+          </complexContent>
+        </complexType>
+      </element>
+      <element name="BatchNotifyCheckoutResponse">
+        <complexType>
+          <sequence>
+            <element maxOccurs="unbounded" name="checkoutFailures" type="pos:CheckoutFailure">
+              <annotation>
+                <documentation xml:lang="en">List of checkout failures.
+                        </documentation>
+              </annotation>
+            </element>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="StartCoinTransactionRequest">
+        <complexType>
+          <complexContent mixed="false">
+            <extension base="pos:PosServiceParent">
+              <sequence>
+                <element minOccurs="0" name="merchantCode" type="com:NotEmptyText64">
+                  <annotation>
+                    <documentation xml:lang="en">The merchant code.
+                                </documentation>
+                  </annotation>
+                </element>
+                <element name="storeCode" type="com:NotEmptyText64">
+                  <annotation>
+                    <documentation xml:lang="en">The store code.
+                                </documentation>
+                  </annotation>
+                </element>
+                <element name="birdId" type="long">
+                  <annotation>
+                    <documentation xml:lang="en">The user ID. Defined by
+                                    BIRD
+                                    platform.
+                                </documentation>
+                  </annotation>
+                </element>
+                <element name="amount" type="pos:MoneyDecimal">
+                  <annotation>
+                    <documentation xml:lang="en">Amount of coins to
+                                    reservation.
+                                </documentation>
+                  </annotation>
+                </element>
+                <element minOccurs="0" name="cashDeskTag" type="com:NotEmptyText64">
+                  <annotation>
+                    <documentation xml:lang="en">The tag of cash desk for
+                                    this transaction.
+                                </documentation>
+                  </annotation>
+                </element>
+                <element minOccurs="0" name="provisionToken" type="com:NotEmptyText256">
+                  <annotation>
+                    <documentation xml:lang="en">Token that was received in
+                                    GetBirdUserInfo operation result if any.
+                                </documentation>
+                  </annotation>
+                </element>
+                <element minOccurs="0" name="billAmount" type="pos:MoneyDecimal">
+                  <annotation>
+                    <documentation xml:lang="en">bill amount to purchase.</documentation>
+                  </annotation>
+                </element>
+              </sequence>
+            </extension>
+          </complexContent>
+        </complexType>
+      </element>
+      <element name="StartCoinTransactionResponse">
+        <complexType>
+          <sequence>
+            <element name="provisionId" type="unsignedLong">
+              <annotation>
+                <documentation xml:lang="en">The provision identifier for
+                            created a new coin transaction.
+                        </documentation>
+              </annotation>
+            </element>
+            <element name="otpNeeded" type="boolean">
+              <annotation>
+                <documentation xml:lang="en">If true is needed OTP code
+                            for completing coin transaction.
+                        </documentation>
+              </annotation>
+            </element>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CompleteCoinTransactionRequest">
+        <complexType>
+          <complexContent mixed="false">
+            <extension base="pos:PosServiceParent">
+              <sequence>
+                <element minOccurs="0" name="merchantCode" type="com:NotEmptyText64">
+                  <annotation>
+                    <documentation xml:lang="en">The merchant code.
+                                </documentation>
+                  </annotation>
+                </element>
+                <element name="storeCode" type="com:NotEmptyText64">
+                  <annotation>
+                    <documentation xml:lang="en">The store code.
+                                </documentation>
+                  </annotation>
+                </element>
+                <element name="provisionId" type="unsignedLong">
+                  <annotation>
+                    <documentation xml:lang="en">The provision identifier
+                                    for
+                                    completing the coin transaction.
+                                </documentation>
+                  </annotation>
+                </element>
+                <element minOccurs="0" name="otp" type="pos:Otp">
+                  <annotation>
+                    <documentation xml:lang="en">If not needed otp token
+                                    for
+                                    this transaction then may be empty.
+                                </documentation>
+                  </annotation>
+                </element>
+              </sequence>
+            </extension>
+          </complexContent>
+        </complexType>
+      </element>
+      <element name="CancelCoinTransactionRequest">
+        <complexType>
+          <complexContent mixed="false">
+            <extension base="pos:PosServiceParent">
+              <sequence>
+                <element minOccurs="0" name="merchantCode" type="com:NotEmptyText64">
+                  <annotation>
+                    <documentation xml:lang="en">The merchant code.
+                                </documentation>
+                  </annotation>
+                </element>
+                <element name="storeCode" type="com:NotEmptyText64">
+                  <annotation>
+                    <documentation xml:lang="en">The store code.
+                                </documentation>
+                  </annotation>
+                </element>
+                <element name="provisionId" type="unsignedLong">
+                  <annotation>
+                    <documentation xml:lang="en">The provision identifier
+                                    for
+                                    canceling the coin transaction.
+                                </documentation>
+                  </annotation>
+                </element>
+              </sequence>
+            </extension>
+          </complexContent>
+        </complexType>
+      </element>
+      <element name="GetCoinTransactionDetailRequest">
+        <complexType>
+          <complexContent mixed="false">
+            <extension base="pos:PosServiceParent">
+              <sequence>
+                <element name="storeCode" type="com:NotEmptyText64">
+                  <annotation>
+                    <documentation xml:lang="en">The store code.
+                                </documentation>
+                  </annotation>
+                </element>
+                <element name="provisionId" type="unsignedLong">
+                  <annotation>
+                    <documentation xml:lang="en">The provision identifier
+                                    for
+                                    completing the coin transaction.
+                                </documentation>
+                  </annotation>
+                </element>
+              </sequence>
+            </extension>
+          </complexContent>
+        </complexType>
+      </element>
+      <element name="GetCoinTransactionDetailResponse">
+        <complexType>
+          <sequence>
+            <element name="totalAmount" type="pos:MoneyDecimal">
+              <annotation>
+                <documentation xml:lang="en">Total use coin
+                        </documentation>
+              </annotation>
+            </element>
+            <element maxOccurs="unbounded" name="provisionDetails" type="com:CoinInfo">
+              <annotation>
+                <documentation xml:lang="en">Details of the coin
+                            transaction.
+                        </documentation>
+              </annotation>
+            </element>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RefundCoinRequest">
+        <complexType>
+          <complexContent mixed="false">
+            <extension base="pos:PosServiceParent">
+              <sequence>
+                <element minOccurs="0" name="merchantCode" type="com:NotEmptyText64">
+                  <annotation>
+                    <documentation xml:lang="en">The merchant code.
+                                </documentation>
+                  </annotation>
+                </element>
+                <element name="storeCode" type="com:NotEmptyText64">
+                  <annotation>
+                    <documentation xml:lang="en">The store code.
+                                </documentation>
+                  </annotation>
+                </element>
+                <element name="provisionId" type="unsignedLong">
+                  <annotation>
+                    <documentation xml:lang="en">The completed coin
+                                    transaction provision identifier for refund coins.
+                                </documentation>
+                  </annotation>
+                </element>
+                <element name="amount" type="pos:MoneyDecimal">
+                  <annotation>
+                    <documentation xml:lang="en">The amount of coins to be
+                                    refunded.
+                                </documentation>
+                  </annotation>
+                </element>
+                <element minOccurs="0" name="cashDeskTag" type="com:NotEmptyText64">
+                  <annotation>
+                    <documentation xml:lang="en">The tag of cash desk for
+                                    this refund transaction.
+                                </documentation>
+                  </annotation>
+                </element>
+              </sequence>
+            </extension>
+          </complexContent>
+        </complexType>
+      </element>
+      <element name="StartReturnTransactionRequest">
+        <complexType>
+          <complexContent mixed="false">
+            <extension base="pos:PosServiceParent">
+              <sequence>
+                <element minOccurs="0" name="merchantCode" type="com:NotEmptyText64">
+                  <annotation>
+                    <documentation xml:lang="en">The merchant code.
+                                </documentation>
+                  </annotation>
+                </element>
+                <element name="storeCode" type="com:NotEmptyText64">
+                  <annotation>
+                    <documentation xml:lang="en">The store code.
+                                </documentation>
+                  </annotation>
+                </element>
+                <element name="transactionId" type="com:NotEmptyText64">
+                  <annotation>
+                    <documentation xml:lang="en">The identifier in merchant
+                                    sale systems for this transaction.
+                                </documentation>
+                  </annotation>
+                </element>
+                <element minOccurs="0" name="campaignFreeAmount" type="pos:MoneyDecimal">
+                  <annotation>
+                    <documentation xml:lang="en">Amount of returned
+                                    campaign-free payment.
+                                </documentation>
+                  </annotation>
+                </element>
+                <element minOccurs="0" maxOccurs="unbounded" name="returnCampaignDetails" type="pos:ReturnCampaignDetail">
+                  <annotation>
+                    <documentation xml:lang="en">The campaign details for
+                                    specified transaction.
+                                </documentation>
+                  </annotation>
+                </element>
+                <element minOccurs="0" maxOccurs="unbounded" name="transactionInfos" type="pos:TransactionInfo">
+                  <annotation>
+                    <documentation xml:lang="en">The list of transaction
+                                    informations for this transaction.
+                                </documentation>
+                  </annotation>
+                </element>
+              </sequence>
+            </extension>
+          </complexContent>
+        </complexType>
+      </element>
+      <element name="StartReturnTransactionResponse">
+        <complexType>
+          <sequence>
+            <element minOccurs="0" name="returnTrxId" type="unsignedLong">
+              <annotation>
+                <documentation xml:lang="en">Assigned transaction
+                            identifier for return transaction.
+                        </documentation>
+              </annotation>
+            </element>
+            <element name="residual" type="pos:MoneyDecimal">
+              <annotation>
+                <documentation xml:lang="en">Amount of left over, should
+                            be deducted by merchant from the amount paid to the customer.
+                        </documentation>
+              </annotation>
+            </element>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="CompleteReturnTransactionRequest">
+        <complexType>
+          <complexContent mixed="false">
+            <extension base="pos:PosServiceParent">
+              <sequence>
+                <element minOccurs="0" name="merchantCode" type="com:NotEmptyText64">
+                  <annotation>
+                    <documentation xml:lang="en">The merchant code.
+                                </documentation>
+                  </annotation>
+                </element>
+                <element name="storeCode" type="com:NotEmptyText64">
+                  <annotation>
+                    <documentation xml:lang="en">The store code.
+                                </documentation>
+                  </annotation>
+                </element>
+                <element name="returnTrxId" type="unsignedLong">
+                  <annotation>
+                    <documentation xml:lang="en">Transaction identifier for
+                                    return transaction to be completed.
+                                </documentation>
+                  </annotation>
+                </element>
+              </sequence>
+            </extension>
+          </complexContent>
+        </complexType>
+      </element>
+      <element name="CancelReturnTransactionRequest">
+        <complexType>
+          <complexContent mixed="false">
+            <extension base="pos:PosServiceParent">
+              <sequence>
+                <element minOccurs="0" name="merchantCode" type="com:NotEmptyText64">
+                  <annotation>
+                    <documentation xml:lang="en">The merchant code.
+                                </documentation>
+                  </annotation>
+                </element>
+                <element name="storeCode" type="com:NotEmptyText64">
+                  <annotation>
+                    <documentation xml:lang="en">The store code.
+                                </documentation>
+                  </annotation>
+                </element>
+                <element name="returnTrxId" type="unsignedLong">
+                  <annotation>
+                    <documentation xml:lang="en">Transaction identifier for
+                                    return transaction to be canceled.
+                                </documentation>
+                  </annotation>
+                </element>
+              </sequence>
+            </extension>
+          </complexContent>
+        </complexType>
+      </element>
+      <element name="NotifyUserActivityRequest">
+        <complexType>
+          <complexContent mixed="false">
+            <extension base="pos:PosServiceParent">
+              <sequence>
+                <element name="birdId" type="long">
+                  <annotation>
+                    <documentation xml:lang="en">The user ID. Defined by
+                                    BIRD
+                                    platform.
+                                </documentation>
+                  </annotation>
+                </element>
+                <element name="storeCode" type="com:NotEmptyText64">
+                  <annotation>
+                    <documentation xml:lang="en">The store code.
+                                </documentation>
+                  </annotation>
+                </element>
+                <element maxOccurs="unbounded" name="parameter">
+                  <complexType>
+                    <simpleContent>
+                      <extension base="string">
+                        <attribute name="key" type="string">
+                          <annotation>
+                            <documentation xml:lang="en">The key-value elements
+                                                    that contain info about activity.
+                                                </documentation>
+                          </annotation>
+                        </attribute>
+                      </extension>
+                    </simpleContent>
+                  </complexType>
+                </element>
+              </sequence>
+            </extension>
+          </complexContent>
+        </complexType>
+      </element>
+      <element name="GetProvisionsForOkcPosRequest">
+        <complexType>
+          <complexContent mixed="false">
+            <extension base="pos:PosServiceParent">
+              <sequence>
+                <element name="storeCode" type="com:NotEmptyText64">
+                  <annotation>
+                    <documentation xml:lang="en">The store code.
+                                </documentation>
+                  </annotation>
+                </element>
+                <element name="token" type="com:NotEmptyText256">
+                  <annotation>
+                    <documentation xml:lang="en">The token data provided
+                                    by
+                                    QR Code or other sources.
+                                </documentation>
+                  </annotation>
+                </element>
+              </sequence>
+            </extension>
+          </complexContent>
+        </complexType>
+      </element>
+      <element name="GetProvisionsForOkcPosResponse">
+        <complexType>
+          <sequence>
+            <element minOccurs="0" maxOccurs="unbounded" name="usedCoinDetails" type="pos:UsedCoinDetailWithTime">
+              <annotation>
+                <documentation xml:lang="en">The list of used coins for
+                            this transaction.
+                        </documentation>
+              </annotation>
+            </element>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetWalletChargesForOkcPosRequest">
+        <complexType>
+          <complexContent mixed="false">
+            <extension base="pos:PosServiceParent">
+              <sequence>
+                <element name="storeCode" type="com:NotEmptyText64">
+                  <annotation>
+                    <documentation xml:lang="en">The store code.
+                                </documentation>
+                  </annotation>
+                </element>
+                <element name="token" type="com:NotEmptyText256">
+                  <annotation>
+                    <documentation xml:lang="en">The token data provided
+                                    by
+                                    QR Code or other sources.
+                                </documentation>
+                  </annotation>
+                </element>
+              </sequence>
+            </extension>
+          </complexContent>
+        </complexType>
+      </element>
+      <element name="GetWalletChargesForOkcPosResponse">
+        <complexType>
+          <sequence>
+            <element minOccurs="0" maxOccurs="unbounded" name="walletCharges" type="pos:WalletChargeDetailWithTime">
+              <annotation>
+                <documentation xml:lang="en">The list of used wallet details for this transaction.
+                        </documentation>
+              </annotation>
+            </element>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetUserGainReportRequest">
+        <complexType>
+          <sequence>
+            <element name="date" type="date">
+              <annotation>
+                <documentation xml:lang="en">Date of the report. May be concatenated with timezone information</documentation>
+              </annotation>
+            </element>
+            <element name="merchantCode" type="com:NotEmptyText64">
+              <annotation>
+                <documentation xml:lang="en">The merchant code.</documentation>
+              </annotation>
+            </element>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetCoinUseReportRequest">
+        <complexType>
+          <sequence>
+            <element name="date" type="date">
+              <annotation>
+                <documentation xml:lang="en">Date of the report. May be concatenated with timezone information</documentation>
+              </annotation>
+            </element>
+            <element name="merchantCode" type="com:NotEmptyText64">
+              <annotation>
+                <documentation xml:lang="en">The merchant code.</documentation>
+              </annotation>
+            </element>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetRefundCoinUseReportRequest">
+        <complexType>
+          <sequence>
+            <element name="date" type="date">
+              <annotation>
+                <documentation xml:lang="en">Date of the report. May be concatenated with timezone information</documentation>
+              </annotation>
+            </element>
+            <element name="merchantCode" type="com:NotEmptyText64">
+              <annotation>
+                <documentation xml:lang="en">The merchant code.</documentation>
+              </annotation>
+            </element>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetWalletChargeReportRequest">
+        <complexType>
+          <sequence>
+            <element name="date" type="date">
+              <annotation>
+                <documentation xml:lang="en">Date of the report. May be concatenated with timezone information</documentation>
+              </annotation>
+            </element>
+            <element name="merchantCode" type="com:NotEmptyText64">
+              <annotation>
+                <documentation xml:lang="en">The merchant code.</documentation>
+              </annotation>
+            </element>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetRefundWalletChargeReportRequest">
+        <complexType>
+          <sequence>
+            <element name="date" type="date">
+              <annotation>
+                <documentation xml:lang="en">Date of the report. May be concatenated with timezone information</documentation>
+              </annotation>
+            </element>
+            <element name="merchantCode" type="com:NotEmptyText64">
+              <annotation>
+                <documentation xml:lang="en">The merchant code.</documentation>
+              </annotation>
+            </element>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetUserGainReturnReportRequest">
+        <complexType>
+          <sequence>
+            <element name="date" type="date">
+              <annotation>
+                <documentation xml:lang="en">Date of the report. May be concatenated with timezone information</documentation>
+              </annotation>
+            </element>
+            <element name="merchantCode" type="com:NotEmptyText64">
+              <annotation>
+                <documentation xml:lang="en">The merchant code.</documentation>
+              </annotation>
+            </element>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetUserGainReportResponse">
+        <complexType>
+          <sequence>
+            <element name="reportUrl" type="anyURI">
+              <annotation>
+                <documentation xml:lang="en">The url for report extraction.</documentation>
+              </annotation>
+            </element>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetCoinUseReportResponse">
+        <complexType>
+          <sequence>
+            <element name="reportUrl" type="anyURI">
+              <annotation>
+                <documentation xml:lang="en">The url for report extraction.</documentation>
+              </annotation>
+            </element>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetRefundCoinUseReportResponse">
+        <complexType>
+          <sequence>
+            <element name="reportUrl" type="anyURI">
+              <annotation>
+                <documentation xml:lang="en">The url for report extraction.</documentation>
+              </annotation>
+            </element>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetWalletChargeReportResponse">
+        <complexType>
+          <sequence>
+            <element name="reportUrl" type="anyURI">
+              <annotation>
+                <documentation xml:lang="en">The url for report extraction.</documentation>
+              </annotation>
+            </element>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetRefundWalletChargeReportResponse">
+        <complexType>
+          <sequence>
+            <element name="reportUrl" type="anyURI">
+              <annotation>
+                <documentation xml:lang="en">The url for report extraction.</documentation>
+              </annotation>
+            </element>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetUserGainReturnReportResponse">
+        <complexType>
+          <sequence>
+            <element name="reportUrl" type="anyURI">
+              <annotation>
+                <documentation xml:lang="en">The url for report extraction.</documentation>
+              </annotation>
+            </element>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPaymentReportRequest">
+        <complexType>
+          <sequence>
+            <element name="date" type="date">
+              <annotation>
+                <documentation xml:lang="en">Date of the report. May be concatenated with timezone information</documentation>
+              </annotation>
+            </element>
+            <element name="merchantCode" type="com:NotEmptyText64">
+              <annotation>
+                <documentation xml:lang="en">The merchant code.</documentation>
+              </annotation>
+            </element>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetPaymentReportResponse">
+        <complexType>
+          <sequence>
+            <element name="reportUrl" type="anyURI">
+              <annotation>
+                <documentation xml:lang="en">The url for report extraction.</documentation>
+              </annotation>
+            </element>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetRefundReportRequest">
+        <complexType>
+          <sequence>
+            <element name="date" type="date">
+              <annotation>
+                <documentation xml:lang="en">Date of the report. May be concatenated with timezone information</documentation>
+              </annotation>
+            </element>
+            <element name="merchantCode" type="com:NotEmptyText64">
+              <annotation>
+                <documentation xml:lang="en">The merchant code.</documentation>
+              </annotation>
+            </element>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetRefundReportResponse">
+        <complexType>
+          <sequence>
+            <element name="reportUrl" type="anyURI">
+              <annotation>
+                <documentation xml:lang="en">The url for report extraction.</documentation>
+              </annotation>
+            </element>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetUserUsableCoinInfoRequest">
+        <complexType>
+          <sequence>
+            <element name="storeCode" type="com:NotEmptyText64">
+              <annotation>
+                <documentation xml:lang="en">The store code.
+                        </documentation>
+              </annotation>
+            </element>
+            <element name="birdId" type="long">
+              <annotation>
+                <documentation xml:lang="en">The id of the user</documentation>
+              </annotation>
+            </element>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetUserUsableCoinInfoResponse">
+        <complexType>
+          <sequence>
+            <element name="birdId" type="long">
+              <annotation>
+                <documentation xml:lang="en">The id of the user</documentation>
+              </annotation>
+            </element>
+            <element maxOccurs="unbounded" name="balanceInfo" type="com:CoinInfo">
+              <annotation>
+                <documentation xml:lang="en">Current coin balance information of bird member.</documentation>
+              </annotation>
+            </element>
+            <element minOccurs="0" name="usableBalance" type="pos:MoneyDecimal">
+              <annotation>
+                <documentation xml:lang="en">Available balance of user for requested date.</documentation>
+              </annotation>
+            </element>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="PromotionCodeCheckoutRequest">
+        <complexType>
+          <complexContent mixed="false">
+            <extension base="pos:PosServiceParent">
+              <sequence>
+                <element name="storeCode" type="com:NotEmptyText64">
+                  <annotation>
+                    <documentation xml:lang="en">The store code.</documentation>
+                  </annotation>
+                </element>
+                <element name="promotionCode" type="com:NotEmptyText32">
+                  <annotation>
+                    <documentation xml:lang="en">The promotion code.</documentation>
+                  </annotation>
+                </element>
+                <element minOccurs="0" name="transactionId" type="com:NotEmptyText64">
+                  <annotation>
+                    <documentation xml:lang="en">The identifier in merchant sale systems for this transaction.</documentation>
+                  </annotation>
+                </element>
+                <element minOccurs="0" name="paymentAmount" type="pos:MoneyDecimal">
+                  <annotation>
+                    <documentation xml:lang="en">Amount of the payment.</documentation>
+                  </annotation>
+                </element>
+              </sequence>
+            </extension>
+          </complexContent>
+        </complexType>
+      </element>
+      <element name="GetCoinUsageReportRequest">
+        <complexType>
+          <sequence>
+            <element name="startDate" type="date">
+              <annotation>
+                <documentation xml:lang="en">Start Date of the report. May be concatenated with timezone information</documentation>
+              </annotation>
+            </element>
+            <element name="endDate" type="date">
+              <annotation>
+                <documentation xml:lang="en">End Date of the report. May be concatenated with timezone information</documentation>
+              </annotation>
+            </element>
+            <element name="merchantCode" type="com:NotEmptyText64">
+              <annotation>
+                <documentation xml:lang="en">The merchant code.</documentation>
+              </annotation>
+            </element>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetCoinUsageReportResponse">
+        <complexType>
+          <sequence>
+            <element minOccurs="0" maxOccurs="unbounded" name="coinUsageInfo">
+              <complexType>
+                <sequence>
+                  <element name="coinVariant" type="com:CoinVariant">
+                    <annotation>
+                      <documentation xml:lang="en">Coin variant of the usage info item.</documentation>
+                    </annotation>
+                  </element>
+                  <element name="amount" type="com:BigDecimal">
+                    <annotation>
+                      <documentation xml:lang="en">Amount of the usage info item.</documentation>
+                    </annotation>
+                  </element>
+                  <element name="type" type="pos:CoinUsageInfoReportItemType">
+                    <annotation>
+                      <documentation xml:lang="en">Type of the usage info item.</documentation>
+                    </annotation>
+                  </element>
+                </sequence>
+              </complexType>
+            </element>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="GetWalletBalanceRequest">
+        <complexType>
+          <complexContent mixed="false">
+            <extension base="pos:PosServiceParent">
+              <sequence>
+                <element name="storeCode" type="com:NotEmptyText64">
+                  <annotation>
+                    <documentation xml:lang="en">The store code.
+                                </documentation>
+                  </annotation>
+                </element>
+                <element name="birdId" type="long">
+                  <annotation>
+                    <documentation xml:lang="en">User identifier, defined by BIRD platform.
+                                </documentation>
+                  </annotation>
+                </element>
+              </sequence>
+            </extension>
+          </complexContent>
+        </complexType>
+      </element>
+      <element name="GetWalletBalanceResponse">
+        <complexType>
+          <sequence>
+            <element minOccurs="0" name="balance" type="pos:MoneyDecimal">
+              <annotation>
+                <documentation xml:lang="en">Wallet balance in request date for user wallet.
+                        </documentation>
+              </annotation>
+            </element>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="WalletChargeRequest">
+        <complexType>
+          <complexContent mixed="false">
+            <extension base="pos:PosServiceParent">
+              <sequence>
+                <element minOccurs="0" name="merchantCode" type="com:NotEmptyText64">
+                  <annotation>
+                    <documentation xml:lang="en">The merchant code.
+                                </documentation>
+                  </annotation>
+                </element>
+                <element name="storeCode" type="com:NotEmptyText64">
+                  <annotation>
+                    <documentation xml:lang="en">The store code.
+                                </documentation>
+                  </annotation>
+                </element>
+                <element name="birdId" type="long">
+                  <annotation>
+                    <documentation xml:lang="en">The user ID. Defined by
+                                    BIRD
+                                    platform.
+                                </documentation>
+                  </annotation>
+                </element>
+                <element name="amount" type="pos:MoneyDecimal">
+                  <annotation>
+                    <documentation xml:lang="en">The amount of coins to be
+                                    refunded.
+                                </documentation>
+                  </annotation>
+                </element>
+                <element minOccurs="0" name="cashDeskTag" type="com:NotEmptyText64">
+                  <annotation>
+                    <documentation xml:lang="en">The tag of cash desk for
+                                    this refund transaction.
+                                </documentation>
+                  </annotation>
+                </element>
+                <element minOccurs="0" name="billAmount" type="pos:MoneyDecimal">
+                  <annotation>
+                    <documentation xml:lang="en">Bill amount to purchase.</documentation>
+                  </annotation>
+                </element>
+              </sequence>
+            </extension>
+          </complexContent>
+        </complexType>
+      </element>
+      <element name="WalletChargeResponse">
+        <complexType>
+          <sequence>
+            <element name="walletChargeId" type="unsignedLong">
+              <annotation>
+                <documentation xml:lang="en">The wallet charge identifier for
+                            created a new wallet transaction.
+                        </documentation>
+              </annotation>
+            </element>
+          </sequence>
+        </complexType>
+      </element>
+      <element name="RefundWalletRequest">
+        <complexType>
+          <complexContent mixed="false">
+            <extension base="pos:PosServiceParent">
+              <sequence>
+                <element minOccurs="0" name="merchantCode" type="com:NotEmptyText64">
+                  <annotation>
+                    <documentation xml:lang="en">The merchant code.
+                                </documentation>
+                  </annotation>
+                </element>
+                <element name="storeCode" type="com:NotEmptyText64">
+                  <annotation>
+                    <documentation xml:lang="en">The store code.
+                                </documentation>
+                  </annotation>
+                </element>
+                <element name="walletChargeId" type="unsignedLong">
+                  <annotation>
+                    <documentation xml:lang="en">The completed coin
+                                    transaction provision identifier for refund coins.
+                                </documentation>
+                  </annotation>
+                </element>
+                <element name="amount" type="pos:MoneyDecimal">
+                  <annotation>
+                    <documentation xml:lang="en">The amount of coins to be
+                                    refunded.
+                                </documentation>
+                  </annotation>
+                </element>
+                <element minOccurs="0" name="cashDeskTag" type="com:NotEmptyText64">
+                  <annotation>
+                    <documentation xml:lang="en">The tag of cash desk for
+                                    this refund transaction.
+                                </documentation>
+                  </annotation>
+                </element>
+              </sequence>
+            </extension>
+          </complexContent>
+        </complexType>
+      </element>
+    </schema>
+  </wsdl:types>
+  <wsdl:message name="GetBirdUserInfoResponse">
+    <wsdl:part name="GetBirdUserInfoResponse" element="tns:GetBirdUserInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRefundReportRequest">
+    <wsdl:part name="GetRefundReportRequest" element="tns:GetRefundReportRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetWalletChargesForOkcPosRequest">
+    <wsdl:part name="GetWalletChargesForOkcPosRequest" element="tns:GetWalletChargesForOkcPosRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetCoinUseReportRequest">
+    <wsdl:part name="GetCoinUseReportRequest" element="tns:GetCoinUseReportRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetPaymentReportRequest">
+    <wsdl:part name="GetPaymentReportRequest" element="tns:GetPaymentReportRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetWalletBalanceRequest">
+    <wsdl:part name="GetWalletBalanceRequest" element="tns:GetWalletBalanceRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetCoinTransactionDetailRequest">
+    <wsdl:part name="GetCoinTransactionDetailRequest" element="tns:GetCoinTransactionDetailRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetRefundCoinUseReportResponse">
+    <wsdl:part name="GetRefundCoinUseReportResponse" element="tns:GetRefundCoinUseReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="PromotionCodeCheckoutRequest">
+    <wsdl:part name="PromotionCodeCheckoutRequest" element="tns:PromotionCodeCheckoutRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetUserGainReportRequest">
+    <wsdl:part name="GetUserGainReportRequest" element="tns:GetUserGainReportRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetProvisionsForOkcPosRequest">
+    <wsdl:part name="GetProvisionsForOkcPosRequest" element="tns:GetProvisionsForOkcPosRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetUserUsableCoinInfoRequest">
+    <wsdl:part name="GetUserUsableCoinInfoRequest" element="tns:GetUserUsableCoinInfoRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetWalletChargesForOkcPosResponse">
+    <wsdl:part name="GetWalletChargesForOkcPosResponse" element="tns:GetWalletChargesForOkcPosResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetWalletBalanceResponse">
+    <wsdl:part name="GetWalletBalanceResponse" element="tns:GetWalletBalanceResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBirdUserAgreementInfoResponse">
+    <wsdl:part name="GetBirdUserAgreementInfoResponse" element="tns:GetBirdUserAgreementInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="CancelReturnTransactionRequest">
+    <wsdl:part name="CancelReturnTransactionRequest" element="tns:CancelReturnTransactionRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetRefundWalletChargeReportRequest">
+    <wsdl:part name="GetRefundWalletChargeReportRequest" element="tns:GetRefundWalletChargeReportRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetWalletChargeReportResponse">
+    <wsdl:part name="GetWalletChargeReportResponse" element="tns:GetWalletChargeReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="WalletChargeRequest">
+    <wsdl:part name="WalletChargeRequest" element="tns:WalletChargeRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetRefundWalletChargeReportResponse">
+    <wsdl:part name="GetRefundWalletChargeReportResponse" element="tns:GetRefundWalletChargeReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBirdUserInfoRequest">
+    <wsdl:part name="GetBirdUserInfoRequest" element="tns:GetBirdUserInfoRequest" />
+  </wsdl:message>
+  <wsdl:message name="CompleteCoinTransactionRequest">
+    <wsdl:part name="CompleteCoinTransactionRequest" element="tns:CompleteCoinTransactionRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetRefundCoinUseReportRequest">
+    <wsdl:part name="GetRefundCoinUseReportRequest" element="tns:GetRefundCoinUseReportRequest" />
+  </wsdl:message>
+  <wsdl:message name="StartReturnTransactionRequest">
+    <wsdl:part name="StartReturnTransactionRequest" element="tns:StartReturnTransactionRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetCoinUseReportResponse">
+    <wsdl:part name="GetCoinUseReportResponse" element="tns:GetCoinUseReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRefundReportResponse">
+    <wsdl:part name="GetRefundReportResponse" element="tns:GetRefundReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserGainReturnReportRequest">
+    <wsdl:part name="GetUserGainReturnReportRequest" element="tns:GetUserGainReturnReportRequest" />
+  </wsdl:message>
+  <wsdl:message name="NotifyCheckoutRequest">
+    <wsdl:part name="NotifyCheckoutRequest" element="tns:NotifyCheckoutRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetUserUsableCoinInfoResponse">
+    <wsdl:part name="GetUserUsableCoinInfoResponse" element="tns:GetUserUsableCoinInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="RefundCoinRequest">
+    <wsdl:part name="RefundCoinRequest" element="tns:RefundCoinRequest" />
+  </wsdl:message>
+  <wsdl:message name="NotifyUserActivityRequest">
+    <wsdl:part name="NotifyUserActivityRequest" element="tns:NotifyUserActivityRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetBirdUserMsisdnRequest">
+    <wsdl:part name="GetBirdUserMsisdnRequest" element="tns:GetBirdUserMsisdnRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetUserGainReturnReportResponse">
+    <wsdl:part name="GetUserGainReturnReportResponse" element="tns:GetUserGainReturnReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBirdUserMsisdnResponse">
+    <wsdl:part name="GetBirdUserMsisdnResponse" element="tns:GetBirdUserMsisdnResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCoinTransactionDetailResponse">
+    <wsdl:part name="GetCoinTransactionDetailResponse" element="tns:GetCoinTransactionDetailResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetWalletChargeReportRequest">
+    <wsdl:part name="GetWalletChargeReportRequest" element="tns:GetWalletChargeReportRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetCoinUsageReportRequest">
+    <wsdl:part name="GetCoinUsageReportRequest" element="tns:GetCoinUsageReportRequest" />
+  </wsdl:message>
+  <wsdl:message name="BatchNotifyCheckoutRequest">
+    <wsdl:part name="BatchNotifyCheckoutRequest" element="tns:BatchNotifyCheckoutRequest" />
+  </wsdl:message>
+  <wsdl:message name="CompleteReturnTransactionRequest">
+    <wsdl:part name="CompleteReturnTransactionRequest" element="tns:CompleteReturnTransactionRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetCoinUsageReportResponse">
+    <wsdl:part name="GetCoinUsageReportResponse" element="tns:GetCoinUsageReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="StartCoinTransactionRequest">
+    <wsdl:part name="StartCoinTransactionRequest" element="tns:StartCoinTransactionRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetProvisionsForOkcPosResponse">
+    <wsdl:part name="GetProvisionsForOkcPosResponse" element="tns:GetProvisionsForOkcPosResponse" />
+  </wsdl:message>
+  <wsdl:message name="WalletChargeResponse">
+    <wsdl:part name="WalletChargeResponse" element="tns:WalletChargeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPaymentReportResponse">
+    <wsdl:part name="GetPaymentReportResponse" element="tns:GetPaymentReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBirdUserAgreementInfoRequest">
+    <wsdl:part name="GetBirdUserAgreementInfoRequest" element="tns:GetBirdUserAgreementInfoRequest" />
+  </wsdl:message>
+  <wsdl:message name="RefundWalletRequest">
+    <wsdl:part name="RefundWalletRequest" element="tns:RefundWalletRequest" />
+  </wsdl:message>
+  <wsdl:message name="StartReturnTransactionResponse">
+    <wsdl:part name="StartReturnTransactionResponse" element="tns:StartReturnTransactionResponse" />
+  </wsdl:message>
+  <wsdl:message name="StartCoinTransactionResponse">
+    <wsdl:part name="StartCoinTransactionResponse" element="tns:StartCoinTransactionResponse" />
+  </wsdl:message>
+  <wsdl:message name="BatchNotifyCheckoutResponse">
+    <wsdl:part name="BatchNotifyCheckoutResponse" element="tns:BatchNotifyCheckoutResponse" />
+  </wsdl:message>
+  <wsdl:message name="CancelCoinTransactionRequest">
+    <wsdl:part name="CancelCoinTransactionRequest" element="tns:CancelCoinTransactionRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetUserGainReportResponse">
+    <wsdl:part name="GetUserGainReportResponse" element="tns:GetUserGainReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="BulkNotifyCheckoutRequest">
+    <wsdl:part name="BulkNotifyCheckoutRequest" element="tns:BulkNotifyCheckoutRequest" />
+  </wsdl:message>
+  <wsdl:portType name="PosPort">
+    <wsdl:operation name="GetBirdUserInfo">
+      <wsdl:input name="GetBirdUserInfoRequest" message="tns:GetBirdUserInfoRequest" />
+      <wsdl:output name="GetBirdUserInfoResponse" message="tns:GetBirdUserInfoResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRefundReport">
+      <wsdl:input name="GetRefundReportRequest" message="tns:GetRefundReportRequest" />
+      <wsdl:output name="GetRefundReportResponse" message="tns:GetRefundReportResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWalletChargesForOkcPos">
+      <wsdl:input name="GetWalletChargesForOkcPosRequest" message="tns:GetWalletChargesForOkcPosRequest" />
+      <wsdl:output name="GetWalletChargesForOkcPosResponse" message="tns:GetWalletChargesForOkcPosResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCoinUseReport">
+      <wsdl:input name="GetCoinUseReportRequest" message="tns:GetCoinUseReportRequest" />
+      <wsdl:output name="GetCoinUseReportResponse" message="tns:GetCoinUseReportResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPaymentReport">
+      <wsdl:input name="GetPaymentReportRequest" message="tns:GetPaymentReportRequest" />
+      <wsdl:output name="GetPaymentReportResponse" message="tns:GetPaymentReportResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWalletBalance">
+      <wsdl:input name="GetWalletBalanceRequest" message="tns:GetWalletBalanceRequest" />
+      <wsdl:output name="GetWalletBalanceResponse" message="tns:GetWalletBalanceResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCoinTransactionDetail">
+      <wsdl:input name="GetCoinTransactionDetailRequest" message="tns:GetCoinTransactionDetailRequest" />
+      <wsdl:output name="GetCoinTransactionDetailResponse" message="tns:GetCoinTransactionDetailResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRefundCoinUseReport">
+      <wsdl:input name="GetRefundCoinUseReportRequest" message="tns:GetRefundCoinUseReportRequest" />
+      <wsdl:output name="GetRefundCoinUseReportResponse" message="tns:GetRefundCoinUseReportResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="PromotionCodeCheckout">
+      <wsdl:input name="PromotionCodeCheckoutRequest" message="tns:PromotionCodeCheckoutRequest" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserGainReport">
+      <wsdl:input name="GetUserGainReportRequest" message="tns:GetUserGainReportRequest" />
+      <wsdl:output name="GetUserGainReportResponse" message="tns:GetUserGainReportResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetProvisionsForOkcPos">
+      <wsdl:input name="GetProvisionsForOkcPosRequest" message="tns:GetProvisionsForOkcPosRequest" />
+      <wsdl:output name="GetProvisionsForOkcPosResponse" message="tns:GetProvisionsForOkcPosResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserUsableCoinInfo">
+      <wsdl:input name="GetUserUsableCoinInfoRequest" message="tns:GetUserUsableCoinInfoRequest" />
+      <wsdl:output name="GetUserUsableCoinInfoResponse" message="tns:GetUserUsableCoinInfoResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBirdUserAgreementInfo">
+      <wsdl:input name="GetBirdUserAgreementInfoRequest" message="tns:GetBirdUserAgreementInfoRequest" />
+      <wsdl:output name="GetBirdUserAgreementInfoResponse" message="tns:GetBirdUserAgreementInfoResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelReturnTransaction">
+      <wsdl:input name="CancelReturnTransactionRequest" message="tns:CancelReturnTransactionRequest" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRefundWalletChargeReport">
+      <wsdl:input name="GetRefundWalletChargeReportRequest" message="tns:GetRefundWalletChargeReportRequest" />
+      <wsdl:output name="GetRefundWalletChargeReportResponse" message="tns:GetRefundWalletChargeReportResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWalletChargeReport">
+      <wsdl:input name="GetWalletChargeReportRequest" message="tns:GetWalletChargeReportRequest" />
+      <wsdl:output name="GetWalletChargeReportResponse" message="tns:GetWalletChargeReportResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="WalletCharge">
+      <wsdl:input name="WalletChargeRequest" message="tns:WalletChargeRequest" />
+      <wsdl:output name="WalletChargeResponse" message="tns:WalletChargeResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="CompleteCoinTransaction">
+      <wsdl:input name="CompleteCoinTransactionRequest" message="tns:CompleteCoinTransactionRequest" />
+    </wsdl:operation>
+    <wsdl:operation name="StartReturnTransaction">
+      <wsdl:input name="StartReturnTransactionRequest" message="tns:StartReturnTransactionRequest" />
+      <wsdl:output name="StartReturnTransactionResponse" message="tns:StartReturnTransactionResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserGainReturnReport">
+      <wsdl:input name="GetUserGainReturnReportRequest" message="tns:GetUserGainReturnReportRequest" />
+      <wsdl:output name="GetUserGainReturnReportResponse" message="tns:GetUserGainReturnReportResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="NotifyCheckout">
+      <wsdl:input name="NotifyCheckoutRequest" message="tns:NotifyCheckoutRequest" />
+    </wsdl:operation>
+    <wsdl:operation name="RefundCoin">
+      <wsdl:input name="RefundCoinRequest" message="tns:RefundCoinRequest" />
+    </wsdl:operation>
+    <wsdl:operation name="NotifyUserActivity">
+      <wsdl:input name="NotifyUserActivityRequest" message="tns:NotifyUserActivityRequest" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBirdUserMsisdn">
+      <wsdl:input name="GetBirdUserMsisdnRequest" message="tns:GetBirdUserMsisdnRequest" />
+      <wsdl:output name="GetBirdUserMsisdnResponse" message="tns:GetBirdUserMsisdnResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCoinUsageReport">
+      <wsdl:input name="GetCoinUsageReportRequest" message="tns:GetCoinUsageReportRequest" />
+      <wsdl:output name="GetCoinUsageReportResponse" message="tns:GetCoinUsageReportResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="BatchNotifyCheckout">
+      <wsdl:input name="BatchNotifyCheckoutRequest" message="tns:BatchNotifyCheckoutRequest" />
+      <wsdl:output name="BatchNotifyCheckoutResponse" message="tns:BatchNotifyCheckoutResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="CompleteReturnTransaction">
+      <wsdl:input name="CompleteReturnTransactionRequest" message="tns:CompleteReturnTransactionRequest" />
+    </wsdl:operation>
+    <wsdl:operation name="StartCoinTransaction">
+      <wsdl:input name="StartCoinTransactionRequest" message="tns:StartCoinTransactionRequest" />
+      <wsdl:output name="StartCoinTransactionResponse" message="tns:StartCoinTransactionResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="RefundWallet">
+      <wsdl:input name="RefundWalletRequest" message="tns:RefundWalletRequest" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelCoinTransaction">
+      <wsdl:input name="CancelCoinTransactionRequest" message="tns:CancelCoinTransactionRequest" />
+    </wsdl:operation>
+    <wsdl:operation name="BulkNotifyCheckout">
+      <wsdl:input name="BulkNotifyCheckoutRequest" message="tns:BulkNotifyCheckoutRequest" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PosPortSoap11" type="tns:PosPort">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetBirdUserInfo">
+      <soap:operation soapAction="" />
+      <wsdl:input name="GetBirdUserInfoRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetBirdUserInfoResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRefundReport">
+      <soap:operation soapAction="" />
+      <wsdl:input name="GetRefundReportRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetRefundReportResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWalletChargesForOkcPos">
+      <soap:operation soapAction="" />
+      <wsdl:input name="GetWalletChargesForOkcPosRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetWalletChargesForOkcPosResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCoinUseReport">
+      <soap:operation soapAction="" />
+      <wsdl:input name="GetCoinUseReportRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetCoinUseReportResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPaymentReport">
+      <soap:operation soapAction="" />
+      <wsdl:input name="GetPaymentReportRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetPaymentReportResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWalletBalance">
+      <soap:operation soapAction="" />
+      <wsdl:input name="GetWalletBalanceRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetWalletBalanceResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCoinTransactionDetail">
+      <soap:operation soapAction="" />
+      <wsdl:input name="GetCoinTransactionDetailRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetCoinTransactionDetailResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRefundCoinUseReport">
+      <soap:operation soapAction="" />
+      <wsdl:input name="GetRefundCoinUseReportRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetRefundCoinUseReportResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PromotionCodeCheckout">
+      <soap:operation soapAction="" />
+      <wsdl:input name="PromotionCodeCheckoutRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserGainReport">
+      <soap:operation soapAction="" />
+      <wsdl:input name="GetUserGainReportRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetUserGainReportResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetProvisionsForOkcPos">
+      <soap:operation soapAction="" />
+      <wsdl:input name="GetProvisionsForOkcPosRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetProvisionsForOkcPosResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserUsableCoinInfo">
+      <soap:operation soapAction="" />
+      <wsdl:input name="GetUserUsableCoinInfoRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetUserUsableCoinInfoResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBirdUserAgreementInfo">
+      <soap:operation soapAction="" />
+      <wsdl:input name="GetBirdUserAgreementInfoRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetBirdUserAgreementInfoResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelReturnTransaction">
+      <soap:operation soapAction="" />
+      <wsdl:input name="CancelReturnTransactionRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="GetRefundWalletChargeReport">
+      <soap:operation soapAction="" />
+      <wsdl:input name="GetRefundWalletChargeReportRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetRefundWalletChargeReportResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWalletChargeReport">
+      <soap:operation soapAction="" />
+      <wsdl:input name="GetWalletChargeReportRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetWalletChargeReportResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="WalletCharge">
+      <soap:operation soapAction="" />
+      <wsdl:input name="WalletChargeRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="WalletChargeResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CompleteCoinTransaction">
+      <soap:operation soapAction="" />
+      <wsdl:input name="CompleteCoinTransactionRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="StartReturnTransaction">
+      <soap:operation soapAction="" />
+      <wsdl:input name="StartReturnTransactionRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="StartReturnTransactionResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserGainReturnReport">
+      <soap:operation soapAction="" />
+      <wsdl:input name="GetUserGainReturnReportRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetUserGainReturnReportResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NotifyCheckout">
+      <soap:operation soapAction="" />
+      <wsdl:input name="NotifyCheckoutRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="RefundCoin">
+      <soap:operation soapAction="" />
+      <wsdl:input name="RefundCoinRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="NotifyUserActivity">
+      <soap:operation soapAction="" />
+      <wsdl:input name="NotifyUserActivityRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="GetBirdUserMsisdn">
+      <soap:operation soapAction="" />
+      <wsdl:input name="GetBirdUserMsisdnRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetBirdUserMsisdnResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCoinUsageReport">
+      <soap:operation soapAction="" />
+      <wsdl:input name="GetCoinUsageReportRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetCoinUsageReportResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BatchNotifyCheckout">
+      <soap:operation soapAction="" />
+      <wsdl:input name="BatchNotifyCheckoutRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="BatchNotifyCheckoutResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CompleteReturnTransaction">
+      <soap:operation soapAction="" />
+      <wsdl:input name="CompleteReturnTransactionRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="StartCoinTransaction">
+      <soap:operation soapAction="" />
+      <wsdl:input name="StartCoinTransactionRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="StartCoinTransactionResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RefundWallet">
+      <soap:operation soapAction="" />
+      <wsdl:input name="RefundWalletRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="CancelCoinTransaction">
+      <soap:operation soapAction="" />
+      <wsdl:input name="CancelCoinTransactionRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="BulkNotifyCheckout">
+      <soap:operation soapAction="" />
+      <wsdl:input name="BulkNotifyCheckoutRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PosPortService">
+    <wsdl:port name="PosPortSoap11" binding="tns:PosPortSoap11">
+      <soap:address location="https://bird.staging.kartaca.com:443/pos/soap/pos" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

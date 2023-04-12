@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/NetahsilatGold.PaymentWebService.Models" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/NetahsilatGold.PaymentWebService.Models" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://rentgo.netahsilatdemo.com/PaymentWebService/VendorWebService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="https://rentgo.netahsilatdemo.com/PaymentWebService/VendorWebService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/NetahsilatGold.Domain.Model.IntegrationModels" />
+  <xs:complexType name="AuthenticationInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AuthenticationInfo" nillable="true" type="tns:AuthenticationInfo" />
+  <xs:complexType name="VendorData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddDefaultCurrentAccount" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CanCancelPayment" type="xs:boolean" />
+      <xs:element minOccurs="0" name="CanCreateCustomer" type="xs:boolean" />
+      <xs:element minOccurs="0" name="CanCreateVendor" type="xs:boolean" />
+      <xs:element minOccurs="0" name="CityCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CompanyName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CurrencyTypeId" type="xs:int" />
+      <xs:element minOccurs="0" name="CurrentAccountGroupCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ErpCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ParentCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ParentUserEmail" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PaymentSetId" type="xs:int" />
+      <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TaxNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TaxOffice" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="VendorData" nillable="true" type="tns:VendorData" />
+  <xs:complexType name="UserData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Mobile" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SendMail" type="xs:boolean" />
+      <xs:element minOccurs="0" name="TCKN" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserData" nillable="true" type="tns:UserData" />
+  <xs:complexType name="CreateVendorResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="UserId" type="xs:int" />
+          <xs:element minOccurs="0" name="VendorCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="VendorId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CreateVendorResult" nillable="true" type="tns:CreateVendorResult" />
+  <xs:complexType name="ResultBase">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ErrorCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsSuccess" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ResultBase" nillable="true" type="tns:ResultBase" />
+  <xs:complexType name="CreateVendorUserResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="UserId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CreateVendorUserResult" nillable="true" type="tns:CreateVendorUserResult" />
+  <xs:complexType name="CustomerData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddDefaultCurrentAccount" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CityCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CompanyName" nillable="true" type="xs:string" />
+      <xs:element name="CurrencyTypeId" type="xs:int" />
+      <xs:element minOccurs="0" name="CurrentAccountGroupCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ErpCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Mobile" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ParentCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ParentUserEmail" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element name="PaymentSetId" type="xs:int" />
+      <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SendMail" type="xs:boolean" />
+      <xs:element minOccurs="0" name="TCKN" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TaxNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TaxOffice" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CustomerData" nillable="true" type="tns:CustomerData" />
+  <xs:complexType name="CreateCustomerResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CustomerCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CustomerId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CreateCustomerResult" nillable="true" type="tns:CreateCustomerResult" />
+  <xs:complexType name="UpdateResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="UpdateResult" nillable="true" type="tns:UpdateResult" />
+  <xs:complexType name="CurrentAccountData">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="CurrencyCodes" nillable="true" type="q1:ArrayOfint" />
+      <xs:element minOccurs="0" name="CurrentAccountTypeId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ErpCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsUsableBySubVendor" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsVisibleOnPaymentWithPaymentItemSection" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsVisibleOnSimplePaymentSection" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PaymentSetDefinitionId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="VendorErpCode" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CurrentAccountData" nillable="true" type="tns:CurrentAccountData" />
+  <xs:complexType name="CreateCurrentAccountResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="CreateCurrentAccountResult" nillable="true" type="tns:CreateCurrentAccountResult" />
+  <xs:complexType name="AgentResultPayment">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/NetahsilatGold.Domain.Model.IntegrationModels" minOccurs="0" name="Agent" nillable="true" type="q2:Agent" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AgentResultPayment" nillable="true" type="tns:AgentResultPayment" />
+  <xs:complexType name="VendorPaymentServiceModelListResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ResultBase">
+        <xs:sequence>
+          <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/NetahsilatGold.Domain.Model.IntegrationModels" minOccurs="0" name="Payments" nillable="true" type="q3:ArrayOfPaymentServiceModel" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="VendorPaymentServiceModelListResult" nillable="true" type="tns:VendorPaymentServiceModelListResult" />
+</xs:schema>

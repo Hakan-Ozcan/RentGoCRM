@@ -1,0 +1,406 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A5660062-CBE5-4A3D-AA32-C68DB8D332E9}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RntCar.BusinessLibrary</RootNamespace>
+    <AssemblyName>RntCar.BusinessLibrary</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>BusinessLibraryKey.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Crm.Sdk.Proxy, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CrmSdk.CoreAssemblies.9.0.2.42\lib\net462\Microsoft.Crm.Sdk.Proxy.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.6.1.7600.16394\lib\net35\Microsoft.IdentityModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=3.19.8.16603, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.3.19.8\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.Platform, Version=3.19.8.16603, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.3.19.8\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CrmSdk.XrmTooling.CoreAssembly.9.1.0.92\lib\net462\Microsoft.Rest.ClientRuntime.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xrm.Sdk, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CrmSdk.CoreAssemblies.9.0.2.42\lib\net462\Microsoft.Xrm.Sdk.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xrm.Sdk.Deployment, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CrmSdk.Deployment.9.0.2.25\lib\net462\Microsoft.Xrm.Sdk.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xrm.Sdk.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CrmSdk.Workflow.9.0.2.42\lib\net462\Microsoft.Xrm.Sdk.Workflow.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xrm.Tooling.Connector, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CrmSdk.XrmTooling.CoreAssembly.9.1.0.92\lib\net462\Microsoft.Xrm.Tooling.Connector.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Bson">
+      <HintPath>..\packages\MongoDB.Bson.2.9.2\lib\net452\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationFramework" />
+    <Reference Include="RestSharp">
+      <HintPath>..\Assemblies\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Activities" />
+    <Reference Include="System.Activities.Presentation" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Text.Encodings.Web, Version=5.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.5.0.1\lib\net461\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=5.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.5.0.2\lib\net461\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Workflow.Activities" />
+    <Reference Include="System.Workflow.ComponentModel" />
+    <Reference Include="System.Workflow.Runtime" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Business\AdditionalDriversBL.cs" />
+    <Compile Include="Business\AdditionalProductKilometerLimitActionBL.cs" />
+    <Compile Include="Business\AdditionalProductsBL.cs" />
+    <Compile Include="Business\AnnotationBL.cs" />
+    <Compile Include="Business\AutoNumberBL.cs" />
+    <Compile Include="Business\AvailabilityFactorsBL.cs" />
+    <Compile Include="Business\AvailabilityPriceListBL.cs" />
+    <Compile Include="Business\AvailibilityBL.cs" />
+    <Compile Include="Business\AzureBlobStorageBL.cs" />
+    <Compile Include="Business\BannerBL.cs" />
+    <Compile Include="Business\BlackListBL.cs" />
+    <Compile Include="Business\BonusCalculationBL.cs" />
+    <Compile Include="Business\BonusCalculationLogBL.cs" />
+    <Compile Include="Business\BonusTransactionBL.cs" />
+    <Compile Include="Business\BranchBL.cs" />
+    <Compile Include="Business\BusinessClosureBL.cs" />
+    <Compile Include="Business\CampaignBL.cs" />
+    <Compile Include="Business\CampaignDetailBL.cs" />
+    <Compile Include="Business\CityBL.cs" />
+    <Compile Include="Business\CMSAdditionalProductBL.cs" />
+    <Compile Include="Business\ConfigurationBL.cs" />
+    <Compile Include="Business\ConnectionBL.cs" />
+    <Compile Include="Business\ContractBL.cs" />
+    <Compile Include="Business\ContractItemBL.cs" />
+    <Compile Include="Business\CorporateCustomerBL.cs" />
+    <Compile Include="Business\CountryBL.cs" />
+    <Compile Include="Business\CouponCodeBL.cs" />
+    <Compile Include="Business\CouponCodeDefinitionBL.cs" />
+    <Compile Include="Business\CreditCardBL.cs" />
+    <Compile Include="Business\CreditCardSlipBL.cs" />
+    <Compile Include="Business\DailyPricesBL.cs" />
+    <Compile Include="Business\DamageBL.cs" />
+    <Compile Include="Business\DamageDocumentBL.cs" />
+    <Compile Include="Business\DamagePriceBL.cs" />
+    <Compile Include="Business\DamageSizeBL.cs" />
+    <Compile Include="Business\DamageTypesBL.cs" />
+    <Compile Include="Business\DistrictBL.cs" />
+    <Compile Include="Business\DocumentInvoiceAddressBL.cs" />
+    <Compile Include="Business\EquipmentAvailabilityBL.cs" />
+    <Compile Include="Business\EquipmentBL.cs" />
+    <Compile Include="Business\EquipmentPartsBL.cs" />
+    <Compile Include="Business\EquipmentTransactionBL.cs" />
+    <Compile Include="Business\FindeksTransactionHistoryBL.cs" />
+    <Compile Include="Business\IntegrationControlBL.cs" />
+    <Compile Include="Business\KABISBL.cs" />
+    <Compile Include="Business\HGSFTPBL.cs" />
+    <Compile Include="Business\LoyaltyJobBL.cs" />
+    <Compile Include="Business\TranslationBL.cs" />
+    <Compile Include="Repository\FineRateRepository.cs" />
+    <Compile Include="Business\FuelPriceBL.cs" />
+    <Compile Include="Business\GroupCodeInformationBL.cs" />
+    <Compile Include="Business\GroupCodeListPriceBL.cs" />
+    <Compile Include="Business\GroupCodeMonthlyPriceListBL.cs" />
+    <Compile Include="Business\HGSBL.cs" />
+    <Compile Include="Business\HGSTransitListBL.cs" />
+    <Compile Include="Business\IndividualAddressBL.cs" />
+    <Compile Include="Business\IndividualCustomerBL.cs" />
+    <Compile Include="Business\InventoryBL.cs" />
+    <Compile Include="Business\InvoiceAddressBL.cs" />
+    <Compile Include="Business\InvoiceBL.cs" />
+    <Compile Include="Business\InvoiceItemBL.cs" />
+    <Compile Include="Business\KilometerLimitBL.cs" />
+    <Compile Include="Business\ManualPaymentBL.cs" />
+    <Compile Include="Business\MarkettingPermissionsBL.cs" />
+    <Compile Include="Business\MonthlyPriceListBL.cs" />
+    <Compile Include="Business\OneWayFeeBL.cs" />
+    <Compile Include="Business\PaymentBL.cs" />
+    <Compile Include="Business\PaymentPlanBL.cs" />
+    <Compile Include="Business\PegasusBL.cs" />
+    <Compile Include="Business\PluginTraceBL.cs" />
+    <Compile Include="Business\PriceCalculationBL.cs" />
+    <Compile Include="Business\PriceCalculationSummariesBL.cs" />
+    <Compile Include="Business\PriceFactorBL.cs" />
+    <Compile Include="Business\PriceHourEffectBL.cs" />
+    <Compile Include="Business\PriceListBL.cs" />
+    <Compile Include="Business\ReportBL.cs" />
+    <Compile Include="Business\ReservationItemBL.cs" />
+    <Compile Include="Business\ReservationBL.cs" />
+    <Compile Include="Business\ServiceUserBL.cs" />
+    <Compile Include="Business\ShowRoomProductBL.cs" />
+    <Compile Include="Business\SMSBL.cs" />
+    <Compile Include="Business\SMSContentBL.cs" />
+    <Compile Include="Business\SystemParameterBL.cs" />
+    <Compile Include="Business\TaxOfficeBL.cs" />
+    <Compile Include="Business\TrafficBL.cs" />
+    <Compile Include="Business\TransactionCurrencyBL.cs" />
+    <Compile Include="Business\TransferBL.cs" />
+    <Compile Include="Business\VirtualBranchBL.cs" />
+    <Compile Include="Business\WorkingHourBL.cs" />
+    <Compile Include="Connected Services\CitizenshipService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Handlers\BusinessHandler.cs" />
+    <Compile Include="Handlers\CrmWebAPIRepositoryHandler.cs" />
+    <Compile Include="Handlers\HandlerBase.cs" />
+    <Compile Include="Handlers\RepositoryHandler.cs" />
+    <Compile Include="Handlers\ValidationHandler.cs" />
+    <Compile Include="Helpers\AdditionalProductHelper.cs" />
+    <Compile Include="Helpers\AvailabilityHelper.cs" />
+    <Compile Include="Helpers\BranchHelper.cs" />
+    <Compile Include="Helpers\ContractHelper.cs" />
+    <Compile Include="Helpers\HelperHandler.cs" />
+    <Compile Include="Helpers\InvoiceHelper.cs" />
+    <Compile Include="Helpers\PaymentHelper.cs" />
+    <Compile Include="Models\IYS\EmailEvent.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\AdditionalDriverRepository.cs" />
+    <Compile Include="Repository\AdditionalProductKilometerLimitActionRepository.cs" />
+    <Compile Include="Repository\AdditionalProductPriceRepository.cs" />
+    <Compile Include="Repository\AdditionalProductRepository.cs" />
+    <Compile Include="Repository\AdditionalProductRuleRepository.cs" />
+    <Compile Include="Repository\AnnotationRepository.cs" />
+    <Compile Include="Repository\AutoNumberRepository.cs" />
+    <Compile Include="Repository\AvailabilityFactorsRepository.cs" />
+    <Compile Include="Repository\AvailabilityPriceListRepository.cs" />
+    <Compile Include="Repository\BannerRepository.cs" />
+    <Compile Include="Repository\BlackListRepository.cs" />
+    <Compile Include="Repository\BonusAdditionalProductRateRepository.cs" />
+    <Compile Include="Repository\BonusBusinessRoleRatesRepository.cs" />
+    <Compile Include="Repository\BonusCalculationLogRepository.cs" />
+    <Compile Include="Repository\BonusCalculationRepository.cs" />
+    <Compile Include="Repository\BonusSalesRateRepository.cs" />
+    <Compile Include="Repository\BranchRepository.cs" />
+    <Compile Include="Repository\BranchTargetRevenueRepository.cs" />
+    <Compile Include="Repository\CampaignDetailRepository.cs" />
+    <Compile Include="Repository\CampaignGroupCodePricesRepository.cs" />
+    <Compile Include="Repository\CampaignRepository.cs" />
+    <Compile Include="Repository\CityRepository.cs" />
+    <Compile Include="Repository\CMSAdditionalProductRepository.cs" />
+    <Compile Include="Repository\ConfigurationRepository.cs" />
+    <Compile Include="Repository\ContractInvoiceDateRepository.cs" />
+    <Compile Include="Repository\ContractItemRepository.cs" />
+    <Compile Include="Repository\ContractRepository.cs" />
+    <Compile Include="Repository\CorporateCustomerRepository.cs" />
+    <Compile Include="Repository\ConnectionRepository.cs" />
+    <Compile Include="Repository\CountryRepository.cs" />
+    <Compile Include="Repository\CouponCodeDefinitionRepository.cs" />
+    <Compile Include="Repository\CreditCardRepository.cs" />
+    <Compile Include="Repository\CreditCardSlipRepository.cs" />
+    <Compile Include="Repository\CurrencyRepository.cs" />
+    <Compile Include="Repository\DamageDocumentRepository.cs" />
+    <Compile Include="Repository\DamagePriceRepository.cs" />
+    <Compile Include="Repository\DamageRepository.cs" />
+    <Compile Include="Repository\DamageSizeRepository.cs" />
+    <Compile Include="Repository\DamageTypeRepository.cs" />
+    <Compile Include="Repository\DistrictRepository.cs" />
+    <Compile Include="Business\EquipmentInventoryBL.cs" />
+    <Compile Include="Repository\EquipmentInventoryPriceRepository.cs" />
+    <Compile Include="Repository\EquipmentInventoryRepository.cs" />
+    <Compile Include="Repository\EquipmentPartRepository.cs" />
+    <Compile Include="Repository\EquipmentRepository.cs" />
+    <Compile Include="Repository\EquipmentTransactionHistoryRepository.cs" />
+    <Compile Include="Repository\FactorDatesRepository.cs" />
+    <Compile Include="Repository\FuelPriceRepository.cs" />
+    <Compile Include="Repository\GroupCodeInformationRepository.cs" />
+    <Compile Include="Repository\GroupCodeListRepository.cs" />
+    <Compile Include="Repository\HGSDifferenceRepository.cs" />
+    <Compile Include="Repository\HGSTransitListRepository.cs" />
+    <Compile Include="Repository\IndividualAddressRepository.cs" />
+    <Compile Include="Repository\InventoryRepository.cs" />
+    <Compile Include="Repository\InvoiceAddressRepository.cs" />
+    <Compile Include="Repository\InvoiceItemRepository.cs" />
+    <Compile Include="Repository\InvoiceRepository.cs" />
+    <Compile Include="Repository\KilometerLimitRepository.cs" />
+    <Compile Include="Repository\LogoBankCodeMappingRepository.cs" />
+    <Compile Include="Repository\ManuelDiscountRateRepository.cs" />
+    <Compile Include="Repository\MarkettingPermissionsRepository.cs" />
+    <Compile Include="Repository\MongoDBUpdateRecordsRepository.cs" />
+    <Compile Include="Repository\MultiSelectMappingRepository.cs" />
+    <Compile Include="Repository\OneWayFeeRepository.cs" />
+    <Compile Include="Repository\PaymentPlanRepository.cs" />
+    <Compile Include="Repository\PaymentRepository.cs" />
+    <Compile Include="Repository\PluginTraceRepository.cs" />
+    <Compile Include="Repository\PriceFactorRepository.cs" />
+    <Compile Include="Repository\PriceHourEffectRepository.cs" />
+    <Compile Include="Repository\PriceListRepository.cs" />
+    <Compile Include="Repository\ProductRepository.cs" />
+    <Compile Include="Repository\ReservationItemRepository.cs" />
+    <Compile Include="Repository\LoyaltyJobRepository.cs" />
+    <Compile Include="Repository\ReservationRepository.cs" />
+    <Compile Include="Repository\ServiceUserRepository.cs" />
+    <Compile Include="Repository\ShowRoomProductRepository.cs" />
+    <Compile Include="Repository\SMSContentRepository.cs" />
+    <Compile Include="Repository\SystemParameterRepository.cs" />
+    <Compile Include="Repository\SystemUserRepository.cs" />
+    <Compile Include="Repository\TaxOfficeRepository.cs" />
+    <Compile Include="Repository\TrafficFineRepository.cs" />
+    <Compile Include="Repository\TransactionCurrencyRepository.cs" />
+    <Compile Include="Repository\TransferRepository.cs" />
+    <Compile Include="Repository\TranslationRepository.cs" />
+    <Compile Include="Repository\WebAPI\IndividiualCustomerWebAPIRepository.cs" />
+    <Compile Include="Repository\IndividualCustomerRepository.cs" />
+    <Compile Include="Repository\WorkingHourRepository.cs" />
+    <Compile Include="Validations\AdditionalProductValidation.cs" />
+    <Compile Include="Validations\AvailabilityValidation.cs" />
+    <Compile Include="Validations\ContractCancellationValidation.cs" />
+    <Compile Include="Validations\ContractUpdateValidation.cs" />
+    <Compile Include="Validations\CorporateCustomerValidation.cs" />
+    <Compile Include="Validations\CouponCodeDefinitionValidations.cs" />
+    <Compile Include="Validations\CreditCardValidation.cs" />
+    <Compile Include="Validations\IndividualCustomerDefaultAddressValidation.cs" />
+    <Compile Include="Validations\IndividualCustomerValidation.cs" />
+    <Compile Include="Validations\InvoiceCreationValidation.cs" />
+    <Compile Include="Validations\ManualPaymentValidations.cs" />
+    <Compile Include="Validations\PaymentValidations.cs" />
+    <Compile Include="Validations\ContractCreationValidation.cs" />
+    <Compile Include="Validations\ReservationCancellationValidation.cs" />
+    <Compile Include="Validations\ReservationCreationValidation.cs" />
+    <Compile Include="Validations\ReservationUpdateValidation.cs" />
+    <Compile Include="Validations\TransferCreationValidation.cs" />
+    <Compile Include="Validations\WorkingHourValidation.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RntCar.ClassLibrary\RntCar.ClassLibrary.csproj">
+      <Project>{26E45602-87F8-4CF4-A83C-967D988C9D1F}</Project>
+      <Name>RntCar.ClassLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RntCar.MongoDBHelper\RntCar.MongoDBHelper.csproj">
+      <Project>{9881c6d3-7478-41da-a63f-0ce4304e8e92}</Project>
+      <Name>RntCar.MongoDBHelper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RntCar.PaymentHelper\RntCar.PaymentHelper.csproj">
+      <Project>{4c0d3b9f-46e0-4ea4-bbab-f08057d0088b}</Project>
+      <Name>RntCar.PaymentHelper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RntCar.SDK\RntCar.SDK.csproj">
+      <Project>{77bb0d97-6487-4202-821f-0dc2d08c9053}</Project>
+      <Name>RntCar.SDK</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="BusinessLibraryKey.snk" />
+    <None Include="Connected Services\CitizenshipService\kpspublic.wsdl" />
+    <None Include="Connected Services\CitizenshipService\RntCar.BusinessLibrary.CitizenshipService.TCKimlikNoDogrulaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\CitizenshipService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\CitizenshipService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\CitizenshipService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\CitizenshipService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

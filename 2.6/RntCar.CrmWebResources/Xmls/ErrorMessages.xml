@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Error>
+  <LangId id="1055">
+    <EntityNull>Boş Entity.</EntityNull>
+    <RecordsNotFound>Data bulunamadı.</RecordsNotFound>
+    <ActiveRecordsNotFound>Aktif data bulunamadı.</ActiveRecordsNotFound>
+    <NullCustomerOrMessageForSMS>Müşteri veya mesaj sistemde bulunamadı.</NullCustomerOrMessageForSMS>
+    <InvalidTCKNNumber>TC Kimlik Numarası Geçersiz</InvalidTCKNNumber>
+    <MinTCKNNumber>TC Kimlik Numarası en az 11 hane olmalıdır.</MinTCKNNumber>
+    <LicenseDateValidation>Ehliyet Tarihi bugünden büyük olamaz.</LicenseDateValidation>
+    <BirthDateValidation>Müşteri 18 yaşından büyük olmalıdır</BirthDateValidation>
+    <AlienContactBirthDateValidation>Yabancı uyruklu müşteriler en az 16 yaşında olmalıdır.</AlienContactBirthDateValidation>
+    <ContactBirthDateValidation>Ehliyet yılını kontrol ediniz. Ehliyet alınma tarihi 18 yaşından küçük olamaz</ContactBirthDateValidation>
+    <IndividualCustomerBirthDateValidation>Müşteri 17 yaşından büyük olmalıdır</IndividualCustomerBirthDateValidation>
+    <EmailValidation>Email adresi geçersiz</EmailValidation>
+    <MobilePhoneValidation>Geçersiz telefon numarası.</MobilePhoneValidation>
+    <IndividualCustomerCreateInputCheck>Müşteri bilgileri eksiktir.</IndividualCustomerCreateInputCheck>
+    <IndividualCustomerMandatoryFields>Lütfen form üzerindeki zorunlu alanları doldurunuz.</IndividualCustomerMandatoryFields>
+    <NullIndividualCustomerDetail>Müşteriye ait bilgi bulunamadı.</NullIndividualCustomerDetail>
+    <IndividualCustomerDefaultAddressCheck>Her müşteri için bir adet varsayılan adres seçebilirsiniz.</IndividualCustomerDefaultAddressCheck>
+    <NullPickupBranchBranch>Lütfen bir alış yeri seçiniz.</NullPickupBranchBranch>
+    <NullDropoffBranchBranch>Lütfen bir bırakış yeri seçiniz.</NullDropoffBranchBranch>
+    <NullDistrict>İlçe boş bırakılamaz.</NullDistrict>
+    <InvalidPickupDateTime>Alış tarihi bugünün tarihinden küçük olamaz.</InvalidPickupDateTime>
+    <InvalidDropoffDateTime>Bırakış tarihi alış tarihinden küçük olamaz.</InvalidDropoffDateTime>
+    <InvalidPickupBranchWorkingHour>Alış şubesi seçilen tarih ve saat dilimi içerisinde çalışmamaktadır.</InvalidPickupBranchWorkingHour>
+    <InvalidDropoffBranchWorkingHour>Bırakış şubesi seçilen tarih ve saat dilimi saat içerisinde çalışmamaktadır.</InvalidDropoffBranchWorkingHour>
+    <NullWorkingHours>Seçilen şube ve tarihe ait bir çalışma saati bulunamadı.</NullWorkingHours>
+    <InvalidPassportIssueDate>Pasaport düzenlenme tarihi bugünün tarihinden büyük olamaz.</InvalidPassportIssueDate>
+    <ErrorGetAdditionalProductForUpdate>Ek hizmetler alınırken hata ile karşılaşıldı.</ErrorGetAdditionalProductForUpdate>
+    <NotFoundGetAdditionalProductForUpdate>Rezervasyona ait ek hizmet bulunamadı.</NotFoundGetAdditionalProductForUpdate>
+    <InvalidTaxNumber>Girilen vergi kimlik numarası geçersiz.</InvalidTaxNumber>
+    <DuplicateAccount>Sistemde aynı firma tipi ve vergi numarasına ait müşteri bulunmaktadır.</DuplicateAccount>
+    <NullPnrorReservationNumber>PNR ve rezervasyon numarası boş olamaz.</NullPnrorReservationNumber>
+    <NotExistedPnr>Girdiğiniz PNR'a ait bir rezervasyon bulunamadı.</NotExistedPnr>
+    <AlreadyInactiveReservation>Iptal edilmiş bir rezervasyon , tekrar iptal edilemez</AlreadyInactiveReservation>
+    <CannotDeactivateReservation>Rezervasyon başlangıç tarihinden en az @number saat önce iptal edilebilir</CannotDeactivateReservation>
+    <CannotFindFirstDayPrice>Ilk gün fiyatı bulunamadı</CannotFindFirstDayPrice>
+    <MinimumReservationDuration>İlgili tarihlere rezervasyon yapabilmek için minimum @reservationday gün olmalıdır</MinimumReservationDuration>
+    <MinimumReservationDefinitionUndefined>Minimum rezervasyon gün tanımı bulunamadı.</MinimumReservationDefinitionUndefined>
+    <SelectedGroupCodeClosure>Seçilen araç bu tarihler arasında kiralamaya kapatılmıştır.</SelectedGroupCodeClosure>
+    <ExistPriceListBetweenDates>Bu fiyat listesi türünde girdiğiniz tarihler arasında {0} adında başka bir fiyat listesi var.</ExistPriceListBetweenDates>
+    <BeginDateDontBeGreaterThanEndDate>Başlangıç tarihi bitiş tarihinden büyük olamaz.</BeginDateDontBeGreaterThanEndDate>
+    <ExistAnotherRecord>Girdiğiniz değerlere uyan başka kayıt(lar) var. Girilen değerler {0} isimli kayıt ile çakışıyor.</ExistAnotherRecord>
+    <GroupCodeListValidation>Girdiğiniz değerler {0} isimli kayıt ile çalışıyor. Lütfen girdiğiniz değerleri kontrol ediniz.</GroupCodeListValidation>
+    <MinMaxDayValidation>Minimum gün,  maximum günden büyük olamaz.</MinMaxDayValidation>
+    <MinMaxAvailabilityValidation>Minimum kullanılabilirlik,  maximum kullanılabilirlikten büyük olamaz.</MinMaxAvailabilityValidation>
+    <AvailabilityPriceListValidation>Girdiğiniz değerler {0} isimli kayıt ile çalışıyor. Lütfen girdiğiniz değerleri kontrol ediniz.</AvailabilityPriceListValidation>
+    <BlackListValidation>Seçilen müşteri kara listeye alınmış.</BlackListValidation>
+    <DateandBranchNullCheck>Çıkış – Dönüş Şube ve Tarihler Boş Olamaz</DateandBranchNullCheck>
+    <AdditionalProductMaxPiecesValidation>Belirtilen maksimum miktardan fazla ek ürün eklenemez</AdditionalProductMaxPiecesValidation>
+    <MandatoryAdditionalProducts>Zorunlu ek ürün bilgisi eksik tekrar deneyiniz / Rentgo ile iletişime geçiniz.</MandatoryAdditionalProducts>
+    <AdditionalProductRules>Birbirini kapsayan ek ürünler aynı anda eklenemez</AdditionalProductRules>
+    <AdditionalProductMissingLogoId>Ek ürünlerin logo id'si boş olamaz lütfen rentgo ile iletişime geçin.</AdditionalProductMissingLogoId>
+    <MissingCustomerInfo>Müşteri bilgileri eksik</MissingCustomerInfo>
+    <ReservationUpdateStatus>Sadece durumu yeni olan rezervasyonlar güncellenebilir.</ReservationUpdateStatus>
+    <ContractUpdateStatus>Tamamlanmış, iptal edilmiş veya emniyet suistimal olan sözleşmeler güncellenemez</ContractUpdateStatus>
+    <InvoiceAddressNullCheck>Fatura adresi boş olamaz</InvoiceAddressNullCheck>
+    <OverrateDiscount>Belirlenen iskonto oranının üzerinde bir indirim yaptınız. En fazla {0}₺ tutarında indirim uygulayabilirsiniz.</OverrateDiscount>
+    <UnauthorizedDiscount>İndirim uygulama yetkiniz bulunmamaktadır.</UnauthorizedDiscount>
+    <AdditionalDriverDocumentContactValidation>Belgeye ait müşteriyi ek sürücü olarak ekleyemezsiniz.</AdditionalDriverDocumentContactValidation>
+    <FindeksPointValidation>Findeks puanı {0} dan büyük olamaz.</FindeksPointValidation>
+    <ExceedManualPaymentRefund>Sözleşmenin Toplam Tutarı ve Teminat Tutarından fazla iade yapılamaz. İptal edilmesi gereken sözleşme kalemi bulunuyorsa faturası oluşmuş ise Muhasebe ve operasyon ekipleriyle, Faturası oluşmamış ise operasyon ekibi ile iletişime geçiniz.İade edebileceğiniz makismum tutar : {0}</ExceedManualPaymentRefund>
+    <ManualPaymentError>Müşteriden ödeme alınamamıştır. Müşteriden işleme açık ve limiti yeterli bir kart talep ediniz. İlgili tutarları müşteriye borç olarak yansıtmak istiyorsanız borç kabulü işaretleyiniz. Bu durumda sistem müşterinin kartlarından bu tutarı bir süre otomatik olarak tahsil etmeye çalışacaktır.</ManualPaymentError>
+    <InvalidBrokerCode>Girdiğiniz koda ait broker müşteri kaydı bulunamadı.</InvalidBrokerCode>
+    <OverlappedTransferDate>Girdiğiniz tarih aralığında {0} numaralı bir transfer kaydı mevcuttur. Lütfen farklı bir tarih aralığı seçiniz.</OverlappedTransferDate>
+    <TansferPeriod>{0} araçlar sadece {1} katları olacak şekilde bakım transferine alınabilir.</TansferPeriod>
+    <DuplicateTansferKm>Girdiğiniz bakım kilometresine sahip {0} numaralı bir transfer kaydı mevcuttur.</DuplicateTansferKm>
+  </LangId>
+  <LangId id="1033">
+    <EntityNull>Entity is null.</EntityNull>
+    <RecordsNotFound>No records found.</RecordsNotFound>
+    <ActiveRecordsNotFound>No active records found.</ActiveRecordsNotFound>
+    <NullCustomerOrMessageForSMS>Customer/Message not found in Rental System.</NullCustomerOrMessageForSMS>
+    <MinMaxDayValidation>Minimum day can't be greater then maximum day.</MinMaxDayValidation>
+    <MinMaxAvailabilityValidation>Minimum availability can't be greater then maximum availability.</MinMaxAvailabilityValidation>
+    <AvailabilityPriceListValidation>The values ​​you entered overlap with the record named {0}. Please check the values ​​you entered.</AvailabilityPriceListValidation>
+    <GroupCodeListValidation>The values ​​you entered overlap with the record named {0}. Please check the values ​​you entered.</GroupCodeListValidation>
+    <ExistAnotherRecord>There is another record named {0} that match the value you entered.</ExistAnotherRecord>
+    <BeginDateDontBeGreaterThanEndDate>The start date of the price list cannot be greater than the end date</BeginDateDontBeGreaterThanEndDate>
+    <ExistPriceListBetweenDates>There is another price list named {0} between the dates you enter in this price list type.</ExistPriceListBetweenDates>
+    <InvalidTCKNNumber> Invalid GovernmentId</InvalidTCKNNumber>
+    <MinTCKNNumber>GovermentId should be 11 characters length</MinTCKNNumber>
+    <LicenseDateValidation>License Date can not be bigger than today</LicenseDateValidation>
+    <BirthDateValidation>Customer should be older than 18 years old</BirthDateValidation>
+    <IndividualCustomerBirthDateValidation>Customer should be older than 17 years old</IndividualCustomerBirthDateValidation>
+    <AlienContactBirthDateValidation>Customer should be least 16 years old.</AlienContactBirthDateValidation>
+    <ContactBirthDateValidation>Customer license date should be 18 years</ContactBirthDateValidation>
+    <EmailValidation>Invalid email address.</EmailValidation>
+    <MobilePhoneValidation>Invalid phone number.</MobilePhoneValidation>
+    <IndividualCustomerCreateInputCheck>Input can not be empty</IndividualCustomerCreateInputCheck>
+    <IndividualCustomerMandatoryFields>Please fill in the required fields on the form.</IndividualCustomerMandatoryFields>
+    <IndividualCustomerDefaultAddressCheck>You can select one default address for each customer.</IndividualCustomerDefaultAddressCheck>
+    <NullIndividualCustomerDetail>Customer information not found.</NullIndividualCustomerDetail>
+    <NullPickupBranchBranch>Please select a pickup branch</NullPickupBranchBranch>
+    <NullDropoffBranchBranch>Please select a dropoff branch</NullDropoffBranchBranch>
+    <InvalidPickupDateTime>Pickup date cannot be smaller than today.</InvalidPickupDateTime>
+    <InvalidDropoffDateTime>Dropoff date cannot be smaller than pickup date.</InvalidDropoffDateTime>
+    <InvalidPickupBranchWorkingHour>The pickup branch  does not work within the selected date and time zone hours.</InvalidPickupBranchWorkingHour>
+    <InvalidDropoffBranchWorkingHour>The dropoff branch  does not work within the selected date and time zone hours.</InvalidDropoffBranchWorkingHour>
+    <NullWorkingHours>Working hours for selected date and branch not found</NullWorkingHours>
+    <NullDistrict>District cannot be null.</NullDistrict>
+    <InvalidPassportIssueDate>Passport Issue Date cannot be greater than today.</InvalidPassportIssueDate>
+    <ErrorGetAdditionalProductForUpdate>Encountered error retrieving additional products.</ErrorGetAdditionalProductForUpdate>
+    <NotFoundGetAdditionalProductForUpdate>No additional products for the reservation were found.</NotFoundGetAdditionalProductForUpdate>
+    <InvalidTaxNumber>Invalid tax number.</InvalidTaxNumber>
+    <DuplicateAccount>Duplicate customer.</DuplicateAccount>
+    <NullPnrorReservationNumber>PNR and Reservation Number is mandatory</NullPnrorReservationNumber>
+    <NotExistedPnr>Reservation couldnt found by PNR number that your provided.</NotExistedPnr>
+    <UnavailableStatusReservation>You can only cancel reservation in New Status.</UnavailableStatusReservation>
+    <AlreadyInactiveReservation>You can not deactivate reservation in Inactive Status</AlreadyInactiveReservation>
+    <CannotDeactivateReservation>Reservation can be cancelled at least @number hours before</CannotDeactivateReservation>
+    <CannotFindFirstDayPrice>First day price couldnt be calculated</CannotFindFirstDayPrice>
+    <MinimumReservationDuration>Minimum reservation day at least @reservationday days.</MinimumReservationDuration>
+    <MinimumReservationDefinitionUndefined>Minimum reservation day definition could not found</MinimumReservationDefinitionUndefined>
+    <SelectedGroupCodeClosure>The selected vehicle has been closed to rent between these dates.</SelectedGroupCodeClosure>
+    <BlackListValidation>Selected customer is in the blaclist</BlackListValidation>
+    <DateandBranchNullCheck>Date and branch inputs cannot be null</DateandBranchNullCheck>
+    <AdditionalProductMaxPiecesValidation>No additional products can be added more than the specified maximum</AdditionalProductMaxPiecesValidation>
+    <MandatoryAdditionalProducts>Required additional product information is missing, please try again / Please contact RentGo.</MandatoryAdditionalProducts>
+    <AdditionalProductRules>Cannot add additional products at the same time with parent</AdditionalProductRules>
+    <AdditionalProductMissingLogoId>Missing logo id please contact with RentGo</AdditionalProductMissingLogoId>
+    <MissingCustomerInfo>Missing customer info</MissingCustomerInfo>
+    <ReservationUpdateStatus>Only new reservations can be updated</ReservationUpdateStatus>
+    <ContractUpdateStatus>Completed, cancelled and abused contracts cannot be updated</ContractUpdateStatus>
+    <InvoiceAddressNullCheck>Invoice address cannot be null</InvoiceAddressNullCheck>
+    <OverrateDiscount>You made a discount above the specified discount rate. You can apply a discount of up to ₺{0}.</OverrateDiscount>
+    <UnauthorizedDiscount>You are not authorized to apply discounts.</UnauthorizedDiscount>
+    <AdditionalDriverDocumentContactValidation>You cannot add the document's customer as an additional driver.</AdditionalDriverDocumentContactValidation>
+    <FindeksPointValidation>Findeks point cannot be grather than {0}</FindeksPointValidation>
+    <ExceedManualPaymentRefund>Sözleşmenin Toplam Tutarı ve Teminat Tutarından fazla iade yapılamaz. İptal edilmesi gereken sözleşme kalemi bulunuyorsa faturası oluşmuş ise Muhasebe ve operasyon ekipleriyle, Faturası oluşmamış ise operasyon ekibi ile iletişime geçiniz.</ExceedManualPaymentRefund>
+    <ManualPaymentError>Müşteriden ödeme alınamamıştır. Müşteriden işleme açık ve limiti yeterli bir kart talep ediniz. İlgili tutarları müşteriye borç olarak yansıtmak istiyorsanız borç kabulü işaretleyiniz. Bu durumda sistem müşterinin kartlarından bu tutarı bir süre otomatik olarak tahsil etmeye çalışacaktır.</ManualPaymentError>
+    <InvalidBrokerCode>There is no such a broker customer with the code you have entered.</InvalidBrokerCode>
+    <OverlappedTransferDate>There is a transfer record with number {0} in the date range you entered. Please enter a different date range.</OverlappedTransferDate>
+    <TansferPeriod>{0} vehicles can be transferred to maintenance transfer with multiples of {1} only.</TansferPeriod>
+    <DuplicateTansferKm>There is a transfer record {0} with the maintenance mileage you entered.</DuplicateTansferKm>
+  </LangId>
+</Error>

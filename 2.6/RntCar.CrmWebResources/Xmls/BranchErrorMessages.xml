@@ -1,0 +1,9 @@
+﻿﻿<?xml version="1.0" encoding="utf-8" ?>
+<Error>
+  <LangId id="1055">
+    <WorkingHourValidationWeekdaysCheck>Aktivasyona izin verilmez. Lütfen şubenin her güne ait çalışma saati olduğundan emin olunuz !</WorkingHourValidationWeekdaysCheck>
+  </LangId>
+  <LangId id="1033">
+    <WorkingHourValidationWeekdaysCheck>It is not allowed to activation. Please be sure that, branch has working hours on a daily basis.</WorkingHourValidationWeekdaysCheck>
+</LangId>
+</Error>

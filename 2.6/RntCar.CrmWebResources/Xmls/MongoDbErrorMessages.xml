@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Error>
+  <LangId id="1055">
+    <IntegrationError>MongoDb entegrasyon hatası.</IntegrationError>
+  </LangId>
+  <LangId id="1033">
+    <IntegrationError>MongoDb integration error.</IntegrationError>
+</LangId>
+</Error>

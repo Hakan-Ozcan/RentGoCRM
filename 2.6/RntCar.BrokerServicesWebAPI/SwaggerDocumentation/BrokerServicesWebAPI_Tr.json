@@ -1,0 +1,1090 @@
+﻿{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.2.0-oas3",
+    "title": "RntCar.BrokerServicesWebAPI_Tr"
+  },
+  "paths": {
+    "/api/broker/testme": {
+      "post": {
+        "tags": [
+          "Broker"
+        ],
+        "operationId": "Broker_testme",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/broker/getmasterdata": {
+      "post": {
+        "tags": [
+          "Broker"
+        ],
+        "summary": "Ana veri servisi",
+        "operationId": "Broker_getMasterData",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetMasterDataRequest_Broker"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetMasterDataRequest_Broker"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/GetMasterDataRequest_Broker"
+              }
+            },
+            "text/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/GetMasterDataRequest_Broker"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/GetMasterDataRequest_Broker"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetMasterDataResponse_Broker"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetMasterDataResponse_Broker"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetMasterDataResponse_Broker"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetMasterDataResponse_Broker"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/broker/calculateavailability": {
+      "post": {
+        "tags": [
+          "Broker"
+        ],
+        "summary": "Kullanılabilirlik hesapla",
+        "description": "",
+        "operationId": "Broker_calculateAvailability",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AvailabilityParameters_Broker"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AvailabilityParameters_Broker"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/AvailabilityParameters_Broker"
+              }
+            },
+            "text/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/AvailabilityParameters_Broker"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/AvailabilityParameters_Broker"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AvailabilityResponse_Broker"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AvailabilityResponse_Broker"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/AvailabilityResponse_Broker"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/AvailabilityResponse_Broker"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/broker/createreservation": {
+      "post": {
+        "tags": [
+          "Broker"
+        ],
+        "summary": "Rezervasyon oluştur",
+        "description": "",
+        "operationId": "Broker_createReservation",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReservationCreateParameters_Broker"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReservationCreateParameters_Broker"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/ReservationCreateParameters_Broker"
+              }
+            },
+            "text/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/ReservationCreateParameters_Broker"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/ReservationCreateParameters_Broker"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReservationCreateResponse_Broker"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReservationCreateResponse_Broker"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReservationCreateResponse_Broker"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReservationCreateResponse_Broker"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/broker/cancelreservation": {
+      "post": {
+        "tags": [
+          "Broker"
+        ],
+        "summary": "Rezervasyon iptali",
+        "operationId": "Broker_cancelReservation",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CancelReservationParameters_Broker"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CancelReservationParameters_Broker"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/CancelReservationParameters_Broker"
+              }
+            },
+            "text/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/CancelReservationParameters_Broker"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/CancelReservationParameters_Broker"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CancelReservationResponse_Broker"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CancelReservationResponse_Broker"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/CancelReservationResponse_Broker"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/CancelReservationResponse_Broker"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/broker/getadditionalproducts": {
+      "post": {
+        "tags": [
+          "Broker"
+        ],
+        "summary": "Ek ürün listesi",
+        "operationId": "Broker_getAdditionalProducts",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdditionalProductParameters_Broker"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdditionalProductParameters_Broker"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/AdditionalProductParameters_Broker"
+              }
+            },
+            "text/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/AdditionalProductParameters_Broker"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/AdditionalProductParameters_Broker"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdditionalProductResponse_Broker"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdditionalProductResponse_Broker"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdditionalProductResponse_Broker"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdditionalProductResponse_Broker"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "http://mongodb.rentgo.com:5555/",
+      "description": "Development server"
+    },
+    {
+      "url": "http://newmongodb.rentgo.com:5555/",
+      "description": "Production server"
+    }
+  ],
+  "security": [
+    {
+      "basicAuth": []
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "basicAuth": {
+        "type": "http",
+        "scheme": "basic"
+      }
+    },
+    "schemas": {
+      "GetMasterDataRequest_Broker": {
+        "type": "object",
+        "properties": {
+          "brokerCode": {
+            "description": "Broker için ayrılan benzersiz kod. Entegrasyon sırasında size ait kodu talep ediniz",
+            "type": "string"
+          },
+          "langId": {
+            "format": "int32",
+            "description": "Dil kodu. İngilizce: 1033, Türkçe: 1055",
+            "type": "integer"
+          },
+          "channelCode": {
+            "format": "int32",
+            "type": "integer"
+          }
+        }
+      },
+      "GetMasterDataResponse_Broker": {
+        "type": "object",
+        "properties": {
+          "groupCodeInformation": {
+            "description": "Grup kodu bilgisi",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GroupCodeInformation_Broker"
+            }
+          },
+          "countries": {
+            "description": "Ülke bilgisi",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CountryData"
+            }
+          },
+          "cities": {
+            "description": "Şehir bilgisi",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CityData"
+            }
+          },
+          "branchs": {
+            "description": "Şube bilgisi",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Branch_Broker"
+            }
+          },
+          "workingHours": {
+            "description": "Şubeye ait çalışma aralığı bilgisi",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WorkingHour_Broker"
+            }
+          },
+          "taxOffices": {
+            "description": "Vergi dairesi bilgisi",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TaxOfficeData"
+            }
+          },
+          "districts": {
+            "description": "İlçe veya bölge bilgisi",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DistrictData"
+            }
+          },
+          "responseResult": {
+            "$ref": "#/components/schemas/ResponseResult"
+          }
+        }
+      },
+      "GroupCodeInformation_Broker": {
+        "type": "object",
+        "properties": {
+          "groupCodeName": {
+            "description": "Grup kodu adı",
+            "type": "string"
+          },
+          "groupCodeId": {
+            "format": "uuid",
+            "description": "Grup koda ait benzersiz id değeri",
+            "type": "string",
+            "example": "00000000-0000-0000-0000-000000000000"
+          },
+          "groupCodeDescription": {
+            "description": "Grup kod açıklaması. Örnek: Nissan Micra ve benzeri",
+            "type": "string"
+          },
+          "transmissionName": {
+            "description": "Vites tipi adı",
+            "type": "string"
+          },
+          "fuelTypeName": {
+            "description": "Yakıt tipi adı",
+            "type": "string"
+          },
+          "findeksPoint": {
+            "format": "int32",
+            "description": "Aracı alabilmek için gereken minimum findeks puanı",
+            "type": "integer"
+          },
+          "isDoubleCard": {
+            "description": "Aracı kiralamak için çift kredi kartı gerekiyor mu",
+            "type": "boolean"
+          },
+          "minimumAge": {
+            "format": "int32",
+            "description": "Araç grubunu kiralamak için gerekli minimum yaş sınırı",
+            "type": "integer"
+          },
+          "minimumDriverLicense": {
+            "format": "int32",
+            "description": "Araç grubunu kiralamak için gerekli minimum sürücü belgesi yılı",
+            "type": "integer"
+          },
+          "youngDriverAge": {
+            "format": "int32",
+            "description": "Ek sigorta paketleri ile beraber araç grubunu kiralayabilmek için gerekli minimum sürücü yaşı",
+            "type": "integer"
+          },
+          "youngDriverMinimumLicense": {
+            "format": "int32",
+            "description": "Ek sigorta paketleri ile beraber araç grubunu kiralayabilmek için gerekli minimum sürücü ehliyeti. Sürücü genç sürücü yaşı ve genç sürücü belgesi yılından bir tanesini bile karşılamaması durumunda ilgili araç grubunu kiralayamaz. Genç sürücü yaşı ve ehliyet yılı karşılanıyorsa ek paketlerle beraber araç grubunu kiralayabilir",
+            "type": "integer"
+          },
+          "depositAmount": {
+            "format": "double",
+            "description": "Araç kiralama sırasında müşteriden alınacak teminat tutarı",
+            "type": "number"
+          },
+          "transmission": {
+            "format": "int32",
+            "description": "Vites tipi [ 1: Manuel, 2: Automatic ]",
+            "type": "integer"
+          },
+          "fuelType": {
+            "format": "int32",
+            "description": "Yakıt tipi [ 1: Diesel, 2: Gasoline ]",
+            "type": "integer"
+          },
+          "segment": {
+            "format": "int32",
+            "description": "İlgili araç grubu segment tipi [ 10: Economy - Hatchback, 20: Economy - Sedan, 30: Mid-size - Hatchback, 40: Mid-size - Sedan, 50: Mid-size + Hatchback, 60: Mid-size + Sedan, 70: Luxury -Sedan, 80: Premium - Sedan, 90: SUV, 100: VAN ]",
+            "type": "integer"
+          },
+          "segmentName": {
+            "description": "İlgili araç grubu segment tipi adı",
+            "type": "string"
+          },
+          "showRoomBrandName": {
+            "description": "İlgili araç grubu için belirlenen marka",
+            "type": "string"
+          },
+          "showRoomModelName": {
+            "description": "İlgili araç grubu için belirlenen model",
+            "type": "string"
+          }
+        }
+      },
+      "CountryData": {
+        "type": "object",
+        "properties": {
+          "countryName": {
+            "description": "Ülke adı",
+            "type": "string"
+          },
+          "countryCode": {
+            "description": "Ülke kodu",
+            "type": "string"
+          },
+          "countryId": {
+            "description": "Ülkeye ait benzersiz ID değeri",
+            "type": "string"
+          },
+          "countryDialCode": {
+            "description": "Ülkeye ait telefon kodu",
+            "type": "string"
+          }
+        }
+      },
+      "CityData": {
+        "type": "object",
+        "properties": {
+          "cityId": {
+            "type": "string"
+          },
+          "cityName": {
+            "type": "string"
+          },
+          "countryId": {
+            "type": "string"
+          }
+        }
+      },
+      "Branch_Broker": {
+        "type": "object",
+        "properties": {
+          "branchId": {
+            "format": "uuid",
+            "type": "string",
+            "example": "00000000-0000-0000-0000-000000000000"
+          },
+          "branchName": {
+            "type": "string"
+          },
+          "cityId": {
+            "format": "uuid",
+            "type": "string",
+            "example": "00000000-0000-0000-0000-000000000000"
+          },
+          "cityName": {
+            "type": "string"
+          },
+          "addressDetail": {
+            "type": "string"
+          },
+          "latitude": {
+            "format": "double",
+            "type": "number"
+          },
+          "longitude": {
+            "format": "double",
+            "type": "number"
+          },
+          "telephone": {
+            "type": "string"
+          },
+          "emailaddress": {
+            "type": "string"
+          },
+          "seoKeyword": {
+            "type": "string"
+          },
+          "seoTitle": {
+            "type": "string"
+          },
+          "seoDescription": {
+            "type": "string"
+          }
+        }
+      },
+      "WorkingHour_Broker": {
+        "type": "object",
+        "properties": {
+          "workingHourId": {
+            "format": "uuid",
+            "type": "string",
+            "example": "00000000-0000-0000-0000-000000000000"
+          },
+          "branchId": {
+            "format": "uuid",
+            "type": "string",
+            "example": "00000000-0000-0000-0000-000000000000"
+          },
+          "branchName": {
+            "type": "string"
+          },
+          "dayCode": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "beginingTime": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "endTime": {
+            "format": "int32",
+            "type": "integer"
+          }
+        }
+      },
+      "TaxOfficeData": {
+        "type": "object",
+        "properties": {
+          "taxOfficeName": {
+            "type": "string"
+          },
+          "taxOfficeId": {
+            "format": "uuid",
+            "type": "string",
+            "example": "00000000-0000-0000-0000-000000000000"
+          },
+          "cityId": {
+            "format": "uuid",
+            "type": "string",
+            "example": "00000000-0000-0000-0000-000000000000"
+          },
+          "cityName": {
+            "type": "string"
+          }
+        }
+      },
+      "DistrictData": {
+        "type": "object",
+        "properties": {
+          "districtId": {
+            "type": "string"
+          },
+          "cityId": {
+            "type": "string"
+          },
+          "districtName": {
+            "type": "string"
+          }
+        }
+      },
+      "ResponseResult": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "type": "boolean"
+          },
+          "exceptionDetail": {
+            "type": "string"
+          }
+        }
+      },
+      "AvailabilityParameters_Broker": {
+        "type": "object",
+        "properties": {
+          "queryParameters": {
+            "$ref": "#/components/schemas/QueryParameters"
+          },
+          "brokerCode": {
+            "description": "Broker için ayrılan benzersiz kod. Entegrasyon sırasında size ait kodu talep ediniz",
+            "type": "string"
+          },
+          "langId": {
+            "format": "int32",
+            "description": "Dil kodu. İngilizce: 1033, Türkçe: 1055",
+            "type": "integer"
+          },
+          "channelCode": {
+            "format": "int32",
+            "type": "integer"
+          }
+        }
+      },
+      "QueryParameters": {
+        "type": "object",
+        "properties": {
+          "pickupBranchId": {
+            "format": "uuid",
+            "type": "string",
+            "example": "00000000-0000-0000-0000-000000000000"
+          },
+          "dropoffBranchId": {
+            "format": "uuid",
+            "type": "string",
+            "example": "00000000-0000-0000-0000-000000000000"
+          },
+          "pickupDateTime": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "dropoffDateTime": {
+            "format": "date-time",
+            "type": "string"
+          }
+        }
+      },
+      "AvailabilityResponse_Broker": {
+        "type": "object",
+        "properties": {
+          "availabilityData": {
+            "description": "Kullanılabilirlik verisi",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AvailabilityData_Broker"
+            }
+          },
+          "trackingNumber": {
+            "description": "Fiyat id değeri",
+            "type": "string"
+          },
+          "responseResult": {
+            "$ref": "#/components/schemas/ResponseResult"
+          }
+        }
+      },
+      "AvailabilityData_Broker": {
+        "type": "object",
+        "properties": {
+          "groupCodeName": {
+            "description": "Grup kod adı",
+            "type": "string"
+          },
+          "groupCodeId": {
+            "format": "uuid",
+            "description": "Grup koda ait benzersiz id değeri",
+            "type": "string",
+            "example": "00000000-0000-0000-0000-000000000000"
+          },
+          "ratio": {
+            "format": "double",
+            "description": "Doluluk oranı",
+            "type": "number"
+          },
+          "payAmount": {
+            "format": "double",
+            "description": "İlgili grup kodun fiyatı",
+            "type": "number"
+          }
+        }
+      },
+      "ReservationCreateParameters_Broker": {
+        "type": "object",
+        "properties": {
+          "reservationCustomerParameters": {
+            "$ref": "#/components/schemas/ReservationCustomerParameters_Broker"
+          },
+          "reservationQueryParameters": {
+            "$ref": "#/components/schemas/QueryParameters"
+          },
+          "reservationEquimentParameters": {
+            "$ref": "#/components/schemas/ReservationEquimentParameters_Broker"
+          },
+          "reservationPriceParameters": {
+            "$ref": "#/components/schemas/ReservationPriceParameter_Broker"
+          },
+          "reservationAdditionalProducts": {
+            "description": "Rezervasyon ek ürün bilgisi",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ReservationAdditionalProduct_Broker"
+            }
+          },
+          "langId": {
+            "format": "int32",
+            "description": "Dil kodu. İngilizce: 1033, Türkçe: 1055",
+            "type": "integer"
+          },
+          "channelCode": {
+            "format": "int32",
+            "type": "integer"
+          }
+        }
+      },
+      "ReservationCustomerParameters_Broker": {
+        "type": "object",
+        "properties": {
+          "brokerCode": {
+            "description": "Broker için ayrılan benzersiz kod. Entegrasyon sırasında size ait kodu talep ediniz",
+            "type": "string"
+          },
+          "dummyContactData": {
+            "$ref": "#/components/schemas/DummyContactData"
+          }
+        }
+      },
+      "ReservationEquimentParameters_Broker": {
+        "type": "object",
+        "properties": {
+          "groupCodeId": {
+            "format": "uuid",
+            "description": "Grup koda ait benzersiz id değeri",
+            "type": "string",
+            "example": "00000000-0000-0000-0000-000000000000"
+          }
+        }
+      },
+      "ReservationPriceParameter_Broker": {
+        "type": "object",
+        "properties": {
+          "paymentType": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "trackingNumber": {
+            "description": "Rezervasyon oluşturulacak grup koduna ait calculateReservation'dan dönen numara. Bu değer fiyatın id değerini temsil eder.",
+            "type": "string"
+          },
+          "paymentMethodCode": {
+            "format": "int32",
+            "description": "Rezervasyonun ön ödemeli veya ofis ödemeli olduğu bilgisi",
+            "type": "integer"
+          }
+        }
+      },
+      "ReservationAdditionalProduct_Broker": {
+        "type": "object",
+        "properties": {
+          "productId": {
+            "format": "uuid",
+            "description": "Ek ürüne ait benzersiz id değeri",
+            "type": "string",
+            "example": "00000000-0000-0000-0000-000000000000"
+          },
+          "value": {
+            "format": "int32",
+            "type": "integer"
+          }
+        }
+      },
+      "DummyContactData": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "Müşteri adı",
+            "type": "string"
+          },
+          "surname": {
+            "description": "Müşteri soyadı",
+            "type": "string"
+          },
+          "email": {
+            "description": "Müşteri e-posta adresi",
+            "type": "string"
+          },
+          "phoneNumber": {
+            "description": "Müşteri telefon numarası",
+            "type": "string"
+          },
+          "governmentId": {
+            "description": "Müşteri TC kimlik numarası veya pasaport numarası",
+            "type": "string"
+          },
+          "referenceNumber": {
+            "description": "Entegratör firmaya ait rezervasyon numarası",
+            "type": "string"
+          }
+        }
+      },
+      "ReservationCreateResponse_Broker": {
+        "type": "object",
+        "properties": {
+          "reservationId": {
+            "format": "uuid",
+            "type": "string",
+            "example": "00000000-0000-0000-0000-000000000000"
+          },
+          "reservationItemList": {
+            "type": "array",
+            "items": {
+              "format": "uuid",
+              "type": "string",
+              "example": "00000000-0000-0000-0000-000000000000"
+            }
+          },
+          "pnrNumber": {
+            "type": "string"
+          },
+          "responseResult": {
+            "$ref": "#/components/schemas/ResponseResult"
+          }
+        }
+      },
+      "CancelReservationParameters_Broker": {
+        "type": "object",
+        "properties": {
+          "reservationId": {
+            "format": "uuid",
+            "type": "string",
+            "example": "00000000-0000-0000-0000-000000000000"
+          },
+          "cancellationReason": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "pnrNumber": {
+            "type": "string"
+          },
+          "langId": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "channelCode": {
+            "format": "int32",
+            "type": "integer"
+          }
+        }
+      },
+      "CancelReservationResponse_Broker": {
+        "type": "object",
+        "properties": {
+          "responseResult": {
+            "$ref": "#/components/schemas/ResponseResult"
+          }
+        }
+      },
+      "AdditionalProductParameters_Broker": {
+        "type": "object",
+        "properties": {
+          "queryParameters": {
+            "$ref": "#/components/schemas/QueryParameters"
+          },
+          "groupCodeId": {
+            "format": "uuid",
+            "description": "Grup koda ait benzersiz id değeri",
+            "type": "string",
+            "example": "00000000-0000-0000-0000-000000000000"
+          },
+          "langId": {
+            "format": "int32",
+            "description": "Dil kodu. İngilizce: 1033, Türkçe: 1055",
+            "type": "integer"
+          },
+          "channelCode": {
+            "format": "int32",
+            "type": "integer"
+          }
+        }
+      },
+      "AdditionalProductResponse_Broker": {
+        "type": "object",
+        "properties": {
+          "additionalProducts": {
+            "description": "Rezervasyon ek ürün bilgisi",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AdditionalProductData_Broker"
+            }
+          },
+          "responseResult": {
+            "$ref": "#/components/schemas/ResponseResult"
+          }
+        }
+      },
+      "AdditionalProductData_Broker": {
+        "type": "object",
+        "properties": {
+          "productId": {
+            "format": "uuid",
+            "description": "Ek ürüne ait benzersiz id değeri",
+            "type": "string",
+            "example": "00000000-0000-0000-0000-000000000000"
+          },
+          "productName": {
+            "description": "Ek ürün adı",
+            "type": "string"
+          },
+          "productType": {
+            "format": "int32",
+            "description": "Ek ürün türü [ 10: Services, 20: Accessories, 30: Fine ]",
+            "type": "integer"
+          },
+          "productCode": {
+            "description": "Ek ürün kodu",
+            "type": "string"
+          },
+          "maxPieces": {
+            "format": "int32",
+            "description": "Rezervasyona eklenebilecek maksimum adet sayısı",
+            "type": "integer"
+          },
+          "webRank": {
+            "format": "int32",
+            "description": "Ön yüzde gösterilmek istenen sıra numarası",
+            "type": "integer"
+          },
+          "productDescription": {
+            "description": "Ek ürün açıklaması",
+            "type": "string"
+          },
+          "webIconURL": {
+            "type": "string"
+          },
+          "actualAmount": {
+            "format": "double",
+            "description": "KDV dahil ek ürün tutar bilgisi",
+            "type": "number"
+          },
+          "value": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "tobePaidAmount": {
+            "format": "double",
+            "type": "number"
+          },
+          "isMandatory": {
+            "type": "boolean"
+          },
+          "monthlyPackagePrice": {
+            "format": "double",
+            "description": "30 günlük paket fiyatı",
+            "type": "number"
+          },
+          "priceCalculationType": {
+            "format": "int32",
+            "description": "Ek ürün fiyat hesaplama türü. [ 1: Sabit fiyat, 2: Zamana bağlı fiyat ]",
+            "type": "integer"
+          }
+        }
+      }
+    }
+  }
+}

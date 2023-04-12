@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/NetahsilatGold.Domain.Model.IntegrationModels" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/NetahsilatGold.Domain.Model.IntegrationModels" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="Agent">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AgentId" type="xs:int" />
+      <xs:element minOccurs="0" name="AgentTypeId" type="xs:int" />
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CurrencyCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ErpCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InsertDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IsActive" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsCompany" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SubAgent" nillable="true" type="tns:Agent" />
+      <xs:element minOccurs="0" name="TCKN" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TaxNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TaxOffice" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Agent" nillable="true" type="tns:Agent" />
+  <xs:complexType name="ArrayOfPaymentServiceModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PaymentServiceModel" nillable="true" type="tns:PaymentServiceModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPaymentServiceModel" nillable="true" type="tns:ArrayOfPaymentServiceModel" />
+  <xs:complexType name="PaymentServiceModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccountErpCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Agent" nillable="true" type="tns:Agent" />
+      <xs:element minOccurs="0" name="AuthenticationNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BankCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BankPaymentDays" type="xs:int" />
+      <xs:element minOccurs="0" name="BankPaymentModels" nillable="true" type="tns:ArrayOfBankPaymentModel" />
+      <xs:element minOccurs="0" name="BankPaymentPlan" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BonusText" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CardBrand" type="xs:int" />
+      <xs:element minOccurs="0" name="CardHolderEmail" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CardHolderName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CardHolderPhone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CardHolderTCKN" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CardLevel" type="xs:int" />
+      <xs:element minOccurs="0" name="CardNumberFirst6" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CardNumberLast4" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CardType" type="xs:int" />
+      <xs:element minOccurs="0" name="ChequeAccountNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ChequeBankName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ChequeBranchName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ChequeCityName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ChequeNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Cheques" nillable="true" type="tns:ArrayOfCheque" />
+      <xs:element minOccurs="0" name="ClientReferenceCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ComissionRate" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ComissionType" type="xs:int" />
+      <xs:element minOccurs="0" name="CurrencyCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CurrencyProccessAmount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="CurrencyProccessNetAmount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="DefaultPOSUsed" type="xs:boolean" />
+      <xs:element minOccurs="0" name="DocumentTypeId" type="xs:int" />
+      <xs:element minOccurs="0" name="DynamicDataCollection" nillable="true" type="tns:ArrayOfDynamicFieldCollection" />
+      <xs:element minOccurs="0" name="DynamicFields" nillable="true" type="tns:ArrayOfDynamicField" />
+      <xs:element minOccurs="0" name="ErpCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ErpFirmCode" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ExchangeRate" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ExpiryDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IsMailOrderTransaction" type="xs:boolean" />
+      <xs:element minOccurs="0" name="MailOrderSenderUser" nillable="true" type="tns:AgentUser" />
+      <xs:element minOccurs="0" name="PaidToAgent" nillable="true" type="tns:Agent" />
+      <xs:element minOccurs="0" name="PaymentAccountId" type="xs:int" />
+      <xs:element minOccurs="0" name="PaymentAccountTransactionId" type="xs:int" />
+      <xs:element minOccurs="0" name="PaymentAccountTransactions" nillable="true" type="tns:ArrayOfPaymentAccountTransaction" />
+      <xs:element minOccurs="0" name="PaymentDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="PaymentDeferral" type="xs:int" />
+      <xs:element minOccurs="0" name="PaymentId" type="xs:int" />
+      <xs:element minOccurs="0" name="PaymentInfo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PaymentItems" nillable="true" type="tns:ArrayOfPaymentItem" />
+      <xs:element minOccurs="0" name="PaymentSetId" type="xs:int" />
+      <xs:element minOccurs="0" name="PaymentSetName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PaymentType" type="xs:int" />
+      <xs:element minOccurs="0" name="Period" type="xs:int" />
+      <xs:element minOccurs="0" name="PeriodCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PlusPeriod" type="xs:int" />
+      <xs:element minOccurs="0" name="ProccessAmount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ProccessNetAmount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ProvisionNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RecordType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReferenceCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReferenceNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Reversals" nillable="true" type="tns:ArrayOfReversalServiceModel" />
+      <xs:element minOccurs="0" name="SecondaryPerson" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SourceType" type="xs:int" />
+      <xs:element minOccurs="0" name="TaxOffice" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TaxTcknNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TransactionStatusId" type="xs:int" />
+      <xs:element minOccurs="0" name="VPosApiName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VPosERPCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VPosId" type="xs:int" />
+      <xs:element minOccurs="0" name="VendorVPosName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VposCommRate" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PaymentServiceModel" nillable="true" type="tns:PaymentServiceModel" />
+  <xs:complexType name="ArrayOfBankPaymentModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BankPaymentModel" nillable="true" type="tns:BankPaymentModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBankPaymentModel" nillable="true" type="tns:ArrayOfBankPaymentModel" />
+  <xs:complexType name="BankPaymentModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ErpCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InstallmentCount" type="xs:int" />
+      <xs:element minOccurs="0" name="InstallmentDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="InstallmentNumber" type="xs:int" />
+      <xs:element minOccurs="0" name="ProcessAmount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ProcessNetAmount" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BankPaymentModel" nillable="true" type="tns:BankPaymentModel" />
+  <xs:complexType name="ArrayOfCheque">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Cheque" nillable="true" type="tns:Cheque" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCheque" nillable="true" type="tns:ArrayOfCheque" />
+  <xs:complexType name="Cheque">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Amount" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="CheckOwner" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ChequeAccountNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ChequeBankCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ChequeBankName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ChequeBranchCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ChequeBranchName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ChequeCityName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ChequeNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DocumentType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ExpiryDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Guarantor" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InstallmentType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" type="xs:int" />
+      <xs:element minOccurs="0" name="TaxOffice" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Tax_TCKN" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Cheque" nillable="true" type="tns:Cheque" />
+  <xs:complexType name="ArrayOfDynamicFieldCollection">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DynamicFieldCollection" nillable="true" type="tns:DynamicFieldCollection" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDynamicFieldCollection" nillable="true" type="tns:ArrayOfDynamicFieldCollection" />
+  <xs:complexType name="DynamicFieldCollection">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IntegrationId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IntegrationValues" nillable="true" type="tns:ArrayOfIntegrationValue" />
+      <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Values" nillable="true" type="tns:ArrayOfDynamicFieldValues" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DynamicFieldCollection" nillable="true" type="tns:DynamicFieldCollection" />
+  <xs:complexType name="ArrayOfIntegrationValue">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="IntegrationValue" nillable="true" type="tns:IntegrationValue" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfIntegrationValue" nillable="true" type="tns:ArrayOfIntegrationValue" />
+  <xs:complexType name="IntegrationValue">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Caption" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FieldId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Key" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="IntegrationValue" nillable="true" type="tns:IntegrationValue" />
+  <xs:complexType name="ArrayOfDynamicFieldValues">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DynamicFieldValues" nillable="true" type="tns:DynamicFieldValues" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDynamicFieldValues" nillable="true" type="tns:ArrayOfDynamicFieldValues" />
+  <xs:complexType name="DynamicFieldValues">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Key" type="xs:int" />
+      <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DynamicFieldValues" nillable="true" type="tns:DynamicFieldValues" />
+  <xs:complexType name="ArrayOfDynamicField">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DynamicField" nillable="true" type="tns:DynamicField" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDynamicField" nillable="true" type="tns:ArrayOfDynamicField" />
+  <xs:complexType name="DynamicField">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IntegrationId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IntegrationValues" nillable="true" type="tns:ArrayOfIntegrationValue" />
+      <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DynamicField" nillable="true" type="tns:DynamicField" />
+  <xs:complexType name="AgentUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsAdmin" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TCKN" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AgentUser" nillable="true" type="tns:AgentUser" />
+  <xs:complexType name="ArrayOfPaymentAccountTransaction">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PaymentAccountTransaction" nillable="true" type="tns:PaymentAccountTransaction" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPaymentAccountTransaction" nillable="true" type="tns:ArrayOfPaymentAccountTransaction" />
+  <xs:complexType name="PaymentAccountTransaction">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Amount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="DepartmentCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DivisionCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DocumentId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ErpCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PaidAmount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="TransactionErpCode" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PaymentAccountTransaction" nillable="true" type="tns:PaymentAccountTransaction" />
+  <xs:complexType name="ArrayOfPaymentItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PaymentItem" nillable="true" type="tns:PaymentItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPaymentItem" nillable="true" type="tns:ArrayOfPaymentItem" />
+  <xs:complexType name="PaymentItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CurrencyLastAmount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="CurrencyLastNetAmount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="CurrencyProcessAmount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="CurrencyProcessNetAmount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="LastAmount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="LastNetAmount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PaymentItemDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="PaymentItemDefinitionId" type="xs:int" />
+      <xs:element minOccurs="0" name="PaymentItemId" type="xs:int" />
+      <xs:element minOccurs="0" name="Price" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ProcessAmount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ProcessNetAmount" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PaymentItem" nillable="true" type="tns:PaymentItem" />
+  <xs:complexType name="ArrayOfReversalServiceModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ReversalServiceModel" nillable="true" type="tns:ReversalServiceModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfReversalServiceModel" nillable="true" type="tns:ArrayOfReversalServiceModel" />
+  <xs:complexType name="ReversalServiceModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AccountErpCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Agent" nillable="true" type="tns:Agent" />
+      <xs:element minOccurs="0" name="CurrencyCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CurrencyProccessAmount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="CurrencyProccessNetAmount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ErpCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ErpFirmCode" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ExchangeRate" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Payment" nillable="true" type="tns:PaymentServiceModel" />
+      <xs:element minOccurs="0" name="ProccessAmount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ProccessNetAmount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ReversalDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ReversalDesrcription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReversalId" type="xs:int" />
+      <xs:element minOccurs="0" name="ReversalItems" nillable="true" type="tns:ArrayOfReversalItem" />
+      <xs:element minOccurs="0" name="ReversalType" type="xs:int" />
+      <xs:element minOccurs="0" name="SourceType" type="xs:int" />
+      <xs:element minOccurs="0" name="VPosERPCode" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReversalServiceModel" nillable="true" type="tns:ReversalServiceModel" />
+  <xs:complexType name="ArrayOfReversalItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ReversalItem" nillable="true" type="tns:ReversalItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfReversalItem" nillable="true" type="tns:ArrayOfReversalItem" />
+  <xs:complexType name="ReversalItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CurrencyProcessAmount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="CurrencyProcessNetAmount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PaymentItemDefinitionId" type="xs:int" />
+      <xs:element minOccurs="0" name="ProcessAmount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ProcessNetAmount" type="xs:decimal" />
+      <xs:element minOccurs="0" name="ReversalItemDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ReversalItemId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReversalItem" nillable="true" type="tns:ReversalItem" />
+</xs:schema>

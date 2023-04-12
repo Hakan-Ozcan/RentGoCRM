@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Error>
+  <LangId id="1055">
+    <MissingCreditCardInfo>Kredi Kartı bilgileri eksiktir.</MissingCreditCardInfo>
+    <CreditCardHolderNameValidation>Kart üzerindeki isim ile müşteri ismi aynı olmalıdır.</CreditCardHolderNameValidation>
+    <ExistingActiveReservation>Seçilen tarihler arasında kullanıcıya aktif bir rezervasyon bulunmaktadır.</ExistingActiveReservation>
+    <UnavailableStatusReservation>Sadece yeni ve noshow statüsüne ait bir rezeryasyonu iptal edebilirsiniz.</UnavailableStatusReservation>
+    <PersonnelNotUseExtraDiscount>Personeller kampanyalardan ve kupon kodlarından yararlanamazlar</PersonnelNotUseExtraDiscount>
+    <FraudCustomerForCreditCard>Çağrı Merkezi İle İletişime Geçebilirsiniz 444 40 61</FraudCustomerForCreditCard>
+    <ReservationCheckForAnonymization>Aktif Reservasyonunuz Vardır. Rezervasyonlarınız Sonlandırmanız Gereklidir.</ReservationCheckForAnonymization>
+  </LangId>
+  <LangId id="1033">
+    <MissingCreditCardInfo>Missing credit card info</MissingCreditCardInfo>
+    <CreditCardHolderNameValidation>The name on the card must be the same as the customer name.</CreditCardHolderNameValidation>
+    <ExistingActiveReservation>There is an active reservation between the selected dates.</ExistingActiveReservation>
+    <UnavailableStatusReservation>Only new or noshow reservations can be cancelled.</UnavailableStatusReservation>
+    <PersonnelNotUseExtraDiscount>Personnel cannot benefit from campaigns and coupon codes</PersonnelNotUseExtraDiscount>
+    <FraudCustomerForCreditCard>You Must Contact The Call Center 444 40 61</FraudCustomerForCreditCard>
+    <ReservationCheckForAnonymization>You are active reservations. You must closed reservations.</ReservationCheckForAnonymization>
+</LangId>
+</Error>

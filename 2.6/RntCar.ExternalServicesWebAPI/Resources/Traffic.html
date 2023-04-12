@@ -1,0 +1,234 @@
+﻿
+<!DOCTYPE html
+          PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <title>RENTGO</title>
+    <style>
+    </style>
+</head>
+
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" align="center" bgcolor="#f1f1f1">
+    <table cellpadding="0" cellspacing="0" border="0" width="800" align="center">
+        <tr>
+            <td colspan="3" style="line-height:0px; font-size:0px;">
+                <a href="https://www.rentgo.com/" target="_blank">
+                    <img src="http://scope.digital/dev/mailing/rentgo/RentGo18062020/images/rentgo-18062020-1.jpg" alt="" width="800" height="205" border="0" style="display:block;" />
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td style="line-height:0px; font-size:0px;">
+                <img src="http://scope.digital/dev/mailing/rentgo/RentGo18062020/images/rentgo-18062020-2.jpg" alt="" width="71" height="37" border="0"
+                     style="display:block;line-height:0px; font-size:0px;" />
+            </td>
+            <td style="line-height:0px; font-size:0px;" bgcolor="#fafafc">
+                <table cellpadding="0" cellspacing="0" border="0" width="683" align="center" bgcolor="#ffffff"
+                       style="line-height:0px; font-size:0px;">
+                    <tr bgcolor="#fafafc">
+                        <td valign="top"
+                            style="color:#2c2081;font-family:Arial, Helvetica, sans-serif;font-size:30px;text-align:left;"
+                            width="110">
+                            Sayın
+                        </td>
+                        <td valign="top"
+                            style="color:#2c2081;font-family:Arial, Helvetica, sans-serif;font-size:30px;font-weight:bold;text-align:left;">
+                            @Model.ContactName,
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td style="line-height:0px; font-size:0px;">
+                <img src="http://scope.digital/dev/mailing/rentgo/RentGo18062020/images/rentgo-18062020-4.jpg" alt="" width="46" height="37" border="0"
+                     style="display:block;line-height:0px; font-size:0px;" />
+            </td>
+        </tr>
+    </table>
+    <table cellpadding="0" cellspacing="0" border="0" width="800" align="center">
+        <tr>
+            <td width="26" bgcolor="#e0e3e8">
+                &nbsp;
+            </td>
+            <td bgcolor="#fafafc" width="750">
+                <table cellpadding="0" cellspacing="0" border="0" align="center" bgcolor="#fafafc">
+                    <tr bgcolor="#fafafc">
+                        <td valign="top"
+                            style="color:#000000;font-family:Arial, Helvetica, sans-serif;font-size:14px;text-align:left;padding-left:47px; padding-right:47px; padding-top:20px;">
+                            Şirketimizden <span style="font-weight:bold">@Model.PickupDateTime.ToString().Split(' ')[0]</span> tarihinde kiraladığınız araç
+                            ile ilgili olarak aşağıda detayları
+                            iletilmiş olan masraflar <span style="font-weight:bold">@Model.TotalPayment TL</span> tahsil
+                            edilecektir.
+                            <br /><br /><br />
+                            Saygılarımızla
+                            <br /><br /><br />
+                            <span style="color:#2c2081;font-family:Arial, Helvetica, sans-serif;font-size:14px;text-align:left;font-weight:bold;">
+                                Rent
+                                Go Türkiye
+                            </span>
+                        </td>
+
+                    </tr>
+                </table>
+            </td>
+            <td width="24" bgcolor="#e0e3e8">
+                &nbsp;
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3" style="line-height:0px; font-size:0px;">
+                <img src="http://scope.digital/dev/mailing/rentgo/RentGo18062020/images/rentgo-18062020-5.jpg" alt="" width="800" height="20" border="0"
+                     style="display:block;" />
+
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3" style="line-height:0px; font-size:0px;">
+                <img src="http://scope.digital/dev/mailing/rentgo/RentGo18062020/images/rentgo-18062020-7.jpg" alt="" width="800" height="126" border="0"
+                     style="display:block;" />
+            </td>
+        </tr>
+        <tr>
+            <td width="26" bgcolor="#e0e3e8">
+                &nbsp;
+            </td>
+            <td bgcolor="#fafafc" width="750">
+                <table cellpadding="0" cellspacing="0" border="0" align="center" bgcolor="#fafafc">
+                    <tr bgcolor="#fafafc">
+                        <td valign="top">
+                            <table bgcolor="#fafafc" border="0" cellpadding="0" cellspacing="0" width="750"
+                                   align="center" style="
+                                padding-left: 20px;
+                                padding-right: 20px;
+                            ">
+                                <tr>
+                                    <td style="background-color:#fafafc;">
+                                        <table bgcolor="#fafafc" border="0" cellpadding="0" cellspacing="0" width="100%" align="center">
+                                            <tr>
+                                                <th align="center"
+                                                    style=" border-right:1px solid #000000; font-size:14px; font-weight:bold; font-family:Arial, Helvetica, sans-serif;">
+                                                    Tarih
+                                                </th>
+                                                <th align="center"
+                                                    style=" border-right:1px solid #000000;  font-size:14px; font-weight:bold; font-family:Arial, Helvetica, sans-serif;">
+                                                    Yer
+                                                </th>
+                                                <th align="center"
+                                                    style=" border-right:1px solid #000000;  font-size:14px; font-weight:bold; font-family:Arial, Helvetica, sans-serif;">
+                                                    Plaka
+                                                </th>
+                                                <th align="center"
+                                                    style=" border-right:1px solid #000000;  font-size:14px; font-weight:bold; font-family:Arial, Helvetica, sans-serif;">
+                                                    Belge Seri No
+                                                </th>
+                                                <th align="center"
+                                                    style="  font-size:14px; font-weight:bold; font-family:Arial, Helvetica, sans-serif;">
+                                                    Tutar
+                                                </th>
+                                            </tr>
+
+                                            <tr style="font-size:14px; color:#000000; text-align:center; font-family:Arial, Helvetica, sans-serif;border-bottom:1px dashed #000000;">
+                                                <td style="   padding:10px; font-size:14px; color:#000000; text-align:center; font-family:Arial, Helvetica, sans-serif;border-bottom:1px dotted #000000;">
+                                                    <p>@Model.trafficFines.tarih</p>
+                                                </td>
+                                                <td style="   padding:10px; font-size:14px; color:#000000; text-align:center; font-family:Arial, Helvetica, sans-serif;border-bottom:1px dotted #000000;">
+                                                    <p>@Model.trafficFines.yer</p>
+                                                </td>
+                                                <td style="padding:10px; font-size:14px; color:#000000; text-align:center; font-family:Arial, Helvetica, sans-serif;border-bottom:1px dotted #000000;">
+                                                    <p>@Model.trafficFines.plaka</p>
+                                                </td>
+                                                <td style="   padding:10px; font-size:14px; color:#000000; text-align:center; font-family:Arial, Helvetica, sans-serif;border-bottom:1px dotted #000000;">
+                                                    <p>@Model.trafficFines.serino</p>
+                                                </td>
+                                                <td style="   padding:10px; font-size:14px; color:#000000; text-align:center; font-family:Arial, Helvetica, sans-serif;border-bottom:1px dotted #000000;">
+                                                    <p>@Model.trafficFines.tutar TL</p>
+                                                </td>
+                                            </tr>
+                                            <tr style="font-size:14px; color:#000000; text-align:center; font-family:Arial, Helvetica, sans-serif;border-bottom:1px dashed #000000;">
+                                                <td style="   padding:10px; font-size:14px; color:#000000; text-align:center; font-family:Arial, Helvetica, sans-serif;border-bottom:1px dotted #000000;">
+                                                    <p>@Model.trafficFines.tarih</p>
+                                                </td>
+                                                <td style="   padding:10px; font-size:14px; color:#000000; text-align:center; font-family:Arial, Helvetica, sans-serif;border-bottom:1px dotted #000000;">
+                                                    <p>Hizmet Bedeli</p>
+                                                </td>
+                                                <td style="padding:10px; font-size:14px; color:#000000; text-align:center; font-family:Arial, Helvetica, sans-serif;border-bottom:1px dotted #000000;">
+                                                    <p>@Model.trafficFines.plaka</p>
+                                                </td>
+                                                <td style="   padding:10px; font-size:14px; color:#000000; text-align:center; font-family:Arial, Helvetica, sans-serif;border-bottom:1px dotted #000000;">
+                                                    <p>@Model.trafficFines.serino</p>
+                                                </td>
+                                                <td style="   padding:10px; font-size:14px; color:#000000; text-align:center; font-family:Arial, Helvetica, sans-serif;border-bottom:1px dotted #000000;">
+                                                    <p>@Model.trafficFines.subtutar TL</p>
+                                                </td>
+                                            </tr>
+                                            <tr bgcolor="#f7f7f7"
+                                                style="font-size:14px; color:#000000; text-align:center; font-family:Arial, Helvetica, sans-serif;">
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td width="24" bgcolor="#e0e3e8">
+                &nbsp;
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="3" style="line-height:0px; font-size:0px;">
+                <img src="http://scope.digital/dev/mailing/rentgo/RentGo18062020/images/rentgo-18062020-8.jpg" alt="" width="800" height="111" border="0"
+                     style="display:block;" />
+            </td>
+        </tr>
+    </table>
+    <table cellpadding="0" cellspacing="0" border="0" width="800" align="center">
+        <tr>
+            <td style="line-height:0px; font-size:0px;">
+                <a href="tel:4444061" target="_blank">
+                    <img src="http://scope.digital/dev/mailing/rentgo/RentGo18062020/images/RentGo_covid-19_08.jpg" alt="" width="495"
+                         height="115" border="0" style="display:block;" />
+                </a>
+            </td>
+            <td style="line-height:0px; font-size:0px;">
+                <a href="https://www.facebook.com/RentGo" target="_blank">
+                    <img src="http://scope.digital/dev/mailing/rentgo/RentGo18062020/images/RentGo_covid-19_09.jpg"
+                         alt="" width="70" height="115" border="0" style="display:block;" />
+                </a>
+            </td>
+            <td style="line-height:0px; font-size:0px;">
+                <a href="https://twitter.com/RentGoTurkiye" target="_blank">
+                    <img src="http://scope.digital/dev/mailing/rentgo/RentGo18062020/images/RentGo_covid-19_10.jpg"
+                         alt="" width="72" height="115" border="0" style="display:block;" />
+                </a>
+            </td>
+            <td style="line-height:0px; font-size:0px;">
+                <a href="https://www.instagram.com/rentgo/" target="_blank">
+                    <img src="http://scope.digital/dev/mailing/rentgo/RentGo18062020/images/RentGo_covid-19_11.jpg"
+                         alt="" width="163" height="115" border="0" style="display:block;" />
+                </a>
+            </td>
+        </tr>
+    </table>
+
+    <table cellpadding="0" cellspacing="0" border="0" width="800" align="center">
+        <tr>
+            <td colspan="3" align="center" bgcolor="#d7dadf"
+                style="font-family:Arial, Helvetica, sans-serif; font-size:14px;line-height:16px; color:#686b6f;padding-left:70px;padding-right:70px;">
+                Bu e-posta, Rent Go tarafından oluşturulan üye veri tabanına kayıtlı
+                olduğunuz için gönderilmiştir. Rent Go mail üyeliğinden ayrılmak için tıklayınız.<br />
+                <br />Mersis No: 0t609047595800014
+                <br />
+                <br />
+            </td>
+        </tr>
+    </table>
+
+
+</body>
+
+</html>

@@ -1,0 +1,1090 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.2.0-oas3",
+    "title": "RntCar.BrokerServicesWebAPI_En"
+  },
+  "paths": {
+    "/api/broker/testme": {
+      "post": {
+        "tags": [
+          "Broker"
+        ],
+        "operationId": "Broker_testme",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/broker/getmasterdata": {
+      "post": {
+        "tags": [
+          "Broker"
+        ],
+        "summary": "Get Master Data",
+        "operationId": "Broker_getMasterData",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetMasterDataRequest_Broker"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GetMasterDataRequest_Broker"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/GetMasterDataRequest_Broker"
+              }
+            },
+            "text/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/GetMasterDataRequest_Broker"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/GetMasterDataRequest_Broker"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetMasterDataResponse_Broker"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetMasterDataResponse_Broker"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetMasterDataResponse_Broker"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetMasterDataResponse_Broker"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/broker/calculateavailability": {
+      "post": {
+        "tags": [
+          "Broker"
+        ],
+        "summary": "Calculate Availability",
+        "description": "",
+        "operationId": "Broker_calculateAvailability",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AvailabilityParameters_Broker"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AvailabilityParameters_Broker"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/AvailabilityParameters_Broker"
+              }
+            },
+            "text/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/AvailabilityParameters_Broker"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/AvailabilityParameters_Broker"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AvailabilityResponse_Broker"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AvailabilityResponse_Broker"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/AvailabilityResponse_Broker"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/AvailabilityResponse_Broker"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/broker/createreservation": {
+      "post": {
+        "tags": [
+          "Broker"
+        ],
+        "summary": "Create Reservation",
+        "description": "",
+        "operationId": "Broker_createReservation",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReservationCreateParameters_Broker"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReservationCreateParameters_Broker"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/ReservationCreateParameters_Broker"
+              }
+            },
+            "text/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/ReservationCreateParameters_Broker"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/ReservationCreateParameters_Broker"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReservationCreateResponse_Broker"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReservationCreateResponse_Broker"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReservationCreateResponse_Broker"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReservationCreateResponse_Broker"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/broker/cancelreservation": {
+      "post": {
+        "tags": [
+          "Broker"
+        ],
+        "summary": "Cancel Reservation",
+        "operationId": "Broker_cancelReservation",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CancelReservationParameters_Broker"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CancelReservationParameters_Broker"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/CancelReservationParameters_Broker"
+              }
+            },
+            "text/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/CancelReservationParameters_Broker"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/CancelReservationParameters_Broker"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CancelReservationResponse_Broker"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CancelReservationResponse_Broker"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/CancelReservationResponse_Broker"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/CancelReservationResponse_Broker"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/broker/getadditionalproducts": {
+      "post": {
+        "tags": [
+          "Broker"
+        ],
+        "summary": "Get Additional Products",
+        "operationId": "Broker_getAdditionalProducts",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdditionalProductParameters_Broker"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdditionalProductParameters_Broker"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/AdditionalProductParameters_Broker"
+              }
+            },
+            "text/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/AdditionalProductParameters_Broker"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/AdditionalProductParameters_Broker"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdditionalProductResponse_Broker"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdditionalProductResponse_Broker"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdditionalProductResponse_Broker"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdditionalProductResponse_Broker"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "http://mongodb.rentgo.com:5555/",
+      "description": "Development server"
+    },
+    {
+      "url": "http://newmongodb.rentgo.com:5555/",
+      "description": "Production server"
+    }
+  ],
+  "security": [
+    {
+      "basicAuth": []
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "basicAuth": {
+        "type": "http",
+        "scheme": "basic"
+      }
+    },
+    "schemas": {
+      "GetMasterDataRequest_Broker": {
+        "type": "object",
+        "properties": {
+          "brokerCode": {
+            "description": "Unique code reserved for brokers. Request your code during integration",
+            "type": "string"
+          },
+          "langId": {
+            "format": "int32",
+            "description": "International language code [ 1033: English, 1055: Turkish ]",
+            "type": "integer"
+          },
+          "channelCode": {
+            "format": "int32",
+            "type": "integer"
+          }
+        }
+      },
+      "GetMasterDataResponse_Broker": {
+        "type": "object",
+        "properties": {
+          "groupCodeInformation": {
+            "description": "Group code information",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GroupCodeInformation_Broker"
+            }
+          },
+          "countries": {
+            "description": "Country information",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CountryData"
+            }
+          },
+          "cities": {
+            "description": "City information",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CityData"
+            }
+          },
+          "branchs": {
+            "description": "Branch information",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Branch_Broker"
+            }
+          },
+          "workingHours": {
+            "description": "Working hour information of the branch",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/WorkingHour_Broker"
+            }
+          },
+          "taxOffices": {
+            "description": "Tax office information",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TaxOfficeData"
+            }
+          },
+          "districts": {
+            "description": "District information",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DistrictData"
+            }
+          },
+          "responseResult": {
+            "$ref": "#/components/schemas/ResponseResult"
+          }
+        }
+      },
+      "GroupCodeInformation_Broker": {
+        "type": "object",
+        "properties": {
+          "groupCodeName": {
+            "description": "Group code name",
+            "type": "string"
+          },
+          "groupCodeId": {
+            "format": "uuid",
+            "description": "Group code unique id value",
+            "type": "string",
+            "example": "00000000-0000-0000-0000-000000000000"
+          },
+          "groupCodeDescription": {
+            "description": "Group code description. Example: Nissan Micra and so on",
+            "type": "string"
+          },
+          "transmissionName": {
+            "description": "Gearbox type name",
+            "type": "string"
+          },
+          "fuelTypeName": {
+            "description": "Fuel type name",
+            "type": "string"
+          },
+          "findeksPoint": {
+            "format": "int32",
+            "description": "Minimum required findeks points to rent the car",
+            "type": "integer"
+          },
+          "isDoubleCard": {
+            "description": "Do two credit cards required to rent the car?",
+            "type": "boolean"
+          },
+          "minimumAge": {
+            "format": "int32",
+            "description": "Minimum age required to rent the car",
+            "type": "integer"
+          },
+          "minimumDriverLicense": {
+            "format": "int32",
+            "description": "Minimum driver's license year required to rent the car",
+            "type": "integer"
+          },
+          "youngDriverAge": {
+            "format": "int32",
+            "description": "Minimum driver age required to rent the vehicle group with additional insurance packages",
+            "type": "integer"
+          },
+          "youngDriverMinimumLicense": {
+            "format": "int32",
+            "description": "Minimum driver's license year required to rent the vehicle group with additional insurance packages. If the driver does not meet one of the young driver's age and the young driver's license year, the driver cannot rent the relevant vehicle group. If the young driver's age and driver's year are met, he can rent the vehicle group with additional packages",
+            "type": "integer"
+          },
+          "depositAmount": {
+            "format": "double",
+            "description": "The amount of deposit to be received from the customer during the car rental",
+            "type": "number"
+          },
+          "transmission": {
+            "format": "int32",
+            "description": "Gearbox type [ 1: Manual, 2: Automatic ]",
+            "type": "integer"
+          },
+          "fuelType": {
+            "format": "int32",
+            "description": "Fuel type [ 1: Diesel, 2: Gasoline ]",
+            "type": "integer"
+          },
+          "segment": {
+            "format": "int32",
+            "description": "Related vehicle group segment type [ 10: Economy - Hatchback, 20: Economy - Sedan, 30: Mid-size - Hatchback, 40: Mid-size - Sedan, 50: Mid-size + Hatchback, 60: Mid-size + Sedan, 70: Luxury -Sedan, 80: Premium - Sedan, 90: SUV, 100: VAN ]",
+            "type": "integer"
+          },
+          "segmentName": {
+            "description": "Related vehicle group segment type name",
+            "type": "string"
+          },
+          "showRoomBrandName": {
+            "description": "Brand for the relevant vehicle group",
+            "type": "string"
+          },
+          "showRoomModelName": {
+            "description": "Model for the relevant vehicle group",
+            "type": "string"
+          }
+        }
+      },
+      "CountryData": {
+        "type": "object",
+        "properties": {
+          "countryName": {
+            "description": "Country name",
+            "type": "string"
+          },
+          "countryCode": {
+            "description": "Country code",
+            "type": "string"
+          },
+          "countryId": {
+            "description": "Unique Id value of the country",
+            "type": "string"
+          },
+          "countryDialCode": {
+            "description": "Country dial code",
+            "type": "string"
+          }
+        }
+      },
+      "CityData": {
+        "type": "object",
+        "properties": {
+          "cityId": {
+            "type": "string"
+          },
+          "cityName": {
+            "type": "string"
+          },
+          "countryId": {
+            "type": "string"
+          }
+        }
+      },
+      "Branch_Broker": {
+        "type": "object",
+        "properties": {
+          "branchId": {
+            "format": "uuid",
+            "type": "string",
+            "example": "00000000-0000-0000-0000-000000000000"
+          },
+          "branchName": {
+            "type": "string"
+          },
+          "cityId": {
+            "format": "uuid",
+            "type": "string",
+            "example": "00000000-0000-0000-0000-000000000000"
+          },
+          "cityName": {
+            "type": "string"
+          },
+          "addressDetail": {
+            "type": "string"
+          },
+          "latitude": {
+            "format": "double",
+            "type": "number"
+          },
+          "longitude": {
+            "format": "double",
+            "type": "number"
+          },
+          "telephone": {
+            "type": "string"
+          },
+          "emailaddress": {
+            "type": "string"
+          },
+          "seoKeyword": {
+            "type": "string"
+          },
+          "seoTitle": {
+            "type": "string"
+          },
+          "seoDescription": {
+            "type": "string"
+          }
+        }
+      },
+      "WorkingHour_Broker": {
+        "type": "object",
+        "properties": {
+          "workingHourId": {
+            "format": "uuid",
+            "type": "string",
+            "example": "00000000-0000-0000-0000-000000000000"
+          },
+          "branchId": {
+            "format": "uuid",
+            "type": "string",
+            "example": "00000000-0000-0000-0000-000000000000"
+          },
+          "branchName": {
+            "type": "string"
+          },
+          "dayCode": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "beginingTime": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "endTime": {
+            "format": "int32",
+            "type": "integer"
+          }
+        }
+      },
+      "TaxOfficeData": {
+        "type": "object",
+        "properties": {
+          "taxOfficeName": {
+            "type": "string"
+          },
+          "taxOfficeId": {
+            "format": "uuid",
+            "type": "string",
+            "example": "00000000-0000-0000-0000-000000000000"
+          },
+          "cityId": {
+            "format": "uuid",
+            "type": "string",
+            "example": "00000000-0000-0000-0000-000000000000"
+          },
+          "cityName": {
+            "type": "string"
+          }
+        }
+      },
+      "DistrictData": {
+        "type": "object",
+        "properties": {
+          "districtId": {
+            "type": "string"
+          },
+          "cityId": {
+            "type": "string"
+          },
+          "districtName": {
+            "type": "string"
+          }
+        }
+      },
+      "ResponseResult": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "type": "boolean"
+          },
+          "exceptionDetail": {
+            "type": "string"
+          }
+        }
+      },
+      "AvailabilityParameters_Broker": {
+        "type": "object",
+        "properties": {
+          "queryParameters": {
+            "$ref": "#/components/schemas/QueryParameters"
+          },
+          "brokerCode": {
+            "description": "Unique code reserved for brokers. Request your code during integration",
+            "type": "string"
+          },
+          "langId": {
+            "format": "int32",
+            "description": "International language code [ 1033: English, 1055: Turkish ]",
+            "type": "integer"
+          },
+          "channelCode": {
+            "format": "int32",
+            "type": "integer"
+          }
+        }
+      },
+      "QueryParameters": {
+        "type": "object",
+        "properties": {
+          "pickupBranchId": {
+            "format": "uuid",
+            "type": "string",
+            "example": "00000000-0000-0000-0000-000000000000"
+          },
+          "dropoffBranchId": {
+            "format": "uuid",
+            "type": "string",
+            "example": "00000000-0000-0000-0000-000000000000"
+          },
+          "pickupDateTime": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "dropoffDateTime": {
+            "format": "date-time",
+            "type": "string"
+          }
+        }
+      },
+      "AvailabilityResponse_Broker": {
+        "type": "object",
+        "properties": {
+          "availabilityData": {
+            "description": "Availability data",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AvailabilityData_Broker"
+            }
+          },
+          "trackingNumber": {
+            "description": "Unique id value of the price",
+            "type": "string"
+          },
+          "responseResult": {
+            "$ref": "#/components/schemas/ResponseResult"
+          }
+        }
+      },
+      "AvailabilityData_Broker": {
+        "type": "object",
+        "properties": {
+          "groupCodeName": {
+            "description": "Group code name",
+            "type": "string"
+          },
+          "groupCodeId": {
+            "format": "uuid",
+            "description": "Unique id value of the group code",
+            "type": "string",
+            "example": "00000000-0000-0000-0000-000000000000"
+          },
+          "ratio": {
+            "format": "double",
+            "description": "Fullness ratio",
+            "type": "number"
+          },
+          "payAmount": {
+            "format": "double",
+            "description": "Price of the relevant group code",
+            "type": "number"
+          }
+        }
+      },
+      "ReservationCreateParameters_Broker": {
+        "type": "object",
+        "properties": {
+          "reservationCustomerParameters": {
+            "$ref": "#/components/schemas/ReservationCustomerParameters_Broker"
+          },
+          "reservationQueryParameters": {
+            "$ref": "#/components/schemas/QueryParameters"
+          },
+          "reservationEquimentParameters": {
+            "$ref": "#/components/schemas/ReservationEquimentParameters_Broker"
+          },
+          "reservationPriceParameters": {
+            "$ref": "#/components/schemas/ReservationPriceParameter_Broker"
+          },
+          "reservationAdditionalProducts": {
+            "description": "\"Reservation additional products information",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ReservationAdditionalProduct_Broker"
+            }
+          },
+          "langId": {
+            "format": "int32",
+            "description": "International language code [ 1033: English, 1055: Turkish ]",
+            "type": "integer"
+          },
+          "channelCode": {
+            "format": "int32",
+            "type": "integer"
+          }
+        }
+      },
+      "ReservationCustomerParameters_Broker": {
+        "type": "object",
+        "properties": {
+          "brokerCode": {
+            "description": "Unique code reserved for brokers. Request your code during integration",
+            "type": "string"
+          },
+          "dummyContactData": {
+            "$ref": "#/components/schemas/DummyContactData"
+          }
+        }
+      },
+      "ReservationEquimentParameters_Broker": {
+        "type": "object",
+        "properties": {
+          "groupCodeId": {
+            "format": "uuid",
+            "description": "Group code unique id value",
+            "type": "string",
+            "example": "00000000-0000-0000-0000-000000000000"
+          }
+        }
+      },
+      "ReservationPriceParameter_Broker": {
+        "type": "object",
+        "properties": {
+          "paymentType": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "trackingNumber": {
+            "description": "Number returned from calculateReservation of the group code to be reservated. This value represents the id value of the price.",
+            "type": "string"
+          },
+          "paymentMethodCode": {
+            "format": "int32",
+            "description": "Reservation is prepaid or office paid information [50: Pay Broker, 60: Pay Office]",
+            "type": "integer"
+          }
+        }
+      },
+      "ReservationAdditionalProduct_Broker": {
+        "type": "object",
+        "properties": {
+          "productId": {
+            "format": "uuid",
+            "description": "Unique id value of the additional product",
+            "type": "string",
+            "example": "00000000-0000-0000-0000-000000000000"
+          },
+          "value": {
+            "format": "int32",
+            "type": "integer"
+          }
+        }
+      },
+      "DummyContactData": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "Customer name",
+            "type": "string"
+          },
+          "surname": {
+            "description": "Customer surname",
+            "type": "string"
+          },
+          "email": {
+            "description": "Customer email address",
+            "type": "string"
+          },
+          "phoneNumber": {
+            "description": "Customer phone number",
+            "type": "string"
+          },
+          "governmentId": {
+            "description": "Customer government or passport Id",
+            "type": "string"
+          },
+          "referenceNumber": {
+            "description": "Reservation number of the integrator company",
+            "type": "string"
+          }
+        }
+      },
+      "ReservationCreateResponse_Broker": {
+        "type": "object",
+        "properties": {
+          "reservationId": {
+            "format": "uuid",
+            "type": "string",
+            "example": "00000000-0000-0000-0000-000000000000"
+          },
+          "reservationItemList": {
+            "type": "array",
+            "items": {
+              "format": "uuid",
+              "type": "string",
+              "example": "00000000-0000-0000-0000-000000000000"
+            }
+          },
+          "pnrNumber": {
+            "type": "string"
+          },
+          "responseResult": {
+            "$ref": "#/components/schemas/ResponseResult"
+          }
+        }
+      },
+      "CancelReservationParameters_Broker": {
+        "type": "object",
+        "properties": {
+          "reservationId": {
+            "format": "uuid",
+            "type": "string",
+            "example": "00000000-0000-0000-0000-000000000000"
+          },
+          "cancellationReason": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "pnrNumber": {
+            "type": "string"
+          },
+          "langId": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "channelCode": {
+            "format": "int32",
+            "type": "integer"
+          }
+        }
+      },
+      "CancelReservationResponse_Broker": {
+        "type": "object",
+        "properties": {
+          "responseResult": {
+            "$ref": "#/components/schemas/ResponseResult"
+          }
+        }
+      },
+      "AdditionalProductParameters_Broker": {
+        "type": "object",
+        "properties": {
+          "queryParameters": {
+            "$ref": "#/components/schemas/QueryParameters"
+          },
+          "groupCodeId": {
+            "format": "uuid",
+            "description": "Unique id value of the group code",
+            "type": "string",
+            "example": "00000000-0000-0000-0000-000000000000"
+          },
+          "langId": {
+            "format": "int32",
+            "description": "International language code [ 1033: English, 1055: Turkish ]",
+            "type": "integer"
+          },
+          "channelCode": {
+            "format": "int32",
+            "type": "integer"
+          }
+        }
+      },
+      "AdditionalProductResponse_Broker": {
+        "type": "object",
+        "properties": {
+          "additionalProducts": {
+            "description": "Reservation additional product information",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AdditionalProductData_Broker"
+            }
+          },
+          "responseResult": {
+            "$ref": "#/components/schemas/ResponseResult"
+          }
+        }
+      },
+      "AdditionalProductData_Broker": {
+        "type": "object",
+        "properties": {
+          "productId": {
+            "format": "uuid",
+            "description": "Unique id value of the additional product",
+            "type": "string",
+            "example": "00000000-0000-0000-0000-000000000000"
+          },
+          "productName": {
+            "description": "Additional product name",
+            "type": "string"
+          },
+          "productType": {
+            "format": "int32",
+            "description": "Additional product type [ 10: Services, 20: Accessories, 30: Fine ]",
+            "type": "integer"
+          },
+          "productCode": {
+            "description": "Additional product code",
+            "type": "string"
+          },
+          "maxPieces": {
+            "format": "int32",
+            "description": "Maximum number of products that can be added to the reservation",
+            "type": "integer"
+          },
+          "webRank": {
+            "format": "int32",
+            "description": "Sequence number to be displayed on the screen",
+            "type": "integer"
+          },
+          "productDescription": {
+            "description": "Additional product description",
+            "type": "string"
+          },
+          "webIconURL": {
+            "type": "string"
+          },
+          "actualAmount": {
+            "format": "double",
+            "description": "Additional product amount information including KDV",
+            "type": "number"
+          },
+          "value": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "tobePaidAmount": {
+            "format": "double",
+            "type": "number"
+          },
+          "isMandatory": {
+            "type": "boolean"
+          },
+          "monthlyPackagePrice": {
+            "format": "double",
+            "description": "30-day package price",
+            "type": "number"
+          },
+          "priceCalculationType": {
+            "format": "int32",
+            "description": "Additional product price calculation type. [ 1: Fixed, 2: Depended on duration ]",
+            "type": "integer"
+          }
+        }
+      }
+    }
+  }
+}

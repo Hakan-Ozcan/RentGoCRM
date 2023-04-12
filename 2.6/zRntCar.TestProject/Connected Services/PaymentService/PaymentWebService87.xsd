@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/PGWService.Models.WCF.Integration" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PGWService.Models.WCF.Integration" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://rentgodemo.netahsilatservice.com/PWS/PaymentWebService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/PGWService.Models.WCF" />
+  <xs:complexType name="PasswordChangeResult">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/PGWService.Models.WCF" base="q1:ResultBase">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PasswordChangeResult" nillable="true" type="tns:PasswordChangeResult" />
+  <xs:complexType name="GetCurrentAccountsResult">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/PGWService.Models.WCF" base="q2:ResultBase">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="GetCurrentAccountsModels" nillable="true" type="tns:ArrayOfGetCurrentAccountModel" />
+          <xs:element minOccurs="0" name="TotalCurrentAccountCount" type="xs:int" />
+          <xs:element minOccurs="0" name="TotalPage" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetCurrentAccountsResult" nillable="true" type="tns:GetCurrentAccountsResult" />
+  <xs:complexType name="ArrayOfGetCurrentAccountModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="GetCurrentAccountModel" nillable="true" type="tns:GetCurrentAccountModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGetCurrentAccountModel" nillable="true" type="tns:ArrayOfGetCurrentAccountModel" />
+  <xs:complexType name="GetCurrentAccountModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CurrencyDisplayType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CurrentAccountTypeId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ErpCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ErpFirmCode" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="GroupCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="IntegrationCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IntegrationDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IsUsableBySubVendor" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsVisibleOnPaymentWithPaymentItemSection" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsVisibleOnSimplePaymentSection" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PaymentSetDefinitionId" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetCurrentAccountModel" nillable="true" type="tns:GetCurrentAccountModel" />
+</xs:schema>

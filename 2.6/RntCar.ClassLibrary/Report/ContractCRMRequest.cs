@@ -1,0 +1,13 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace RntCar.ClassLibrary
+{
+    public class ContractCRMRequest
+    {
+        public int? dayFilter { get; set; }
+    }
+}

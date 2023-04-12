@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsp200607="http://www.w3.org/2006/07/ws-policy" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:ns0="http://intf.service.hgspayments.payments.hmn.ykb.com/" xmlns:ns1="http://service.hgspayments.payments.hmn.ykb.com/" xmlns:wsp200409="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap11="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://intf.service.hgspayments.payments.hmn.ykb.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:import namespace="http://service.hgspayments.payments.hmn.ykb.com/" location="HgsWebUtilServices?ns1.wsdl" />
+  <wsdl:types xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:schema>
+      <xsd:import schemaLocation="HgsWebUtilServices.xsd2.xsd" namespace="http://intf.service.hgspayments.payments.hmn.ykb.com/" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="cancelProduct">
+    <wsdl:part xmlns:xsns="http://intf.service.hgspayments.payments.hmn.ykb.com/" name="parameters" element="xsns:cancelProduct" />
+  </wsdl:message>
+  <wsdl:message name="cancelProductResponse">
+    <wsdl:part xmlns:xsns="http://intf.service.hgspayments.payments.hmn.ykb.com/" name="parameters" element="xsns:cancelProductResponse" />
+  </wsdl:message>
+  <wsdl:message name="getHgsTransactionList">
+    <wsdl:part xmlns:xsns="http://intf.service.hgspayments.payments.hmn.ykb.com/" name="parameters" element="xsns:getHgsTransactionList" />
+  </wsdl:message>
+  <wsdl:message name="getHgsTransactionListResponse">
+    <wsdl:part xmlns:xsns="http://intf.service.hgspayments.payments.hmn.ykb.com/" name="parameters" element="xsns:getHgsTransactionListResponse" />
+  </wsdl:message>
+  <wsdl:message name="getHgsTransitList">
+    <wsdl:part xmlns:xsns="http://intf.service.hgspayments.payments.hmn.ykb.com/" name="parameters" element="xsns:getHgsTransitList" />
+  </wsdl:message>
+  <wsdl:message name="getHgsTransitListResponse">
+    <wsdl:part xmlns:xsns="http://intf.service.hgspayments.payments.hmn.ykb.com/" name="parameters" element="xsns:getHgsTransitListResponse" />
+  </wsdl:message>
+  <wsdl:message name="saleProduct">
+    <wsdl:part xmlns:xsns="http://intf.service.hgspayments.payments.hmn.ykb.com/" name="parameters" element="xsns:saleProduct" />
+  </wsdl:message>
+  <wsdl:message name="saleProductResponse">
+    <wsdl:part xmlns:xsns="http://intf.service.hgspayments.payments.hmn.ykb.com/" name="parameters" element="xsns:saleProductResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateDirectiveAmounts">
+    <wsdl:part xmlns:xsns="http://intf.service.hgspayments.payments.hmn.ykb.com/" name="parameters" element="xsns:updateDirectiveAmounts" />
+  </wsdl:message>
+  <wsdl:message name="updateDirectiveAmountsResponse">
+    <wsdl:part xmlns:xsns="http://intf.service.hgspayments.payments.hmn.ykb.com/" name="parameters" element="xsns:updateDirectiveAmountsResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateVehicleInfo">
+    <wsdl:part xmlns:xsns="http://intf.service.hgspayments.payments.hmn.ykb.com/" name="parameters" element="xsns:updateVehicleInfo" />
+  </wsdl:message>
+  <wsdl:message name="updateVehicleInfoResponse">
+    <wsdl:part xmlns:xsns="http://intf.service.hgspayments.payments.hmn.ykb.com/" name="parameters" element="xsns:updateVehicleInfoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IHgsWebUtilServices">
+    <wsdl:operation name="cancelProduct">
+      <wsdl:input name="cancelProduct" message="ns0:cancelProduct" />
+      <wsdl:output name="cancelProductResponse" message="ns0:cancelProductResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getHgsTransactionList">
+      <wsdl:input name="getHgsTransactionList" message="ns0:getHgsTransactionList" />
+      <wsdl:output name="getHgsTransactionListResponse" message="ns0:getHgsTransactionListResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getHgsTransitList">
+      <wsdl:input name="getHgsTransitList" message="ns0:getHgsTransitList" />
+      <wsdl:output name="getHgsTransitListResponse" message="ns0:getHgsTransitListResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="saleProduct">
+      <wsdl:input name="saleProduct" message="ns0:saleProduct" />
+      <wsdl:output name="saleProductResponse" message="ns0:saleProductResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="updateDirectiveAmounts">
+      <wsdl:input name="updateDirectiveAmounts" message="ns0:updateDirectiveAmounts" />
+      <wsdl:output name="updateDirectiveAmountsResponse" message="ns0:updateDirectiveAmountsResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="updateVehicleInfo">
+      <wsdl:input name="updateVehicleInfo" message="ns0:updateVehicleInfo" />
+      <wsdl:output name="updateVehicleInfoResponse" message="ns0:updateVehicleInfoResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

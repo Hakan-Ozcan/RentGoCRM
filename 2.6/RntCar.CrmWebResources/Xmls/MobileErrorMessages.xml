@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Error>
+  <LangId id="1055">
+    <AnonymizationRequest>Sayın {0}, hesap kapama talebiniz alınmıştır</AnonymizationRequest>
+    <IndiviualCustomerDebitForAnonymization>Sayın {0}, hesabınıza ait borç kaydınız bulunmaktadır. Ödemenizi gerçekleştirdikten sonra lütfen tekrar deneyiniz.</IndiviualCustomerDebitForAnonymization>
+    <ReservationCheckForAnonymization>Sayın {0}, hesabınıza ait aktif rezervasyon kaydınız bulunmaktadır. Kayıtlı rezervasyon/sözleşme iptallerinizi gerçekleştirdikten sonra lütfen tekrar deneyiniz.</ReservationCheckForAnonymization>
+    <ContractCheckForAnonymization>Sayın {0}, hesabınıza ait aktif sözleşme kaydınız bulunmaktadır. Kayıtlı rezervasyon/sözleşme iptallerinizi gerçekleştirdikten sonra lütfen tekrar deneyiniz.</ContractCheckForAnonymization>
+    <CancelAnonymizationRequest>Sayın {0}, hesap kapama talebiniz iptal edilmiştir</CancelAnonymizationRequest>
+    <MissingUser>Girdiğiniz bilgiler eksik veya hatalı. Kullanıcı bilgilerinizi kontrol edip tekrar deneyin.</MissingUser>
+    <PasswordMismatch>Girilen şifreler aynı olmalıdır.</PasswordMismatch>
+    <NullEquipmentList>Seçilen tarihler arasında araç bulunmaktadır.</NullEquipmentList>
+    <ExistingActiveReservation></ExistingActiveReservation>
+    <SystemError>Sistemsel hata. Lütfen merkez kullanıcısıyla görüşün.</SystemError>
+</LangId>
+  <LangId id="1033">
+    <AnonymizationRequest>Dear {0}, </AnonymizationRequest>
+    <IndiviualCustomerDebitForAnonymization>Dear {0},  </IndiviualCustomerDebitForAnonymization>
+    <ReservationCheckForAnonymization>Dear {0}, </ReservationCheckForAnonymization>
+    <ContractCheckForAnonymization>Dear {0}, </ContractCheckForAnonymization>
+    <CancelAnonymizationRequest>Dear {0}, </CancelAnonymizationRequest>
+    <MissingUser>We don't found user.The information you entered was invalid or incomplete. Please try again. </MissingUser>
+    <PasswordMismatch>Passwords must be same.</PasswordMismatch>
+    <NullEquipmentList>There is an car between the selected dates.</NullEquipmentList>
+    <SystemError>System exception. Please get in contact with system administrator.</SystemError>
+  </LangId>
+</Error>

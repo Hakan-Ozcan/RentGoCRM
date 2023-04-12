@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/PGWService.Models.WCF" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PGWService.Models.WCF" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="CardBinInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Bin" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CardOrgranizationType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CardProgram" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CardType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreditCardBrand" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreditCardName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreditCardOrganizationTypeId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Group" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsBusinessCard" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CardBinInfo" nillable="true" type="tns:CardBinInfo" />
+  <xs:complexType name="TransactionModelInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClientReferenceCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PaymentSetId" type="xs:int" />
+      <xs:element minOccurs="0" name="PaymentSetName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PaymentType" type="xs:int" />
+      <xs:element minOccurs="0" name="ReferenceCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReferenceNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TransactionStatusId" type="xs:int" />
+      <xs:element minOccurs="0" name="VPosApiName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VPosERPCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VPosId" type="xs:int" />
+      <xs:element minOccurs="0" name="VendorVPosName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="VposCommRate" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TransactionModelInfo" nillable="true" type="tns:TransactionModelInfo" />
+  <xs:complexType name="ResultBase">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ErrorCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsSuccess" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ResultBase" nillable="true" type="tns:ResultBase" />
+</xs:schema>

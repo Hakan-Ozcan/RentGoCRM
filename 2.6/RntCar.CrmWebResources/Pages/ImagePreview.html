@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0">
+    <title></title>
+
+    <link href="../../rnt_/css/bootstrap3.3.5.css" rel="stylesheet">
+    <link href="../../rnt_/css/bootstrapimageupload.css" rel="stylesheet">
+
+    <script src="../../rnt_/Scripts/Common/jquery_3.3.1.min.js" type="text/javascript"></script>
+    <script src="../../rnt_/Scripts/Common/bootstrap3.3.5.js" type="text/javascript"></script>
+    <script src="../../rnt_/Scripts/Common/bootstrapimageupload.min.js" type="text/javascript"></script>
+    <script src="../../rnt_/Scripts/Common/XrmHelper.js" type="text/javascript"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            var values = XrmHelper.GetCarModelPreviewHeightandWidth();
+
+            $("#imagefile").on("change", function () {
+                var file = document.getElementById('imagefile').files[0]
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    var img = new Image();
+                    img.src = e.target.result;
+                    img.onload = function () {
+                        var width = this.width;
+                        var height = this.height;
+
+
+                        if (height > parseInt(values.ModelHeight)) {
+                            $("#image-preview").css("background-image", "")
+                            alert("Resmin yüksekliği maximum " + values.ModelHeight + "px olmalı")
+                            return
+                        }
+                        if (width > parseInt(values.ModelWidth)) {
+                            $("#image-preview").css("background-image", "")
+                            alert("Resmin genişliği maximum " + parseInt(values.ModelWidth) + "px olmalı")
+                            return
+
+                        }
+                        $("#preview").css("width", width + "px")
+                        $("#preview").css("height", height + "px")
+                        $("#preview").attr("src", this.src)
+                        window.parent.Xrm.Page.getAttribute("rnt_image").setValue(this.src)
+                        window.parent.Xrm.Page.data.save().then(function () { }, function () { })
+
+                    }
+                }
+                reader.readAsDataURL(file);
+
+            });
+            if (values != null) {
+
+                $("#preview").css("width", values.ModelWidth + "px")
+                $("#preview").css("height", values.ModelHeight + "px")
+                $("#preview").attr('src', window.parent.Xrm.Page.getAttribute("rnt_image").getValue());
+
+            }
+
+
+        })
+    </script>
+</head>
+<body>
+    <div class="imageupload panel panel-default">
+        <div class="panel-heading clearfix">
+            <h3 class="panel-title pull-left">Upload Image</h3>
+        </div>
+        <div class="file-tab panel-body">
+            <label class="btn btn-default btn-file">
+                <span>Browse</span>
+                <!-- The file is stored here. -->
+                <input type="file" name="image-file" id="imagefile">
+            </label>
+            <img id="preview" />
+        </div>
+
+    </div>
+</body>
+</html>

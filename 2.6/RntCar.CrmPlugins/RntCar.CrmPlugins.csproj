@@ -1,0 +1,362 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\ILMerge.3.0.41\build\ILMerge.props" Condition="Exists('..\packages\ILMerge.3.0.41\build\ILMerge.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3A2418F2-219B-4081-A903-260DA5CF7E84}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RntCar.CrmPlugins</RootNamespace>
+    <AssemblyName>RntCar.CrmPlugins</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>PluginKey.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Iyzipay">
+      <HintPath>..\Assemblies\Iyzipay.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.5.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Crm.Sdk.Proxy, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CrmSdk.CoreAssemblies.9.0.2.42\lib\net462\Microsoft.Crm.Sdk.Proxy.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.6.1.7600.16394\lib\net35\Microsoft.IdentityModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=3.19.8.16603, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.3.19.8\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.Platform, Version=3.19.8.16603, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.3.19.8\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CrmSdk.XrmTooling.CoreAssembly.9.1.0.92\lib\net462\Microsoft.Rest.ClientRuntime.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xrm.Sdk, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CrmSdk.CoreAssemblies.9.0.2.42\lib\net462\Microsoft.Xrm.Sdk.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Xrm.Sdk.Deployment, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CrmSdk.Deployment.9.0.2.25\lib\net462\Microsoft.Xrm.Sdk.Deployment.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Xrm.Sdk.Workflow, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CrmSdk.Workflow.9.0.2.42\lib\net462\Microsoft.Xrm.Sdk.Workflow.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.Xrm.Tooling.Connector, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CrmSdk.XrmTooling.CoreAssembly.9.1.0.92\lib\net462\Microsoft.Xrm.Tooling.Connector.dll</HintPath>
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationFramework" />
+    <Reference Include="RestSharp, Version=100.0.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Assemblies\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Activities" />
+    <Reference Include="System.Activities.Presentation" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Text.Encodings.Web, Version=5.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.5.0.1\lib\net461\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=5.0.0.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.5.0.2\lib\net461\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Workflow.Activities" />
+    <Reference Include="System.Workflow.ComponentModel" />
+    <Reference Include="System.Workflow.Runtime" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Account\Create\PostCreateCorporateCustomerInMongoDB.cs" />
+    <Compile Include="Account\Create\PreCreateCorporateCustomer.cs" />
+    <Compile Include="Account\Update\PostUpdateCorporateCustomerInMongoDB.cs" />
+    <Compile Include="Account\Update\PreUpdateCorporateCustomer.cs" />
+    <Compile Include="AdditionalDrivers\ExecuteDeactivateAdditionalDriver.cs" />
+    <Compile Include="AdditionalProducts\Actions\ExecuteGetAdditionalProducts.cs" />
+    <Compile Include="AdditionalProducts\Actions\ExecuteGetAdditionalProductsForUpdate.cs" />
+    <Compile Include="AdditionalProducts\Actions\ExecuteGetReservationSelectedAdditionalProducts.cs" />
+    <Compile Include="AvailabilityFactors\PostCreateandUpdateAvailabilityFactorsMongoDB.cs" />
+    <Compile Include="AvailabilityPriceLists\Create\PostCreateAvailabilityPriceListMongoDB.cs" />
+    <Compile Include="AvailabilityPriceLists\Create\PreValidateCreateAvailabilityPriceList.cs" />
+    <Compile Include="AvailabilityPriceLists\Update\PostUpdateAvailabilityPriceListMongoDB.cs" />
+    <Compile Include="AvailabilityPriceLists\Update\PreValidateUpdateAvailabilityPriceList.cs" />
+    <Compile Include="Availibility\ExecuteCalculateAvailibility.cs" />
+    <Compile Include="Availibility\ExecuteCheckAvailibility.cs" />
+    <Compile Include="Availibility\ExecuteDecideChangedGroupCodeStatus.cs" />
+    <Compile Include="AzureBlobStorage\Action\ExecuteGetBlobsUrlsByDirectory.cs" />
+    <Compile Include="BlackList\ExecuteBlackListValidation.cs" />
+    <Compile Include="BonusTransaction\Action\ExecuteGetBirdUserInfo.cs" />
+    <Compile Include="BonusTransaction\Action\ExecuteHopiSales.cs" />
+    <Compile Include="BonusTransaction\Action\ExecuteHopiReturn.cs" />
+    <Compile Include="Branch\Create\PreCreateBranch.cs" />
+    <Compile Include="Branch\Update\PreValidateUpdateBranch.cs" />
+    <Compile Include="BusinessClosure\PostCreateandUpdateBusinessClosureMongoDB.cs" />
+    <Compile Include="Campaign\ExecuteCalculateCampaignPrices.cs" />
+    <Compile Include="Campaign\MongoDB\PostCreateandUpdateCampaignMongoDB.cs" />
+    <Compile Include="CMS\Actions\ExecuteImageGenerator.cs" />
+    <Compile Include="Contact\Actions\ExecuteCreateIndividualCustomer.cs" />
+    <Compile Include="Contact\Actions\ExecuteCreateOrUpdateIndividualCustomerForAdditionalDrivers.cs" />
+    <Compile Include="Contact\Actions\ExecuteGetIndividualCustomerDetail.cs" />
+    <Compile Include="Contact\Actions\ExecuteUpdateIndividualCustomer.cs" />
+    <Compile Include="Contact\PostCreateContactCheckMobilePhoneSingularity.cs" />
+    <Compile Include="Contact\PostUpdateContactCheckMobilePhoneSingularity.cs" />
+    <Compile Include="Contact\PreCreateContact.cs" />
+    <Compile Include="Contact\PreCreateValidateContact.cs" />
+    <Compile Include="Contact\PreUpdateValidateContact.cs" />
+    <Compile Include="Contact\PreValidateContactCitizenShipCheck.cs" />
+    <Compile Include="ContractItem\Create\PostCreateContractItem.cs" />
+    <Compile Include="ContractItem\Create\PostCreateContractItemMongoDB.cs" />
+    <Compile Include="ContractItem\Create\PreCreateContractItem.cs" />
+    <Compile Include="ContractItem\PostContractItemTotalDurationCalculationPlugin.cs" />
+    <Compile Include="ContractItem\Update\PostUpdateContractItem.cs" />
+    <Compile Include="ContractItem\Update\PostUpdateContractItemMongoDB.cs" />
+    <Compile Include="Contract\Action\ExecuteCalculateFineAmountContract.cs" />
+    <Compile Include="Contract\Action\ExecuteCalculatePricesforUpdateContract.cs" />
+    <Compile Include="Contract\Action\ExecuteCancelContract.cs" />
+    <Compile Include="Contract\Action\ExecuteCheckBeforeContractUpdate.cs" />
+    <Compile Include="Contract\Action\ExecuteCreateQuickContract.cs" />
+    <Compile Include="Contract\Action\ExecuteCheckBeforeContractCreation.cs" />
+    <Compile Include="Contract\Action\ExecuteGetContractDataForUpdate.cs" />
+    <Compile Include="Contract\Action\ExecuteSearchContract.cs" />
+    <Compile Include="Contract\Action\ExecuteUpdateContract.cs" />
+    <Compile Include="Contract\Action\ExecuteUpdateContractforDelivery.cs" />
+    <Compile Include="Contract\Action\ExecuteUpdateContractforRental.cs" />
+    <Compile Include="Contract\PostContractTotalDurationCalculationPlugin.cs" />
+    <Compile Include="Contract\Update\PostUpdateContractMongoDB.cs" />
+    <Compile Include="CouponCodeDefinition\Actions\ExecuteGetDefinitionDetailsByCouponCode.cs" />
+    <Compile Include="CouponCodeDefinition\PostCreateandUpdateCouponCodeDefinitionMongoDB.cs" />
+    <Compile Include="CouponCode\Actions\ExecuteCouponCodeOperations.cs" />
+    <Compile Include="CreditCardSlip\PostCreateCreditCardSlip_UpdatePayment.cs" />
+    <Compile Include="CreditCardSlip\PreCreateCreditCardSlip_SetName.cs" />
+    <Compile Include="CreditCard\ExecuteGetCustomerCreditCards.cs" />
+    <Compile Include="CreditCard\ExecuteRetrieveInstallment.cs" />
+    <Compile Include="CreditCard\PostCreate.cs" />
+    <Compile Include="CrmConfiguration\PostCreateCrmConfigurationMongoDB.cs" />
+    <Compile Include="CrmConfiguration\PostUpdateCrmConfigurationMongoDB.cs" />
+    <Compile Include="Damage\ExecuteCreateDamages.cs" />
+    <Compile Include="Equipment\Actions\ExecuteCreateEquipmentInMongoDB.cs" />
+    <Compile Include="Equipment\Actions\ExecuteUpdateEquipmentInformation.cs" />
+    <Compile Include="Equipment\Create\PostCreateEquipmentMongoDB.cs" />
+    <Compile Include="Equipment\Update\PostUpdateCurrentKmChange.cs" />
+    <Compile Include="Equipment\Update\PostUpdateEquipmentMongoDB.cs" />
+    <Compile Include="Equipment\Update\PreUpdateStatusChange.cs" />
+    <Compile Include="GroupCodeListPrice\Create\PostCreateGroupCodeListPriceMongoDB.cs" />
+    <Compile Include="GroupCodeListPrice\Create\PreValidateCreateGroupCodeListPrice.cs" />
+    <Compile Include="GroupCodeListPrice\Update\PostUpdateGroupCodeListPriceMongoDB.cs" />
+    <Compile Include="GroupCodeListPrice\Update\PreValidateUpdateGroupCodeListPrice.cs" />
+    <Compile Include="HGS\Action\ExecuteCancelHGS.cs" />
+    <Compile Include="HGS\Action\ExecuteUpdateLimit.cs" />
+    <Compile Include="HGS\Action\ExecuteUpdateVehicleInfo.cs" />
+    <Compile Include="HGS\Create\PostCreateHGSLabel.cs" />
+    <Compile Include="HGS\SetState\PostSetStateHGSLabel.cs" />
+    <Compile Include="HGS\Update\PostUpdateHGSLabel.cs.cs" />
+    <Compile Include="IndividualAddress\Create\PreCreateValidateContactIndividualAddressCheck.cs" />
+    <Compile Include="IndividualAddress\Update\PreUpdateValidateContactIndividualAddressCheck.cs" />
+    <Compile Include="IntegrationControl\PreUpdate.cs" />
+    <Compile Include="InvoiceAddress\actions\ExecuteDeleteCustomerInvoiceAddress.cs" />
+    <Compile Include="InvoiceAddress\actions\ExecuteGetCustomerInvoiceAddresses.cs" />
+    <Compile Include="InvoiceAddress\actions\ExecuteGetInvoiceAddresses.cs" />
+    <Compile Include="InvoiceAddress\actions\ExecuteProcessCustomerInvoiceAddress.cs" />
+    <Compile Include="InvoiceItem\Create\PostCreateInvoiceItemCalculateInvoiceRollupField.cs" />
+    <Compile Include="InvoiceItem\Update\PostUpdateInvoiceItemCalculateInvoiceRollupField.cs" />
+    <Compile Include="Invoice\Action\ExecuteGetInvoiceByReservationOrContract.cs" />
+    <Compile Include="Invoice\Action\ExecuteGetInvoiceDocument.cs" />
+    <Compile Include="Invoice\PostSendEMailWhenInvoiceInformationsChange.cs" />
+    <Compile Include="Invoice\PostUpdateInvoiceStatusChange.cs" />
+    <Compile Include="KilometerLimit\ExecuteGetKilometerLimit.cs" />
+    <Compile Include="KilometerLimit\Create\PostCreateKilometerLimit.cs" />
+    <Compile Include="KilometerLimit\Update\PostUpdateKilometerLimit.cs" />
+    <Compile Include="ManualPayment\Actions\ExecuteManualPayment.cs" />
+    <Compile Include="MarkettingPermission\Actions\UpdateMarketingPermission.cs" />
+    <Compile Include="MonthlyGroupCodePriceList\PostCreateMonthlyGroupCodePriceListMongoDB.cs" />
+    <Compile Include="MonthlyGroupCodePriceList\PostUpdateMonthlyGroupCodePriceListMongoDB.cs" />
+    <Compile Include="MonthlyPriceList\PostCreateMonthlyPriceListMongoDB.cs" />
+    <Compile Include="MonthlyPriceList\PostUpdateMonthlyPriceListMongoDB.cs" />
+    <Compile Include="odata\CouponCode\CouponCodeDataSourceRetrieveMultiple.cs" />
+    <Compile Include="odata\DailyPrices\DailyPriceDataSourceRetrieveMultiple.cs" />
+    <Compile Include="odata\DailyPrices\DailyPricesDataSourceRetrieve.cs" />
+    <Compile Include="OneWayFee\Create\PostCreateOneWayFeeMongoDB.cs" />
+    <Compile Include="OneWayFee\Update\PostUpdateOneWayFeeMongoDB.cs" />
+    <Compile Include="CreditCard\ExecuteCreateCreditCard.cs" />
+    <Compile Include="Payment\actions\Execute3dPaymentReturn.cs" />
+    <Compile Include="Payment\actions\ExecuteMakePayment.cs" />
+    <Compile Include="Payment\actions\ExecuteMakeRefund.cs" />
+    <Compile Include="Payment\actions\ExecuteGetMaturityDifferenceDetail.cs" />
+    <Compile Include="Payment\actions\ExecuteSimulateRefundAmount.cs" />
+    <Compile Include="Payment\PostCreatePaymentCalculateRollupFieldsPlugin.cs" />
+    <Compile Include="Payment\PostUpdatePaymentCalculateRollupFieldsPlugin.cs" />
+    <Compile Include="Payment\PreUpdatePayment_SetName.cs" />
+    <Compile Include="PriceCalculationSummaries\ExecuteGetPriceCalculationSummaries.cs" />
+    <Compile Include="PriceCalculation\Action\ExecuteCreatePriceCalculation.cs" />
+    <Compile Include="PriceFactors\MongoDB\PostCreateandUpdatePriceFactorsMongoDB.cs" />
+    <Compile Include="PriceFactors\Validation\PreValidationUpdatePriceFactor.cs" />
+    <Compile Include="PriceFactors\Validation\PreValidationCreatePriceFactor.cs" />
+    <Compile Include="PriceHourEffect\PostCreateandUpdatePriceHourEffectMongoDB.cs" />
+    <Compile Include="PriceList\Actions\ExecutePriceListInMongoDB.cs" />
+    <Compile Include="PriceList\Create\PostCreatePriceListMongoDB.cs" />
+    <Compile Include="PriceList\Update\PostUpdatePriceListMongoDB.cs" />
+    <Compile Include="PriceList\Validation\PreUpdateValidatePriceList.cs" />
+    <Compile Include="PriceList\Validation\PreCreateValidatePriceList.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Report\Actions\ExecuteGetAdditionalProductReport.cs" />
+    <Compile Include="Report\Actions\ExecuteGetadditionalProductsforBranch.cs" />
+    <Compile Include="Report\Actions\ExecuteGetadditionalProductsforBranch_Main.cs" />
+    <Compile Include="Report\Actions\ExecuteGetBranchAvailabilityReport.cs" />
+    <Compile Include="Report\Actions\ExecuteGetBranchStatusReport.cs" />
+    <Compile Include="Report\Actions\ExecuteGetComparedPlateNumbersReport.cs" />
+    <Compile Include="Report\Actions\ExecuteGetContractReport.cs" />
+    <Compile Include="Report\Actions\ExecuteGetContractsDepositRefundReport.cs" />
+    <Compile Include="Report\Actions\ExecuteGetContractsWithFaultyInvoiceReport.cs" />
+    <Compile Include="Report\Actions\ExecuteGetDailyReport.cs" />
+    <Compile Include="Report\Actions\ExecuteGetEquipmentAvailabilityReport.cs" />
+    <Compile Include="Report\Actions\ExecuteGetEquipmentReport.cs" />
+    <Compile Include="Report\Actions\ExecuteGetReservationReport.cs" />
+    <Compile Include="Report\Actions\ExecuteGetRevenueReport.cs" />
+    <Compile Include="ReservationItem\Actions\ExecuteCheckReservationItemInMongoDB.cs" />
+    <Compile Include="ReservationItem\Actions\ExecuteCreateReservationItemInMongoDB.cs" />
+    <Compile Include="ReservationItem\Create\PostCreateReservationItem.cs" />
+    <Compile Include="ReservationItem\Create\PostCreateReservationItemMongoDB.cs" />
+    <Compile Include="ReservationItem\Create\PreCreateReservationItem.cs" />
+    <Compile Include="ReservationItem\Update\PostUpdateReservationItem.cs" />
+    <Compile Include="ReservationItem\Update\PostUpdateReservationItemMongoDB.cs" />
+    <Compile Include="Reservation\Actions\ExecuteCalculateFineAmountReservation.cs" />
+    <Compile Include="Reservation\Actions\ExecuteCancelReservation.cs" />
+    <Compile Include="Reservation\Actions\ExecuteCheckBeforeReservationUpdate.cs" />
+    <Compile Include="Reservation\Actions\ExecuteCheckDiscount.cs" />
+    <Compile Include="Reservation\Actions\ExecuteCreateReservation.cs" />
+    <Compile Include="Reservation\Actions\ExecuteSearchReservation.cs" />
+    <Compile Include="Reservation\Actions\ExecuteUpdateReservation.cs" />
+    <Compile Include="Reservation\PostCreatePegasusCampaign.cs" />
+    <Compile Include="Reservation\PostReservationTotalDurationCalculation.cs" />
+    <Compile Include="SMS\ExecuteGenerateAndSendSMS.cs" />
+    <Compile Include="SMS\ExecuteSendSMS.cs" />
+    <Compile Include="Transfer\Action\ExecuteUpdateTransferForDelivery.cs" />
+    <Compile Include="Transfer\Action\ExecuteUpdateTransferForReturn.cs" />
+    <Compile Include="Transfer\MongoDB\PostCreateandUpdateTransferMongoDB.cs" />
+    <Compile Include="Transfer\MongoDB\PostUpdateTransferMaintenance.cs" />
+    <Compile Include="VirtualBranch\Create\PostCreateVirtualBranchInMongoDB.cs" />
+    <Compile Include="VirtualBranch\Update\PostUpdateVirtualBranchInMongoDB.cs" />
+    <Compile Include="_Common\ExecuteGetUserTime.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PluginKey.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RntCar.BusinessLibrary\RntCar.BusinessLibrary.csproj">
+      <Project>{a5660062-cbe5-4a3d-aa32-c68db8d332e9}</Project>
+      <Name>RntCar.BusinessLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RntCar.ClassLibrary\RntCar.ClassLibrary.csproj">
+      <Project>{26e45602-87f8-4cf4-a83c-967d988c9d1f}</Project>
+      <Name>RntCar.ClassLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RntCar.IntegrationHelper\RntCar.IntegrationHelper.csproj">
+      <Project>{590dab83-27ff-491d-8b86-b56627ea0007}</Project>
+      <Name>RntCar.IntegrationHelper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RntCar.PaymentHelper\RntCar.PaymentHelper.csproj">
+      <Project>{4c0d3b9f-46e0-4ea4-bbab-f08057d0088b}</Project>
+      <Name>RntCar.PaymentHelper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RntCar.SDK\RntCar.SDK.csproj">
+      <Project>{77bb0d97-6487-4202-821f-0dc2d08c9053}</Project>
+      <Name>RntCar.SDK</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="BonusTransaction\Create\" />
+    <Folder Include="IndividualAddress\Action\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\ILMerge.MSBuild.Task.1.0.7\build\ILMerge.MSBuild.Task.targets" Condition="Exists('..\packages\ILMerge.MSBuild.Task.1.0.7\build\ILMerge.MSBuild.Task.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\ILMerge.MSBuild.Task.1.0.7\build\ILMerge.MSBuild.Task.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\ILMerge.MSBuild.Task.1.0.7\build\ILMerge.MSBuild.Task.targets'))" />
+    <Error Condition="!Exists('..\packages\ILMerge.3.0.41\build\ILMerge.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\ILMerge.3.0.41\build\ILMerge.props'))" />
+  </Target>
+</Project>

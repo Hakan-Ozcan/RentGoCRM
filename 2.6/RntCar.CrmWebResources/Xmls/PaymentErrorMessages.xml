@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Error>
+  <LangId id="1055">
+    <CannotCreateCreditCard>Bu formdan kredi kartı yaratamazsınız.</CannotCreateCreditCard>
+    <InvalidCustomerId>Müşteride bir sorun var.Şu anda işleminizi gerçekleştiremiyoruz.</InvalidCustomerId>
+  </LangId>
+  <LangId id="1033">
+    <CannotCreateCreditCard>You can not create credit card through this form.</CannotCreateCreditCard>
+    <InvalidCustomerId>There is a problem about customer.We can not process your transaction.</InvalidCustomerId>
+
+  </LangId>
+</Error> 

@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Error>
+  <LangId id="1055">
+    <ExistingActiveContract>Seçilen tarihler arasında kullanıcıya aktif bir sözleşme bulunmaktadır.</ExistingActiveContract>
+    <QuickContractDateTimeValidation>İleri tarihli rezervasyonlarda hızlı sözleşme oluşturamazsınız.</QuickContractDateTimeValidation>
+    <QuickContractPaymentChoiceValidation>Sonra öde bir rezervasyon için hızlı sözleşme oluşturamazsınız.</QuickContractPaymentChoiceValidation>
+    <ContractUpdateCarChangeValidation>Teslimat bekleniyor durumundaki sözleşmelerde araç değişiklik talebi yapılamaz.</ContractUpdateCarChangeValidation>
+    <NotExistedPnr>Girdiğiniz PNR'a ait bir sözleşme bulunamadı.</NotExistedPnr>
+    <NullPnrorContractNumber>PNR ve sözleşme numarası boş olamaz.</NullPnrorContractNumber>
+    <UnavailableStatusContract>Sadece teslimat bekliyor statüsüne ait bir sözleşmeyi iptal edebilirsiniz.</UnavailableStatusContract>
+    <AlreadyInactiveContract>Iptal edilmiş bir sözleşme , tekrar iptal edilemez</AlreadyInactiveContract>
+    <ContractDateTimeValidation>Rezervasyon başlangıç saatine {0} saatten fazla olan rezervasyon sözleşmeye çevrilemez.</ContractDateTimeValidation>
+    <ContractCancelStatusValidation>İptal Olmuş bir rezervasyon sözleşmeye geçirilemez.</ContractCancelStatusValidation>
+	<Waiting3DStatusValidation>3D güvenlikte bekleyen bir rezervasyon sözleşmeye geçirilemez.</Waiting3DStatusValidation>
+	<ContractExistingValidation>Sözleşmesi zaten oluşturulmuş bir rezervasyon sözleşmeye geçirilemez.</ContractExistingValidation>
+    <ContractUpdateCarChangeValidation>Teslimat bekleniyor sözleşmelerde araç değişim talebi alınamaz.</ContractUpdateCarChangeValidation>
+    <OtherBranchsValidation>Ait olmadığınız bir şubenin rezervasyonunu sözleşmeye geçiremezsiniz.</OtherBranchsValidation>
+    <EquipmentChangeValidation>Bu sözleşmede araç değişikliği vardır.Sözleşmeyi güncellemek için aracın iade edilmesi gerekmektedir.</EquipmentChangeValidation>
+    <QuickContractAdditionalDriverValidation>Ek sürücü ekli rezervasyon ile hızlı sözleşme oluşturulamaz.</QuickContractAdditionalDriverValidation>
+    <QuickContractMissingCustomerInfo>Eksik müşteri bilgileri ile hızlı sözleşme oluşturamazsınız. Lütfen normal sözleşme süreci ile ilerleyiniz.</QuickContractMissingCustomerInfo>
+    <ContractCheckForAnonymization>Aktif Sözleşmeniz Vardır. Sözleşmeleri Sonlandırmanız Gereklidir.</ContractCheckForAnonymization>
+  </LangId>
+  <LangId id="1033">
+    <ExistingActiveContract>There is an active contract between the selected dates.</ExistingActiveContract>
+    <QuickContractDateTimeValidation>Cannot create a quick contract for a later dated reservation</QuickContractDateTimeValidation>
+    <QuickContractPaymentChoiceValidation>You can not creat a quick contract for pay-later reservation</QuickContractPaymentChoiceValidation>
+    <ContractUpdateCarChangeValidation>Can not be requested to change car contracts in waiting for delivery</ContractUpdateCarChangeValidation>
+    <NotExistedPnr>Contract couldnt found by PNR number that your provided.</NotExistedPnr>
+    <NullPnrorContractNumber>PNR and Contract Number is mandatory</NullPnrorContractNumber>
+    <UnavailableStatusContract>You can only cancel Contract in Waiting for delivery Status.</UnavailableStatusContract>
+    <AlreadyInactiveContract>You can not deactivate contract in Inactive Status</AlreadyInactiveContract>
+    <ContractDateTimeValidation>Reservation cannot be converted to a contract with a start time of more than {0} hours.</ContractDateTimeValidation>
+    <ContractCancelStatusValidation>A canceled reservation cannot be entered into a contract.</ContractCancelStatusValidation>
+	<Waiting3DStatusValidation>A Waiting 3D secure reservation cannot be entered into a contract.</Waiting3DStatusValidation>
+	<ContractExistingValidation>A contract for which a contract has already been created cannot be entered into a contract.</ContractExistingValidation>
+    <ContractUpdateCarChangeValidation>Car change request cannot be received in contracts for waiting for delivery.</ContractUpdateCarChangeValidation>
+    <OtherBranchsValidation>You cannot create a contract with the reservation of a branch you do not belong to</OtherBranchsValidation>
+    <EquipmentChangeValidation>You can not update.This contract has Equipment change.</EquipmentChangeValidation>
+    <QuickContractAdditionalDriverValidation>Quick contract cannot be created with additional driver attached reservation</QuickContractAdditionalDriverValidation>
+    <QuickContractMissingCustomerInfo>Missing customer info.</QuickContractMissingCustomerInfo>
+    <ContractCheckForAnonymization>You are active contracts. You must closed contracts.</ContractCheckForAnonymization>
+</LangId>
+</Error>

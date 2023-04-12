@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="9cec9702-8ebd-4586-93ff-daf6ce6f898f" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://rentgo.netahsilatservice.com/PaymentWebService/PaymentWebService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="PaymentWebService.xsd" MetadataType="Schema" ID="c9c29de8-9a95-4f4d-b45c-b6c1187786e4" SourceId="1" SourceUrl="http://rentgo.netahsilatservice.com/PaymentWebService/PaymentWebService.svc?xsd=xsd0" />
+    <MetadataFile FileName="PaymentWebService1.xsd" MetadataType="Schema" ID="6db8baef-cb85-49df-b308-c7f8cbfe0eb0" SourceId="1" SourceUrl="http://rentgo.netahsilatservice.com/PaymentWebService/PaymentWebService.svc?xsd=xsd5" />
+    <MetadataFile FileName="PaymentWebService2.xsd" MetadataType="Schema" ID="4afffc56-2814-4951-9a8a-2d42ee55f11d" SourceId="1" SourceUrl="http://rentgo.netahsilatservice.com/PaymentWebService/PaymentWebService.svc?xsd=xsd6" />
+    <MetadataFile FileName="PaymentWebService3.xsd" MetadataType="Schema" ID="92f56d01-6d2a-4d49-a0c0-da3a5d1e9a2d" SourceId="1" SourceUrl="http://rentgo.netahsilatservice.com/PaymentWebService/PaymentWebService.svc?xsd=xsd1" />
+    <MetadataFile FileName="PaymentWebService4.xsd" MetadataType="Schema" ID="d614bc53-7c03-4a62-8d98-ef241edcfe3b" SourceId="1" SourceUrl="http://rentgo.netahsilatservice.com/PaymentWebService/PaymentWebService.svc?xsd=xsd3" />
+    <MetadataFile FileName="PaymentWebService5.xsd" MetadataType="Schema" ID="d6a18cbb-986b-45fa-a7f8-7572ca6421ec" SourceId="1" SourceUrl="http://rentgo.netahsilatservice.com/PaymentWebService/PaymentWebService.svc?xsd=xsd4" />
+    <MetadataFile FileName="PaymentWebService.wsdl" MetadataType="Wsdl" ID="4a03050d-1686-494f-8c2f-2366f213561a" SourceId="1" SourceUrl="http://rentgo.netahsilatservice.com/PaymentWebService/PaymentWebService.svc?wsdl" />
+    <MetadataFile FileName="PaymentWebService.disco" MetadataType="Disco" ID="757138b1-1cc7-4599-811b-fe5d68500d6a" SourceId="1" SourceUrl="http://rentgo.netahsilatservice.com/PaymentWebService/PaymentWebService.svc?disco" />
+    <MetadataFile FileName="PaymentWebService6.xsd" MetadataType="Schema" ID="4120cd2f-d00f-4b19-a270-5e5dede44de9" SourceId="1" SourceUrl="http://rentgo.netahsilatservice.com/PaymentWebService/PaymentWebService.svc?xsd=xsd2" />
+    <MetadataFile FileName="PaymentWebService7.xsd" MetadataType="Schema" ID="0c2cda75-90f3-4c87-a197-ec65cd816131" SourceId="1" SourceUrl="http://rentgo.netahsilatservice.com/PaymentWebService/PaymentWebService.svc?xsd=xsd7" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

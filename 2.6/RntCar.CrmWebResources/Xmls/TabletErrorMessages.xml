@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Error>
+  <LangId id="1055">
+    <WrongUser>Kullanıcı adı veya şifre hatalıdır.</WrongUser>
+    <NotFoundLicencePlate>The licence plate could not found.</NotFoundLicencePlate>
+    <ChangeOfCar>{0} bu numaralı sözleşme de araç değişikliği vardır.</ChangeOfCar>
+    <NotSignedContract>Dijital olarak imzalanmamış bir sözleşme teslim edilemez.</NotSignedContract>
+  </LangId>
+  <LangId id="1033">
+    <WrongUser>Wrong user or password</WrongUser>
+    <NotFoundLicencePlate>Plaka bulunamadı.</NotFoundLicencePlate>
+    <ChangeOfCar>There is a change of car for {0} contract</ChangeOfCar>
+    <NotSignedContract>Dijital olarak imzalanmamış bir sözleşme teslim edilemez.</NotSignedContract>
+
+  </LangId>
+</Error>

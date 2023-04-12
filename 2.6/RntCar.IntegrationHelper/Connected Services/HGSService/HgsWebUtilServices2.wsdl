@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsp200607="http://www.w3.org/2006/07/ws-policy" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:ns0="http://intf.service.hgspayments.payments.hmn.ykb.com/" xmlns:ns1="http://service.hgspayments.payments.hmn.ykb.com/" xmlns:wsp200409="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap11="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://service.hgspayments.payments.hmn.ykb.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types />
+  <wsdl:binding name="HgsWebUtilServicesServiceSoapBinding" type="ns0:IHgsWebUtilServices">
+    <soap11:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="cancelProduct">
+      <soap11:operation soapAction="" style="document" />
+      <wsdl:input name="cancelProduct">
+        <soap11:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="cancelProductResponse">
+        <soap11:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getHgsTransactionList">
+      <soap11:operation soapAction="" style="document" />
+      <wsdl:input name="getHgsTransactionList">
+        <soap11:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getHgsTransactionListResponse">
+        <soap11:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getHgsTransitList">
+      <soap11:operation soapAction="" style="document" />
+      <wsdl:input name="getHgsTransitList">
+        <soap11:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getHgsTransitListResponse">
+        <soap11:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="saleProduct">
+      <soap11:operation soapAction="" style="document" />
+      <wsdl:input name="saleProduct">
+        <soap11:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="saleProductResponse">
+        <soap11:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateDirectiveAmounts">
+      <soap11:operation soapAction="" style="document" />
+      <wsdl:input name="updateDirectiveAmounts">
+        <soap11:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="updateDirectiveAmountsResponse">
+        <soap11:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateVehicleInfo">
+      <soap11:operation soapAction="" style="document" />
+      <wsdl:input name="updateVehicleInfo">
+        <soap11:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="updateVehicleInfoResponse">
+        <soap11:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="HgsWebUtilServicesService">
+    <wsdl:port name="HgsWebUtilServicesPort" binding="ns1:HgsWebUtilServicesServiceSoapBinding">
+      <soap11:address location="https://dpextprd.yapikredi.com.tr:443/Hmn/pym/HgsWebUtilServices" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

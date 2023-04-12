@@ -1,0 +1,158 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link href="../../rnt_/css/SmartWizard/smart_wizard.css" rel="stylesheet" type="text/css" />
+    <link href="../../rnt_/css/SmartWizard/smart_wizard_theme_arrows.css" rel="stylesheet" type="text/css" />
+
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.15.2/dist/bootstrap-table.min.css">
+    <link rel="stylesheet" type="text/css" href="https://rawgit.com/vitalets/x-editable/master/dist/bootstrap3-editable/css/bootstrap-editable.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/foundation-datepicker/1.5.6/css/foundation-datepicker.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        .disablePaddings {
+            padding-left: unset;
+            padding-right: unset;
+        }
+
+        .sw-theme-arrows .step-content {
+            background-color: unset !important;
+        }
+
+        .sw-theme-arrows > ul.step-anchor > li > a, .sw-theme-arrows > ul.step-anchor > li > a:hover {
+            height: 60px;
+        }
+    </style>
+</head>
+<body>
+    <div id="smartwizard" style="top: 20px;">
+        <ul class="col-md-12">
+            <li class="col-md-2 disablePaddings"><a href="#step-1">Price Information</a></li>
+            <li class="col-md-3 disablePaddings"><a href="#step-2">Group Code Information</a></li>
+            <li class="col-md-3 disablePaddings"><a href="#step-3">Group Code List Price Information</a></li>
+            <li class="col-md-3 disablePaddings"><a href="#step-4">Availability List Price Information</a></li>
+            <li class="col-md-1 disablePaddings"><a href="#step-5">Finish</a></li>
+        </ul>
+        <div>
+            <div id="error" class="alert alert-danger alert-dismissable" style="display:none">
+
+            </div>
+            <div id="step-1" class="col-md-8">
+                <div class="form-group col-md-6">
+                    <label for="codeSelection">Fiyat Kodu</label>
+                    <select class="form-control" id="codeSelection" style="height:unset"></select>
+                </div>
+                <div class="form-group col-md-6">
+                    <div class="form-group">
+                        <label for="typeSelection">Fiyat Tipi:</label>
+                        <select class="form-control" id="typeSelection" style="height:unset">
+                            <option value="1">Bireysel</option>
+                            <option value="2">Kurumsal</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="exampleInputEmail1">Başlangıç Tarihi</label>
+                    <input type="text" id="beginDate" class="form-control">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="exampleInputEmail1">Bitiş Tarihi</label>
+                    <input type="text" id="endDate" class="form-control">
+                </div>
+            </div>
+            <div id="step-2">
+                <table id="tableForGroupCodeData"></table>
+            </div>
+            <div id="step-3">
+                <!--<div id="toolbarForListPrice">
+                    <button id="addButtonListPrice" class="btn btn-default">Insert Row</button>
+                </div>-->
+                <table id="tableForGroupCodeListPriceData" data-toolbar="#toolbarForListPrice"></table>
+            </div>
+            <div id="step-4">
+                <!--<div id="toolbarForAvailability">
+                    <button id="addButtonAvailabilityListPrice" class="btn btn-default">Insert Row</button>
+                </div>-->
+                <table id="tableForAvailabilityListPriceData" data-toolbar="#toolbarForAvailability"></table>
+            </div>
+            <div id="step-5">
+                <div class="alert alert-info" id="info">
+                    <strong>Info!</strong> Press the finish button to create a price list
+                </div>
+                <div class="alert alert-success" id="success" style="display:none">
+
+                </div>
+                <div class="alert alert-danger" id="customError" style="display:none">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Include jQuery -->
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <!-- Include jQuery Validator plugin -->
+    <!-- Include SmartWizard JavaScript source -->
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.15.2/dist/bootstrap-table.min.js"></script>
+    <!--<script type="text/javascript" src="https://rawgit.com/wenzhixin/bootstrap-table/master/src/bootstrap-table.js"></script>-->
+    <script type="text/javascript" src="https://rawgit.com/vitalets/x-editable/master/dist/bootstrap3-editable/js/bootstrap-editable.js"></script>
+    <script type="text/javascript" src="https://rawgit.com/wenzhixin/bootstrap-table/master/src/extensions/editable/bootstrap-table-editable.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation-datepicker/1.5.6/js/foundation-datepicker.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.blockUI/2.70/jquery.blockUI.min.js" type="text/javascript"></script>
+
+    <script src="../../rnt_/Scripts/Common/XrmHelper.js"></script>
+    <script type="text/javascript" src="../../rnt_/Scripts/SmartWizard/jquery.smartWizard.min.js"></script>
+    <script type="text/javascript" src="../../rnt_/Scripts/SmartWizard/groupCodeTableFunctions.js"></script>
+    <script type="text/javascript" src="../../rnt_/Scripts/SmartWizard/groupCodeListPriceTableFunctions.js"></script>
+    <script type="text/javascript" src="../../rnt_/Scripts/SmartWizard/availabilityPriceListTableFunctions.js"></script>
+    <script type="text/javascript" src="../../rnt_/Scripts/SmartWizard/dateFunctions.js"></script>
+    <script type="text/javascript" src="../../rnt_/Scripts/SmartWizard/smartWizardFunctions.js"></script>
+    <script type="text/javascript" src="../../mag_/js/process.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            window.tableDataForGroupCode = [];
+            window.tableDataForGroupCodeListPrice = [];
+            window.tableDataForAvailabilityPriceList = [];
+
+            let output = [];
+            let url = XrmHelper.GetClientURL() + "/xrmservices/2011/OrganizationData.svc/rnt_pricecodeSet?$select=rnt_pricecodeId,rnt_name&$orderby=rnt_name asc";
+            XrmHelper.GetRecordsWithOData(url, false, function (data) {
+                if (data.d.results.length > 0) {
+                    for (var i in data.d.results) {
+                        let id = data.d.results[i]["rnt_pricecodeId"];
+                        let name = data.d.results[i]["rnt_name"];
+                        output.push('<option value="' + id + '">' + name + '</option>');
+                    }
+
+                    $("#codeSelection").html(output.join(''));
+
+                    dateFunctions.init();
+                    smartWizardFunctions.init();
+                    groupCodeTable.init();
+                    groupCodeListPriceTable.init();
+                    availabilityPriceListTable.init();
+                }
+
+            },
+                function (e) {
+                    alert(e);
+                });
+            //automatically show next editable
+            //$(".editable").on('hidden', function (e, reason) {
+            //    debugger;
+            //    let count = 1;
+            //    if (reason === 'save' || reason === 'nochange') {
+            //        $("#tableForGroupCodeData .editable:visible").eq($("#tableForGroupCodeData .editable:visible").index(this) + 1).editable('show');
+            //    }
+            //});
+        });
+    </script>
+</body>
+</html>

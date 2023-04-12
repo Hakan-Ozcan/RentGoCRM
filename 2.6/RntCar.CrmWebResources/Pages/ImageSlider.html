@@ -1,0 +1,313 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightslider/1.1.6/css/lightslider.min.css"></script>
+</head>
+<body>
+
+    <div class="wrapper">
+        <button id="refreshButton" style="margin-bottom: 10px;">Yenile</button>
+        <ul id="lightSlider"></ul>
+    </div>
+
+
+    <script src="../../rnt_/Scripts/Common/jquery_3.3.1.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightslider/1.1.6/js/lightslider.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@azure/storage-blob@10.3.0/dist/index.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-loading-overlay/2.1.6/loadingoverlay.min.js"></script>
+    <script type="text/javascript" src="../../ClientGlobalContext.js.aspx"></script>
+    <script src="../../rnt_/Scripts/Common/XrmHelper.js"></script>
+    <script type="text/javascript" src="../../mag_/js/process.js"></script>
+    <style>
+        .wrapper {
+            width: 420px;
+        }
+
+        p {
+            font-family: SegoeUI-Semibold, "Segoe UI Semibold", "Segoe UI Regular", "Segoe UI";
+        }
+
+        ul {
+            list-style: none outside none;
+            padding-left: 0;
+            margin-bottom: 0;
+        }
+
+        li {
+            display: block;
+            float: left;
+            margin-right: 6px;
+            cursor: pointer;
+        }
+
+        img {
+            display: block;
+            height: auto;
+            max-width: 100%;
+        }
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            let counter = 0
+            var parameters = GetGlobalContext().getQueryStringParameters();
+            var recordid = parameters.id;
+            var formattedRecordId = recordid.replace("{", "").replace("}", "")
+            var entityname = parameters.entityTypeName;
+            var customparams = ParseData(parameters.data);
+            var odataUrl = customparams.odataUrl;
+            var output = [];
+            var baseUrl = XrmHelper.GetConfigurationByName("blobstorage_baseurl")
+            $.LoadingOverlay("show");
+            if (entityname == "rnt_equipment") {
+                // get equipment damages for image path
+                var equipmentUrl = XrmHelper.GetClientURL() + "/xrmservices/2011/OrganizationData.svc/rnt_damageSet?$select=rnt_blobstoragepath&$filter=rnt_equipmentid/Id eq guid'" + formattedRecordId + "'";
+
+                XrmHelper.GetRecordsWithOData(equipmentUrl, false, function (data) {
+                    if (data.d.results.length > 0) {
+                        for (var i in data.d.results) {
+                            if (data.d.results[i]["rnt_blobstoragepath"] != null) {
+                                let imagePath = data.d.results[i]["rnt_blobstoragepath"];
+                                output.push("<li data-thumb='" + imagePath + "'><img src='" + imagePath + "' /></li>");
+                            }
+                            else {
+                                output.push("<li><p>Resim bulunamadı</p></li>");
+                            }
+                        }
+                        $("#lightSlider").html(output.join(''));
+
+                        $('#lightSlider').lightSlider({
+                            gallery: true,
+                            item: 1,
+                            loop: true,
+                            slideMargin: 0,
+                            thumbItem: 9
+                        });
+                    }
+                    else {
+                        output.push("<li><p>Resim bulunamadı</p></li>");
+                        $("#lightSlider").html(output.join(''));
+                    }
+                    $.LoadingOverlay("hide", true);
+                }, function (e) {
+                    $.LoadingOverlay("hide", true);
+                    console.warn(e);
+                });
+            }
+            else if (entityname == "contact") {
+                // get front and rear license image
+                var parameters = { containerName: "customers", directoryPath: formattedRecordId.turkishToLower() };
+                Process.callAction("rnt_GetBlobsUrlsByDirectory",
+                    [{
+                        key: "BlobParameters",
+                        type: Process.Type.String,
+                        value: JSON.stringify(parameters)
+                    }],
+                    function (data) {
+                        var parsedResponse = JSON.parse(data.BlobResponse);
+                        if (parsedResponse.documentPathList.length > 0) {
+                            for (var i in parsedResponse.documentPathList) {
+                                output.push("<li data-thumb='" + parsedResponse.documentPathList[i] + "'><img src='" + parsedResponse.documentPathList[i] + "' /></li>");
+                            }
+                        }
+                        else {
+                            output.push("<li><p>Resim bulunamadı</p></li>");
+                        }
+                        $("#lightSlider").html(output.join(''));
+
+                        $('#lightSlider').lightSlider({
+                            gallery: true,
+                            item: 1,
+                            loop: true,
+                            slideMargin: 0,
+                            thumbItem: 9
+                        });
+                        $.LoadingOverlay("hide", true);
+                    },
+                    function (e, t) {
+                        $.LoadingOverlay("hide", true);
+                        console.error(e);
+                    });
+            }
+            else if (entityname == "rnt_damage") {
+                var damageImagePath = window.parent.Xrm.Page.getAttribute("rnt_blobstoragepath").getValue()
+                if (damageImagePath != null) {
+                    output.push("<li data-thumb='" + damageImagePath + "'><img src='" + damageImagePath + "' /></li>");
+                }
+                else {
+                    output.push("<li><p>Resim bulunamadı</p></li>");
+                }
+                $("#lightSlider").html(output.join(''));
+
+                $('#lightSlider').lightSlider({
+                    gallery: true,
+                    item: 1,
+                    loop: true,
+                    slideMargin: 0,
+                    thumbItem: 9
+                });
+                $.LoadingOverlay("hide", true);
+            }
+            else if (entityname == "rnt_contract") {
+                // get contract equipments
+                let contractItem = XrmHelper.GetClientURL() + "/xrmservices/2011/OrganizationData.svc/rnt_contractitemSet?$select=rnt_equipment&$filter=rnt_contractId/Id eq guid'" + formattedRecordId + "' and (rnt_itemtypecode/Value eq 1 or rnt_itemtypecode/Value eq 5) and (statuscode/Value eq 100000001 or statuscode/Value eq 100000003)";
+                XrmHelper.GetRecordsWithOData(contractItem, false, function (data) {
+                    let totalContractItem = data.d.results.length
+                    if (data.d.results.length > 0) {
+                        for (var i in data.d.results) {
+                            counter = i
+                            if (data.d.results[i]["rnt_equipment"]["Name"] == null) {
+                                if (totalContractItem - 1 == counter) {
+                                    $("#lightSlider").html(output.join(''));
+
+                                    $('#lightSlider').lightSlider({
+                                        gallery: true,
+                                        item: 1,
+                                        loop: true,
+                                        slideMargin: 0,
+                                        thumbItem: 9
+                                    });
+                                    $.LoadingOverlay("hide", true);
+                                }
+                                continue;
+                            }
+                            var plate = data.d.results[i]["rnt_equipment"]["Name"].turkishToLower();
+                            var directoryPath = plate + "/" + window.parent.Xrm.Page.getAttribute("rnt_contractnumber").getValue()
+                            var parameters = { containerName: "equipments", directoryPath: directoryPath };
+                            // get equipment image paths
+
+                            Process.callAction("rnt_GetBlobsUrlsByDirectory",
+                                [{
+                                    key: "BlobParameters",
+                                    type: Process.Type.String,
+                                    value: JSON.stringify(parameters)
+                                }],
+                                function (data) {
+                                    var parsedResponse = JSON.parse(data.BlobResponse);
+                                    if (parsedResponse.documentPathList.length > 0) {
+                                        for (var i in parsedResponse.documentPathList) {
+                                            var url = new URL(parsedResponse.documentPathList[i]);
+                                            var splittedUrl = url.pathname.split("/");
+                                            var text = splittedUrl[2].toUpperCase() + " - " + splittedUrl[4].toUpperCase()
+                                            output.push("<li data-thumb='" + parsedResponse.documentPathList[i] + "'><p>" + text + "</p><img src='" + parsedResponse.documentPathList[i] + "' /></li>");
+                                        }
+                                        if (totalContractItem - 1 == counter) {
+                                            $("#lightSlider").html(output.join(''));
+
+                                            $('#lightSlider').lightSlider({
+                                                gallery: true,
+                                                item: 1,
+                                                loop: true,
+                                                slideMargin: 0,
+                                                thumbItem: 9
+                                            });
+                                            $.LoadingOverlay("hide", true);
+                                        }
+                                    }
+                                    else {
+                                        output.push("<li><p> " + plate.turkishToUpper() + " Araca ait resim bulunamadı</p></li>");
+                                        $("#lightSlider").html(output.join(''));
+
+                                        $.LoadingOverlay("hide", true);
+                                    }
+                                },
+                                function (e, t) {
+                                    console.error(e);
+                                    $.LoadingOverlay("hide", true);
+                                }, "", false);
+
+                        }
+                    } else {
+                        output.push("<li><p>Resim bulunamadı</p></li>");
+                        $("#lightSlider").html(output.join(''));
+
+                        $.LoadingOverlay("hide", true);
+                    }
+
+
+
+                }, function (e, t) {
+                    $.LoadingOverlay("hide", true);
+                    console.warn(t);
+                });
+            }
+            else if (entityname == "rnt_transfer") {
+                var plate = window.parent.Xrm.Page.getAttribute("rnt_equipmentid").getValue()[0].name.turkishToLower();
+                var directoryPath = plate + "/" + window.parent.Xrm.Page.getAttribute("rnt_transfernumber").getValue()
+                var parameters = { containerName: "equipments", directoryPath: directoryPath };
+                Process.callAction("rnt_GetBlobsUrlsByDirectory",
+                    [{
+                        key: "BlobParameters",
+                        type: Process.Type.String,
+                        value: JSON.stringify(parameters)
+                    }],
+                    function (data) {
+                        var parsedResponse = JSON.parse(data.BlobResponse);
+                        if (parsedResponse.documentPathList.length > 0) {
+                            for (var i in parsedResponse.documentPathList) {
+                                var url = new URL(parsedResponse.documentPathList[i]);
+                                var splittedUrl = url.pathname.split("/");
+                                var text = splittedUrl[2].toUpperCase() + " - " + splittedUrl[4].toUpperCase()
+                                output.push("<li data-thumb='" + parsedResponse.documentPathList[i] + "'><img src='" + parsedResponse.documentPathList[i] + "' /><p>" + text + "</p></li>");
+                            }
+                        }
+                        else {
+                            output.push("<li><p>Resim bulunamadı</p></li>");
+                        }
+                        $("#lightSlider").html(output.join(''));
+
+                        $('#lightSlider').lightSlider({
+                            gallery: true,
+                            item: 1,
+                            loop: true,
+                            slideMargin: 0,
+                            thumbItem: 9
+                        });
+                        $.LoadingOverlay("hide", true);
+                    },
+                    function (e, t) {
+                        $.LoadingOverlay("hide", true);
+                        console.error(e);
+                    });
+            }
+
+            function ParseData(query) {
+                var result = {};
+
+                if (typeof query == "undefined" || query == null) {
+                    return result;
+                }
+
+                var queryparts = query.split("&");
+                for (var i = 0; i < queryparts.length; i++) {
+                    var params = queryparts[i].split("=");
+                    result[params[0]] = params.length > 1 ? params[1] : null;
+                }
+                return result;
+            }
+            $("#refreshButton").on("click", function () {
+                window.location.reload();
+            })
+
+            function checkCounter() {
+
+            }
+        });
+
+        String.prototype.turkishToUpper = function () {
+            var string = this;
+            var letters = { "i": "İ", "ş": "Ş", "ğ": "Ğ", "ü": "Ü", "ö": "Ö", "ç": "Ç", "ı": "I" };
+            string = string.replace(/(([iışğüçö]))+/g, function (letter) { return letters[letter]; })
+            return string.toUpperCase();
+        }
+
+        String.prototype.turkishToLower = function () {
+            var string = this;
+            var letters = { "İ": "i", "I": "ı", "Ş": "ş", "Ğ": "ğ", "Ü": "ü", "Ö": "ö", "Ç": "ç" };
+            string = string.replace(/(([İIŞĞÜÇÖ]))+/g, function (letter) { return letters[letter]; })
+            return string.toLowerCase();
+        }
+    </script>
+</body>
+</html>

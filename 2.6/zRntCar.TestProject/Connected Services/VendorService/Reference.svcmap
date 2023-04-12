@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="7ce54421-98ec-4bef-be93-ec5170f5a7a6" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://rentgo.netahsilatdemo.com/PaymentWebService/VendorWebService.svc?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="VendorWebService.xsd" MetadataType="Schema" ID="d70f4839-2894-4375-91b0-05b24098112e" SourceId="1" SourceUrl="https://rentgo.netahsilatdemo.com/PaymentWebService/VendorWebService.svc?xsd=xsd4" />
+    <MetadataFile FileName="VendorWebService.wsdl" MetadataType="Wsdl" ID="c8f10874-fe7e-4255-b971-0cef9aa8451c" SourceId="1" SourceUrl="https://rentgo.netahsilatdemo.com/PaymentWebService/VendorWebService.svc?wsdl" />
+    <MetadataFile FileName="VendorWebService1.xsd" MetadataType="Schema" ID="c7ec2ca3-0ef9-4e97-90db-6c2ef0e47edf" SourceId="1" SourceUrl="https://rentgo.netahsilatdemo.com/PaymentWebService/VendorWebService.svc?xsd=xsd3" />
+    <MetadataFile FileName="VendorWebService2.xsd" MetadataType="Schema" ID="25da907b-8fd8-4031-b717-60c082757743" SourceId="1" SourceUrl="https://rentgo.netahsilatdemo.com/PaymentWebService/VendorWebService.svc?xsd=xsd2" />
+    <MetadataFile FileName="VendorWebService3.xsd" MetadataType="Schema" ID="4fbe02cc-5564-4f99-88ea-1665da8ccc5f" SourceId="1" SourceUrl="https://rentgo.netahsilatdemo.com/PaymentWebService/VendorWebService.svc?xsd=xsd1" />
+    <MetadataFile FileName="VendorWebService4.xsd" MetadataType="Schema" ID="5587a487-90be-490c-8fbe-f5c49623492e" SourceId="1" SourceUrl="https://rentgo.netahsilatdemo.com/PaymentWebService/VendorWebService.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

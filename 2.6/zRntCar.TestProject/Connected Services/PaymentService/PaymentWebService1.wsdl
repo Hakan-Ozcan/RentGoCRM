@@ -1,0 +1,674 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="PaymentWebService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="BasicHttpsBinding_IPaymentWebService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false" />
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="https://rentgodemo.netahsilatservice.com/PWS/PaymentWebService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="https://rentgodemo.netahsilatservice.com/PWS/PaymentWebService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="https://rentgodemo.netahsilatservice.com/PWS/PaymentWebService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/NetahsilatGold.PaymentWebService.Models" />
+      <xsd:import schemaLocation="https://rentgodemo.netahsilatservice.com/PWS/PaymentWebService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/PGWService.Models.WCF" />
+      <xsd:import schemaLocation="https://rentgodemo.netahsilatservice.com/PWS/PaymentWebService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/NetahsilatGold.Domain.Model.IntegrationModels" />
+      <xsd:import schemaLocation="https://rentgodemo.netahsilatservice.com/PWS/PaymentWebService.svc?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="https://rentgodemo.netahsilatservice.com/PWS/PaymentWebService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/NetahsilatGold.Domain.Model.VendorPaymentService" />
+      <xsd:import schemaLocation="https://rentgodemo.netahsilatservice.com/PWS/PaymentWebService.svc?xsd=xsd7" namespace="http://schemas.datacontract.org/2004/07/eCozum.Practices.VPos.Entity.Infrastructure" />
+      <xsd:import schemaLocation="https://rentgodemo.netahsilatservice.com/PWS/PaymentWebService.svc?xsd=xsd8" namespace="http://schemas.datacontract.org/2004/07/PGWService.Models.WCF.Integration" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IPaymentWebService_GetPaymentSetList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPaymentSetList" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_GetPaymentSetList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPaymentSetListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_GetPaymentSetListBinNumber_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPaymentSetListBinNumber" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_GetPaymentSetListBinNumber_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPaymentSetListBinNumberResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_SaleWithVendorErpCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaleWithVendorErpCode" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_SaleWithVendorErpCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaleWithVendorErpCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_GetCampaignList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCampaignList" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_GetCampaignList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCampaignListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_GetTransaction_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTransaction" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_GetTransaction_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTransactionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_Sale_InputMessage">
+    <wsdl:part name="parameters" element="tns:Sale" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_Sale_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaleResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_ProvisionCommit_InputMessage">
+    <wsdl:part name="parameters" element="tns:ProvisionCommit" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_ProvisionCommit_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ProvisionCommitResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_Get3DContent_InputMessage">
+    <wsdl:part name="parameters" element="tns:Get3DContent" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_Get3DContent_OutputMessage">
+    <wsdl:part name="parameters" element="tns:Get3DContentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_SendApproved3DResult_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendApproved3DResult" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_SendApproved3DResult_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendApproved3DResultResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_SendFailed3DResult_InputMessage">
+    <wsdl:part name="parameters" element="tns:SendFailed3DResult" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_SendFailed3DResult_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SendFailed3DResultResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_CancelByReferenceCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:CancelByReferenceCode" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_CancelByReferenceCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CancelByReferenceCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_CancelByClientReferenceCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:CancelByClientReferenceCode" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_CancelByClientReferenceCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CancelByClientReferenceCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_RefundByReferenceCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:RefundByReferenceCode" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_RefundByReferenceCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RefundByReferenceCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_RefundByClientReferenceCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:RefundByClientReferenceCode" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_RefundByClientReferenceCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RefundByClientReferenceCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_CreateTransaction_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateTransaction" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_CreateTransaction_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateTransactionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_CommitPayment_InputMessage">
+    <wsdl:part name="parameters" element="tns:CommitPayment" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_CommitPayment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CommitPaymentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_ProcessPayment_InputMessage">
+    <wsdl:part name="parameters" element="tns:ProcessPayment" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_ProcessPayment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ProcessPaymentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_AutoPasswordChange_InputMessage">
+    <wsdl:part name="parameters" element="tns:AutoPasswordChange" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_AutoPasswordChange_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AutoPasswordChangeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_SaveCreditCard_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveCreditCard" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_SaveCreditCard_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveCreditCardResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_DeleteCreditCard_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCreditCard" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_DeleteCreditCard_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCreditCardResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_SaleDefaultPos_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaleDefaultPos" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_SaleDefaultPos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaleDefaultPosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_GetCurrentAccounts_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCurrentAccounts" />
+  </wsdl:message>
+  <wsdl:message name="IPaymentWebService_GetCurrentAccounts_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCurrentAccountsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IPaymentWebService">
+    <wsdl:operation name="GetPaymentSetList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPaymentWebService/GetPaymentSetList" message="tns:IPaymentWebService_GetPaymentSetList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPaymentWebService/GetPaymentSetListResponse" message="tns:IPaymentWebService_GetPaymentSetList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPaymentSetListBinNumber">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPaymentWebService/GetPaymentSetListBinNumber" message="tns:IPaymentWebService_GetPaymentSetListBinNumber_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPaymentWebService/GetPaymentSetListBinNumberResponse" message="tns:IPaymentWebService_GetPaymentSetListBinNumber_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaleWithVendorErpCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPaymentWebService/SaleWithVendorErpCode" message="tns:IPaymentWebService_SaleWithVendorErpCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPaymentWebService/SaleWithVendorErpCodeResponse" message="tns:IPaymentWebService_SaleWithVendorErpCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCampaignList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPaymentWebService/GetCampaignList" message="tns:IPaymentWebService_GetCampaignList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPaymentWebService/GetCampaignListResponse" message="tns:IPaymentWebService_GetCampaignList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTransaction">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPaymentWebService/GetTransaction" message="tns:IPaymentWebService_GetTransaction_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPaymentWebService/GetTransactionResponse" message="tns:IPaymentWebService_GetTransaction_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Sale">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPaymentWebService/Sale" message="tns:IPaymentWebService_Sale_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPaymentWebService/SaleResponse" message="tns:IPaymentWebService_Sale_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ProvisionCommit">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPaymentWebService/ProvisionCommit" message="tns:IPaymentWebService_ProvisionCommit_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPaymentWebService/ProvisionCommitResponse" message="tns:IPaymentWebService_ProvisionCommit_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Get3DContent">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPaymentWebService/Get3DContent" message="tns:IPaymentWebService_Get3DContent_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPaymentWebService/Get3DContentResponse" message="tns:IPaymentWebService_Get3DContent_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendApproved3DResult">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPaymentWebService/SendApproved3DResult" message="tns:IPaymentWebService_SendApproved3DResult_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPaymentWebService/SendApproved3DResultResponse" message="tns:IPaymentWebService_SendApproved3DResult_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendFailed3DResult">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPaymentWebService/SendFailed3DResult" message="tns:IPaymentWebService_SendFailed3DResult_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPaymentWebService/SendFailed3DResultResponse" message="tns:IPaymentWebService_SendFailed3DResult_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelByReferenceCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPaymentWebService/CancelByReferenceCode" message="tns:IPaymentWebService_CancelByReferenceCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPaymentWebService/CancelByReferenceCodeResponse" message="tns:IPaymentWebService_CancelByReferenceCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelByClientReferenceCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPaymentWebService/CancelByClientReferenceCode" message="tns:IPaymentWebService_CancelByClientReferenceCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPaymentWebService/CancelByClientReferenceCodeResponse" message="tns:IPaymentWebService_CancelByClientReferenceCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RefundByReferenceCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPaymentWebService/RefundByReferenceCode" message="tns:IPaymentWebService_RefundByReferenceCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPaymentWebService/RefundByReferenceCodeResponse" message="tns:IPaymentWebService_RefundByReferenceCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RefundByClientReferenceCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPaymentWebService/RefundByClientReferenceCode" message="tns:IPaymentWebService_RefundByClientReferenceCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPaymentWebService/RefundByClientReferenceCodeResponse" message="tns:IPaymentWebService_RefundByClientReferenceCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateTransaction">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPaymentWebService/CreateTransaction" message="tns:IPaymentWebService_CreateTransaction_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPaymentWebService/CreateTransactionResponse" message="tns:IPaymentWebService_CreateTransaction_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CommitPayment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPaymentWebService/CommitPayment" message="tns:IPaymentWebService_CommitPayment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPaymentWebService/CommitPaymentResponse" message="tns:IPaymentWebService_CommitPayment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ProcessPayment">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPaymentWebService/ProcessPayment" message="tns:IPaymentWebService_ProcessPayment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPaymentWebService/ProcessPaymentResponse" message="tns:IPaymentWebService_ProcessPayment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AutoPasswordChange">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPaymentWebService/AutoPasswordChange" message="tns:IPaymentWebService_AutoPasswordChange_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPaymentWebService/AutoPasswordChangeResponse" message="tns:IPaymentWebService_AutoPasswordChange_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveCreditCard">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPaymentWebService/SaveCreditCard" message="tns:IPaymentWebService_SaveCreditCard_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPaymentWebService/SaveCreditCardResponse" message="tns:IPaymentWebService_SaveCreditCard_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCreditCard">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPaymentWebService/DeleteCreditCard" message="tns:IPaymentWebService_DeleteCreditCard_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPaymentWebService/DeleteCreditCardResponse" message="tns:IPaymentWebService_DeleteCreditCard_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaleDefaultPos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPaymentWebService/SaleDefaultPos" message="tns:IPaymentWebService_SaleDefaultPos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPaymentWebService/SaleDefaultPosResponse" message="tns:IPaymentWebService_SaleDefaultPos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentAccounts">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPaymentWebService/GetCurrentAccounts" message="tns:IPaymentWebService_GetCurrentAccounts_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPaymentWebService/GetCurrentAccountsResponse" message="tns:IPaymentWebService_GetCurrentAccounts_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IPaymentWebService" type="tns:IPaymentWebService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetPaymentSetList">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/GetPaymentSetList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPaymentSetListBinNumber">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/GetPaymentSetListBinNumber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaleWithVendorErpCode">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/SaleWithVendorErpCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCampaignList">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/GetCampaignList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTransaction">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/GetTransaction" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sale">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/Sale" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProvisionCommit">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/ProvisionCommit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get3DContent">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/Get3DContent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendApproved3DResult">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/SendApproved3DResult" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendFailed3DResult">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/SendFailed3DResult" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelByReferenceCode">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/CancelByReferenceCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelByClientReferenceCode">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/CancelByClientReferenceCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RefundByReferenceCode">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/RefundByReferenceCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RefundByClientReferenceCode">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/RefundByClientReferenceCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateTransaction">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/CreateTransaction" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CommitPayment">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/CommitPayment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessPayment">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/ProcessPayment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AutoPasswordChange">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/AutoPasswordChange" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveCreditCard">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/SaveCreditCard" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCreditCard">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/DeleteCreditCard" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaleDefaultPos">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/SaleDefaultPos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentAccounts">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/GetCurrentAccounts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BasicHttpsBinding_IPaymentWebService" type="tns:IPaymentWebService">
+    <wsp:PolicyReference URI="#BasicHttpsBinding_IPaymentWebService_policy" />
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetPaymentSetList">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/GetPaymentSetList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPaymentSetListBinNumber">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/GetPaymentSetListBinNumber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaleWithVendorErpCode">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/SaleWithVendorErpCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCampaignList">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/GetCampaignList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTransaction">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/GetTransaction" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sale">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/Sale" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProvisionCommit">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/ProvisionCommit" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get3DContent">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/Get3DContent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendApproved3DResult">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/SendApproved3DResult" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendFailed3DResult">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/SendFailed3DResult" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelByReferenceCode">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/CancelByReferenceCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelByClientReferenceCode">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/CancelByClientReferenceCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RefundByReferenceCode">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/RefundByReferenceCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RefundByClientReferenceCode">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/RefundByClientReferenceCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateTransaction">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/CreateTransaction" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CommitPayment">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/CommitPayment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProcessPayment">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/ProcessPayment" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AutoPasswordChange">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/AutoPasswordChange" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveCreditCard">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/SaveCreditCard" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCreditCard">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/DeleteCreditCard" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaleDefaultPos">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/SaleDefaultPos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCurrentAccounts">
+      <soap:operation soapAction="http://tempuri.org/IPaymentWebService/GetCurrentAccounts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PaymentWebService">
+    <wsdl:port name="BasicHttpBinding_IPaymentWebService" binding="tns:BasicHttpBinding_IPaymentWebService">
+      <soap:address location="http://rentgodemo.netahsilatservice.com/PWS/PaymentWebService.svc" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpsBinding_IPaymentWebService" binding="tns:BasicHttpsBinding_IPaymentWebService">
+      <soap:address location="https://rentgodemo.netahsilatservice.com/PWS/PaymentWebService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

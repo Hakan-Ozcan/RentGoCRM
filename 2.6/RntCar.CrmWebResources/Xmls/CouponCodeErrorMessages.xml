@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Error>
+  <LangId id="1055">
+    <CouponCodeDate>Kupon kodunun son kullanım tarihi geçmiştir.</CouponCodeDate>
+    <CouponInvalidDate>Kupon kodu, rezervasyon tarihlerinde geçerli değil</CouponInvalidDate>
+    <CouponCodeChannel>Kupon kodu, kanal için geçerli değil</CouponCodeChannel>
+    <CouponCodeReservationType>Kupon kodu, rezervasyon tipi için geçerli değil</CouponCodeReservationType>
+    <CouponCodeGroupCode>Kupon kodu, kullanılan grup kodu için geçerli değil</CouponCodeGroupCode>
+    <CouponCodePickupBranch>Kupon kodu, alış yeri için geçerli değil</CouponCodePickupBranch>
+  </LangId>
+  <LangId id="1033">
+    <CouponCodeDate>Coupon code expired</CouponCodeDate>
+    <CouponInvalidDate>Coupon code not valid on reservation dates</CouponInvalidDate>
+    <CouponCodeChannel>Coupon code is not valid for the channel</CouponCodeChannel>
+    <CouponCodeReservationType>Coupon code is not valid for the reservation type</CouponCodeReservationType>
+    <CouponCodeGroupCode>Coupon code is not valid for the group code</CouponCodeGroupCode>
+    <CouponCodePickupBranch>Coupon code is not valid for the pickup branch</CouponCodePickupBranch>
+
+</LangId>
+</Error>

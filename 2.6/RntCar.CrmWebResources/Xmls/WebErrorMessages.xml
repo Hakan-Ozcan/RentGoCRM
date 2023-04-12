@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Error>
+  <LangId id="1055">
+    <MissingUser>Girdiğiniz bilgiler eksik veya hatalı. Kullanıcı bilgilerinizi kontrol edip tekrar deneyin.</MissingUser>
+    <PasswordMismatch>Girilen şifreler aynı olmalıdır.</PasswordMismatch>
+    <NullEquipmentList>Seçilen tarihler arasında araç bulunmaktadır.</NullEquipmentList>   
+  </LangId>
+  <LangId id="1033">
+    <MissingUser>We don't found user.The information you entered was invalid or incomplete. Please try again. </MissingUser>
+    <PasswordMismatch>Passwords must be same.</PasswordMismatch>
+    <NullEquipmentList>There is an car between the selected dates.</NullEquipmentList>
+  </LangId>
+</Error>

@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="VendorWebService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="BasicHttpsBinding_IVendorWebService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false" />
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="https://rentgo.netahsilatdemo.com/PaymentWebService/VendorWebService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="https://rentgo.netahsilatdemo.com/PaymentWebService/VendorWebService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="https://rentgo.netahsilatdemo.com/PaymentWebService/VendorWebService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/NetahsilatGold.PaymentWebService.Models" />
+      <xsd:import schemaLocation="https://rentgo.netahsilatdemo.com/PaymentWebService/VendorWebService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="https://rentgo.netahsilatdemo.com/PaymentWebService/VendorWebService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/NetahsilatGold.Domain.Model.IntegrationModels" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IVendorWebService_CreateVendor_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateVendor" />
+  </wsdl:message>
+  <wsdl:message name="IVendorWebService_CreateVendor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateVendorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVendorWebService_CreateVendorUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateVendorUser" />
+  </wsdl:message>
+  <wsdl:message name="IVendorWebService_CreateVendorUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateVendorUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVendorWebService_CreateCustomer_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateCustomer" />
+  </wsdl:message>
+  <wsdl:message name="IVendorWebService_CreateCustomer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVendorWebService_UpdateVendor_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateVendor" />
+  </wsdl:message>
+  <wsdl:message name="IVendorWebService_UpdateVendor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateVendorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVendorWebService_UpdateVendorUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateVendorUser" />
+  </wsdl:message>
+  <wsdl:message name="IVendorWebService_UpdateVendorUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateVendorUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVendorWebService_UpdateVendorUserByCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateVendorUserByCode" />
+  </wsdl:message>
+  <wsdl:message name="IVendorWebService_UpdateVendorUserByCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateVendorUserByCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVendorWebService_UpdateCustomer_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCustomer" />
+  </wsdl:message>
+  <wsdl:message name="IVendorWebService_UpdateCustomer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVendorWebService_CreateOrUpdateCurrentAccount_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateOrUpdateCurrentAccount" />
+  </wsdl:message>
+  <wsdl:message name="IVendorWebService_CreateOrUpdateCurrentAccount_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateOrUpdateCurrentAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVendorWebService_GetAgentByERPCode_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAgentByERPCode" />
+  </wsdl:message>
+  <wsdl:message name="IVendorWebService_GetAgentByERPCode_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAgentByERPCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IVendorWebService_GetPaymentsByAgent_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPaymentsByAgent" />
+  </wsdl:message>
+  <wsdl:message name="IVendorWebService_GetPaymentsByAgent_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPaymentsByAgentResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IVendorWebService">
+    <wsdl:operation name="CreateVendor">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVendorWebService/CreateVendor" message="tns:IVendorWebService_CreateVendor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVendorWebService/CreateVendorResponse" message="tns:IVendorWebService_CreateVendor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateVendorUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVendorWebService/CreateVendorUser" message="tns:IVendorWebService_CreateVendorUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVendorWebService/CreateVendorUserResponse" message="tns:IVendorWebService_CreateVendorUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateCustomer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVendorWebService/CreateCustomer" message="tns:IVendorWebService_CreateCustomer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVendorWebService/CreateCustomerResponse" message="tns:IVendorWebService_CreateCustomer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateVendor">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVendorWebService/UpdateVendor" message="tns:IVendorWebService_UpdateVendor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVendorWebService/UpdateVendorResponse" message="tns:IVendorWebService_UpdateVendor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateVendorUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVendorWebService/UpdateVendorUser" message="tns:IVendorWebService_UpdateVendorUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVendorWebService/UpdateVendorUserResponse" message="tns:IVendorWebService_UpdateVendorUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateVendorUserByCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVendorWebService/UpdateVendorUserByCode" message="tns:IVendorWebService_UpdateVendorUserByCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVendorWebService/UpdateVendorUserByCodeResponse" message="tns:IVendorWebService_UpdateVendorUserByCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCustomer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVendorWebService/UpdateCustomer" message="tns:IVendorWebService_UpdateCustomer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVendorWebService/UpdateCustomerResponse" message="tns:IVendorWebService_UpdateCustomer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateOrUpdateCurrentAccount">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVendorWebService/CreateOrUpdateCurrentAccount" message="tns:IVendorWebService_CreateOrUpdateCurrentAccount_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVendorWebService/CreateOrUpdateCurrentAccountResponse" message="tns:IVendorWebService_CreateOrUpdateCurrentAccount_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAgentByERPCode">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVendorWebService/GetAgentByERPCode" message="tns:IVendorWebService_GetAgentByERPCode_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVendorWebService/GetAgentByERPCodeResponse" message="tns:IVendorWebService_GetAgentByERPCode_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPaymentsByAgent">
+      <wsdl:input wsaw:Action="http://tempuri.org/IVendorWebService/GetPaymentsByAgent" message="tns:IVendorWebService_GetPaymentsByAgent_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IVendorWebService/GetPaymentsByAgentResponse" message="tns:IVendorWebService_GetPaymentsByAgent_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IVendorWebService" type="tns:IVendorWebService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CreateVendor">
+      <soap:operation soapAction="http://tempuri.org/IVendorWebService/CreateVendor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateVendorUser">
+      <soap:operation soapAction="http://tempuri.org/IVendorWebService/CreateVendorUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCustomer">
+      <soap:operation soapAction="http://tempuri.org/IVendorWebService/CreateCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateVendor">
+      <soap:operation soapAction="http://tempuri.org/IVendorWebService/UpdateVendor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateVendorUser">
+      <soap:operation soapAction="http://tempuri.org/IVendorWebService/UpdateVendorUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateVendorUserByCode">
+      <soap:operation soapAction="http://tempuri.org/IVendorWebService/UpdateVendorUserByCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCustomer">
+      <soap:operation soapAction="http://tempuri.org/IVendorWebService/UpdateCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateOrUpdateCurrentAccount">
+      <soap:operation soapAction="http://tempuri.org/IVendorWebService/CreateOrUpdateCurrentAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAgentByERPCode">
+      <soap:operation soapAction="http://tempuri.org/IVendorWebService/GetAgentByERPCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPaymentsByAgent">
+      <soap:operation soapAction="http://tempuri.org/IVendorWebService/GetPaymentsByAgent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BasicHttpsBinding_IVendorWebService" type="tns:IVendorWebService">
+    <wsp:PolicyReference URI="#BasicHttpsBinding_IVendorWebService_policy" />
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CreateVendor">
+      <soap:operation soapAction="http://tempuri.org/IVendorWebService/CreateVendor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateVendorUser">
+      <soap:operation soapAction="http://tempuri.org/IVendorWebService/CreateVendorUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateCustomer">
+      <soap:operation soapAction="http://tempuri.org/IVendorWebService/CreateCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateVendor">
+      <soap:operation soapAction="http://tempuri.org/IVendorWebService/UpdateVendor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateVendorUser">
+      <soap:operation soapAction="http://tempuri.org/IVendorWebService/UpdateVendorUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateVendorUserByCode">
+      <soap:operation soapAction="http://tempuri.org/IVendorWebService/UpdateVendorUserByCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateCustomer">
+      <soap:operation soapAction="http://tempuri.org/IVendorWebService/UpdateCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateOrUpdateCurrentAccount">
+      <soap:operation soapAction="http://tempuri.org/IVendorWebService/CreateOrUpdateCurrentAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAgentByERPCode">
+      <soap:operation soapAction="http://tempuri.org/IVendorWebService/GetAgentByERPCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPaymentsByAgent">
+      <soap:operation soapAction="http://tempuri.org/IVendorWebService/GetPaymentsByAgent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="VendorWebService">
+    <wsdl:port name="BasicHttpBinding_IVendorWebService" binding="tns:BasicHttpBinding_IVendorWebService">
+      <soap:address location="http://rentgo.netahsilatdemo.com/PaymentWebService/VendorWebService.svc" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpsBinding_IVendorWebService" binding="tns:BasicHttpsBinding_IVendorWebService">
+      <soap:address location="https://rentgo.netahsilatdemo.com/PaymentWebService/VendorWebService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

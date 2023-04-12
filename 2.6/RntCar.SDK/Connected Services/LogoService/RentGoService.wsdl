@@ -1,0 +1,546 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="Login">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="user_name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="user_password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="company_number" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LoginResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Disconnect">
+        <s:complexType />
+      </s:element>
+      <s:element name="DisconnectResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DisconnectResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Connect">
+        <s:complexType />
+      </s:element>
+      <s:element name="ConnectResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConnectResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CurrentFirm">
+        <s:complexType />
+      </s:element>
+      <s:element name="CurrentFirmResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CurrentFirmResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CurrentAccountBalance">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CurrentAccountCode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tcno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="taxno" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CurrentAccountBalanceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CurrentAccountBalanceResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CurrentAccountCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tcno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="taxno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="customer_name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="customer_last_name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="title" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="address" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="address2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="telephone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="city" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="town" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="country" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tax_office" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="efaturaemailadr" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="specode1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="specode2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="specode3" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="specode4" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="specode5" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CurrentAccountCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CurrentAccountCodeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SalesInvoice">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="arp_code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="doc_track_no" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="doc_number" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="invoice_date" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="warehouse" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="note" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="note2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="note3" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="note4" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tcno" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="taxno" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="division" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="project_code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LineList" type="tns:ArrayOfSatirBilgiAlanlar" />
+            <s:element minOccurs="0" maxOccurs="1" name="arp_code_shpm" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="vatexcept_Code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="vatexcept_Reason" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSatirBilgiAlanlar">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SatirBilgiAlanlar" nillable="true" type="tns:SatirBilgiAlanlar" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SatirBilgiAlanlar">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Type" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Metarial_Code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Metarial_Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Unit_Code" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Unit_Price" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Quantity" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Vat_Rate" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Auxil_Code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Vatexcept_Code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Vatexcept_Reason" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SalesInvoiceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SalesInvoiceResult" type="tns:ArrayOfFaturaGeriDonusAlanlar" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfFaturaGeriDonusAlanlar">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="FaturaGeriDonusAlanlar" nillable="true" type="tns:FaturaGeriDonusAlanlar" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="FaturaGeriDonusAlanlar">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="FaturaRef" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="FaturaNumara" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Hata" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CreditCardSlip">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="date" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="division" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="note1" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="note2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="arp_code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="bank_code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="proje_code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="doc_number" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="credit" type="s:double" />
+            <s:element minOccurs="0" maxOccurs="1" name="approvenr" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="canceled_status" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreditCardSlipResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreditCardSlipResult" type="tns:ArrayOfKrediKartiGeriDonusAlanlar" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfKrediKartiGeriDonusAlanlar">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="KrediKartiGeriDonusAlanlar" nillable="true" type="tns:KrediKartiGeriDonusAlanlar" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="KrediKartiGeriDonusAlanlar">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="KrediKartRef" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="KrediKartNumara" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Hata" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RemittanceSlip">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="date" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="total" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="division" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="iyzico_arp_code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="custemer_arp_code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="proje_code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="specode" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="line_description" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="canceled_status" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RemittanceSlipResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RemittanceSlipResult" type="tns:ArrayOfVirmanFisGeriDonusAlanlar" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfVirmanFisGeriDonusAlanlar">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="VirmanFisGeriDonusAlanlar" nillable="true" type="tns:VirmanFisGeriDonusAlanlar" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="VirmanFisGeriDonusAlanlar">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="VirmanFisRef" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="VirmanNumara" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Hata" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="InvoicePdf">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FicheNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AccountTitle" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InvoicePdfResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InvoicePdfResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="LoginSoapIn">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="LoginSoapOut">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="DisconnectSoapIn">
+    <wsdl:part name="parameters" element="tns:Disconnect" />
+  </wsdl:message>
+  <wsdl:message name="DisconnectSoapOut">
+    <wsdl:part name="parameters" element="tns:DisconnectResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConnectSoapIn">
+    <wsdl:part name="parameters" element="tns:Connect" />
+  </wsdl:message>
+  <wsdl:message name="ConnectSoapOut">
+    <wsdl:part name="parameters" element="tns:ConnectResponse" />
+  </wsdl:message>
+  <wsdl:message name="CurrentFirmSoapIn">
+    <wsdl:part name="parameters" element="tns:CurrentFirm" />
+  </wsdl:message>
+  <wsdl:message name="CurrentFirmSoapOut">
+    <wsdl:part name="parameters" element="tns:CurrentFirmResponse" />
+  </wsdl:message>
+  <wsdl:message name="CurrentAccountBalanceSoapIn">
+    <wsdl:part name="parameters" element="tns:CurrentAccountBalance" />
+  </wsdl:message>
+  <wsdl:message name="CurrentAccountBalanceSoapOut">
+    <wsdl:part name="parameters" element="tns:CurrentAccountBalanceResponse" />
+  </wsdl:message>
+  <wsdl:message name="CurrentAccountCodeSoapIn">
+    <wsdl:part name="parameters" element="tns:CurrentAccountCode" />
+  </wsdl:message>
+  <wsdl:message name="CurrentAccountCodeSoapOut">
+    <wsdl:part name="parameters" element="tns:CurrentAccountCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="SalesInvoiceSoapIn">
+    <wsdl:part name="parameters" element="tns:SalesInvoice" />
+  </wsdl:message>
+  <wsdl:message name="SalesInvoiceSoapOut">
+    <wsdl:part name="parameters" element="tns:SalesInvoiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreditCardSlipSoapIn">
+    <wsdl:part name="parameters" element="tns:CreditCardSlip" />
+  </wsdl:message>
+  <wsdl:message name="CreditCardSlipSoapOut">
+    <wsdl:part name="parameters" element="tns:CreditCardSlipResponse" />
+  </wsdl:message>
+  <wsdl:message name="RemittanceSlipSoapIn">
+    <wsdl:part name="parameters" element="tns:RemittanceSlip" />
+  </wsdl:message>
+  <wsdl:message name="RemittanceSlipSoapOut">
+    <wsdl:part name="parameters" element="tns:RemittanceSlipResponse" />
+  </wsdl:message>
+  <wsdl:message name="InvoicePdfSoapIn">
+    <wsdl:part name="parameters" element="tns:InvoicePdf" />
+  </wsdl:message>
+  <wsdl:message name="InvoicePdfSoapOut">
+    <wsdl:part name="parameters" element="tns:InvoicePdfResponse" />
+  </wsdl:message>
+  <wsdl:portType name="RentGoServiceSoap">
+    <wsdl:operation name="Login">
+      <wsdl:input message="tns:LoginSoapIn" />
+      <wsdl:output message="tns:LoginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Disconnect">
+      <wsdl:input message="tns:DisconnectSoapIn" />
+      <wsdl:output message="tns:DisconnectSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Connect">
+      <wsdl:input message="tns:ConnectSoapIn" />
+      <wsdl:output message="tns:ConnectSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CurrentFirm">
+      <wsdl:input message="tns:CurrentFirmSoapIn" />
+      <wsdl:output message="tns:CurrentFirmSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CurrentAccountBalance">
+      <wsdl:input message="tns:CurrentAccountBalanceSoapIn" />
+      <wsdl:output message="tns:CurrentAccountBalanceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CurrentAccountCode">
+      <wsdl:input message="tns:CurrentAccountCodeSoapIn" />
+      <wsdl:output message="tns:CurrentAccountCodeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SalesInvoice">
+      <wsdl:input message="tns:SalesInvoiceSoapIn" />
+      <wsdl:output message="tns:SalesInvoiceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreditCardSlip">
+      <wsdl:input message="tns:CreditCardSlipSoapIn" />
+      <wsdl:output message="tns:CreditCardSlipSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RemittanceSlip">
+      <wsdl:input message="tns:RemittanceSlipSoapIn" />
+      <wsdl:output message="tns:RemittanceSlipSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InvoicePdf">
+      <wsdl:input message="tns:InvoicePdfSoapIn" />
+      <wsdl:output message="tns:InvoicePdfSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="RentGoServiceSoap" type="tns:RentGoServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://tempuri.org/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Disconnect">
+      <soap:operation soapAction="http://tempuri.org/Disconnect" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Connect">
+      <soap:operation soapAction="http://tempuri.org/Connect" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CurrentFirm">
+      <soap:operation soapAction="http://tempuri.org/CurrentFirm" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CurrentAccountBalance">
+      <soap:operation soapAction="http://tempuri.org/CurrentAccountBalance" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CurrentAccountCode">
+      <soap:operation soapAction="http://tempuri.org/CurrentAccountCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SalesInvoice">
+      <soap:operation soapAction="http://tempuri.org/SalesInvoice" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreditCardSlip">
+      <soap:operation soapAction="http://tempuri.org/CreditCardSlip" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemittanceSlip">
+      <soap:operation soapAction="http://tempuri.org/RemittanceSlip" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InvoicePdf">
+      <soap:operation soapAction="http://tempuri.org/InvoicePdf" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="RentGoServiceSoap12" type="tns:RentGoServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Login">
+      <soap12:operation soapAction="http://tempuri.org/Login" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Disconnect">
+      <soap12:operation soapAction="http://tempuri.org/Disconnect" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Connect">
+      <soap12:operation soapAction="http://tempuri.org/Connect" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CurrentFirm">
+      <soap12:operation soapAction="http://tempuri.org/CurrentFirm" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CurrentAccountBalance">
+      <soap12:operation soapAction="http://tempuri.org/CurrentAccountBalance" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CurrentAccountCode">
+      <soap12:operation soapAction="http://tempuri.org/CurrentAccountCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SalesInvoice">
+      <soap12:operation soapAction="http://tempuri.org/SalesInvoice" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreditCardSlip">
+      <soap12:operation soapAction="http://tempuri.org/CreditCardSlip" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemittanceSlip">
+      <soap12:operation soapAction="http://tempuri.org/RemittanceSlip" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InvoicePdf">
+      <soap12:operation soapAction="http://tempuri.org/InvoicePdf" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="RentGoService">
+    <wsdl:port name="RentGoServiceSoap" binding="tns:RentGoServiceSoap">
+      <soap:address location="http://webservicelogo.tunalar.net/RentGoService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="RentGoServiceSoap12" binding="tns:RentGoServiceSoap12">
+      <soap12:address location="http://webservicelogo.tunalar.net/RentGoService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

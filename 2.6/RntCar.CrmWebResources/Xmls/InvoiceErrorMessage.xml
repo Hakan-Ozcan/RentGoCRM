@@ -1,0 +1,20 @@
+﻿﻿<?xml version="1.0" encoding="utf-8" ?>
+<Error>
+  <LangId id="1055">
+    <ContractStatusError>Sadece tamamlanmış ve iptal edilmiş sözleşmeler için fatura kaydı oluşturabilirsiniz.</ContractStatusError>
+    <ReservationStatusError>Sadece iptal edilmiş rezervasyonlar için fatura kaydı oluşturabilirsiniz.</ReservationStatusError>
+    <CancellationFeeItemNotFound>İptal ceza bedeli bulunamadı.</CancellationFeeItemNotFound>
+    <NoFaultyOrActiveInvoice>Aktif veya hatalı fatura kaydı bulunamadı.</NoFaultyOrActiveInvoice>
+    <TotalAmountValidation>Belge tutarı ile faturalanacak tutar eşit olmalıdır.</TotalAmountValidation>
+    <BranchTypeError>Fatura kaydı sadece ofis tipli şubelerde oluşturulabilir.</BranchTypeError>
+  </LangId>
+  <LangId id="1033">
+    <ContractStatusError>Invoice can only be created for completed or cancelled contracts</ContractStatusError>
+    <ReservationStatusError>Invoice can only be created for cancelled reservations</ReservationStatusError>
+    <CancellationFeeItemNotFound>There is no cancellation fee item found</CancellationFeeItemNotFound>
+    <NoFaultyOrActiveInvoice>There is no faulty or active invoice found</NoFaultyOrActiveInvoice>
+    <TotalAmountValidation>The document amount must be equal to the invoice amount.</TotalAmountValidation>
+    <BranchTypeError>Invoice can only be created for office-type branches</BranchTypeError>
+
+  </LangId>
+</Error>

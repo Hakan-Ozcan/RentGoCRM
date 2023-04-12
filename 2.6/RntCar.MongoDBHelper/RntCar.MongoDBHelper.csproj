@@ -1,0 +1,242 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9881C6D3-7478-41DA-A63F-0CE4304E8E92}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RntCar.MongoDBHelper</RootNamespace>
+    <AssemblyName>RntCar.MongoDBHelper</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Crc32C.NET, Version=1.0.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Crc32C.NET.1.0.5.0\lib\net20\Crc32C.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="DnsClient, Version=1.2.0.0, Culture=neutral, PublicKeyToken=4574bb5573c51424, processorArchitecture=MSIL">
+      <HintPath>..\packages\DnsClient.1.2.0\lib\net45\DnsClient.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Bson, Version=2.9.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Bson.2.9.2\lib\net452\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver, Version=2.9.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\Assemblies\MongoDB.Driver.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver.Core, Version=2.9.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Driver.Core.2.9.2\lib\net452\MongoDB.Driver.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Assemblies\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RntCar.ClassLibrary">
+      <HintPath>..\RntCar.ClassLibrary\bin\Debug\RntCar.ClassLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpCompress, Version=0.23.0.0, Culture=neutral, PublicKeyToken=afb0a02973931d96, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpCompress.0.23.0\lib\net45\SharpCompress.dll</HintPath>
+    </Reference>
+    <Reference Include="Snappy.NET, Version=1.1.1.8, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Snappy.NET.1.1.1.8\lib\net45\Snappy.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BusinessClosureDataMongoDB.cs" />
+    <Compile Include="Entities\AvailabilityBusiness.cs" />
+    <Compile Include="Entities\AvailabilityFactorBusiness.cs" />
+    <Compile Include="Entities\AvailabilityPriceListBusiness.cs" />
+    <Compile Include="Entities\AvailabilityQueryAnalyzerBusiness.cs" />
+    <Compile Include="Entities\BonusCalculationBusiness.cs" />
+    <Compile Include="Entities\BrokerAvailabilityLogBusiness.cs" />
+    <Compile Include="Entities\BusinessClosureBusiness.cs" />
+    <Compile Include="Entities\CampaignBusiness.cs" />
+    <Compile Include="Entities\ContractDailyPrices.cs" />
+    <Compile Include="Entities\ContractItemBusiness.cs" />
+    <Compile Include="Entities\CorporateCustomerBusiness.cs" />
+    <Compile Include="Entities\CouponCodeBusiness.cs" />
+    <Compile Include="Entities\CouponCodeDefinitionBusiness.cs" />
+    <Compile Include="Entities\CrmConfigurationBusiness.cs" />
+    <Compile Include="Entities\CurrencyBusiness.cs" />
+    <Compile Include="Entities\DailyPricesBusiness.cs" />
+    <Compile Include="Entities\DeviceTokenBusiness.cs" />
+    <Compile Include="Entities\EquipmentAvailabilityBusiness.cs" />
+    <Compile Include="Entities\EquipmentBusiness.cs" />
+    <Compile Include="Entities\GroupCodeListPriceBusiness.cs" />
+    <Compile Include="Entities\KilometerLimitBusiness.cs" />
+    <Compile Include="Entities\LogBusiness.cs" />
+    <Compile Include="Entities\MonthlyGroupCodePriceListBusiness.cs" />
+    <Compile Include="Entities\MonthlyPriceListBusiness.cs" />
+    <Compile Include="Entities\NotificationBusiness.cs" />
+    <Compile Include="Entities\OneWayFeeBusiness.cs" />
+    <Compile Include="Entities\PriceBusiness.cs" />
+    <Compile Include="Entities\PriceCalculationSummariesBusiness.cs" />
+    <Compile Include="Entities\PriceFactorBusiness.cs" />
+    <Compile Include="Entities\PriceHourEffectBusiness.cs" />
+    <Compile Include="Entities\PriceListBusiness.cs" />
+    <Compile Include="Entities\ReservationBusiness.cs" />
+    <Compile Include="Entities\ReservationItemBusiness.cs" />
+    <Compile Include="Entities\TransactionHistoryBusiness.cs" />
+    <Compile Include="Entities\TransferBusiness.cs" />
+    <Compile Include="Entities\VirtualBranchBusiness.cs" />
+    <Compile Include="Helper\BonusCalculationHelper.cs" />
+    <Compile Include="Helper\CampaignHelper.cs" />
+    <Compile Include="Helper\DurationHelper.cs" />
+    <Compile Include="Helper\ErrorLogsHelper.cs" />
+    <Compile Include="Helper\VirtualBranchHelper.cs" />
+    <Compile Include="Model\AvailabilityFactorDataMongoDB.cs" />
+    <Compile Include="Model\AvailabilityPriceListDataMongoDB.cs" />
+    <Compile Include="Model\AvailabilityQueryAnalyzer.cs" />
+    <Compile Include="Model\Availability\DocumentData.cs" />
+    <Compile Include="Model\BonusCalculation\PositionalBonusCalculationDataMongoDB.cs" />
+    <Compile Include="Model\BonusCalculation\UserBasedBonusCalculationDataMongoDB.cs" />
+    <Compile Include="Model\BrokerAvailabilityLog.cs" />
+    <Compile Include="Model\CampaignAvailabilityMongoDB.cs" />
+    <Compile Include="Model\CampaignDataMongoDB.cs" />
+    <Compile Include="Model\contractitem\ContractItemDataMongoDB.cs" />
+    <Compile Include="Model\CorporateCustomerDataMongoDB.cs" />
+    <Compile Include="Model\CouponCodeDataMongoDB.cs" />
+    <Compile Include="Model\CouponCodeDefinitionDataMongoDB.cs" />
+    <Compile Include="Model\CrmConfigurationDataMongoDB.cs" />
+    <Compile Include="Model\CurrencyDataMongoDB.cs" />
+    <Compile Include="Model\DailyPrice\ContractDailyPriceDataMongoDB.cs" />
+    <Compile Include="Model\DailyPrice\DailyPriceDataMongoDB.cs" />
+    <Compile Include="Model\DeviceToken\DeviceTokenDataMongoDB.cs" />
+    <Compile Include="Model\EquipmentAvailabilityDataMongoDB.cs" />
+    <Compile Include="Model\EquipmentAvailabilityOldDataMongoDB.cs" />
+    <Compile Include="Model\EquipmentDataMongoDB.cs" />
+    <Compile Include="Model\FleetReportDataMongoDB.cs" />
+    <Compile Include="Model\GroupCodeListPriceDataMongoDB.cs" />
+    <Compile Include="Model\KilometerLimitDataMongoDB.cs" />
+    <Compile Include="Model\LogDataMongoDB.cs" />
+    <Compile Include="Model\Log\LogDetailMongoDB.cs" />
+    <Compile Include="Model\MonthlyGroupCodePriceList\MonthlyGroupCodePriceListDataMongoDB.cs" />
+    <Compile Include="Model\MonthlyPriceList\MonthlyPriceListDataMongoDB.cs" />
+    <Compile Include="Model\Notification\NotificationDataMongoDB.cs" />
+    <Compile Include="Model\OneWayFeeDataMongoDB.cs" />
+    <Compile Include="Model\PriceCalculationSummaryMongoDB.cs" />
+    <Compile Include="Model\PriceFactorDataMongoDB.cs" />
+    <Compile Include="Model\PriceHourEffect\PriceHourEffectDataMongoDB.cs" />
+    <Compile Include="Model\PriceListDataMongoDB.cs" />
+    <Compile Include="Model\Price\PriceResponse.cs" />
+    <Compile Include="Model\ReservationItemDataMongoDB.cs" />
+    <Compile Include="Model\TransactionHistoryDataMongoDB.cs" />
+    <Compile Include="Model\Transfer\TransferDataMongoDB.cs" />
+    <Compile Include="Model\UploadSignedDocumentParameterMongoDB.cs" />
+    <Compile Include="Model\VirtualBranchDataMongoDB.cs" />
+    <Compile Include="MongoDBInstance.cs" />
+    <Compile Include="Price\Abstract\PriceBuilderBase.cs" />
+    <Compile Include="Price\Factors\AvailabilityFactor.cs" />
+    <Compile Include="Price\Factors\BranchFactor.cs" />
+    <Compile Include="Price\Factors\EqualityFactor.cs" />
+    <Compile Include="Price\Factors\BranchFactor2.cs" />
+    <Compile Include="Price\Factors\ChannelFactor.cs" />
+    <Compile Include="Price\Factors\CustomerFactor.cs" />
+    <Compile Include="Price\Factors\PayMethodMonthlyFactor.cs" />
+    <Compile Include="Price\Factors\PayMethodFactor.cs" />
+    <Compile Include="Price\Factors\SpecialDayFactor.cs" />
+    <Compile Include="Price\Factors\WeekDaysFactor.cs" />
+    <Compile Include="Price\Interfaces\IPriceBuilder.cs" />
+    <Compile Include="Price\Interfaces\IPriceCalculator.cs" />
+    <Compile Include="Price\Interfaces\IPrices.cs" />
+    <Compile Include="Price\PriceCalculator.cs" />
+    <Compile Include="Price\Prices.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\AvailabilityFactorRepository.cs" />
+    <Compile Include="Repository\AvailabilityPriceListRepository.cs" />
+    <Compile Include="Repository\AvailabilityQueryAnalyzerRepository.cs" />
+    <Compile Include="Repository\BusinessClosureRepository.cs" />
+    <Compile Include="Repository\ContractItemsUserRepository.cs" />
+    <Compile Include="Repository\CorporateCustomerRepository.cs" />
+    <Compile Include="Repository\CouponCodeDefinitionRepository.cs" />
+    <Compile Include="Repository\CouponCodeRepository.cs" />
+    <Compile Include="Repository\CrmConfigurationRepository.cs" />
+    <Compile Include="Repository\CurrencyRepository.cs" />
+    <Compile Include="Repository\DeviceTokenRepository.cs" />
+    <Compile Include="Repository\EquipmentAvailabilityOldRepository.cs" />
+    <Compile Include="Repository\KilometerLimitRepository.cs" />
+    <Compile Include="Repository\MonthlyGroupCodePriceListRepository.cs" />
+    <Compile Include="Repository\MonthlyPriceListRepository.cs" />
+    <Compile Include="Repository\NotificationRepository.cs" />
+    <Compile Include="Repository\OneWayFeeRepository.cs" />
+    <Compile Include="Repository\RevenueBonusRepository.cs" />
+    <Compile Include="Repository\CampaignRepository.cs" />
+    <Compile Include="Repository\ContractDailyPricesRepository.cs" />
+    <Compile Include="Repository\ContractItemRepository.cs" />
+    <Compile Include="Repository\DailyPricesRepository.cs" />
+    <Compile Include="Repository\EquipmentAvailabilityRepository.cs" />
+    <Compile Include="Repository\EquipmentRepository.cs" />
+    <Compile Include="Repository\GroupCodeListPriceRepository.cs" />
+    <Compile Include="Repository\LogRepository.cs" />
+    <Compile Include="Repository\PriceCalculationSummariesRepository.cs" />
+    <Compile Include="Repository\PriceFactorRepository.cs" />
+    <Compile Include="Repository\PriceHourEffectRepository.cs" />
+    <Compile Include="Repository\PriceListRepository.cs" />
+    <Compile Include="Repository\ReservationItemRepository.cs" />
+    <Compile Include="Repository\TransferRepository.cs" />
+    <Compile Include="Repository\UserContractItemsRepository.cs" />
+    <Compile Include="Repository\VirtualBranchRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RntCar.Logger\RntCar.Logger.csproj">
+      <Project>{B537A097-D6D6-4034-BD15-DBE0FC67CD12}</Project>
+      <Name>RntCar.Logger</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RntCar.SDK\RntCar.SDK.csproj">
+      <Project>{77bb0d97-6487-4202-821f-0dc2d08c9053}</Project>
+      <Name>RntCar.SDK</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

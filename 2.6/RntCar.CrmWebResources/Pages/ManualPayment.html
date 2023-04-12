@@ -1,0 +1,376 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/card@2.4.0/dist/jquery.card.js" integrity="sha256-wuFkTShB8XhvRaP0MOi+cPl59XmHB9lV+XyHqxLdcBw=" crossorigin="anonymous"></script>
+    <script>
+        let creditCardList = JSON.parse(sessionStorage.getItem("19051993"));
+        let creditCardType = JSON.parse(sessionStorage.getItem("creditCardType1905"));
+        var nameOnCardInput = window.parent.Xrm.Page.getAttribute("rnt_nameoncard");
+        var cardNumberInput = window.parent.Xrm.Page.getAttribute("rnt_cardnumber");
+        var monthInput = window.parent.Xrm.Page.getAttribute("rnt_month");
+        var yearInput = window.parent.Xrm.Page.getAttribute("rnt_year");
+        var cvcInput = window.parent.Xrm.Page.getAttribute("rnt_cvcstring");
+        var bankType = {
+            10: "jp-card-mastercard",
+            20: "jp-card-visa",
+            30: "jp-card-amex",
+            40: "jp-card-unknown",
+            50: "jp-card-unknown",
+            0: "jp-card-unknown"
+        }
+
+        console.log("creditCardType", creditCardType);
+        console.log("creditCardList", creditCardList);
+        $(document).ready(function () {
+            $('form').card({
+                container: '.card-wrapper', // *required*
+                //width: 300
+            });
+
+            //type 1: new
+            //type 2: existing
+            if (creditCardType == 1) {
+                $("#creditCardListContainer").hide();
+                $("#newCreditCardContainer").show();
+            }
+            else {
+                $("#newCreditCardContainer").hide();
+                $("#creditCardListContainer").show();
+            }
+
+            $('input:text[name=name]').keyup(function () {
+                nameOnCardInput.setValue(this.value)
+            });
+            $('input:text[name=number]').keyup(function () {
+                cardNumberInput.setValue(this.value)
+            });
+            $('input:text[name=expiry]').keyup(function () {
+                console.log("nameOnCardInput:  ", this.value)
+                let val = this.value.split('/');
+                let month = parseInt(val[0], 10);
+                console.log("year lengt: ", val[1].length)
+                let year = val[1].length > 2 ? parseInt(val[1], 10) : parseInt(("20" + val[1]), 10);
+                console.log("month: ", month);
+                console.log("year: ", year);
+
+                monthInput.setValue(month);
+                yearInput.setValue(year);
+            });
+            $('input:text[name=cvc]').keyup(function () {
+                cvcInput.setValue(this.value)
+            });
+
+            function decideCard(cardType) {
+                let cardDiv = $('.jp-card');
+                let newClass = bankType[parseInt(cardType)];
+                console.log("cardDiv", cardDiv);
+                cardDiv.removeClass().addClass('jp-card jp-card-identified ' + newClass);
+            }
+
+            /* ===== List of exist credit cards for select box ===== */
+            $.each(creditCardList, function (i, creditCard) {                
+                $('#creditcards').append($('<option >', {
+                    value: this.creditCardId,
+                    text: this.creditCardNumber,
+                    'card-type': this.cardType,
+                    'expireMonth': this.expireMonth,
+                    'expireYear': this.expireYear,
+                    'holderName': this.cardHolderName != null  ? this.cardHolderName.split('-')[0] : "FULL NAME"
+                }));
+
+            });
+
+
+            /* ===== Logic for creating fake Select Boxes ===== */
+            $('.sel').each(function () {
+                $(this).children('select').css('display', 'none');
+
+                var $current = $(this);
+                console.log("current", $(this));
+
+                $(this).find('option').each(function (i) {
+                    if (i == 0) {
+                        $current.prepend($('<div>', {
+                            class: $current.attr('class').replace(/sel/g, 'sel__box')
+                        }));
+
+                        var placeholder = $(this).text();
+                        $current.prepend($('<span>', {
+                            class: $current.attr('class').replace(/sel/g, 'sel__placeholder'),
+                            text: placeholder,
+                            'data-placeholder': placeholder
+                        }));
+
+                        return;
+                    }
+                    $current.children('div').append($('<span>', {
+                        class: $current.attr('class').replace(/sel/g, 'sel__box__options'),
+                        text: $(this).text(),
+                        id: $(this).val(),
+                        'card-type': $(this).attr('card-type'),
+                        'expireMonth': $(this).attr('expireMonth'),
+                        'expireYear': $(this).attr('expireYear'),
+                        'holderName': $(this).attr('holderName')
+                    }));
+                });
+            });
+
+            // Toggling the .active state on the .sel
+            $('.sel').click(function () {
+                $(this).toggleClass('active');
+            });
+
+            // Toggling the .selected state on the options
+            $('.sel__box__options').click(function () {
+                var txt = $(this).text();
+                var index = $(this).index();
+                let creditCardId = $(this).attr('id');
+                let _cardType = $(this).attr('card-type');
+                let expireMonth = $(this).attr('expireMonth');
+                let expireYear = $(this).attr('expireYear');
+                let holderName = $(this).attr('holderName');
+
+                console.log("this attr", $(this))
+                window.parent.Xrm.Page.getAttribute("rnt_creditcardid").setValue(creditCardId);
+                $(".jp-card-number").text(txt);
+                $(".jp-card-name").text(holderName);
+                $(".jp-card-expiry").text(expireMonth + "/" + expireYear);
+                decideCard(_cardType);
+
+                $(this).siblings('.sel__box__options').removeClass('selected');
+                $(this).addClass('selected');
+
+                var $currentSel = $(this).closest('.sel');
+                $currentSel.children('.sel__placeholder').text(txt);
+                $currentSel.children('select').prop('selectedIndex', index + 1);
+            });
+        })
+    </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+
+        /* ===== Horizontal Rule ===== */
+        .rule {
+            margin: 10px 0;
+            border: none;
+            height: 1.5px;
+            background-image: linear-gradient(left, #f0f0f0, #c9bbae, #f0f0f0);
+        }
+
+        /* ===== Select Box ===== */
+        .sel {
+            font-size: 1rem;
+            display: inline-block;
+            margin: 3em 2em;
+            width: 280px;
+            background-color: transparent;
+            position: relative;
+            cursor: pointer;
+        }
+
+            .sel::before {
+                position: absolute;
+                content: '\f063';
+                font-family: 'FontAwesome';
+                font-size: 1.3em;
+                color: rgb(17, 96, 183);
+                right: 10px;
+                top: calc(50% - 0.4em);
+            }
+
+            .sel.active::before {
+                transform: rotateX(-180deg);
+            }
+
+        .sel__placeholder {
+            display: block;
+            font-family: 'Helvetica';
+            font-size: 1.5em;
+            color: #000;
+            padding: 0 15px;
+            text-align: left;
+            letter-spacing: 1px;
+            pointer-events: none;
+            user-select: none;
+            visibility: visible;
+        }
+
+        .sel.active .sel__placeholder {
+            visibility: hidden;
+        }
+
+        .sel__placeholder::before {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 0.2em 0.5em;
+            content: attr(data-placeholder);
+            visibility: hidden;
+        }
+
+        .sel.active .sel__placeholder::before {
+            visibility: visible;
+        }
+
+        .sel__box {
+            position: absolute;
+            top: calc(100% + 4px);
+            left: -4px;
+            display: none;
+            list-style-type: none;
+            text-align: left;
+            font-size: 1em;
+            background-color: #FFF;
+            width: calc(100% + 8px);
+            box-sizing: border-box;
+        }
+
+        .sel.active .sel__box {
+            display: block;
+            animation: fadeInUp 500ms;
+        }
+
+        .sel__box__options {
+            display: list-item;
+            font-family: Helvetica, sans-serif;
+            font-size: 1.5em;
+            color: rgb(102, 116, 134);
+            padding: 0.5em 1em;
+            user-select: none;
+        }
+
+            .sel__box__options::after {
+                content: '\f00c';
+                font-family: 'FontAwesome';
+                font-size: 0.5em;
+                margin-left: 5px;
+                display: none;
+            }
+
+            .sel__box__options.selected::after {
+                display: inline;
+            }
+
+            .sel__box__options:hover {
+                background-color: #ebedef;
+            }
+
+        /* ----- Select Box Black Panther ----- */
+        .sel {
+            border-bottom: 4px solid rgb(17, 96, 183);
+            border-radius: 5px
+        }
+
+        .sel--black-panther {
+            z-index: 3;
+        }
+
+
+
+        /* ===== Keyframes ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translate3d(0, 20px, 0);
+            }
+
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+            }
+
+            to {
+                opacity: 0;
+            }
+        }
+
+
+        .user-box {
+            position: relative;
+        }
+
+            .user-box input {
+                width: 100%;
+                padding: 10px 10px;
+                font-size: 16px;
+                color: #000;
+                margin-bottom: 15px;
+                border: none;
+                border-bottom: 1px solid rgb(34, 102, 227);
+                outline: none;
+                background: transparent;
+            }
+
+            .user-box label {
+                position: absolute;
+                top: 0;
+                left: 0;
+                padding: 10px 5px;
+                font-size: 16px;
+                color: rgb(102, 102, 102);
+                pointer-events: none;
+                transition: .5s;
+            }
+
+            .user-box input:focus ~ label,
+            .user-box input:valid ~ label {
+                top: -20px;
+                left: 0;
+                color: rgb(102, 102, 102);
+                font-size: 12px;
+            }
+
+            .user-box input:focus {
+                border: none !important;
+                border-bottom: 2px solid rgb(34, 102, 227) !important;
+            }
+    </style>
+</head>
+<body>
+    <div class="d-flex flex-row justify-content-center align-items-center col-12 mt-2">
+        <div id="creditCardListContainer" class="col-5">
+            <div class="sel sel--black-panther">
+                <select name="select-profession" id="creditcards">
+                    <option value="" disabled>Lütfen Kart Seçiniz.</option>
+                </select>
+            </div>
+
+            <hr class="rule">
+        </div>
+        <div id="newCreditCardContainer" class="col-5">
+            <form autocomplete="off">
+                <div class="user-box">
+                    <input type="text" name="name" autocomplete="off" required>
+                    <label>Name on Card</label>
+                </div>
+                <div class="user-box">
+                    <input type="text" name="number" autocomplete="off" required>
+                    <label>Card Number</label>
+                </div>
+                <div class="user-box">
+                    <input type="text" name="expiry" autocomplete="off" required>
+                    <label>Month/Year</label>
+                </div>
+                <div class="user-box">
+                    <input type="text" name="cvc" autocomplete="off" required>
+                    <label>CVC</label>
+                </div>
+            </form>
+        </div>
+        <div id="credtiCardArea" class='card-wrapper col-7'></div>
+    </div>
+</body>
+</html>

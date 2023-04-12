@@ -1,0 +1,11 @@
+﻿﻿<?xml version="1.0" encoding="utf-8" ?>
+<Error>
+  <LangId id="1055">
+    <PricesCouldntCalculated>Fiyatlar Hesaplanamadı.Lütfen merkez kullanıcısıyla görüşün.</PricesCouldntCalculated>
+    <RelatedGroupCodeAvailabilityInformationNull>Bir şeyler ters gitti.</RelatedGroupCodeAvailabilityInformationNull>
+  </LangId>
+  <LangId id="1033">
+    <PricesCouldntCalculated>Prices Couldnt calculated. Please get in contact with system administrator</PricesCouldntCalculated>
+    <RelatedGroupCodeAvailabilityInformationNull>Something went terribly wrong.</RelatedGroupCodeAvailabilityInformationNull>
+  </LangId>
+</Error>
