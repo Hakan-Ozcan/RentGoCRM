@@ -1614,35 +1614,36 @@ namespace RntCar.BusinessLibrary.Business
                 }
             }
         }
-
+        //Aşağıdaki metot, Iyzico ödeme sağlayıcısından gelen bir ödeme işlemi için bir RNT (Reservation and Ticketing System) ödeme kaydı oluşturur ve Iyzilink varlığına ödeme kaydının Id'si ve tarihi ekler.
         public void checkIyzilinkPayment(EntityCollection iyzilinkList, IyzicoTransactionObject iyzicoTransactionObject)
         {
 
-            Entity iyziLink = iyzilinkList.Entities.Where(x => x.GetAttributeValue<string>("rnt_conversationid") == Convert.ToString(iyzicoTransactionObject.ConversationId)).FirstOrDefault();
+            Entity iyziLink = iyzilinkList.Entities.Where(x => x.GetAttributeValue<string>("rnt_conversationid") == Convert.ToString(iyzicoTransactionObject.ConversationId)).FirstOrDefault();//Bu satır, Iyzico ile yapılan ödemenin konuşma kimliğinin iyzilinkList içinde var olup olmadığını kontrol eder ve sonuç olarak iyziLink adlı bir Entity nesnesi döndürür.
 
             if (iyziLink != null && iyziLink.Id != Guid.Empty)
             {
-                Entity updateIyziLink = new Entity(iyziLink.LogicalName, iyziLink.Id);
-                Entity paymentTransaction = new Entity("rnt_payment");
-                EntityReference contractRef = iyziLink.GetAttributeValue<EntityReference>("rnt_contractid");
+                // iyziLink varlığı null değilse ve Id'si boş değilse, eşleşme var demektir ve ödeme işlemi için bir RNT ödeme kaydı oluşturulması gerekir.
+                Entity updateIyziLink = new Entity(iyziLink.LogicalName, iyziLink.Id);//iyziLink varlığından updateIyziLink adlı yeni bir Entity nesnesi oluşturulur. Bu, varlık güncelleneceği zaman kullanılır.
+                Entity paymentTransaction = new Entity("rnt_payment"); //paymentTransaction adlı yeni bir RNT ödeme kaydı oluşturulur.
+                EntityReference contractRef = iyziLink.GetAttributeValue<EntityReference>("rnt_contractid");//: iyziLink varlığından rnt_contractid alanı alınır.
                 if (contractRef != null)
-                {
+                {//: contractRef null değilse, rnt_contractid alanı paymentTransaction nesnesine eklenir.
                     paymentTransaction.Attributes["rnt_contractid"] = new EntityReference(contractRef.LogicalName, contractRef.Id);
                 }
 
-                AliasedValue customerAlias = iyziLink.GetAttributeValue<AliasedValue>("contractAlias.rnt_customerid");
+                AliasedValue customerAlias = iyziLink.GetAttributeValue<AliasedValue>("contractAlias.rnt_customerid");//: iyziLink varlığından contractAlias.rnt_customerid alanı alınır.
                 if (customerAlias != null && customerAlias.Value != null)
-                {
+                {//: customerAlias null değilse ve Value özelliği de null değilse, customerRef adlı yeni bir EntityReference nesnesi oluşturulur.
                     EntityReference customerRef = (EntityReference)customerAlias.Value;
                     if (customerRef.LogicalName.ToLower() == "contact")
-                    {
+                    {//: customerRef nesnesinin LogicalName özelliği "contact" ise, rnt_contactid alanı paymentTransaction nesnesine eklenir.
                         paymentTransaction.Attributes["rnt_contactid"] = new EntityReference(customerRef.LogicalName, customerRef.Id);
                     }
                 }
 
                 int paymentType = (int)PaymentEnums.PaymentTransactionType.SALE;
                 if (iyzicoTransactionObject.TransactionType != "PAYMENT")
-                {
+                {//iyzico ödeme işlemlerinin geri ödeme işlemi mi yoksa ödeme işlemi mi olduğunu kontrol eder ve buna göre işlemin tipini belirler.
                     paymentType = (int)PaymentEnums.PaymentTransactionType.REFUND;
                 }
                 ReservationRepository reservationRepository = new ReservationRepository(this.OrgService);
@@ -1689,24 +1690,28 @@ namespace RntCar.BusinessLibrary.Business
 
         public void cancelPaymentsForWaiting3d(Guid reservationId)
         {
-            QueryExpression getPaymentItems = new QueryExpression("rnt_payment");
+            //Bu metot, ödeme işlemi sonucu "WaitingFor3D" olan kayıtların durumlarını hızlıca değiştirmek için kullanılabilir. Örneğin, müşteri 3D doğrulama işlemini tamamlayamamış olabilir ve rezervasyon işlemi devam edemiyor olabilir. Bu durumda, bu metot çağrılarak tüm ödeme işlemi kayıtları "Error" durumuna güncellenebilir ve müşteriye yeni bir ödeme işlemi başlatması için fırsat tanınabilir.
+            QueryExpression getPaymentItems = new QueryExpression("rnt_payment");//rnt_payment" varlığına ait kayıtları sorgulamak için bir QueryExpression nesnesi oluşturduk
+         
             getPaymentItems.ColumnSet = new ColumnSet(true);
             getPaymentItems.Criteria.AddCondition("rnt_reservationid", ConditionOperator.Equal, reservationId.ToString());
+            //Bu sorgu, reservationId parametresiyle belirtilen rezervasyona ait olan ve ödeme işlemi durumu "WaitingFor3D" olan kayıtları getirir.
             getPaymentItems.Criteria.AddCondition("rnt_transactionresult", ConditionOperator.Equal, (int)PaymentEnums.PaymentTransactionResult.WaitingFor3D);
-            var paymentItems = this.OrgService.RetrieveMultiple(getPaymentItems);
+            var paymentItems = this.OrgService.RetrieveMultiple(getPaymentItems);//RetrieveMultiple() metodu çağrılarak sorgudan elde edilen kayıtların tümü alınır ve foreach döngüsü kullanılarak her bir kaydın durumu "Error" olarak ayarlanır. Bunun için, setPaymentTransactionResultState() metodu çağrılır ve ödeme kaydının Id'si ve durum kodu (rnt_payment_rnt_transactionresult.Error) parametre olarak verilir.
 
             foreach (var paymentItem in paymentItems.Entities)
             {
                 setPaymentTransactionResultState(paymentItem.Id, (int)rnt_payment_rnt_transactionresult.Error);
             }
         }
-
+        //Aşağıdaki metot, bir Microsoft Dynamics 365 (eski adıyla Dynamics CRM) örneğinde "rnt_payment" adlı bir özel varlık için ödeme işlemi sonucu durumunu ayarlamak için kullanılmaktadır.
         public void setPaymentTransactionResultState(Guid paymentId, int statusCode)
         {
-            Entity e = new Entity("rnt_payment");
-            e.Id = paymentId;
-            e["rnt_transactionresult"] = new OptionSetValue(statusCode);
-            this.OrgService.Update(e);
+            //Bu metot, "rnt_payment" varlığına ait bir kaydın "rnt_transactionresult" alanına, statusCode parametresinde belirtilen değeri atayarak ödeme işlemi sonucu durumunu günceller.
+            Entity e = new Entity("rnt_payment");//"Entity" sınıfı, Dynamics 365/CRM varlıklarının temsil edilmesi için kullanılan bir sınıftır.
+            e.Id = paymentId;// yeni bir "rnt_payment" varlığı örneği oluşturulur ve paymentId parametresiyle belirtilen GUID değeri ile eşleştirilir.
+            e["rnt_transactionresult"] = new OptionSetValue(statusCode);//"rnt_transactionresult" alanı yeni bir OptionSetValue nesnesi ile ayarlanır
+            this.OrgService.Update(e);//değişiklikler kaydedilir.
         }
         //Aşağıdaki fonksiyon, bir kredi kartı varlığı ve bir kanal kodu parametresi alır ve üç boyutlu güvenlik (3D Secure) kontrolünün gerekip gerekmediğini belirlemek için kullanılır.
         public bool check3DSecure(Entity card, int channelCode)
