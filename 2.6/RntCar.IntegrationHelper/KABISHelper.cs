@@ -7,11 +7,14 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
+using System.Numerics;
+using System.Runtime.ConstrainedExecution;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Forms;
 using Tamir.SharpSsh.java;
 using Tesseract;
@@ -38,7 +41,7 @@ namespace RntCar.IntegrationHelper
             thread.SetApartmentState(ApartmentState.STA);//Yeni oluşturulan iş parçacığı, STA (Single-Threaded Apartment) apartman durumuna ayarlanır. STA, COM nesnelerinin oluşturulmasını ve kullanılmasını kolaylaştırır.
             thread.Start();//Yeni oluşturulan iş parçacığı başlatılır ve createWebBrowser metodu çağrılır. Bu, iş parçacığı tarafından çalıştırılan web tarayıcısının oluşturulmasını ve yüklenmesini sağlar.
         }
-        void createWebBrowser()
+        void createWebBrowser()//Bu metodun amacı, WebBrowser nesnesi oluşturmak, belirtilen başlangıç URL'sine gitmek, ScriptErrorsSuppressed özelliğini ayarlamak, WebBrowser nesnesi için gerekli olayları işlemek ve web sayfasının tamamen yüklenmesini beklemektir. Bu metot, WebBrowser nesnesinin başlangıçta yüklenmesi ve kullanıma hazır olması için gereklidir
         {
             webBrowser = new WebBrowser();
             webBrowser.DocumentCompleted += WebBrowser_DocumentCompleted;//WebBrowser nesnesinin DocumentCompleted olayı WebBrowser_DocumentCompleted adlı bir işlevle eşleştirilir. DocumentCompleted olayı, web sayfası tamamen yüklendiğinde tetiklenir ve bu olayın işlenmesi gerekebilir.
@@ -57,6 +60,7 @@ namespace RntCar.IntegrationHelper
 
 
         public KABISResponse RentVehicleThreadProcess(KABISIntegrationUser OfficeUser, KABISCustomer rentCustomer, string plate, int vehicleExitKm)
+        //Bu kod bloğu, bir araç kiralama işlemi yürütmek için yeni bir thread başlatır ve sonucu döndürür. 
         //Bu metot, bir KABISIntegrationUser, KABISCustomer, bir araç plakası ve çıkış kilometre bilgisi parametrelerini alır ve bir KABISResponse nesnesi döndürür.
         {
             KABISResponse response = null;
@@ -69,7 +73,7 @@ namespace RntCar.IntegrationHelper
 
         }
         public KABISResponse ReturnVehicleThreadProcess(KABISIntegrationUser OfficeUser, string plate, int entranceKm)
-        {
+        {//Bu kod bloğu, bir araç dönüş işlemini yürütmek için yeni bir thread başlatır ve sonucu döndürür. 
             KABISResponse response = null;
             Thread thread = new Thread(() => { response = ReturnVehicle(OfficeUser, plate, entranceKm); });
             thread.SetApartmentState(ApartmentState.STA);
@@ -80,6 +84,7 @@ namespace RntCar.IntegrationHelper
         }
         public KABISResponse RemoveVehicleThreadProcess(KABISIntegrationUser OfficeUser, string plate)
         {
+            //Bu metodun amacı, bir aracın KABIS sisteminden kaldırılması işlemini gerçekleştirmek için yeni bir thread oluşturmak ve bu işlemi asenkron olarak yürütmektir
             KABISResponse response = null;
             Thread thread = new Thread(() => { response = RemoveVehicle(OfficeUser, plate); });
             thread.SetApartmentState(ApartmentState.STA);
@@ -89,6 +94,7 @@ namespace RntCar.IntegrationHelper
             return response;
         }
         public KABISResponse AddVehicleThreadProcess(KABISIntegrationUser OfficeUser, string plate, string registrationNumber)
+        //Bu kod bloğu, araç ekleme işlemini yeni bir iş parçacığında çalıştırmak için tasarlanmış bir yöntem içerir. 
         {
             KABISResponse response = null;
             Thread thread = new Thread(() => { response = AddVehicle(OfficeUser, plate, registrationNumber); });
@@ -103,6 +109,7 @@ namespace RntCar.IntegrationHelper
 
 
         private bool Login(KABISIntegrationUser kABISIntegrationUser)
+        //Bu kod bloğu, KABIS (Kara Araçları Bilgi Sistemi) entegrasyonu için kullanılan bir web sitesine oturum açmak için kullanılan Login() adlı bir metodun içeriğini içeriyor. Metod, belirtilen KABISIntegrationUser nesnesi ile kullanıcı adı ve şifre bilgilerini web sitesine gönderir ve ardından Captcha (otomatik test) doğrulamasını geçmek için ResolveCaptcha() adlı bir başka metod kullanır. Metod, web sayfası yüklemesinin tamamlanması ve giriş yapılması için tekrar tekrar deneme yapar ve sonuç olarak başarılı bir oturum açılıp açılmadığını belirten bir boolean değer döndürür.
         {
             try
             {
@@ -289,6 +296,7 @@ namespace RntCar.IntegrationHelper
             }
         }
         private KABISResponse ReturnVehicle(KABISIntegrationUser OfficeUser, string plate, int entranceKm)
+        //Bu kod bloğu bir aracın KABIS (Karayolu Bilgi Sistemi) adlı sistemde iadesini gerçekleştiren bir metodu içermektedir
         {
             try
             {
@@ -352,6 +360,8 @@ namespace RntCar.IntegrationHelper
             }
         }
         private KABISResponse RemoveVehicle(KABISIntegrationUser OfficeUser, string plate)
+        //Bu kod bloğu,araç iade işlemi gerçekleştirir.
+
         {
             try
             {
@@ -463,12 +473,13 @@ namespace RntCar.IntegrationHelper
 
                 if (!Login(OfficeUser))
                     return new KABISResponse() { Code = "300", ResponseResult = ResponseResult.ReturnError("Giriş Yapılamadı!!!") };
-
+                //currentUrl değişkeni baseURL ve addRemoveVehiclePage değişkenleri kullanılarak kontrol edilir ve kullanıcının araç ekleme sayfasında olup olmadığı belirlenir. Eğer kullanıcı bu sayfada değilse, WebBrowserNavigate() metodu kullanılarak sayfaya yönlendirilir.
                 if (!currentUrl.Contains(baseURL + addRemoveVehiclePage))
                     WebBrowserNavigate(baseURL + addRemoveVehiclePage);
-                string _cityCode = "", _letterCode = "", _digitCode = "";
+                string _cityCode = "", _letterCode = "", _digitCode = "";//Bu değişkenler, araç ekleme formundaki il, harf ve rakam alanlarının değerlerini doldurmak için kullanılacak.
 
                 foreach (var item in plate)
+                //Eğer karakter sayı ise, karakter _cityCode değişkenine eklenir. Eğer karakter bir harf ise, karakter _letterCode değişkenine eklenir. _cityCode değişkeni plakanın rakam kısmını içerirken, _letterCode değişkeni plakanın harf kısmını içerir.
                 {
                     if (isNumaric(item.ToString()))
                         _cityCode = _cityCode + item.ToString();
@@ -476,36 +487,42 @@ namespace RntCar.IntegrationHelper
                         _letterCode += item.ToString();
                 }
 
-                _digitCode = _cityCode.Substring(2, _cityCode.Length - 2);
-                _cityCode = _cityCode.Substring(0, 2);
+                _digitCode = _cityCode.Substring(2, _cityCode.Length - 2);//_digitCode değişkeni, _cityCode değişkeninin ilk iki karakterini atlayarak kalan kısım olarak ayarlanır. 
+                _cityCode = _cityCode.Substring(0, 2); //_cityCode değişkeni, sadece ilk iki karakteri koruyacak şekilde güncellenir.
 
                 isCompleted = false;
+                //webBrowser.Document kullanılarak WebBrowser nesnesinin yüklenmiş web sayfasına erişilir. Bu sayfada, bir HTML formu kullanılarak plaka bilgisinin girileceği bir alan açılır. Bu alana erişmek için, __doPostBack fonksiyonu tetiklenir. Bu fonksiyon, webBrowser.Document.InvokeScript("__doPostBack"); kod satırıyla tetiklenir.
                 webBrowser.Document.GetElementsByTagName("option")[0].Document.GetElementsByTagName("option")[1].SetAttribute("selected", "selected");
                 webBrowser.Document.InvokeScript("__doPostBack");
                 do
+                //Bu kod bloğu, işlem sırasında tarayıcının tamamlanmasını bekler.
                 {
                     Thread.Sleep(10);
                     Application.DoEvents();
                     AddBlockAlerts();
-                } while (!isCompleted);
+                    //yukarıdaki metodlar, işlem sırasında diğer uygulama işlemlerini gerçekleştirir ve herhangi bir blokajı önler.
+                } while (!isCompleted);// Tarayıcının yüklenmesi tamamlandığında, işlem döngüden çıkar ve devam eder. 
 
-                webBrowser.Document.GetElementsByTagName("select")[1].SetAttribute("SelectedIndex", _cityCode); ;
-                webBrowser.Document.GetElementById("txt_harf").InnerText = _letterCode;
-                webBrowser.Document.GetElementById("txt_rakam").InnerText = _digitCode;
-                webBrowser.Document.GetElementById("txt_tescno").InnerText = registrationNumber;
+                webBrowser.Document.GetElementsByTagName("select")[1].SetAttribute("SelectedIndex", _cityCode); ; // plaka numarasının il kodunu ayrıştırır
+                webBrowser.Document.GetElementById("txt_harf").InnerText = _letterCode;// plaka numarasının harf kodunu ayrıştırır
+                webBrowser.Document.GetElementById("txt_rakam").InnerText = _digitCode;//HTML sayfasında ID'si "txt_rakam" olan bir metin kutusuna _digitCode değişkenindeki değeri atar. Bu sayede, _digitCode değişkenindeki veri, web sayfasındaki ilgili metin kutusuna otomatik olarak girilmiş olur
+                webBrowser.Document.GetElementById("txt_tescno").InnerText = registrationNumber;//HTML sayfasında ID'si "txt_tescno" olan bir metin kutusuna registrationNumber değişkenindeki değeri atar. Bu sayede, registrationNumber değişkenindeki veri, web sayfasındaki ilgili metin kutusuna otomatik olarak girilmiş olur
 
                 isCompleted = false;
-                webBrowser.Document.GetElementById("btn_kaydet").InvokeMember("click");
-                HtmlDocument htmlDocument = webBrowser.Document;
-                htmlDocument.Window.Unload += new HtmlElementEventHandler(Window_Unload);
+                webBrowser.Document.GetElementById("btn_kaydet").InvokeMember("click");//Bu satır, web sayfasındaki "btn_kaydet" isimli düğmeye tıklamak için kullanılır. "InvokeMember" metodu, belirtilen düğmeyi etkinleştirir ve bu düğmeye tıklanması ile ilgili eylemleri tetikler. Bu sayede, kullanıcının elle düğmeye tıklaması gerekmeksizin otomatik olarak kaydetme işlemini gerçekleştirmek mümkün olur.
+                HtmlDocument htmlDocument = webBrowser.Document;// Window_Unload olayı, HTML belgesi yüklendiğinde gerçekleşen olaydır. Bu nedenle, Unload olayı gerçekleştiğinde Window_Unload olayı tetiklenir ve belgede yapılan değişiklikler işlenebilir. htmlDocument.Window.Unload özelliği, belgenin Window özelliğine erişimi sağlar ve Window_Unload olayı, HTML belgesi yüklenirken işlenmek üzere bir olay dinleyiciye bağlanır.
+                htmlDocument.Window.Unload += new HtmlElementEventHandler(Window_Unload);// Bu olay, yüklenen belge kapatıldığında tetiklenir ve bu durumda, işlev kaydedilen belge nesnesini siler ve önbellekteki tüm verileri temizler.
+                // Bu işlemin amacı, web tarayıcısının tamamen yüklendiğinden emin olmak ve gerektiğinde sonuçları işlemek için bir fırsat sağlamaktır.
                 do
                 {
+                    //Bu kod bloğu, işlem sırasında tarayıcının tamamlanmasını bekler.
                     Thread.Sleep(10);
                     Application.DoEvents();
                     AddBlockAlerts();
-                } while (!isCompleted);
-                return GetWebPageResponse();
-
+                    //yukarıdaki metodlar, işlem sırasında diğer uygulama işlemlerini gerçekleştirir ve herhangi bir blokajı önler.
+                } while (!isCompleted);// Tarayıcının yüklenmesi tamamlandığında, işlem döngüden çıkar ve devam eder. 
+                return GetWebPageResponse();// İşlem tamamlandığında, tarayıcı sayfasının yanıtını döndürmek için GetWebPageResponse () metodu kullanılır
+                //İşlemler tamamlandıktan sonra GetWebPageResponse() metodu ile webden gelen mesaj çekilir.
             }
             catch (System.Exception ex)
             {
@@ -518,45 +535,58 @@ namespace RntCar.IntegrationHelper
 
 
 
-        private void WebBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        private void WebBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)//Bu kod bloğu, WebBrowser kontrolünün bir belge yüklemesini tamamladığında çalışır. 
         {
-            currentUrl = ((WebBrowser)sender).Url.ToString();
-            isCompleted = true;
+            //Bu kod bloğu, yüklenen belgenin URL'sini currentUrl değişkenine atar. 
+            currentUrl = ((WebBrowser)sender).Url.ToString();//yüklenen belgenin URL'sini bir dize olarak alır ve currentUrl değişkenine atar.
+            isCompleted = true;//isCompleted değişkeni, yüklemenin tamamlandığını belirtmek için kullanılır
         }
-        private void WebBrowserNavigate(string url)
+        private void WebBrowserNavigate(string url)//Bu yöntem, belirtilen URL'ye gezinmek ve sayfanın yüklenme işlemini beklemek için kullanılır. Bu nedenle, sayfanın tamamen yüklenmesi gerekli olduğunda kullanışlıdır.
         {
-            isCompleted = false;
-            webBrowser.Navigate(url);
+            isCompleted = false; //sayfa henüz yüklenmemiş kabul edilir
+            webBrowser.Navigate(url); //WebBrowser kontrolünü belirtilen url ile yüklemek için kullanılır.
             do
+            //isCompleted değişkeni true olana kadar, yani sayfa tamamen yüklenene kadar, Application.DoEvents() metodu çağrılır.  Bu döngü, sayfanın yüklenme işleminin tamamlanmasını bekler.
             {
-                Application.DoEvents();
+                Application.DoEvents();//Application.DoEvents() metodunun kullanılması, formun donmasını önlemek için gereklidir.
             } while (!isCompleted);
         }
         private string ResolveCaptcha()
+        //Bu kodlar bir CAPTCHA çözme işlemi gerçekleştiriyor. CAPTCHA, bilgisayarların yapay zeka ve otomasyon yazılımlarının bir web sitesinde spam göndermesini veya kötü amaçlı bir davranışta bulunmasını önlemek için kullanılan bir güvenlik mekanizmasıdır.Kodlar, webBrowser adlı bir System.Windows.Forms.WebBrowser nesnesi kullanarak CAPTCHA görüntüsünü buluyor ve bu görüntüyü Tesseract OCR kütüphanesi kullanarak okuyor.Bu işlem, CAPTCHA'nın içindeki metni çıkararak, CAPTCHA testini geçmek için gereken doğru cevabı verme imkanı sağlıyor.
+
+
         {
-            IHTMLDocument2 doc = (IHTMLDocument2)webBrowser.Document.DomDocument;
+            IHTMLDocument2 doc = (IHTMLDocument2)webBrowser.Document.DomDocument;//İlk olarak, webBrowser.Document.DomDocument özelliği kullanılarak, web sayfasının DOM yapısını temsil eden bir IHTMLDocument2 nesnesi elde ediliyo
             IHTMLControlRange imgler = (IHTMLControlRange)((HTMLBody)doc.body).createControlRange();
+            //Bu kod parçası, belirli bir HTML dokümanı içinde bulunan bir IMG etiketini seçmek için kullanılır.  Öncelikle, doc değişkeni HTML dokümanını temsil eden bir nesneyi içerir.Ardından, doc.body özelliği HTML dokümanının gövdesini temsil eden bir nesneyi döndürür. Daha sonra, HTMLBody sınıfının bir örneği olan doc.body nesnesi createControlRange() yöntemi çağrılır. Bu yöntem, sayfada bir kontrol seçim aralığı oluşturur.    Bu oluşturulan kontrol aralığı, IHTMLControlRange arabirimini uygulayan bir nesne olarak atandığı imgler değişkenine atanır.Bu arayüz, sayfada yer alan herhangi bir kontrolün seçilmesini sağlar.   Sonuç olarak, imgler değişkeni artık sayfadaki bir IMG etiketini seçmek için kullanılabilir.
+
+
+            //Ardından, doc.images özelliği kullanılarak sayfadaki tüm resimler taranıyor ve her bir resim için aşağıdaki işlemler yapılıyor:
             foreach (IHTMLImgElement img in doc.images)
             {
                 if (((IHTMLElement)img).id == "imgKod")
                 {
-                    byte[] bytes = Convert.FromBase64String(img.src.Replace("data:image/png;base64,", ""));
+                    //Resmin id özelliği "imgKod" ise,Resim URL'sinden data:image/png;base64, bölümü çıkarılıyor, 
+
+                    byte[] bytes = Convert.FromBase64String(img.src.Replace("data:image/png;base64,", ""));//Convert.FromBase64String yöntemi kullanılarak resim verileri byte dizisine dönüştürülüyor, 
                     using (var engine = new TesseractEngine(StaticHelper.GetConfiguration("tessdataFolderPath"), "eng", EngineMode.Default))
+                        //Tesseract OCR kütüphanesi kullanılarak resimden metin çıkarılıyor ve bu metin döndürülüyor.
                     {
-                        using (var imgByte = Pix.LoadFromMemory(bytes))
+                        using (var imgByte = Pix.LoadFromMemory(bytes))// Pix sınıfı, görüntü işleme kütüphanesi olan Leptonica tarafından sağlanan işlevlerin .NET bağlamında kullanılabilmesini sağlar. LoadFromMemory() yöntemi, verilen byte dizisinden bir Pix nesnesi oluşturur.
                         {
-                            using (var page = engine.Process(imgByte))
+                            using (var page = engine.Process(imgByte))//Process() yöntemi, OCR işlemini gerçekleştirir ve metin içeriğini page nesnesine yazar. 
                             {
-                                var txt = page.GetText();
-                                return txt;
+                                var txt = page.GetText();//GetText() yöntemi, elde edilen metni bir dize olarak döndürür
+                                return txt;//CAPTCHA'nın içindeki metin döndürülüyor
                             }
                         }
                     }
                 }
             }
+            //veya Aşağıdaki gibi boş bir dize döndürülüyor.
             return "";
         }
-        private bool SearchVehicle(string plate)
+        private bool SearchVehicle(string plate)//Bu fonksiyon, verilen plakanın araç listesi sayfasında var olup olmadığını kontrol eder.
         {
             Console.WriteLine("Araç listede aranıyor...");
             if (webBrowser.DocumentText.ToString().Contains(plate))
@@ -565,39 +595,44 @@ namespace RntCar.IntegrationHelper
             }
             return false;
         }
-        private bool SelectVehicle(string pageToRedirect, string plate)
+        private bool SelectVehicle(string pageToRedirect, string plate)//Bu kod parçası, bir WebBrowser nesnesi kullanarak bir HTML sayfasındaki belirli bir plakaya sahip aracı seçmeye çalışır.
         {
-            HtmlElementCollection a = webBrowser.Document.GetElementsByTagName("a");
-            var str = System.String.Format("{0}?plaka={1}", pageToRedirect, plate);
+            HtmlElementCollection a = webBrowser.Document.GetElementsByTagName("a");//İlk olarak, webBrowser değişkeni bir WebBrowser nesnesini temsil eder ve bu nesnenin Document özelliği kullanılarak HTML belgesine erişilir.
+           // GetElementsByTagName yöntemi, HTML belgesindeki tüm<a> etiketlerini içeren bir koleksiyon döndürür ve bu koleksiyon a değişkenine atanır.
+            var str = System.String.Format("{0}?plaka={1}", pageToRedirect, plate);//Daha sonra, str değişkeni, pageToRedirect ve plate parametreleri kullanılarak oluşturulur ve arama işleminde kullanılacak URL'yi temsil eder.
             foreach (HtmlElement a1 in a)
+            //foreach döngüsü, a koleksiyonundaki her bir HtmlElement öğesini gezinir ve öğenin href özelliği, aranan URL'yi içerip içermediğini kontrol etmek için kullanılır.
             {
                 if (a1.GetAttribute("href").Contains(System.String.Format("{0}?plaka={1}", pageToRedirect, plate)))
+                // Eğer aranan URL bulunursa, WebBrowserNavigate yöntemi kullanılarak öğenin href özelliğinde belirtilen URL'ye yönlendirilir ve true değeri döndürülür.
                 {
                     WebBrowserNavigate(a1.GetAttribute("href"));
                     Console.WriteLine("Araç bulundu yönlendirme işlem için " + pageToRedirect + "sayfasına yönlendiriliyor.");
                     return true;
                 }
             }
+            //Eğer aranan URL koleksiyon içinde bulunamazsa, false değeri döndürülür ve ekrana "Araç Seçilemedi. Listede bu plaka bulunamadı !!!" mesajı yazdırılır.
             Console.WriteLine("Araç Seçilemedi. Listede bu plaka bulunamadı !!!");
             return false;
 
         }
-        private void SelectNational(string type)
+        private void SelectNational(string type)//Bu kod parçası, bir WebBrowser nesnesini kullanarak bir HTML sayfasındaki belirli bir müşteri tipini (TC, YU veya TY) seçmeye çalışır.
         {
+            //İlk olarak, type parametresi, seçilecek müşteri tipini temsil eder ve typeValue değişkeni, bu parametreye bağlı olarak belirli bir değerle atama işlemi yapar.
             try
             {
                 var typeValue = type == "TC" ? "1" :
                                type == "YU" ? "2" :
                                type == "TY" ? "3" : null;
 
-                if (typeValue != null)
+                if (typeValue != null)//Daha sonra, if bloğu, typeValue değişkeninin null olup olmadığını kontrol eder. Eğer null değilse, HTML belgesindeki tüm input etiketlerinin bir koleksiyonunu alır ve list_vatandas adına sahip olanları gezinir. 
                     foreach (HtmlElement el in webBrowser.Document.GetElementsByTagName("input").GetElementsByName("list_vatandas"))
                     {
-                        if (el.GetAttribute("value") == typeValue)
+                        if (el.GetAttribute("value") == typeValue)//Bu öğelerin her biri için, value özelliği, typeValue değişkeni ile karşılaştırılır. Eğer eşitse, click yöntemi çağrılarak seçim işlemi gerçekleştirilir.
                         {
                             isCompleted = false;
                             el.InvokeMember("click");
-                            do
+                            do//Seçim işlemi gerçekleştirildikten sonra, do-while döngüsü, isCompleted değişkeni true olana kadar döner. Bu, seçim işlemi tamamlanmadan önce, uygulamanın beklemesi gerektiğini gösterir.
                             {
                                 Thread.Sleep(10);
                                 Application.DoEvents();
@@ -605,7 +640,7 @@ namespace RntCar.IntegrationHelper
                             break;
                         }
                     }
-                else
+                else//Son olarak, else bloğu, typeValue değişkeninin null olduğu durumlarda çalışır ve "Müşteri tipi yanlış." mesajını ekrana yazdırır.
                     Console.WriteLine("Müşteri tipi yanlış.");
             }
             catch (System.Exception)
@@ -613,29 +648,31 @@ namespace RntCar.IntegrationHelper
                 throw;
             }
         }
-        private KABISResponse GetWebPageResponse()
+        private KABISResponse GetWebPageResponse()//Bu kod parçası, bir WebBrowser nesnesindeki belirli bir HTML sayfasının yanıtını almak için kullanılır.
         {
             var kABISResponse = new KABISResponse();
 
             // Eğer Error dialog message yok ise başarılı kabul edelim
             kABISResponse.Code = "200";
-            kABISResponse.ResponseResult = ResponseResult.ReturnSuccess();
+            kABISResponse.ResponseResult = ResponseResult.ReturnSuccess(); //ResponseResult özelliği ReturnSuccess() yöntemi tarafından oluşturulan bir başarılı yanıt nesnesiyle ayarlanır.
 
-            var sonuc = webBrowser.DocumentText.ToString();
-            if (sonuc != "")
+            var sonuc = webBrowser.DocumentText.ToString();//Ardından, webBrowser nesnesindeki HTML belgesinin metin içeriği sonuc adlı bir değişkene atanır. 
+            if (sonuc != "")//Bu değişken boş değilse, 
             {
-                var messageDialog = webBrowser.Document.GetElementById("dialog-message");
-                if (messageDialog != null)
+                var messageDialog = webBrowser.Document.GetElementById("dialog-message");// messageDialog adlı bir HTML öğesi, dialog-message kimliği ile alınır
+                if (messageDialog != null) //mesaj null değilse ve,
                 {
-                    if (messageDialog.InnerText.Contains("Ehliyet Bilgisine Ulaşılamadı"))
+                    if (messageDialog.InnerText.Contains("Ehliyet Bilgisine Ulaşılamadı"))//mesaj "Ehliyet Bilgisine Ulaşılamadı" dizesi içeriyorsa
                     {
                         kABISResponse.Code = "300";
                         kABISResponse.ResponseResult = ResponseResult.ReturnError(messageDialog.InnerText);
+                        // yanıt nesnesinin kodu ve ResponseResult özelliği, ilgili hata mesajı içeriğine göre ayarlanır.
                     }
-                    else if (messageDialog.InnerText.Contains("Araç Sistemde Kayıtlı"))
+                    else if (messageDialog.InnerText.Contains("Araç Sistemde Kayıtlı")) //Araç Sistemde Kayıtlı mesajı içeriyorsa
                     {
                         kABISResponse.Code = "301";
                         kABISResponse.ResponseResult = ResponseResult.ReturnError(messageDialog.InnerText);
+                        // yanıt nesnesinin kodu ve ResponseResult özelliği, ilgili hata mesajı içeriğine göre ayarlanır.
                     }
                     else
                     {
@@ -648,36 +685,47 @@ namespace RntCar.IntegrationHelper
             }
 
             Console.WriteLine(kABISResponse.ResponseResult.Result.ToString() + " " + kABISResponse.ResponseResult.ExceptionDetail);
-            return kABISResponse;
+            return kABISResponse; //Son olarak, yanıt nesnesi, konsol çıktısında ResponseResult özelliğinin durumunu ve ExceptionDetail özelliğini yazdırarak döndürülür.
         }
         public void AddBlockAlerts()
+        //Bu kod parçası, bir WebBrowser nesnesindeki belirli bir HTML sayfasına ek blok uyarıları eklemek için kullanılır.
         {
-            if (webBrowser.Document != null)
+            if (webBrowser.Document != null)//İlk olarak, if bloğu ile webBrowser.Document özelliği null olmadığı kontrol edilir.
             {
-                var head = webBrowser.Document.GetElementsByTagName("head");
-                HtmlElement headElement = head[0];
-                HtmlElement scriptEl = webBrowser.Document.CreateElement("script");
-                IHTMLScriptElement element = (IHTMLScriptElement)scriptEl.DomElement;
-                element.text = "window.alert = function() { try { } catch ( e ) {} };";
+                var head = webBrowser.Document.GetElementsByTagName("head");//Daha sonra, head adlı bir HtmlElementCollection öğesi, webBrowser.Document.GetElementsByTagName yöntemi kullanılarak belgenin başlığına karşılık gelen HTML öğeleri alınır.
+                HtmlElement headElement = head[0];//Sonra, headElement adlı bir HtmlElement değişkeni tanımlanır ve head[0] ile head koleksiyonunun ilk öğesi atandıktan sonra bu öğeye atanır.
+                HtmlElement scriptEl = webBrowser.Document.CreateElement("script");//Ardından, scriptEl adında bir HtmlElement nesnesi oluşturulur ve webBrowser.Document.CreateElement("script") yöntemi kullanılarak bir script HTML öğesi oluşturulur.
+                IHTMLScriptElement element = (IHTMLScriptElement)scriptEl.DomElement;//Daha sonra, element adında bir IHTMLScriptElement öğesi oluşturulur ve bu öğe, DomElement özelliği aracılığıyla scriptEl öğesine atanır.
+                element.text = "window.alert = function() { try { } catch ( e ) {} };";//Son olarak, element.text özelliğine, JavaScript kodu atanır. Bu JavaScript kodu, tüm window.alert fonksiyonlarını bloke etmek için kullanılır. Yani, bu kod bloğu sayesinde, sayfadaki alert fonksiyonlarının engellenmesi sağlanır.
                 headElement.AppendChild(scriptEl);
             }
 
         }
-        private bool isNumaric(string value)
+        private bool isNumaric(string value)// bu metod verilen string değerin tamamen rakam olup olmadığını kontrol eder ve sonucu boolean bir değer olarak döndürür.
         {
-            return Regex.IsMatch(value, @"^\d+$") ? true : false;
+            return Regex.IsMatch(value, @"^\d+$") ? true : false;//Regex.IsMatch(value, @"^\d+$"): Bu ifade, verilen değerin tamamen rakam içerip içermediğini kontrol etmek için kullanılan bir regular expression kullanarak string ifadeyi kontrol eder. ^\d+$ ifadesi, ifadenin başından sonuna kadar sadece sayısal karakterleri içermesini sağlar.
+            // ? true : false: Ternary operatörünü kullanarak, Regex.IsMatch sonucu true ise true, false ise false döndürür
         }
         void Window_Unload(object sender, HtmlElementEventArgs e)
+        //Bu kod,mevcut sayfada yeni bir boş pencere açıyor.
+        //Bu kod bloğu, WebBrowser nesnesi içinde yüklü bir web sayfası kapatıldığında (yani, Window.Unload olayı tetiklendiğinde) boş bir pencere açar. Bu yöntem, sayfaları spam veya istenmeyen pencereler açan kötü niyetli JavaScript kodlarından korumak için kullanılabilir.
+
+        //object sender parametresi olayı tetikleyen nesneyi temsil eder. HtmlElementEventArgs e parametresi ise olay hakkında ek bilgi sağlar. Bu örnekte, olaya özel bir bilgi gerekli değil, bu nedenle bu parametre kullanılmamıştır.
+
         {
-            HtmlElement head = webBrowser.Document.GetElementsByTagName("head")[0];
-            HtmlElement scriptEl = webBrowser.Document.CreateElement("script");
-            IHTMLScriptElement element = (IHTMLScriptElement)scriptEl.DomElement;
-            element.text = "window.open('', '_self', ''); ";
-            head.AppendChild(scriptEl);
+            HtmlElement head = webBrowser.Document.GetElementsByTagName("head")[0];//Bu satır, webBrowser adlı bir WebBrowser nesnesinin Document özelliği üzerinden head etiketini alır.
+            HtmlElement scriptEl = webBrowser.Document.CreateElement("script");//: Bu satır, webBrowser nesnesinin Document özelliği üzerinden yeni bir script etiketi oluşturur.
+            IHTMLScriptElement element = (IHTMLScriptElement)scriptEl.DomElement;//Bu satır, script etiketinin DomElement özelliğini IHTMLScriptElement nesnesine dönüştürür.
+            element.text = "window.open('', '_self', ''); ";//Bu satır, text özelliği kullanılarak script etiketi içine bir JavaScript kodu ekler. Bu kod, window.open() metodunu kullanarak boş bir pencere açar.
+            //window.open metodunun '_self' parametresi, mevcut pencerenin hedef pencere olarak belirlenmesini sağlar. '' parametresi, hedef pencerenin boş bir sayfa olmasını belirtir. Bu nedenle, sayfada açılan yeni pencerelerin yerine, boş bir sayfa açılır.
+            head.AppendChild(scriptEl);//Bu satır, head etiketi içine yeni oluşturulan script etiketini ekler.
         }
         private void WebBrowser_NewWindow(object sender, CancelEventArgs e)
         {
-            e.Cancel = true;
+            //Bu kod bloğu, WebBrowser kontrolünde yeni bir pencere açıldığında çalışır. NewWindow olayı, WebBrowser kontrolünde bir bağlantıyı tıklattığınızda veya window.open() metodu kullanarak bir popup penceresi açtığınızda tetiklenir.
+            //Bu kod bloğu, e.Cancel özelliğini true olarak ayarlayarak, yeni pencerenin açılmasını engeller. Daha sonra, webBrowser kontrolü, webBrowser.StatusText değerine göre bir sayfa yükler. webBrowser.StatusText, yeni pencerenin URL'sini içeren bir dizedir. Bu, yeni pencerenin içeriğini mevcut pencereye yüklemek yerine, aynı URL'ye sahip bir sayfanın mevcut pencerede açılmasını sağlar.
+            //Bu yöntem, kullanıcıların bir bağlantıyı tıkladığında veya popup penceresi açtığında yeni bir pencerede açılmasını bekledikleri sayfaların, mevcut pencerede açılmasını sağlar. Bu nedenle, kullanıcıların istenmeyen pencerelerle karşılaşma olasılığı azalır. Ancak, bu yöntem pop-up reklamları ve diğer pop-up pencerelerini tamamen engellemez, sadece açılma şeklini değiştirir.
+            e.Cancel = true;//yeni pencerenin açılmasını engeller
             webBrowser.Navigate(webBrowser.StatusText);
         }
 

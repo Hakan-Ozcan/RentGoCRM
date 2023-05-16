@@ -332,6 +332,7 @@
     <Compile Include="adapter\MeatDatabase.cs" />
     <Compile Include="adapter\MeatDetails.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="Class2.cs" />
     <Compile Include="Connected Services\CitizenshipService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

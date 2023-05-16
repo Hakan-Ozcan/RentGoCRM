@@ -23,17 +23,18 @@ namespace RntCar.BusinessLibrary.Business
 
         public MongoDBResponse createAvailabilityFactorInMongoDB(Entity availabilityFactor)
         {
-            ConfigurationBL configurationBL = new ConfigurationBL(this.OrgService);
+            ConfigurationBL configurationBL = new ConfigurationBL(this.OrgService);//"ConfigurationBL" sınıfı, MongoDB URL'sini almak için kullanılır 
             var responseUrl = configurationBL.GetConfigurationByName("MongoDBWepAPIURL");
 
-            RestSharpHelper restSharpHelper = new RestSharpHelper(responseUrl, "CreateAvailabilityFactorInMongoDB", RestSharp.Method.POST);
+            RestSharpHelper restSharpHelper = new RestSharpHelper(responseUrl, "CreateAvailabilityFactorInMongoDB", RestSharp.Method.POST); // "RestSharpHelper" sınıfı, bu URL'ye ve bir HTTP isteği türüne ("POST") dayalı olarak bir REST isteği oluşturur.
 
-            var availabilityFactorData = this.buildAvailabilityFactorData(availabilityFactor);
+            var availabilityFactorData = this.buildAvailabilityFactorData(availabilityFactor);//"availabilityFactorData" adlı bir değişken oluşturulur ve "buildAvailabilityFactorData" adlı bir metotla doldurulur. Bu metot, "availabilityFactor" parametresinden geçerli bir "AvailabilityFactorData" nesnesi oluşturur.
 
-            restSharpHelper.AddJsonParameter<AvailabilityFactorData>(availabilityFactorData);
+            restSharpHelper.AddJsonParameter<AvailabilityFactorData>(availabilityFactorData);//"restSharpHelper" nesnesi, "availabilityFactorData" nesnesini JSON biçiminde parametre olarak ekler.
 
-            var response = restSharpHelper.Execute<MongoDBResponse>();
+            var response = restSharpHelper.Execute<MongoDBResponse>();//Sonrasında "restSharpHelper" nesnesi, "Execute" yöntemiyle bir REST çağrısı yapar ve "MongoDBResponse" nesnesi ile yanıtı döndürür. "MongoDBResponse" nesnesi, bir "Result" ve bir "Id" özelliği içerir.
             this.TracingService.Trace("responsresult : " + response.Result);
+            //Son iki satır, yöntemin çağrılması sırasında oluşabilecek hataları yakalar ve hataları bir "MongoDBResponse" nesnesi içinde döndürür.
             if (!response.Result)
             {
                 return MongoDBResponse.ReturnError(response.ExceptionDetail);
@@ -41,19 +42,20 @@ namespace RntCar.BusinessLibrary.Business
             this.TracingService.Trace("respons id : " + response.Id);
             return response;
         }
-        public MongoDBResponse updateAvailabilityFactorInMongoDB(Entity availabilityFactor)
+        public MongoDBResponse updateAvailabilityFactorInMongoDB(Entity availabilityFactor)// Bu metot bir MongoDB veritabanındaki AvailabilityFactor varlığının verilerini güncellemek için kullanılır.
         {
-            ConfigurationBL configurationBL = new ConfigurationBL(this.OrgService);
+            ConfigurationBL configurationBL = new ConfigurationBL(this.OrgService);//"ConfigurationBL" sınıfı, MongoDB URL'sini almak için kullanılır 
             var responseUrl = configurationBL.GetConfigurationByName("MongoDBWepAPIURL");
 
-            RestSharpHelper restSharpHelper = new RestSharpHelper(responseUrl, "UpdateAvailabilityFactorInMongoDB", RestSharp.Method.POST);
+            RestSharpHelper restSharpHelper = new RestSharpHelper(responseUrl, "UpdateAvailabilityFactorInMongoDB", RestSharp.Method.POST); // "RestSharpHelper" sınıfı, bu URL'ye ve bir HTTP isteği türüne ("POST") dayalı olarak bir REST isteği oluşturur.
 
-            var availabilityFactorData = this.buildAvailabilityFactorData(availabilityFactor);
+            var availabilityFactorData = this.buildAvailabilityFactorData(availabilityFactor);//"availabilityFactorData" adlı bir değişken oluşturulur ve "buildAvailabilityFactorData" adlı bir metotla doldurulur. Bu metot, "availabilityFactor" parametresinden geçerli bir "AvailabilityFactorData" nesnesi oluşturur.
 
-            restSharpHelper.AddJsonParameter<AvailabilityFactorData>(availabilityFactorData);
-            restSharpHelper.AddQueryParameter("id", availabilityFactor.GetAttributeValue<string>("rnt_mongodbid"));
+            restSharpHelper.AddJsonParameter<AvailabilityFactorData>(availabilityFactorData);//"restSharpHelper" nesnesi, "availabilityFactorData" nesnesini JSON biçiminde parametre olarak ekler.
+            restSharpHelper.AddQueryParameter("id", availabilityFactor.GetAttributeValue<string>("rnt_mongodbid"));//RestSharp kütüphanesi kullanılarak bir sorgu parametresi ekler. Bu parametre, MongoDB'de güncellenecek AvailabilityFactor belgesinin benzersiz kimliğini belirtir
 
             var response = restSharpHelper.Execute<MongoDBResponse>();
+            //Son iki satır, yöntemin çağrılması sırasında oluşabilecek hataları yakalar ve hataları bir "MongoDBResponse" nesnesi içinde döndürür.
             if (!response.Result)
             {
                 return MongoDBResponse.ReturnError(response.ExceptionDetail);
@@ -63,8 +65,10 @@ namespace RntCar.BusinessLibrary.Business
         }
 
         public AvailabilityFactorData buildAvailabilityFactorData(Entity availabilityFactor)
-        {
-            MultiSelectMappingRepository multiSelectRepository = new MultiSelectMappingRepository(this.OrgService);
+        {//Bu metot, bir Entity nesnesi alır ve AvailabilityFactorData tipinde bir nesne döndürür. Entity nesnesi, Dynamics 365 gibi bir CRM uygulamasındaki bir kaydı temsil eder ve AvailabilityFactorData nesnesi, bu kaydın MongoDB veritabanına kaydedilmesi için kullanılan verileri içerir.
+
+            //Bu metot, birden fazla sorgu yürütmek için farklı repository'ler kullanır ve bunları kullanarak AvailabilityFactorData nesnesinin farklı özelliklerine değer atar. Bu özellikler, kaydın türü, adı, başlangıç ve bitiş tarihleri, grup kodları, hesap grupları, kapasite oranı vb. özellikleri içerir. Bu bilgiler, kaydın MongoDB'deki doğru şekilde saklanmasını sağlamak için gereklidir.
+                        MultiSelectMappingRepository multiSelectRepository = new MultiSelectMappingRepository(this.OrgService);
             var branchCode = multiSelectRepository.getSelectedItemsGuidListByOptionValueandGivenColumn("rnt_branch",
                 availabilityFactor.Attributes.Contains("rnt_multiselectbranchcode") ? availabilityFactor.GetAttributeValue<OptionSetValueCollection>("rnt_multiselectbranchcode") : null);
 

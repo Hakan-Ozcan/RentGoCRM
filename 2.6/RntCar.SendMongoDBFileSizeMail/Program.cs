@@ -12,18 +12,18 @@ namespace RntCar.SendMongoDBFileSizeMail
 {
     internal class Program
     {
-        public static Dictionary<string, long> DirSize(DirectoryInfo d)
+        public static Dictionary<string, long> DirSize(DirectoryInfo d)//Bu metot, bir dizindeki dosyaların boyutlarını hesaplamak için kullanılabilir. Özellikle, bir uygulamanın kullanıcı tarafından seçilen bir dizindeki dosyaların boyutlarını toplamak veya bir raporda kullanmak gibi senaryolarda kullanılabilir.
         {
-            var filesSize = new Dictionary<string, long>(); 
-            FileInfo[] fis = d.GetFiles();
+            var filesSize = new Dictionary<string, long>(); //"filesSize" adlı boş bir sözlük (dictionary) oluşturuluyor. Bu sözlük, dosya adlarını anahtar (key) olarak ve dosya boyutlarını değer (value) olarak tutacak.
+            FileInfo[] fis = d.GetFiles();//"d" adlı bir klasördeki tüm dosyaların bilgileri "fis" adlı bir diziye (array) alınıyor. Bu işlem, System.IO namespace'inde yer alan FileInfo sınıfıyla yapılıyor.
             foreach (FileInfo fi in fis)
             { 
-                filesSize.Add(fi.Name, fi.Length); 
+                filesSize.Add(fi.Name, fi.Length); //"filesSize" sözlüğüne, dosya adı ("fi.Name") anahtar olarak ve dosya boyutu ("fi.Length") değer olarak ekleniyor.
             } 
 
-            return filesSize;
+            return filesSize;//: Son olarak, "filesSize" sözlüğü geri döndürülüyor. Bu sayede, bu fonksiyonu çağıran diğer kodlar bu sözlük içindeki dosya adlarına ve boyutlarına erişebilirler.
         }
-        private static string FormatBytes(long bytes)
+        private static string FormatBytes(long bytes)//Bu kod verilen bir sayısal değeri (byte cinsinden) daha okunaklı hale getirmek için kullanılıyor. Bu amaçla, verilen sayıyı uygun bir birimde (byte, kilobyte, megabyte, gigabyte veya terabyte) formatlayarak, daha anlaşılır bir biçimde gösteriliyor.
         {
             string[] Suffix = { "B", "KB", "MB", "GB", "TB" };
             int i;

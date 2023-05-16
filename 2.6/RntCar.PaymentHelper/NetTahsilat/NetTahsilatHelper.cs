@@ -16,9 +16,11 @@ namespace RntCar.PaymentHelper.NetTahsilat
         }
         public CreateCreditCardResponse createCreditCard(CreateCreditCardParameters createCreditCardParameters)
         {
+            
             System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls11 | System.Net.SecurityProtocolType.Tls12;
             NetTahsilatService.PaymentWebServiceClient paymentWebServiceClient = new NetTahsilatService.PaymentWebServiceClient(GetBasicHttpsBinding(), GetEndPointAddress(netTahsilatConfiguration.nettahsilat_url));
             NetTahsilatService.SaveCreditCardRequest saveCreditCardRequest = new NetTahsilatService.SaveCreditCardRequest()
+
             {
                 CardHolderName = createCreditCardParameters.cardHolderName,
                 CardNumber = createCreditCardParameters.creditCardNumber,
@@ -27,6 +29,7 @@ namespace RntCar.PaymentHelper.NetTahsilat
                 ExpMonth = createCreditCardParameters.expireMonth.Value,
                 ExpYear = createCreditCardParameters.expireYear.Value
             };
+            saveCreditCardRequest.Cvv = createCreditCardParameters.cvc;
             var tokenProcessResult = paymentWebServiceClient.SaveCreditCard(new NetTahsilatService.AuthenticationInfo
             {
                 Password = this.netTahsilatConfiguration.nettahsilat_password,

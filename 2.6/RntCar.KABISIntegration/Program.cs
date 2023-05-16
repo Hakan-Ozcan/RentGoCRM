@@ -17,6 +17,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using static RntCar.ClassLibrary.ContractItemEnums;
 using static RntCar.ClassLibrary.GlobalEnums;
+using System.Security.Cryptography.Xml;
+using System.Web.Services.Description;
 
 namespace RntCar.KABISIntegration
 {
@@ -29,19 +31,19 @@ namespace RntCar.KABISIntegration
         public static Guid branchId;
         public static Guid branchNot = new Guid("d191815c-18f6-ec11-bb3d-000d3a2d8250"); // bodrum merkez hariç
         public static Guid testContract = new Guid("1e80d2b6-6c0e-ed11-82e4-000d3a48b166");
-        public static string greaterDatetime = StaticHelper.GetConfiguration("GreaterDatetime");
+        public static string greaterDatetime = StaticHelper.GetConfiguration("GreaterDatetime");//app.config deki greaterdatetime'ın value değerini çekiyoruz
         static void Main(string[] args)
         {
             loggerHelper = new LoggerHelper();
             string branchStringId = StaticHelper.GetConfiguration("branchid");
             branchId = new Guid();
-            if (!string.IsNullOrWhiteSpace(branchStringId))
+            if (!string.IsNullOrWhiteSpace(branchStringId)) //Eğer branchStringId değeri null ya da boş değilse
             {
-                branchId = new Guid(branchStringId);
+                branchId = new Guid(branchStringId);//branchStringId değerini Guid veri tipine dönüştürür ve bu değeri branchId değişkenine atar.
             }
             crmServiceHelper = new CrmServiceHelper();
             kabisHelper = new KABISHelper();
-            kabisBL = new KABISBL(crmServiceHelper.IOrganizationService);
+            kabisBL = new KABISBL(crmServiceHelper.IOrganizationService);//IOrganizationService arayüzü, Microsoft Dynamics CRM için işlemlerin yapıldığı çeşitli hizmetlerin API'sini sağlar. IOrganizationService örneği, KABISBL sınıfının yapıcı metoduna parametre olarak verilir. Bu, KABISBL sınıfının, IOrganizationService örneği ile çalışacağı anlamına gelir.
 
             Console.WriteLine("Transfers..");
             KABISTransferProcess();
@@ -91,10 +93,14 @@ namespace RntCar.KABISIntegration
                 drivingCountryEntity.Columns = new ColumnSet("rnt_kabiscode", "rnt_name");
                 drivingCountryEntity.JoinOperator = JoinOperator.LeftOuter;
 
-                QueryExpression getContractItem = new QueryExpression("rnt_contractitem");
-                getContractItem.ColumnSet = new ColumnSet("rnt_pickupbranchid", "rnt_equipment", "rnt_customerid", "rnt_contractid");
-                getContractItem.Criteria.AddCondition("statuscode", ConditionOperator.Equal, (int)StatusCode.Rental);
+                QueryExpression getContractItem = new QueryExpression("rnt_contractitem");//Bu sorgu, "rnt_contractitem" tablosunda belirtilen sütunlarla filtrelenen kayıtları getirir.
+                getContractItem.ColumnSet = new ColumnSet("rnt_pickupbranchid", "rnt_equipment", "rnt_customerid", "rnt_contractid");//, rnt_contractitem tablosundan hangi sütunların getirileceğini belirtir. 
+                getContractItem.Criteria.AddCondition("statuscode", ConditionOperator.Equal, (int)StatusCode.Rental);//getContractItem.Criteria ifadesi, sorgunun kriterlerini belirler. Criteria özelliği, FilterExpression sınıfından bir örnek döndürür. FilterExpression sınıfı, sorgunun koşullarını belirler.
+                  //İlk koşul, "statuscode" sütununun Rental durum koduna eşit olması gerektiğini belirtir. ConditionOperator.Equal ifadesi, koşulun eşitlikle karşılaştırılacağını belirtir. İkinci koşul, "rnt_kabisstatus" sütununun KABISStatus.Waiting değerine eşit olması gerektiğini belirtir. Bu, KABISStatus adında bir enum sınıfı kullanarak gerçekleştirilir.ConditionOperator.Equal ifadesi, koşulun eşitlikle karşılaştırılacağını belirtir.
+
                 getContractItem.Criteria.AddCondition("rnt_kabisstatus", ConditionOperator.Equal, (int)KABISStatus.Waiting);
+
+
                 if (branchId != Guid.Empty)
                 {
                     getContractItem.Criteria.AddCondition("rnt_pickupbranchid", ConditionOperator.Equal, branchId);
@@ -350,6 +356,8 @@ namespace RntCar.KABISIntegration
         }
 
         private static void KABISTransferProcess()
+        //Bu kod bloğu, belirli koşulları sağlayan transferlerin KABİS sistemi ile ilgili işlemlerini gerçekleştiren bir metodu içermektedir. Bu işlemler, transferin türüne (70 veya 50) bağlı olarak farklıdır.İlk olarak, belirli bir tarih zamanından sonra bekleyen ve Tamamlandı olarak işaretlenen transferleri sorgulayan bir sorgu ifadesi oluşturulur. Ayrıca, KABİS durumu "Bekliyor" olarak ayarlanmış olan ve (varsa) belirli bir şubeye (branchId) göre filtrelenmiş olan transferler de sorguya dahil edilir.Daha sonra, transferler döngüye sokulur ve her bir transferin türüne göre farklı işlemler gerçekleştirilir.Transfer türü 50 ise, transferin alındığı şubede bir araç varsa, aracın plaka numarası ve alınan şube bilgisi kullanılarak KABİS sistemi ile bir bağlantı kurulur. Bu işlem için, kabisBL sınıfının GetKABISInfo metodu kullanılır ve eğer KABİS bilgileri mevcut değilse bir hata mesajı oluşturulur. Eğer KABİS bilgileri mevcut ise, aracın hedef şubeye transferi gerçekleştirilir.Transfer türü 70 ise, transferin teslim edileceği şubenin KABİS bilgileri alınır ve eğer mevcut değilse bir hata mesajı oluşturulur.Ardından, araç KABİS sistemine eklenir ve işlem sonucu kontrol edilir.Eğer işlem başarısız olursa, bir hata mesajı oluşturulur.Son olarak, transferlerin KABİS durumu "Tamamlandı" olarak güncellenir ve herhangi bir hata durumunda ilgili kişilere bir e-posta gönderilir.
+
         {
             List<int> transferTypeList = new List<int>() { 70, 50 };
             foreach (var transferType in transferTypeList)
@@ -463,10 +471,11 @@ namespace RntCar.KABISIntegration
             try
             {
                 var smtpSenderMail = ConfigurationManager.AppSettings.Get("SmtpSenderMail");
+                //"ConfigurationManager" nesnesi ile uygulamanın yapılandırma dosyasındaki ("app.config" veya "web.config") değerlere erişiyoruz. Burada "SmtpSenderMail" adlı bir değerin alındığını görüyoruz. Bu değer, SMTP sunucusunda kullanılacak olan mail adresini içerir.
                 var smtpSenderPassword = ConfigurationManager.AppSettings.Get("SmtpSenderPassword");
                 var smtpCCMails = ConfigurationManager.AppSettings.Get("SmtpCCMails");
-                var host = "smtp.office365.com";
-                var port = 587;
+                var host = "smtp.office365.com";//SMTP sunucusunun adresi belirleniyor.
+                var port = 587; // SMTP sunucusunun port numarası belirleniyor.
                 var typeName = "";
                 switch (kabisMessage.KabisPeocessType)
                 {
@@ -481,7 +490,7 @@ namespace RntCar.KABISIntegration
                         break;
 
                 }
-
+               
                 var subject = $"KABİS Hatası Hakkında ({kabisMessage.plateNumber})";
                 var body = "";
                 if (kabisMessage.KabisPeocessType == KABISProcessType.Transfer)
@@ -492,8 +501,9 @@ namespace RntCar.KABISIntegration
                 body += $"<u>Hata Detayı</u> <br/> <b>Kod :</b> {kabisMessage.code} <br/> <b>Açıklama :</b> {kabisMessage.message} <br/><br/> Gerekli kontrollerin yapılmasını rica ederiz. <br/><br/>";
 
 
-                var client = new SmtpClient(host, port)
+                var client = new SmtpClient(host, port)// SmtpClient sınıfı ile host ve port değerleri kullanılarak bir SMTP istemci örneği oluşturuluyor.
                 {
+                    //NetworkCredential sınıfı kullanılarak SMTP sunucusuna yetkilendirme bilgileri ekleniyor. Bu bilgiler smtpSenderMail ve smtpSenderPassword değişkenlerinden alınıyor.
                     Credentials = new NetworkCredential(smtpSenderMail, smtpSenderPassword),
                     EnableSsl = true
                 };
@@ -504,7 +514,7 @@ namespace RntCar.KABISIntegration
                 mailMessage.Subject = subject;
                 mailMessage.Body = body;
                 mailMessage.IsBodyHtml = true;
-                client.Send(mailMessage);
+                client.Send(mailMessage);//En son olarak Send metodunu kullanarak e-posta SMTP sunucusuna gönderiliyor
             }
             catch (Exception)
             {

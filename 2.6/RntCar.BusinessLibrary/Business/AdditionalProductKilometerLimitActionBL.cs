@@ -20,14 +20,15 @@ namespace RntCar.BusinessLibrary.Business
 
         }
 
-        public int getAdditionalProductKilometerLimitActionByAdditionalProductId(Guid additionalProductId)
+        public int getAdditionalProductKilometerLimitActionByAdditionalProductId(Guid additionalProductId)//Bu kod, verilen bir ek ürün ID'sine göre, ilgili ek ürüne bağlı olan kilometre limit etkisini getiren bir işlevi içerir. Kodun satır satır açıklaması aşağıdaki gibidir:
         {
-            var kilometer = 0;
+            var kilometer = 0;//Bir "kilometer" değişkeni oluşturulur ve başlangıçta 0 değeri atanır.
 
-            AdditionalProductKilometerLimitActionRepository additionalProductKilometerLimitActionRepository = new AdditionalProductKilometerLimitActionRepository(this.OrgService);
-            var kilometerEffect = additionalProductKilometerLimitActionRepository.getAdditionalProductKilometerLimitActionByAdditionalProductId(additionalProductId);
-            if(kilometerEffect != null)
+            AdditionalProductKilometerLimitActionRepository additionalProductKilometerLimitActionRepository = new AdditionalProductKilometerLimitActionRepository(this.OrgService);//"AdditionalProductKilometerLimitActionRepository" sınıfından bir nesne oluşturulur ve "this.OrgService" ile başlatılır.
+            var kilometerEffect = additionalProductKilometerLimitActionRepository.getAdditionalProductKilometerLimitActionByAdditionalProductId(additionalProductId);//Verilen ek ürün ID'sine göre, ilgili ek ürüne bağlı olan kilometre limit etkisini "getAdditionalProductKilometerLimitActionByAdditionalProductId" işlevi kullanılarak alırız.
+            if (kilometerEffect != null)
             {
+                ////Eğer bir kilometre etkisi varsa, "kilometer" değişkeni, "rnt_kilometerlimiteffect" özniteliğini içeriyorsa, ilgili değeri alır; Aksi takdirde 0 olarak kalır.
                 kilometer = kilometerEffect.Attributes.Contains("rnt_kilometerlimiteffect") ? kilometerEffect.GetAttributeValue<int>("rnt_kilometerlimiteffect") : 0;
             }
             return kilometer;

@@ -11,7 +11,8 @@ namespace RntCar.CrmPlugins.Account.Create
 {
     public class PostCreateCorporateCustomerInMongoDB : IPlugin
     {
-        public void Execute(IServiceProvider serviceProvider)
+        //Bu sınıf, MongoDB'de bir kurumsal müşteri oluşturma işlemini gerçekleştirir.
+        public void Execute(IServiceProvider serviceProvider)//Execute yöntemi, IServiceProvider arayüzünü parametre olarak alır. Bu, eklentinin CRM hizmetlerine erişmesine olanak tanır.
         {
             Entity postImg;
             PluginInitializer initializer = new PluginInitializer(serviceProvider);
@@ -25,7 +26,7 @@ namespace RntCar.CrmPlugins.Account.Create
 
             try
             {
-                CorporateCustomerBL corporateCustomerBL = new CorporateCustomerBL(initializer.Service, initializer.TracingService);
+                CorporateCustomerBL corporateCustomerBL = new CorporateCustomerBL(initializer.Service, initializer.TracingService);//Bu sınıf, MongoDB'de bir kurumsal müşteri oluşturma işlemi gerçekleştirir.
                 var response = corporateCustomerBL.createCorporateCustomerInMongoDB(postImg);
                 initializer.TraceMe("Response : " + response.Result);
                 if (!response.Result)
@@ -35,7 +36,7 @@ namespace RntCar.CrmPlugins.Account.Create
 
             }
             catch (Exception ex)
-            {
+            {   
                 initializer.PluginContext.ThrowException<InvalidPluginExecutionException>(ex.Message);
             }
         }
